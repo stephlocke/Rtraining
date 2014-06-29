@@ -1,0 +1,339 @@
+An Introduction to R
+========================================================
+author: Steph Locke (@stefflocke)
+date: March 22nd, 2014
+navigation: section
+font-family: 'Trebuchet'
+
+About R
+====================================
+type: section
+
+What's R?
+========================================================
+- R is the new S
+- Originally created to do stats and produce graphics
+- It's a wholly extendable environment
+- Growing quickly
+
+
+Why R?
+========================================================
+- It's open source - try/use it for free
+- Integrates with most data sources
+- Can work inside other languages
+- Customisable/extendable to your circumstances
+- Really, really fast
+- Some super snazzy functionality
+
+Why not R?
+========================================================
+- Written by stats bods so quite unique
+- Stats emphasis can make it difficult to read documentation
+- Myriad extensions can make it tough to know what to use
+- It can be a bugger to google for at times
+
+What's R good for?
+========================================================
+- Ad-hoc analysis
+- Reproducible documents/reports
+- Interactive reports
+- Heavy duty number crunching
+
+R vs Office
+========================================================
+- Excel
+  * PowerView etc
+  * Reports for people to use
+- Word
+  * Reports on analysis and findings
+- PowerPoint
+  * Quick presentations
+  * Presentations with data
+
+R vs BI stuff
+========================================================
+- SAS / SSPS / SSAS
+  * Data mining
+  * Statistical analysis
+- ETL
+  * Connect to a **lot** of sources
+  * In-memory and parallel processing for fast activities
+- SSRS
+  * Static reports
+  * Exported/distributed reports
+
+How to get started quickly
+========================================================
+- Install R [r-project.org](http://www.r-project.org/)
+- Install Rstudio [Rstudio.com](http://www.rstudio.com) <- Best IDE ever
+- You're done
+![hm](https://dl.dropboxusercontent.com/u/40423572/User%20Group/rstudio.png)
+
+Using R for analysis
+====================================
+type: section
+
+Connecting to SQL Server
+========================================================
+```{r, echo=TRUE, eval=TRUE}
+# Connection courtesy of Redgate bit.ly/1jrl7V6
+
+# Activate the ODBC package for use
+library("RODBC")
+
+# Build a connection to the DB for reuse
+azure <- odbcDriverConnect(
+          "Driver={SQL Server Native Client 11.0};
+          Server=mhknbn2kdz.database.windows.net;
+          Database=AdventureWorks2012;
+          Uid=sqlfamily;
+          Pwd=sqlf@m1ly;")
+
+# Store simple SELECT statement results
+person <- sqlQuery(azure, 
+         "SELECT TOP 10 * FROM [Person].[Person]")
+```
+
+Get some more typical data
+========================================================
+```{r, echo=TRUE, eval=TRUE}
+# SQL statement used by some SSRS reports
+sales <- sqlQuery(azure, "
+SELECT 
+soh.OrderDate,
+t.Name as Territory,
+cr.countryregioncode as Code,
+cr.Name as Region,
+sum(TotalDue) as Value,
+count(*) as Volume
+FROM [Sales].[SalesOrderHeader] soh
+INNER JOIN [Sales].[SalesTerritory] t 
+          on t.territoryid=soh.territoryid
+INNER JOIN [Person].[CountryRegion] cr 
+          on cr.countryregioncode=t.countryregioncode
+WHERE  soh.OrderDate < '2008-07-01'
+GROUP BY soh.OrderDate,
+t.Name ,
+cr.Name,
+cr.countryregioncode")
+```
+
+Make a quick chart
+========================================================
+```{r, echo=TRUE, eval=TRUE}
+library("ggplot2")
+#using the most basic method
+qplot(OrderDate, Value, colour=Region, data=sales)
+```
+Make a meangingful chart - p1
+========================================================
+Use data.table - feels like SQL and is REALLY fast
+
+> DT[ where,
+> select | update,
+> group by]
+> [ having ]
+> [ order by ]
+> [ ]...[ ]
+
+```{r, echo=TRUE, eval=TRUE}
+library("data.table")
+library("zoo")
+library("scales")
+
+# summarise data
+sales.sum <- data.table( sales )[, 
+    list( Value = sum(Value), Volume = sum(Volume)), 
+    by = list( YearQtr = as.yearqtr(OrderDate), 
+        Region, Code)]
+```
+
+Make a meangingful chart - p2
+========================================================
+```{r, echo=TRUE, eval=FALSE}
+p<-ggplot( data = sales.sum, aes( x = YearQtr,  y = Value, group = Region, 
+    colour = Region )) + geom_line() + 
+    scale_x_yearqtr() 
+p
+```
+========================================================
+```{r, echo=FALSE, eval=TRUE, fig.width=15, fig.height=10}
+p<-ggplot( data = sales.sum, aes( x = YearQtr,  y = Value, group = Region, 
+    colour = Region )) + geom_line(size=2) + 
+    scale_x_yearqtr() 
+p
+```
+
+Make a meangingful chart - p3
+========================================================
+```{r, echo=TRUE, eval=FALSE}
+p <- p + theme_minimal() + theme( legend.position = "bottom" ) + 
+labs( x = "Order Quarter", y = "",   title = "Regional orders over time" ) + 
+scale_y_continuous( labels = dollar ) + scale_x_yearqtr( format = "%YQ%q" ) 
+p
+```
+========================================================
+```{r, echo=FALSE, eval=TRUE, fig.width=15, fig.height=10}
+p <- p + theme_minimal() + theme( legend.position = "bottom" ) + 
+labs( x = "Order Quarter", y = "",   title = "Regional orders over time" ) + 
+scale_y_continuous( labels = dollar ) + scale_x_yearqtr( format = "%YQ%q" ) 
+p
+```
+
+Make a meangingful chart - p4
+========================================================
+```{r, echo=TRUE, eval=FALSE}
+library("ggthemes")
+p<- p+facet_wrap( ~Region,  ncol = 3) + 
+  theme_few()+
+    theme( legend.position = "none",  axis.text.x = 
+             element_text( angle = 45,   hjust = 1 )) 
+p
+```
+========================================================
+```{r, echo=FALSE, eval=TRUE, fig.width=15, fig.height=10}
+library("ggthemes")
+p<- p+facet_wrap( ~Region,  ncol = 3) + 
+   theme_few()+
+    theme( legend.position = "none",  axis.text.x = 
+             element_text( angle = 45,   hjust = 1 ))
+ 
+p
+```
+Make a meangingful chart - p5
+========================================================
+```{r, echo=TRUE, eval=FALSE}
+p + aes(y=Volume) + scale_y_continuous() 
+```
+========================================================
+```{r, echo=FALSE, eval=TRUE, fig.width=15, fig.height=10}
+p + aes(y=Volume) + scale_y_continuous() 
+```
+
+Using R for producing data
+====================================
+type: section
+
+Output to database
+========================================================
+Insert or update
+```{r, echo=TRUE, eval=FALSE}
+sqlSave(azure, sales.sum, salessumary)
+```
+
+Output to CSV
+========================================================
+Can do xlsx but I prefer keeping things in CSV
+```{r, echo=TRUE, eval=FALSE}
+write.csv(sales, "sales.csv")
+```
+
+Using R for reports
+====================================
+type: section
+
+Interactive reports
+========================================================
+- This uses a package called shiny
+- Allows local running of interactive reports
+- Very easy to code (as it only uses R)
+- Shiny Server available for hosting of reports
+- Authentication systems available
+- [Examples](http://www.rstudio.com/shiny/showcase/)
+
+Output to PDF
+========================================================
+- This uses MikTeX (or LaTeX which is the platform independent name)
+- Create an .Rnw file
+- Include R code chunks
+- Run knit2pdf command
+
+```{r, echo=TRUE, eval=FALSE}
+knit2pdf(salesanalysis.Rnw)
+```
+
+Output to HTML (general method)
+========================================================
+- This uses markdown
+- Create an .Rmd or .Rpres file
+- Include R code chunks
+- Run knit2html command
+- Example = Supporting HTML file
+
+```{r, echo=TRUE, eval=FALSE}
+knit2html(salesanalysis.Rmd)
+```
+
+Output to presentation
+========================================================
+- This uses markdown
+- Create an .Rpres file
+- Include R code chunks
+- Use GUI to publish to Rpubs or save project to dropbox/github etc
+- Example = this presentation
+
+
+
+The shortcuts to R success
+====================================
+type: section
+
+Learn/get these
+========================================================
+- R
+- Rstudio
+- Git (TFS integration)
+- LaTeX
+- Linux (I know!)
+- Azure
+
+The right packages! Analysis
+========================================================
+- `RODBC` for a single layer of access
+- `data.table` my go-to package for all data manipulation
+  * [data.table homepage](http://datatable.r-forge.r-project.org/)
+- `zoo` adds some excellent date/time functionality
+- `ggplot2` my go-to charting package
+  * [ggplot2 homepage](http://ggplot2.org/)
+
+The right packages! Reporting/documentation
+========================================================
+- `xtable` tables in documentation
+- `knitr` documentation
+- `shiny` interactive reports
+
+The right packages! Package development
+========================================================
+- `testthat` unit testing
+- `devtools` general package dev
+
+The right resources
+========================================================
+- [tryR - online beginners course](http://tryr.codeschool.com/)
+- [Advanced R programming](http://adv-r.had.co.nz/)
+- [rseek.org - search engine](http://rseek.org)
+- [stackoverflow](http://stackoverflow.com)
+- [r-bloggers.com - consolidated blogs](http://www.r-bloggers.com/)
+- [ggplot2 book](http://ggplot2.org/book/)
+- [Web application development with R and Shiny](http://www.amazon.co.uk/Web-Application-Development-Using-Shiny/dp/1783284471)
+- [writelatex.com - online document dev](https://www.writelatex.com/)
+- [LaTeX wiki](http://en.wikibooks.org/wiki/LaTeX)
+
+Q&A / ad-hoc demo
+====================================
+type: section
+
+Thanks
+====================================
+type: section
+
+
+====================================
+
+![hmm](https://dl.dropboxusercontent.com/u/40423572/User%20Group/sqlsatthanks1.png)
+
+
+====================================
+
+![hmmm](https://dl.dropboxusercontent.com/u/40423572/User%20Group/sqlsatthanks2.png)

@@ -1,0 +1,26 @@
+
+.section .reveal .state-background {
+   background: white;}
+.reveal .present {
+   background: white;
+   background-image: url(https://dl.dropboxusercontent.com/u/40423572/User%20Group/presentationbar.png);
+   background-repeat: no-repeat;
+   background-position: bottom;
+   background-size: 100% 10%;}
+
+
+.section .reveal h1,
+.section .reveal h2,
+.section .reveal h3,
+.section .reveal p {
+    color: black;}
+
+.reveal pre code {
+  display: block; padding: 0.5em;
+  font-size: 1.25em;
+  line-height: 1.1em;
+  background-color: white;
+  overflow: visible;
+  max-height: none;
+  word-wrap: normal;
+}
