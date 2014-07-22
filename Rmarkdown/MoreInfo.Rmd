@@ -1,0 +1,14 @@
+## Find out more
+### R resources
+* http://tryr.codeschool.com
+* http://r-bloggers.com
+* http://adv-r.had.co.nz/
+
+### Shiny and Knitr
+* http://rmarkdown.rstudio.com/
+* http://shiny.rstudio.com/
+
+### LaTeX
+* http://en.wikibooks.org/wiki/LaTeX
+* http://writelatex.com 
+

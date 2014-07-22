@@ -1,0 +1,126 @@
+## Basic analysis - data.table & ggplot2 {#basicanalysis}
+data.table and ggplot2 are probably the two most useful packages in R!
+
+### data.table
+* data.table enhances data.frames (tables) to give you grouping, filtering, joins, aggregations and column names. 
+* It's quite SQL-like and is designed to be **very fast**.
+
+### ggplot2
+* ggplot2 implements a grammar of graphics (gg)
+* Simple, consistent functions to build charts
+
+## data.table
+
+## Grab some data {.smaller}
+```{r, echo=TRUE, eval=TRUE}
+# SQL statement
+sales <- sqlQuery(azure, "
+SELECT 
+soh.OrderDate,
+t.Name as Territory,
+cr.countryregioncode as Code,
+cr.Name as Region,
+sum(TotalDue) as Value,
+count(*) as Volume
+FROM [Sales].[SalesOrderHeader] soh
+INNER JOIN [Sales].[SalesTerritory] t 
+          on t.territoryid=soh.territoryid
+INNER JOIN [Person].[CountryRegion] cr 
+          on cr.countryregioncode=t.countryregioncode
+WHERE  soh.OrderDate < '2008-07-01'
+GROUP BY soh.OrderDate,
+t.Name ,
+cr.Name,
+cr.countryregioncode")
+```
+
+```{r, echo=FALSE, eval=TRUE, results='hide'}
+suppressPackageStartupMessages({
+  library(knitr)
+library(zoo)
+library(knitr)
+library(data.table)
+library(scales)
+})
+options("scipen"=100, "digits"=4)
+```
+
+## Simples
+```{r, echo=TRUE, eval=TRUE}
+# Convert to data.table
+sales<-data.table(sales)
+
+# Basic GROUP BY aggregation - returns count by region
+sales[,.N,by=Region]
+```
+
+## Row extraction
+```{r, echo=TRUE, eval=TRUE, results='asis'}
+# .SD returns the subset of rows and is filtered by which.max
+kable(sales[,.SD[which.max(Value)],by=Region])
+```
+
+## Aggregation
+```{r, echo=TRUE, eval=TRUE, results='asis'}
+# ORDER, multiple aggregations, and aliasing
+kable(sales[order(OrderDate),list(Value=sum(Value),Volume=sum(Volume))
+            ,by=list(Year=year(OrderDate))])
+```
+
+## Joins
+```{r, echo=TRUE, eval=TRUE, results='asis'}
+salesbyyear<-sales[,list(AnnualValue=sum(Value),AnnualVolume=sum(Volume))
+                   ,keyby=list(Year=year(OrderDate))]
+salesbyregion<-sales[,list(Value=sum(Value),Volume=sum(Volume))
+                   ,by=list(Region,Year=year(OrderDate))]
+#PK assignment
+setkey(salesbyregion,Year)
+kable(salesbyyear[salesbyregion[Region=="United Kingdom"],
+            list(Proportion=percent(Volume/AnnualVolume))])
+
+```
+
+## ggplot2
+
+## Quick chart
+```{r, echo=TRUE, eval=TRUE}
+# Activate ggplot2
+library(ggplot2)
+
+# Quick plot (qplot)
+qplot(year(OrderDate), Value,fill=Region,
+      data=sales[order(Region)],geom="bar",stat="identity")
+```
+
+## Chart anatomy
+```{r, echo=TRUE, eval=TRUE}
+# Chart backbone
+ggplot(data=sales[order(Region)],aes(x=year(OrderDate),y=Value,fill=Region))+
+  #bar chart type, identity uses contents not count
+  geom_bar(stat="identity")+
+  #themeing
+  scale_fill_brewer(type="qual")+
+  theme_minimal()
+```
+
+## Making a trellis
+```{r, echo=TRUE, eval=TRUE}
+ggplot(data=sales,aes(x=year(OrderDate),y=Value,fill=Region))+
+  geom_bar(stat="identity")+
+  # Trellis command
+  facet_grid(.~Region)+
+  theme(legend.position="none",axis.text.x=element_text(angle=45))
+  
+```
+
+## Formatting {.smaller}
+```{r, echo=TRUE, eval=TRUE}
+library(scales)
+ggplot(data=sales,aes(x=year(OrderDate),y=Value/1000000,fill=Region))+
+  geom_bar(stat="identity")+
+  facet_grid(.~Region)+
+  theme_minimal(base_size = 10) +
+  theme(legend.position="none",axis.text.x=element_text(angle=45,hjust=1))+
+  scale_y_continuous(label=dollar)+
+  labs(x="Year",y="Value ($m)")
+```

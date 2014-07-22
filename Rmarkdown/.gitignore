@@ -1,4 +1,5 @@
 .Rproj.user
 .Rhistory
 .RData
-/Rpres/R_Introduction-figure
+.html
+R_intro_markdown_cache/

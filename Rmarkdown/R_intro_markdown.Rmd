@@ -1,0 +1,55 @@
+---
+title: "An introduction to R"
+author: "Steph Locke (@SteffLocke)"
+date: "Saturday, July 19, 2014"
+output:
+  ioslides_presentation:
+    fig_height: 4
+    fig_width: 6.5
+---
+## Agenda
+- Introductory stuff
+- Connecting to SQL Server 
+- Basic analysis with data.table and ggplot2
+- Building interactive reports
+- Dynamically built documents
+- Q&A & Conclusion
+
+```{r autodoc, child='Introduction.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='AboutStef.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='AboutR.Rmd', eval=TRUE}
+``` 
+
+```{r autodoc, child='InstallR.Rmd', eval=TRUE}
+``` 
+
+```{r autodoc, child='SQLServer.Rmd', eval=TRUE}
+``` 
+
+```{r autodoc, child='BasicAnalysis.Rmd', eval=TRUE}
+``` 
+
+```{r autodoc, child='InteractiveReports.Rmd', eval=TRUE}
+``` 
+
+```{r autodoc, child='Documentation.Rmd', eval=TRUE}
+``` 
+
+```{r autodoc, child='MoreInfo.Rmd', eval=TRUE}
+``` 
+
+## Q&A {#conc}
+
+## Conclusion
+R is a great language that has a wide array of uses.
+
+### Follow up with me
+This presentation is available at http://rpubs.com/stephlocke/sqlbits
+
+- http://steff.itsalocke.com
+- http://twitter.com/stefflocke
+- http://uk.linkedin.com/in/stephanielocke

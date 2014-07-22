@@ -1,0 +1,27 @@
+##Dynamic documents {#document}
+CONCEPT: modular documents that contain text and analysis that update
+
+This is pretty much impossible in the Office paradigm.  
+
+* You can make refreshable Excel spreadsheets but stuff with words as well is hard to update
+* It's really hard to collaborate on a single Word document
+* PowerPoint requires a lot of clicking and C&Ping
+
+R integrates with LaTeX, markdown, and pandoc to enable the blending of code and content to enable documents to be produced from scratch each time.
+
+##What are the benefits?
+
+* Change a bit of the code and the whole document updates
+* Modular development enables easier development (particularly in a collaborative setting)
+* Reduction in errors caused by C&Ping
+* Consistent looks and feel of documents and reports
+* Documented as you go
+* No stress about updating a document
+* Variety of export formats
+
+##How's it done?
+* You can write LaTeX and markdown (think wikipedia and SO) outside of R
+* There are packages like knitr designed to allow you to embed your R analysis in a variety of other languages
+* Work in Rstudio to benefit from their full integration of these packages
+
+###Demo time!

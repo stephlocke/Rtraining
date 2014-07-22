@@ -1,0 +1,25 @@
+## About R {#aboutr}
+R is a programming language for analysing data.  Fundamentally, R allows you to directly code analysis, reports, and statistical models.
+
+### Why is that a good thing?
+* Code is syntax -- easy to apply principals to new language
+* Time reduction -- less clicking means more time thinking
+* Standards -- unit testing, code review, source control etc
+
+### Great, so what else?
+* It's free and totally customisable
+* It works on Windows and with SQL Server
+* It looks awesome, so you look awesome
+
+## Some R niggles
+Like any technology there are some current quirks or limitations
+
+* Based on [S][1] which was written in the 70s
+* For a long time, was the sole province of academic statisticians
+* It's open so there are competing coding paradigms (also a benefit!)
+* It can take a while to get the hang of googling for R
+* No robust MDX package as yet
+
+
+
+[1]:http://en.wikipedia.org/wiki/S_(programming_language) "Wikipedia article"

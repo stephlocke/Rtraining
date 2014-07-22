@@ -1,0 +1,14 @@
+## Installing R {#installr}
+- Install R [r-project.org](http://www.r-project.org/)
+- Install Rstudio [Rstudio.com](http://www.rstudio.com)
+- You're done
+![hm](https://dl.dropboxusercontent.com/u/40423572/User%20Group/rstudio.png)
+
+## Notes on installing R
+- R can typically be installed without UAC being triggered
+- R uses packages to extend itself so you need to be able to download zip files
+- Rstudio will update on a relatively regularly basis and does hit UAC
+- R and Rstudio work better on linux as it's easier to get the additional components that can be required for some packages
+- I would also recommend the installation of 
+    + MikTex (Windows variant of LaTeX) and Pandoc for documentation
+    + Git for source control (integrates with TFS!)
