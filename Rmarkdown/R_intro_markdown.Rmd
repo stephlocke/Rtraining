@@ -1,7 +1,7 @@
 ---
 title: "An introduction to R"
 author: "Steph Locke (@SteffLocke)"
-date: "Saturday, July 19, 2014"
+date: "SQLRelay"
 output:
   ioslides_presentation:
     fig_height: 4
@@ -45,11 +45,10 @@ output:
 ## Q&A {#conc}
 
 ## Conclusion
-R is a great language that has a wide array of uses.
+R is a great language that has a wide array of uses. This session covered some of the basics of data manipulation to get you "walking" quickly.
 
-### Follow up with me
-This presentation is available at http://rpubs.com/stephlocke/sqlbits
+### Follow up
+This presentation is available at http://rpubs.com/stephlocke/sqlrelay and the source code is on https://github.com/stephlocke/Rintro
 
-- http://steff.itsalocke.com
 - http://twitter.com/stefflocke
 - http://uk.linkedin.com/in/stephanielocke

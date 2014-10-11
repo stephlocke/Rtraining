@@ -43,6 +43,9 @@ library(data.table)
 library(scales)
 })
 options("scipen"=100, "digits"=4)
+# This is a temporary fix for an issue in latest data.table release- it'll work for historic versions too
+# See https://github.com/Rdatatable/data.table/issues/809
+kable<-function(...){knitr::kable(as.data.frame(...))}
 ```
 
 ## Simples
@@ -63,62 +66,55 @@ kable(sales[,.SD[which.max(Value)],by=Region])
 ## Aggregation
 ```{r, echo=TRUE, eval=TRUE, results='asis'}
 # ORDER, multiple aggregations, and aliasing
-kable(sales[order(OrderDate),list(Value=sum(Value),Volume=sum(Volume))
-            ,by=list(Year=year(OrderDate))])
+kable(sales[order(OrderDate),.(Value=sum(Value),Volume=sum(Volume))
+            ,by=.(Year=year(OrderDate))])
 ```
 
-## Joins
+## Joins {.smaller}
 ```{r, echo=TRUE, eval=TRUE, results='asis'}
-salesbyyear<-sales[,list(AnnualValue=sum(Value),AnnualVolume=sum(Volume))
-                   ,keyby=list(Year=year(OrderDate))]
-salesbyregion<-sales[,list(Value=sum(Value),Volume=sum(Volume))
-                   ,by=list(Region,Year=year(OrderDate))]
-#PK assignment
-setkey(salesbyregion,Year)
+salesbyyear<-sales[,.(AnnualValue=sum(Value),AnnualVolume=sum(Volume))
+                   ,keyby=.(Year=year(OrderDate))]
+salesbyregion<-sales[,.(Value=sum(Value),Volume=sum(Volume))
+                   ,by=.(Region,Year=year(OrderDate))]
+
+setkey(salesbyregion,Year) #PK assignment for non-unique column
 kable(salesbyyear[salesbyregion[Region=="United Kingdom"],
-            list(Proportion=percent(Volume/AnnualVolume))])
+            .(Proportion=percent(Volume/AnnualVolume)),by=.EACHI])
 
 ```
 
 ## ggplot2
 
-## Quick chart
+## Quick chart {.smaller}
 ```{r, echo=TRUE, eval=TRUE}
-# Activate ggplot2
-library(ggplot2)
+library(ggplot2) # Activate ggplot2
 
 # Quick plot (qplot)
 qplot(year(OrderDate), Value,fill=Region,
       data=sales[order(Region)],geom="bar",stat="identity")
 ```
 
-## Chart anatomy
+## Chart anatomy {.smaller}
 ```{r, echo=TRUE, eval=TRUE}
 # Chart backbone
 ggplot(data=sales[order(Region)],aes(x=year(OrderDate),y=Value,fill=Region))+
-  #bar chart type, identity uses contents not count
-  geom_bar(stat="identity")+
-  #themeing
-  scale_fill_brewer(type="qual")+
+  geom_bar(stat="identity")+#bar chart type, identity uses contents not count
+  scale_fill_brewer(type="qual")+ #themeing
   theme_minimal()
 ```
 
-## Making a trellis
+## Making a trellis {.smaller}
 ```{r, echo=TRUE, eval=TRUE}
 ggplot(data=sales,aes(x=year(OrderDate),y=Value,fill=Region))+
   geom_bar(stat="identity")+
-  # Trellis command
-  facet_grid(.~Region)+
-  theme(legend.position="none",axis.text.x=element_text(angle=45))
-  
+  facet_grid(.~Region)+  # Trellis command
+  theme(legend.position="none",axis.text.x=element_text(angle=45))  
 ```
 
 ## Formatting {.smaller}
 ```{r, echo=TRUE, eval=TRUE}
-library(scales)
 ggplot(data=sales,aes(x=year(OrderDate),y=Value/1000000,fill=Region))+
-  geom_bar(stat="identity")+
-  facet_grid(.~Region)+
+  geom_bar(stat="identity")+   facet_grid(.~Region)+
   theme_minimal(base_size = 10) +
   theme(legend.position="none",axis.text.x=element_text(angle=45,hjust=1))+
   scale_y_continuous(label=dollar)+

@@ -1,6 +1,6 @@
-## About Steph Locke aka Me
-* Cardiff
+## About Me
+* Cardiff, UK
 * BI & Risk Analytics Developer
-* Community organiser
-
-SQLRelay.co.uk & your user groups
+* Tribal SQL author
+* Community organiser -- user group leader
+* Community organiser -- SQLRelay.co.uk

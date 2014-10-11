@@ -1,5 +1,5 @@
 ## About R {#aboutr}
-R is a programming language for analysing data.  Fundamentally, R allows you to directly code analysis, reports, and statistical models.
+R is a programming language for analysing data.  Fundamentally, R allows you to directly code analysis, reports, and statistical models. Oh, and it can IO to your database.
 
 ### Why is that a good thing?
 * Code is syntax -- easy to apply principals to new language
@@ -17,9 +17,8 @@ Like any technology there are some current quirks or limitations
 * Based on [S][1] which was written in the 70s
 * For a long time, was the sole province of academic statisticians
 * It's open so there are competing coding paradigms (also a benefit!)
-* It can take a while to get the hang of googling for R
-* No robust MDX package as yet
-
+* The google bubble
+* MDX support is new (`dplyr`)
 
 
 [1]:http://en.wikipedia.org/wiki/S_(programming_language) "Wikipedia article"
