@@ -1,0 +1,93 @@
+## Step 5: Summarise data
+
+- Need to make sure the data is OK
+- Produce some basic tables
+
+------
+
+### Basic summary
+```{r, echo=TRUE, eval=TRUE,  results='hide'}
+OrderTerritory[  , #Nothing in first position this time
+               .( Value  = sum(TotalDue) ,
+                  Volume = .N ), # Aggregations
+               by = Name # Group by, no alias
+               ]
+```
+
+------
+
+### Basic summary{.smaller}
+```{r, echo=FALSE, eval=TRUE,  results='asis'}
+knitr::kable(OrderTerritory[  , #Nothing in first position this time
+               .( Value  = sum(TotalDue) ,
+                  Volume = .N ), # Aggregations
+               by = Name # Group by, no alias
+               ]
+        )
+```
+
+------
+
+### Top 5 sales ever
+```{r, echo=TRUE, eval=TRUE,  results='hide'}
+OrderTerritory[ order(TotalDue, decreasing = TRUE)[1:5] ,
+                # Picks first 5 rows of TotalDue desc
+               .( SalesOrderNumber, # .( ) allows multi-select
+                  AccountNumber,
+                  Region=Name, # Aliasing colum
+                  TotalDue,
+                  OrderDate
+                  )
+               ]
+```
+
+------
+
+### Top 5 sales ever{.smaller}
+```{r, echo=FALSE, eval=TRUE,  results='asis'}
+knitr::kable(OrderTerritory[ order(TotalDue, decreasing = TRUE)[1:5] ,
+               .( SalesOrderNumber,
+                  AccountNumber,
+                  Region=Name,
+                  TotalDue,
+                  OrderDate
+                  )
+               ]
+        )
+```
+
+------
+
+### Top sale ever for each region
+```{r, echo=TRUE, eval=TRUE,  results='hide'}
+OrderTerritory[  ,
+               .SD[which.max(TotalDue),
+               # .SD is subset of rows within a group
+               # which.max() returns row # of largest val
+                   .( SalesOrderNumber,
+                      AccountNumber,
+                      TotalDue,
+                      OrderDate
+                    )
+                   ],
+               by=.(Region=Name)
+               #Aliasing in groupung
+               ]
+```
+
+------
+
+### Top sale ever for each region{.smaller}
+```{r, echo=FALSE, eval=TRUE,  results='asis'}
+knitr::kable(OrderTerritory[  ,
+               .SD[which.max(TotalDue),
+                   .( SalesOrderNumber,
+                      AccountNumber,
+                      TotalDue,
+                      OrderDate
+                    )
+                   ],
+               by=.(Region=Name)
+               ]
+        )
+```

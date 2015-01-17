@@ -1,0 +1,59 @@
+---
+title: "Intro to R"
+author: "Steph Locke"
+date: "@ London Business Analytics Group"
+output:
+  ioslides_presentation:
+    css: Look.css
+---
+
+```{r autodoc, child='Objective.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='AboutMe.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='Scenario.Rmd', eval=TRUE}
+```
+
+## Step 1: Google "What is R?"
+I [Google](http://lmgtfy.com/?q=what+is+r) frantically and find out...
+
+- R (birthed out of S) has been around for ages
+- Has [massively increased in popularity](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html)
+- Lots of big players like SAP, TIBCO, and Oracle have implemented it
+- It's statistician heaven!
+- It produces very pretty charts
+- Huh, you can make [XKCD cartoons in it](http://stackoverflow.com/questions/12675147/how-can-we-make-xkcd-style-graphs-in-r)?
+
+Eep, but I'm not a stats bod or a programmer, what will I do? Do my usual stuff, but swisher!
+
+## Step 2: Get R installed
+
+- Install R from [r-project.org](http://www.r-project.org/) yourself
+- Install Rstudio via [Rstudio.com](http://www.rstudio.com) if possible
+- Use R to nab some useful packages
+
+------
+```{r autodoc, child='Packages.Rmd', eval=TRUE}
+```
+
+
+```{r autodoc, child='Database.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='Dataset.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='Summarise.Rmd', eval=TRUE}
+```
+
+## Step 6: Make charts of data
+
+## Step 7: Produce presentation
+
+## Step 8: Produce report
+
+## Conclusion
+
+## Where next?

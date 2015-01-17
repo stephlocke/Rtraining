@@ -1,0 +1,10 @@
+## Objective
+Learn about R and do useful day-job stuff with it
+
+### Sub-objectives
+- Install R
+- Connect to database using `RODBC`
+- Manipulate and summarise data using `data.table`
+- Visualise your data using `ggplot2`
+- Present your data using `rmarkdown` and `knitr`
+- Produce a report using `shiny`
