@@ -29,15 +29,15 @@ I [Google](http://lmgtfy.com/?q=what+is+r) frantically and find out...
 Eep, but I'm not a stats bod or a programmer, what will I do? Do my usual stuff, but swisher!
 
 ## Step 2: Get R installed
+OK, I need to get this thing called R installed on my laptop!
 
-- Install R from [r-project.org](http://www.r-project.org/) yourself
-- Install Rstudio via [Rstudio.com](http://www.rstudio.com) if possible
+- Install R from [r-project.org](http://www.r-project.org/) myself
+- Wait for IT to install Rstudio via [Rstudio.com](http://www.rstudio.com) for me
 - Use R to nab some useful packages
 
 ------
 ```{r autodoc, child='Packages.Rmd', eval=TRUE}
 ```
-
 
 ```{r autodoc, child='Database.Rmd', eval=TRUE}
 ```
@@ -48,12 +48,57 @@ Eep, but I'm not a stats bod or a programmer, what will I do? Do my usual stuff,
 ```{r autodoc, child='Summarise.Rmd', eval=TRUE}
 ```
 
-## Step 6: Make charts of data
+```{r autodoc, child='Visualisation.Rmd', eval=TRUE}
+```
 
 ## Step 7: Produce presentation
+I need a slide deck for the boss to take use!
 
-## Step 8: Produce report
+- Use `rmarkdown` to produce `SamplePresentation.Rmd`
+- Really light syntax, same as [Stack Overflow](http://stackoverflow)
+- Customisable via CSS
+- Create slides (html or PDF) or docs (html, PDF, Word)
+- Use a modular design
+- Re-knit to get latest data 
 
-## Conclusion
+```{r autodoc, child='Shiny.Rmd', eval=TRUE}
+```
 
-## Where next?
+## Conclusion { .columns-2 }
+
+![Pointy Haired Boss](imgs/PointyHairedBoss.jpg)
+
+Phew, I managed to deliver something to the boss! He's got something he can show to the Board & a web page he can play with all day long.
+
+We learnt along the way:
+
+- connect to our data using `RODBC`
+- manipulate it with `ggplot2`
+- make documents with `rmarkdown`
+- produce interactive reports using `shiny` 
+
+Not bad for a day's work!
+
+## Where next?{.smaller}
+OK, so I did some basics but there's still a lot to learn. Here are my top resources for learning more:
+
+### Online (hands on)
+- Basic R [CodeSchool](http://tryr.codeschool.com)
+- Modern R [DataCamp](http://datacamp.com)
+- Statistics R [Coursera](https://www.coursera.org/specialization/jhudatascience)
+
+### In-person
+- R user groups e.g. [LondonR](http://www.londonr.org/)
+- Training courses e.g. [Mango]() <- See me after for a 50% discount
+
+### Useful online resources
+- [R-bloggers](http://www.r-bloggers.com/)
+- [Advanced R programming](http://adv-r.had.co.nz/)
+- [Writing R packages](http://r-pkgs.had.co.nz/)
+
+## Get this presentation
+This presentation is available on [github.com/stephlocke/Rintro](https://github.com/stephlocke/Rintro). All the code is available for you to take a copy and play with to help you learn on the go.
+
+If you have any questions, contact me! 
+
+[itsalocke.com](http://itsalocke.com) | [github.com/StephLocke](https://github.com/StephLocke) | [`@`SteffLocke](https://twitter.com/stefflocke)

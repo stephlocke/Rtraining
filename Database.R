@@ -1,14 +1,5 @@
-## Step 3: Connect to the database
-I'll report on global bike sales from our company's database
 
-- [Database provided by Redgate, hosted on Azure](http://bit.ly/1jrl7V6)
-- Use your relevant driver (often the one you'll use in Excel) data
-- You can also connect to hundreds of other data stores like Excel
-
-------
-
-### Establishing a connection
-```{r, echo=TRUE, eval=TRUE}
+## ----, echo=TRUE, eval=TRUE----------------------------------------------
 # Activate the ODBC package for use getting data
 library("RODBC")
 
@@ -23,12 +14,9 @@ azure <- odbcDriverConnect(
           Database=AdventureWorks2012;
           Uid=sqlfamily;
           Pwd=sqlf@m1ly;")
-```
 
-------
 
-### Getting our starting data
-```{r, echo=TRUE, eval=TRUE}
+## ----, echo=TRUE, eval=TRUE----------------------------------------------
 Order     <- data.table( sqlQuery( azure, 
              "SELECT * FROM [Sales].[SalesOrderHeader]"))
 
@@ -37,4 +25,4 @@ Territory <- data.table( sqlQuery( azure,
 
 Region    <- data.table( sqlQuery( azure, 
              "SELECT * FROM [Person].[CountryRegion]"))
-```
+

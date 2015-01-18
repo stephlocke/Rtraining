@@ -1,0 +1,89 @@
+## Step 6: Make some charts
+I need to make some pretties!
+
+- Using `ggplot2` as much easier than base graphics
+- Simple structure = chart(data, axis & series) + chart types + formatting
+- No secondary axes as considered bad visualisation, use `optiRum::multiplot()`
+- Easy trellis / small multiple charts
+
+------
+
+### Basic chart -- volumes
+```{r, echo=TRUE, eval=FALSE,  results='hide'}
+library(ggplot2)
+
+ggplot(OrderTerritory                 # dataset
+       ,aes(x=Name, y=..count..))+    # values
+  geom_bar()+                         # chart type
+  theme_minimal()+                    # themeing
+  labs(x="Region",title="All time sales volumes")
+```
+
+------
+
+### Basic chart -- volumes
+```{r chartone, echo=FALSE, eval=TRUE,  results='asis'}
+library(ggplot2)
+
+ggplot(OrderTerritory                 # dataset
+       ,aes(x=Name, y=..count..))+    # values
+  geom_bar()+                         # chart type
+  theme_minimal()+                    # themeing
+  labs(x="Region",title="All time sales volumes")
+```
+
+
+------
+
+### Basic chart -- value
+```{r, echo=TRUE, eval=FALSE,  results='hide'}
+library(scales)
+
+ggplot(OrderTerritory               
+       ,aes(x=Name, y=TotalDue))+    
+  geom_bar(stat="identity")+         # use value
+  theme_minimal()+                   
+  scale_y_continuous(label=dollar)+  # customisation
+  labs(x="Region",title="All time sales value")
+```
+
+------
+
+### Basic chart -- value
+```{r charttwo, echo=FALSE, eval=TRUE,  results='asis'}
+library(scales)
+
+ggplot(OrderTerritory               
+       ,aes(x=Name, y=TotalDue))+    
+  geom_bar(stat="identity")+         # use value
+  theme_minimal()+                   
+  scale_y_continuous(label=dollar)+  # customisation
+  labs(x="Region",title="All time sales value")
+```
+
+
+------
+
+### Trellis chart -- value
+```{r, echo=TRUE, eval=FALSE,  results='hide'}
+ggplot(OrderTerritory
+       ,aes(x=year(OrderDate), y=TotalDue, colour=Name))+ 
+  geom_bar(stat="identity")+
+  theme_minimal()+                  
+  scale_y_continuous(label=dollar)+ 
+  facet_wrap(~Name,ncol = 2) +   # trellis
+  xlab("Order Year")
+```
+
+------
+
+### Trellis chart -- value
+```{r chartthree, echo=FALSE, eval=TRUE,  results='asis'}
+ggplot(OrderTerritory
+       ,aes(x=year(OrderDate), y=TotalDue, colour= Name))+ 
+  geom_bar(stat="identity", colour="light blue")+
+  theme_minimal()+                  
+  scale_y_continuous(label=dollar)+ 
+  facet_wrap(~Name,ncol = 2) +   # trellis
+  xlab("Order Year")
+```

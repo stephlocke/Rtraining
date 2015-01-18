@@ -1,36 +1,22 @@
-## Step 5: Summarise data
-OK, let's produce some tables!
 
-- Lots of functionality, but kept quite simple here
-- Read [data.table intro](https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-intro-vignette.html) for a great in-depth introduction
-
-------
-
-### Basic summary
-```{r, echo=TRUE, eval=TRUE,  results='hide'}
+## ----, echo=TRUE, eval=TRUE,  results='hide'-----------------------------
 OrderTerritory[  , #Nothing in first position this time
                .( Value  = sum(TotalDue) ,
                   Volume = .N ), # Aggregations
                by = Name # Group by, no alias
                ]
-```
 
-------
 
-### Basic summary{.smaller}
-```{r firsttable, echo=FALSE, eval=TRUE,  results='asis'}
+## ----firsttable, echo=FALSE, eval=TRUE,  results='asis'------------------
 knitr::kable(OrderTerritory[  , #Nothing in first position this time
                .( Value  = sum(TotalDue) ,
                   Volume = .N ), # Aggregations
                by = Name # Group by, no alias
                ]
         )
-```
 
-------
 
-### Top 5 sales ever
-```{r, echo=TRUE, eval=TRUE,  results='hide'}
+## ----, echo=TRUE, eval=TRUE,  results='hide'-----------------------------
 OrderTerritory[ order(TotalDue, decreasing = TRUE)[1:5] ,
                 # Picks first 5 rows of TotalDue desc
                .( SalesOrderNumber, # .( ) allows multi-select
@@ -40,12 +26,9 @@ OrderTerritory[ order(TotalDue, decreasing = TRUE)[1:5] ,
                   OrderDate
                   )
                ]
-```
 
-------
 
-### Top 5 sales ever{.smaller}
-```{r secondtable, echo=FALSE, eval=TRUE,  results='asis'}
+## ----secondtable, echo=FALSE, eval=TRUE,  results='asis'-----------------
 knitr::kable(OrderTerritory[ order(TotalDue, decreasing = TRUE)[1:5] ,
                .( SalesOrderNumber,
                   AccountNumber,
@@ -55,12 +38,9 @@ knitr::kable(OrderTerritory[ order(TotalDue, decreasing = TRUE)[1:5] ,
                   )
                ]
         )
-```
 
-------
 
-### Top sale ever for each region
-```{r, echo=TRUE, eval=TRUE,  results='hide'}
+## ----, echo=TRUE, eval=TRUE,  results='hide'-----------------------------
 OrderTerritory[  ,
                .SD[which.max(TotalDue),
                # .SD is subset of rows within a group
@@ -74,12 +54,9 @@ OrderTerritory[  ,
                by=.(Region=Name)
                #Aliasing in groupung
                ]
-```
 
-------
 
-### Top sale ever for each region{.smaller}
-```{r thirdtable, echo=FALSE, eval=TRUE,  results='asis'}
+## ----thirdtable, echo=FALSE, eval=TRUE,  results='asis'------------------
 knitr::kable(OrderTerritory[  ,
                .SD[which.max(TotalDue),
                    .( SalesOrderNumber,
@@ -91,4 +68,4 @@ knitr::kable(OrderTerritory[  ,
                by=.(Region=Name)
                ]
         )
-```
+

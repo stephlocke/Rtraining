@@ -1,0 +1,14 @@
+## Step 8: Produce report
+I need a report for people to play with
+
+- Use `shiny` to produce interactive online reports
+- Can host locally (for other R users)
+- Can use a server (for internal users, uses Linux)
+- Can use a hosting platform like [shinyapps.io](https://www.shinyapps.io/)
+
+```{r eval=FALSE, echo=TRUE}
+library("shiny")
+
+#Run the shiny app (app.R) in the current folder
+runApp(".")
+```

@@ -1,16 +1,5 @@
-## Step 4: Create big dataset
-Hmm, I need to put all the data into a "flat-file" view
 
-- Set "primary keys" with `setkey`
-- Join in format `Y[X]` to join Y on to X
-- Equivalent of `LEFT JOIN`s in SQL
-- Equivalent of extensive `VLOOKUP`s in Excel
-
-
-------
-
-### Join Territory to the Order
-```{r, echo=TRUE, eval=TRUE}
+## ----, echo=TRUE, eval=TRUE----------------------------------------------
 # Specify the columns to join by
 setkey(Order     , TerritoryID)
 setkey(Territory , TerritoryID)
@@ -18,12 +7,9 @@ setkey(Territory , TerritoryID)
 # Reads as join Territory to the Order table
 # Seperate table so we don't have to start again
 OrderTerritory <- Territory[Order]
-```
 
-------
 
-### Join Region to the OrderTerritory
-```{r, echo=TRUE, eval=TRUE}
+## ----, echo=TRUE, eval=TRUE----------------------------------------------
 # Specify the columns to join by
 setkey(OrderTerritory , CountryRegionCode)
 setkey(Region         , CountryRegionCode)
@@ -31,4 +17,4 @@ setkey(Region         , CountryRegionCode)
 # Reads as join Region to the OrderTerritory table
 # Will overwrite as it's our desired state
 OrderTerritory <- Region[OrderTerritory]
-```
+
