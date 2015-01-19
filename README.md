@@ -3,7 +3,8 @@ Rintro
 
 My Intro to R presentations
 
- - Rpres folder contains the .Rpes version that was delivered at the Cardiff SQL Server User Group and SQLSaturday Exeter
- - Rmarkdown folder contains the version utilising the latest Rstudio / R markdown enhancements and was delivered at the Birmingham User Group and SQLBits
+ - Current presentation is rendered via [Gitraw](https://rawgit.com/stephlocke/Rintro/master/Rintro.html)
+ - All source code is contained within this repository. You can clone it to play with it in R.
+ - Previous iterations are cleared away (get them using Releases)
 
-Each folder contains the code necessary to generate the presentations -- navigate the code base to see how the R code works
+If you have any questions, please contact me. You can drop comments against any of the code files, email me, or [tweet me](http:twitter.com/stefflocke)!

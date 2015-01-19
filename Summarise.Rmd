@@ -7,8 +7,8 @@ OK, let's produce some tables!
 ------
 
 ### Basic summary
-```{r, echo=TRUE, eval=TRUE,  results='hide'}
-OrderTerritory[  , #Nothing in first position this time
+```{r, echo=TRUE, eval=FALSE}
+OrderTerritory[  , #Nothing in 1st position
                .( Value  = sum(TotalDue) ,
                   Volume = .N ), # Aggregations
                by = Name # Group by, no alias
@@ -17,9 +17,9 @@ OrderTerritory[  , #Nothing in first position this time
 
 ------
 
-### Basic summary{.smaller}
-```{r firsttable, echo=FALSE, eval=TRUE,  results='asis'}
-knitr::kable(OrderTerritory[  , #Nothing in first position this time
+### Basic summary
+```{r firsttable, echo=FALSE, eval=TRUE}
+knitr::kable(OrderTerritory[  , #Nothing in 1st position
                .( Value  = sum(TotalDue) ,
                   Volume = .N ), # Aggregations
                by = Name # Group by, no alias
@@ -30,10 +30,10 @@ knitr::kable(OrderTerritory[  , #Nothing in first position this time
 ------
 
 ### Top 5 sales ever
-```{r, echo=TRUE, eval=TRUE,  results='hide'}
-OrderTerritory[ order(TotalDue, decreasing = TRUE)[1:5] ,
-                # Picks first 5 rows of TotalDue desc
-               .( SalesOrderNumber, # .( ) allows multi-select
+```{r, echo=TRUE, eval=FALSE}
+OrderTerritory[order(-TotalDue)[1:5],
+               # Picks first 5 rows of TotalDue desc
+               .( SalesOrderNumber, # multi-select
                   AccountNumber,
                   Region=Name, # Aliasing colum
                   TotalDue,
@@ -44,12 +44,13 @@ OrderTerritory[ order(TotalDue, decreasing = TRUE)[1:5] ,
 
 ------
 
-### Top 5 sales ever{.smaller}
-```{r secondtable, echo=FALSE, eval=TRUE,  results='asis'}
-knitr::kable(OrderTerritory[ order(TotalDue, decreasing = TRUE)[1:5] ,
-               .( SalesOrderNumber,
+### Top 5 sales ever
+```{r secondtable, echo=FALSE, eval=TRUE}
+knitr::kable(OrderTerritory[order(-TotalDue)[1:5],
+               # Picks first 5 rows of TotalDue desc
+               .( SalesOrderNumber, # multi-select
                   AccountNumber,
-                  Region=Name,
+                  Region=Name, # Aliasing colum
                   TotalDue,
                   OrderDate
                   )
@@ -60,11 +61,13 @@ knitr::kable(OrderTerritory[ order(TotalDue, decreasing = TRUE)[1:5] ,
 ------
 
 ### Top sale ever for each region
-```{r, echo=TRUE, eval=TRUE,  results='hide'}
+```{r, echo=TRUE, eval=FALSE}
 OrderTerritory[  ,
                .SD[which.max(TotalDue),
-               # .SD is subset of rows within a group
-               # which.max() returns row # of largest val
+               # .SD is subset of rows within group
+               
+               # which.max() returns row 
+               # no of largest val
                    .( SalesOrderNumber,
                       AccountNumber,
                       TotalDue,
@@ -78,8 +81,8 @@ OrderTerritory[  ,
 
 ------
 
-### Top sale ever for each region{.smaller}
-```{r thirdtable, echo=FALSE, eval=TRUE,  results='asis'}
+### Top sale ever for each region
+```{r thirdtable, echo=FALSE, eval=TRUE}
 knitr::kable(OrderTerritory[  ,
                .SD[which.max(TotalDue),
                    .( SalesOrderNumber,

@@ -43,7 +43,8 @@ ggplot(OrderTerritory
 
 ## ----, echo=TRUE, eval=FALSE,  results='hide'----------------------------
 ## ggplot(OrderTerritory
-##        ,aes(x=year(OrderDate), y=TotalDue, colour=Name))+
+##        ,aes(x=year(OrderDate), y=TotalDue,
+##             colour=Name))+
 ##   geom_bar(stat="identity")+
 ##   theme_minimal()+
 ##   scale_y_continuous(label=dollar)+

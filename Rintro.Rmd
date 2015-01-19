@@ -32,7 +32,7 @@ Eep, but I'm not a stats bod or a programmer, what will I do? Do my usual stuff,
 OK, I need to get this thing called R installed on my laptop!
 
 - Install R from [r-project.org](http://www.r-project.org/) myself
-- Wait for IT to install Rstudio via [Rstudio.com](http://www.rstudio.com) for me
+- Jump on IT's desk until they install Rstudio via [Rstudio.com](http://www.rstudio.com) for me
 - Use R to nab some useful packages
 
 ------
@@ -68,7 +68,7 @@ I need a slide deck for the boss to take use!
 
 ![Pointy Haired Boss](imgs/PointyHairedBoss.jpg)
 
-Phew, I managed to deliver something to the boss! He's got something he can show to the Board & a web page he can play with all day long.
+Phew, he's got something to show to the Board & a web page he can play with all day long.
 
 We learnt along the way:
 
@@ -79,26 +79,5 @@ We learnt along the way:
 
 Not bad for a day's work!
 
-## Where next?{.smaller}
-OK, so I did some basics but there's still a lot to learn. Here are my top resources for learning more:
-
-### Online (hands on)
-- Basic R [CodeSchool](http://tryr.codeschool.com)
-- Modern R [DataCamp](http://datacamp.com)
-- Statistics R [Coursera](https://www.coursera.org/specialization/jhudatascience)
-
-### In-person
-- R user groups e.g. [LondonR](http://www.londonr.org/)
-- Training courses e.g. [Mango]() <- See me after for a 50% discount
-
-### Useful online resources
-- [R-bloggers](http://www.r-bloggers.com/)
-- [Advanced R programming](http://adv-r.had.co.nz/)
-- [Writing R packages](http://r-pkgs.had.co.nz/)
-
-## Get this presentation
-This presentation is available on [github.com/stephlocke/Rintro](https://github.com/stephlocke/Rintro). All the code is available for you to take a copy and play with to help you learn on the go.
-
-If you have any questions, contact me! 
-
-[itsalocke.com](http://itsalocke.com) | [github.com/StephLocke](https://github.com/StephLocke) | [`@`SteffLocke](https://twitter.com/stefflocke)
+```{r autodoc, child='ClosingMatter.Rmd', eval=TRUE}
+```

@@ -1,6 +1,0 @@
-## About Me
-* Cardiff, UK
-* BI & Risk Analytics Developer
-* Tribal SQL author
-* Community organiser -- user group leader
-* Community organiser -- SQLRelay.co.uk

@@ -1,15 +1,16 @@
 
 ## ----, echo=TRUE, eval=TRUE----------------------------------------------
-# Activate the ODBC package for use getting data
+# Getting data
 library("RODBC")
 
-#Activate the data.table package for manipulating data
+# Manipulating data
 library("data.table")
 
 # Build a connection to the DB for reuse
-# Driver names can vary eg {SQL Server Native Client 11.0}
+# Driver names can vary eg 
+# {ODBC Driver 11 for SQL Server}
 azure <- odbcDriverConnect(
-          "Driver={ODBC Driver 11 for SQL Server};
+          "Driver={SQL Server Native Client 11.0};
           Server=mhknbn2kdz.database.windows.net;
           Database=AdventureWorks2012;
           Uid=sqlfamily;
@@ -17,12 +18,12 @@ azure <- odbcDriverConnect(
 
 
 ## ----, echo=TRUE, eval=TRUE----------------------------------------------
-Order     <- data.table( sqlQuery( azure, 
-             "SELECT * FROM [Sales].[SalesOrderHeader]"))
+Order    <- data.table( sqlQuery( azure, 
+         "SELECT * FROM [Sales].[SalesOrderHeader]"))
 
-Territory <- data.table( sqlQuery( azure, 
-             "SELECT * FROM [Sales].[SalesTerritory]"))
+Territory<- data.table( sqlQuery( azure, 
+         "SELECT * FROM [Sales].[SalesTerritory]"))
 
-Region    <- data.table( sqlQuery( azure, 
-             "SELECT * FROM [Person].[CountryRegion]"))
+Region   <- data.table( sqlQuery( azure, 
+         "SELECT * FROM [Person].[CountryRegion]"))
 
