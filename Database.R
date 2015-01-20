@@ -1,5 +1,5 @@
 
-## ----, echo=TRUE, eval=TRUE----------------------------------------------
+## ----dbconnect, echo=TRUE, eval=TRUE,warning=FALSE-----------------------
 # Getting data
 library("RODBC")
 
@@ -17,7 +17,19 @@ azure <- odbcDriverConnect(
           Pwd=sqlf@m1ly;")
 
 
-## ----, echo=TRUE, eval=TRUE----------------------------------------------
+## ----, echo=TRUE, eval=FALSE---------------------------------------------
+## Order    <- data.table( sqlQuery( azure,
+##          "SELECT * FROM [Sales].[SalesOrderHeader]"))
+## 
+## Territory<- data.table( sqlQuery( azure,
+##          "SELECT * FROM [Sales].[SalesTerritory]"))
+## 
+## Region   <- data.table( sqlQuery( azure,
+##          "SELECT * FROM [Person].[CountryRegion]"))
+
+
+## ----datagen, echo=FALSE, eval=TRUE--------------------------------------
+if(azure!=-1L){
 Order    <- data.table( sqlQuery( azure, 
          "SELECT * FROM [Sales].[SalesOrderHeader]"))
 
@@ -26,4 +38,14 @@ Territory<- data.table( sqlQuery( azure,
 
 Region   <- data.table( sqlQuery( azure, 
          "SELECT * FROM [Person].[CountryRegion]"))
+}
+#Some error handling for if generating purely offline
+if(azure==-1L){
+library(data.table)
+Order<-fread("DataBackups/Order.csv")
+OrderTerritory<-fread("DataBackups/OrderTerritory.csv")
+Region<-fread("DataBackups/Region.csv")
+Territory<-fread("DataBackups/Territory.csv")
+}
+
 

@@ -8,7 +8,7 @@ I'll report on global bike sales from our company's database
 ------
 
 ### Establishing a connection
-```{r, echo=TRUE, eval=TRUE}
+```{r dbconnect, echo=TRUE, eval=TRUE,warning=FALSE}
 # Getting data
 library("RODBC")
 
@@ -29,7 +29,7 @@ azure <- odbcDriverConnect(
 ------
 
 ### Getting our starting data
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=TRUE, eval=FALSE}
 Order    <- data.table( sqlQuery( azure, 
          "SELECT * FROM [Sales].[SalesOrderHeader]"))
 
@@ -38,4 +38,26 @@ Territory<- data.table( sqlQuery( azure,
 
 Region   <- data.table( sqlQuery( azure, 
          "SELECT * FROM [Person].[CountryRegion]"))
+```
+
+```{r datagen, echo=FALSE, eval=TRUE}
+if(azure!=-1L){
+Order    <- data.table( sqlQuery( azure, 
+         "SELECT * FROM [Sales].[SalesOrderHeader]"))
+
+Territory<- data.table( sqlQuery( azure, 
+         "SELECT * FROM [Sales].[SalesTerritory]"))
+
+Region   <- data.table( sqlQuery( azure, 
+         "SELECT * FROM [Person].[CountryRegion]"))
+}
+#Some error handling for if generating purely offline
+if(azure==-1L){
+library(data.table)
+Order<-fread("DataBackups/Order.csv")
+OrderTerritory<-fread("DataBackups/OrderTerritory.csv")
+Region<-fread("DataBackups/Region.csv")
+Territory<-fread("DataBackups/Territory.csv")
+}
+
 ```
