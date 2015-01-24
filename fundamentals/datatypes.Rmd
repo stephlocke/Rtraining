@@ -1,0 +1,33 @@
+---
+title: "R: from analysis to integration -- Data types"
+author: "Steph Locke"
+date: "Saturday, January 24, 2015"
+output: html_document
+---
+
+## Basic datatypes
+
+### Numbers
+
+#### Numeric
+
+#### Integer
+
+
+### Strings
+
+#### Characters
+
+#### Factors
+
+#### Ordered factors
+
+
+### Dates
+
+#### Date
+
+#### Posix
+
+
+### Best practices

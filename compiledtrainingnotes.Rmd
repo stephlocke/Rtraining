@@ -1,0 +1,46 @@
+---
+title: "R: from analysis to integration"
+author: "Steph Locke"
+date: "Saturday, January 24, 2015"
+output: html_document
+---
+
+# Housekeeping
+```{r autodoc, child='frontmatter/objective.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='frontmatter/itinerary.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='frontmatter/aboutme.Rmd', eval=TRUE}
+```
+
+# Fundamentals
+```{r autodoc, child='frontmatter/aboutr.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='fundamentals/datatypes.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='fundamentals/datastructures.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='fundamentals/operators.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='fundamentals/functions.Rmd', eval=TRUE}
+```
+
+# data.table
+
+# dplyr
+
+# ggplot2
+
+# Documents
+
+# Reports
+
+# Best practices
+
+# Infrastructure

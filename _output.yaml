@@ -1,0 +1,6 @@
+html_document:
+  toc: true
+  number_sections: true
+  theme: readable
+  highlight: tango
+  toc_depth: 2

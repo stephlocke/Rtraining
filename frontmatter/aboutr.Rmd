@@ -1,0 +1,14 @@
+---
+title: "R: from analysis to integration -- About R"
+author: "Steph Locke"
+date: "Saturday, January 24, 2015"
+output: html_document
+---
+
+## About R
+
+### A brief history of R
+
+### Open source
+
+### Structure / environment
