@@ -1,0 +1,51 @@
+---
+title: 'Shiny: dashboards in R'
+author: "Steph Locke"
+date: "Wednesday, February 18, 2015"
+runtime: shiny
+output:
+  ioslides_presentation:
+    css: Look.css
+---
+
+
+## First - R {.build}
+Who's using R already?
+
+I'll be covering off a reasonable amount of code as I go but check out my [R Intro]() for a more thorough overview.
+
+## Second - What is Shiny?
+
+- An interactive report framework
+- An R package that is available free (as is the server edition)
+- Uses of "modern web standards" like bootstrap under the hood 
+
+## Third
+```{r, echo = FALSE}
+library(shiny)
+shinyAppDir(
+  system.file("examples/06_tabsets", package="shiny"),
+  options=list(
+    width="100%", height="75%"
+  )
+)
+```
+
+## Housekeeping
+- Approx 55 mins talk + 20 mins Q&A!
+- Ask your questions throughout
+
+```{r autodoc, child='../presentationguff/Scenario.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='Objective.Rmd', eval=TRUE}
+```
+
+
+## Recommended reading
+- [Shiny homepage](http://shiny.rstudio.com/)
+- A bit outdated but: [Web Application Development with R Using Shiny](http://www.amazon.co.uk/gp/product/B00G395OOY)
+
+```{r autodoc, child='../presentationguff/AboutMe.Rmd', eval=TRUE}
+```
+

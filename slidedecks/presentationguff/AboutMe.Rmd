@@ -1,0 +1,8 @@
+## Steph Locke
+- Modelling & Analytics Manager (MAM) for [Optimum Credit Ltd]()
+- 8 years of analysis & BI
+- Presenter (obviously!) on R, and other BI topics
+- User group leader: [SQL Cardiff](http://www.meetup.com/Cardiff-SQL-Server-User-Group), [CaRdiff](http://www.meetup.com/Cardiff-R-User-Group/), & [diff.Net](http://www.meetup.com/diff-NET/)
+- Co-author of [Tribal SQL](http://tribalsql.com/)
+
+[itsalocke.com](http://itsalocke.com) | [github.com/StephLocke](https://github.com/StephLocke) | [`@`SteffLocke](https://twitter.com/stefflocke)
