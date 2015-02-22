@@ -25,16 +25,17 @@ output:
 ## Quick example
 ```{r, echo = FALSE}
 library(shiny)
-shinyAppDir(
-  system.file("examples/06_tabsets", package="shiny"),
-  options=list(
+defaultdisplay<-list(
     width="100%", height="75%"
   )
+shinyAppDir(
+  system.file("examples/06_tabsets", package="shiny"),
+  options=defaultdisplay
 )
 ```
 
-# The fundamentals
-## The required structure | Contents
+# Shiny structure
+## Contents
 A shiny application report consists of two functions:
 
 - `shinyServer()`
@@ -42,7 +43,7 @@ A shiny application report consists of two functions:
 
 One says what to execute and the other states how to present it. Do all data manipulation, chart production in `shinyServer()`
 
-## The required structure | Files
+## Files
 You typically need two files:
 - server.R containing `shinyServer()`
 - ui.R containing `shinyUI()`
@@ -51,25 +52,78 @@ This can then be run with `runApp()`
 
 You can do a single file example `app.R` which contains both functions but this is typically better for very short apps.
 
-## The required structure | Front-end layout
+## Front-end layout
 Use these just inside `shinyUI()` to produce a layout
+
 - Fixed `shinyUI(fixedPage( ...))`
 - Fluid `shinyUI(fluidPage( ...))`
 - Bootstrap `shinyUI(bootstrapPage( ...))`
 - Nav Bar `shinyUI(navbarPage( ...))`
 - Side Panel `shinyUI(sidebarPage( ...))`
 
-## Typical inputs | Dates
-- Dates
-- Numeric
-- Text
-- Selectors
-- Sliders
+# Typical Inputs
+## Dates
+```{r}
+shinyApp(
+  ui = fluidPage(dateInput("date", "Pick a date:", format="dd/mm/yy")  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
 
-## Typical outputs
-- Basic tables
-- Interactive tables
-- Charts
+## Values | Simple
+```{r}
+shinyApp(
+  ui = fluidPage(numericInput("vals", "Insert a number:", value=15, min=10)  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+## Values | Sliders
+```{r}
+shinyApp(
+  ui = fluidPage(sliderInput("vals", "Insert a number:", 
+                             min=0, max=50, value=15)  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+## Text | Single line
+```{r}
+shinyApp(
+  ui = fluidPage(textInput("char", "Insert text:")  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+## Text | Paragraph [TODO]
+```{r}
+shinyApp(
+  ui = fluidPage(textInput("char", "Insert text:")  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+## Selectors 
+```{r}
+shinyApp(
+  ui = fluidPage(selectInput("multiselect", "Pick favourites:",
+                             c("Green","Red","Blue"),
+                             multiple=TRUE)  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+
+# Typical outputs
+## Basic tables
+## Interactive tables
+## Charts
 
 # Styling
 ## shinythemes
