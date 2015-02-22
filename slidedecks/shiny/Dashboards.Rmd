@@ -44,7 +44,7 @@ A shiny application report consists of two functions:
 One says what to execute and the other states how to present it. Do all data manipulation, chart production in `shinyServer()`
 
 ## Files
-You typically need two files:
+You typically need two files:  
 - server.R containing `shinyServer()`
 - ui.R containing `shinyUI()`
 
@@ -61,69 +61,13 @@ Use these just inside `shinyUI()` to produce a layout
 - Nav Bar `shinyUI(navbarPage( ...))`
 - Side Panel `shinyUI(sidebarPage( ...))`
 
-# Typical Inputs
-## Dates
-```{r}
-shinyApp(
-  ui = fluidPage(dateInput("date", "Pick a date:", format="dd/mm/yy")  ),
-  server = function(input, output) {}
-  ,options=defaultdisplay
-)
+
+
+```{r autodoc, child='TypicalInputs.Rmd', eval=TRUE}
 ```
 
-## Values | Simple
-```{r}
-shinyApp(
-  ui = fluidPage(numericInput("vals", "Insert a number:", value=15, min=10)  ),
-  server = function(input, output) {}
-  ,options=defaultdisplay
-)
+```{r autodoc, child='TypicalOutputs.Rmd', eval=TRUE}
 ```
-
-## Values | Sliders
-```{r}
-shinyApp(
-  ui = fluidPage(sliderInput("vals", "Insert a number:", 
-                             min=0, max=50, value=15)  ),
-  server = function(input, output) {}
-  ,options=defaultdisplay
-)
-```
-
-## Text | Single line
-```{r}
-shinyApp(
-  ui = fluidPage(textInput("char", "Insert text:")  ),
-  server = function(input, output) {}
-  ,options=defaultdisplay
-)
-```
-
-## Text | Paragraph [TODO]
-```{r}
-shinyApp(
-  ui = fluidPage(textInput("char", "Insert text:")  ),
-  server = function(input, output) {}
-  ,options=defaultdisplay
-)
-```
-
-## Selectors 
-```{r}
-shinyApp(
-  ui = fluidPage(selectInput("multiselect", "Pick favourites:",
-                             c("Green","Red","Blue"),
-                             multiple=TRUE)  ),
-  server = function(input, output) {}
-  ,options=defaultdisplay
-)
-```
-
-
-# Typical outputs
-## Basic tables
-## Interactive tables
-## Charts
 
 # Styling
 ## shinythemes

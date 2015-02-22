@@ -1,0 +1,46 @@
+
+# Typical Outputs
+## Input values
+```{r}
+shinyApp(
+  ui = fluidPage(textInput("char", "Insert text:") ,
+                 textOutput("text")  ),
+  server = function(input, output) {
+    output$text <- renderText(input$char)
+  }
+  ,options=defaultdisplay
+)
+```
+
+## Basic tables
+```{r}
+shinyApp(
+  ui = fluidPage(tableOutput("basictable")  ),
+  server = function(input, output) {
+    output$basictable <- renderTable(head(iris,5))
+  }
+  ,options=defaultdisplay
+)
+```
+
+## Interactive tables
+```{r}
+shinyApp(
+  ui = fluidPage(dataTableOutput("datatable")  ),
+  server = function(input, output) {
+    output$datatable <- renderDataTable(head(iris,5))
+  }
+  ,options=defaultdisplay
+)
+```
+
+## Charts
+```{r}
+shinyApp(
+  ui = fluidPage(plotOutput("chart")  ),
+  server = function(input, output) {
+    output$chart <- renderPlot(pairs(iris))
+  }
+  ,options=defaultdisplay
+)
+```

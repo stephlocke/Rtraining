@@ -1,0 +1,57 @@
+# Typical Inputs
+## Dates
+```{r}
+shinyApp(
+  ui = fluidPage(dateInput("date", "Pick a date:", format="dd/mm/yy")  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+## Values | Simple
+```{r}
+shinyApp(
+  ui = fluidPage(numericInput("vals", "Insert a number:", value=15, min=10)  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+## Values | Sliders
+```{r}
+shinyApp(
+  ui = fluidPage(sliderInput("vals", "Insert a number:", 
+                             min=0, max=50, value=15)  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+## Text | Single line
+```{r}
+shinyApp(
+  ui = fluidPage(textInput("char", "Insert text:")  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+## Text | Paragraph [TODO]
+```{r}
+shinyApp(
+  ui = fluidPage(textInput("char", "Insert text:")  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+## Selectors 
+```{r}
+shinyApp(
+  ui = fluidPage(selectInput("multiselect", "Pick favourites:",
+                             c("Green","Red","Blue"),
+                             multiple=TRUE)  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
