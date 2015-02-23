@@ -1,0 +1,36 @@
+"","SessionLevel","SessionTrack","SessionTitle","SessionSpeaker","SessionAbstract","i.SessionLevel","day"
+"1",NA,NA,"A practical guide to using charts & graphs!","Dan Bulos",NA,200,2015-03-04
+"2",NA,NA,"Agnostic, Hybrid Big Data Integration using PDW and PolyBase","James Rowland-Jones",NA,300,2015-03-07
+"3",NA,NA,"Automating Your Database Deployments","Grant Fritchey",NA,200,2015-03-07
+"4",NA,NA,"Become an Enterprise DBA","Sean McCown",NA,300,2015-03-04
+"5",NA,NA,"Best Practices for multi-environment database development","Lonny Bastien",NA,300,2015-03-06
+"6",NA,NA,"Better Performance Through Parallelism","Adam Machanic",NA,400,2015-03-04
+"7",NA,NA,"Building an Operational Data Store using SQL Server in Azure","Mark Simms",NA,400,2015-03-07
+"8",NA,NA,"Coeo Managed Support-More interesting support cases!","Christian Bolton",NA,200,2015-03-07
+"9",NA,NA,"Columnstore Indexes in SQL 2014: Flipping the DW Faster Bit","Jimmy May",NA,300,2015-03-06
+"10",NA,NA,"Data Wars: The Cloud Awakens","Matt Masson",NA,300,2015-03-04
+"11",NA,NA,"Designing For Performance: Myths and Misunderstandings","Thomas LaRock",NA,300,2015-03-05
+"12",NA,NA,"Drive BI Value through Master Data Management","Dave Lawrence",NA,200,2015-03-06
+"13",NA,NA,"Five Ways You Can Become the Enterprise Data Hero","Ted Orme",NA,300,2015-03-06
+"14",NA,NA,"Getting Started: Azure SQL DB Audit & Dynamic Data Masking","Nadav Helfman",NA,200,2015-03-07
+"15",NA,NA,"How HP’s New Style of IT helps overcome your SQL challenges","Ian Campbell",NA,200,2015-03-06
+"16",NA,NA,"Index Magic: Rowstore, Columnstore and NoStore","Kalen Delaney",NA,300,2015-03-05
+"17",NA,NA,"Lightning Talks","Various Speakers",NA,200,2015-03-07
+"18",NA,NA,"Mastering T-SQL Querying Fundamentals","Itzik Ben-Gan",NA,200,2015-03-04
+"19",NA,NA,"Microsoft SQL Server Engine team unplugged (Q&A)","Microsoft",NA,300,2015-03-06
+"20",NA,NA,"NoSQL and Relational in the Modern Data Architecture","Lara Rubbelke",NA,300,2015-03-05
+"21",NA,NA,"One BI Platform to Rule Them All","Ian Macdonald",NA,200,2015-03-06
+"22",NA,NA,"Optimize “All Data” with a modern data warehouse solution","Adam Jorgensen",NA,300,2015-03-04
+"23",NA,NA,"Performance Tuning When You Can't Fix the Queries","Brent Ozar",NA,300,2015-03-05
+"24",NA,NA,"Practical T-SQL Tips & Tricks to coding problems","SQL Sentry",NA,300,2015-03-06
+"25",NA,NA,"Query Store: New Query Tuning Feature For SQL Server & Azure","Conor Cunningham",NA,400,2015-03-07
+"26",NA,NA,"SQL CLR Demystified","Matt Whitfield",NA,200,2015-03-07
+"27",NA,NA,"SQL Server Fast Track Data Warehouse: Understand the program","Niall MacLeod",NA,300,2015-03-07
+"28",NA,NA,"SQL Server For Developers: Database is no dumping ground!","Mladen Prajdic",NA,300,2015-03-05
+"29",NA,NA,"SQL Server Reporting Services","Chris Testa-O'Neill",NA,300,2015-03-04
+"30",NA,NA,"SQL2014 : The all new cardinality estimator","Dave Ballantyne",NA,300,2015-03-07
+"31",NA,NA,"Storage and Virtualisation for DBAs","Denny Cherry",NA,300,2015-03-04
+"32",NA,NA,"Understanding Execution Plans","Hugo Kornelis",NA,400,2015-03-04
+"33",NA,NA,"Understanding SSIS internals and performance tuning","David Peter Hansen",NA,300,2015-03-05
+"34",NA,NA,"Unlock the full power of BI in Excel/Web/Mobile with XLCubed","Gary Crawford",NA,200,2015-03-07
+"35",NA,NA,"Upgrading to Microsoft SQL Server 2014","John Q Martin",NA,200,2015-03-04
