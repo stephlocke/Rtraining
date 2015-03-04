@@ -1,7 +1,0 @@
-## Objective
-Learn how to build and deploy shiny dashboards
-
-### Sub-objectives
-- Learn what shiny is and how it works
-- Work through code for some sample reports
-- Deploy a report

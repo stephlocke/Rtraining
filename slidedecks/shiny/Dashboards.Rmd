@@ -8,8 +8,13 @@ output:
     css: Look.css
 ---
 
-```{r autodoc, child='Objective.Rmd', eval=TRUE}
-```
+## Objective
+Learn how to build and deploy shiny dashboards
+
+### Sub-objectives
+- Learn what shiny is and how it works
+- Work through code for some sample reports
+- Deploy a report
 
 ## Logistics
 - Approx 45 mins talk + 30 mins live code adventure
@@ -92,11 +97,121 @@ lsp <- function(package, all.names = FALSE, pattern)
 data.table(`Page Types`=lsp(shiny,pattern = "Page"))
 ```
 
-```{r autodoc, child='TypicalInputs.Rmd', eval=TRUE}
+# Typical Inputs
+## Dates
+```{r}
+shinyApp(
+  ui = fluidPage(dateInput("datePicker", "Pick a date:", format="dd/mm/yy"),
+                 dateRangeInput("dateRange", "Pick dates:", 
+                                start=Sys.Date(), end=Sys.Date()) ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
 ```
 
-```{r autodoc, child='TypicalOutputs.Rmd', eval=TRUE}
+## Values | Simple
+```{r}
+shinyApp(
+  ui = fluidPage(numericInput("vals", "Insert a number:", value=15, min=10)  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
 ```
+
+## Values | Sliders
+```{r}
+shinyApp(
+  ui = fluidPage(sliderInput("vals", "Insert a number:", 
+                             min=0, max=50, value=15)  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+## Text | Single line
+```{r}
+shinyApp(
+  ui = fluidPage(textInput("char", "Insert text:")  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+## Text | Paragraph
+```{r}
+shinyApp(
+  ui = fluidPage(tags$textarea(id="charbox", rows=3, cols=40, "Default value")  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+
+## Selectors 
+```{r}
+shinyApp(
+  ui = fluidPage(selectInput("multiselect", "Pick favourites:",
+                             c("Green","Red","Blue"),
+                             multiple=TRUE)  ),
+  server = function(input, output) {}
+  ,options=defaultdisplay
+)
+```
+
+## List of input types
+
+```{r, echo=FALSE}
+
+data.table(`Input controls`=lsp(shiny,pattern = "Input"))
+```
+
+
+# Typical Outputs
+## Input values
+```{r}
+shinyApp(
+  ui = fluidPage(textInput("char", "Insert text:") ,
+                 textOutput("text")  ),
+  server = function(input, output) {
+    output$text <- renderText(input$char)
+  }
+  ,options=defaultdisplay
+)
+```
+
+## Basic tables
+```{r}
+shinyApp(
+  ui = fluidPage(tableOutput("basictable")  ),
+  server = function(input, output) {
+    output$basictable <- renderTable(head(iris,5))
+  }
+  ,options=defaultdisplay
+)
+```
+
+## Interactive tables
+```{r}
+shinyApp(
+  ui = fluidPage(dataTableOutput("datatable")  ),
+  server = function(input, output) {
+    output$datatable <- renderDataTable(head(iris,5))
+  }
+  ,options=defaultdisplay
+)
+```
+
+## Charts
+```{r}
+shinyApp(
+  ui = fluidPage(plotOutput("chart")  ),
+  server = function(input, output) {
+    output$chart <- renderPlot(pairs(iris))
+  }
+  ,options=defaultdisplay
+)
+```
+
 
 # Reactivity | Not covered in-depth
 ## Simple reactivity
