@@ -1,7 +1,7 @@
 ---
 title: 'Shiny: dashboards in R'
 author: "Steph Locke"
-date: "Wednesday, February 18, 2015"
+date: "@ SQLBits"
 runtime: shiny
 output:
   ioslides_presentation:
@@ -11,19 +11,30 @@ output:
 ```{r autodoc, child='Objective.Rmd', eval=TRUE}
 ```
 
-## 1st | What's Shiny?
+## Logistics
+- Approx 45 mins talk + 30 mins live code adventure
+- Ask your questions throughout
+- I'll do some whistlestop R but see my [Intro to R](https://rawgit.com/stephlocke/Rintro/master/Rintro.html#1) or for more in-depth my [SQLSaturday pre-con](http://sqlsatexeter.azurewebsites.net/?page_id=342)
+- Links going out during talk on twitter (@SteffLocke)
+
+## FundaRmentals
+```{r,echo=TRUE}
+# variable assignment
+a <- 1
+a
+# functions
+paste0(c("SQL","Super"),c("Bits","Heroes"))
+
+```
+
+## What's Shiny?
 - An interactive report framework
 - An R package that is available free (as is the server edition)
 - Uses "modern web standards" like bootstrap under the hood 
 
-## 2nd | R
->- Approx 55 mins talk + 20 mins Q&A!
->- Ask your questions throughout
->- Who's using R already?
->- I'll be covering off a reasonable amount of code as I go but check out my [R Intro]() for a more thorough overview
-
 ## Quick example
 ```{r, echo = FALSE}
+library(data.table)
 library(shiny)
 defaultdisplay<-list(
     width="100%", height="75%"
@@ -35,7 +46,7 @@ shinyAppDir(
 ```
 
 # Shiny structure
-## Contents
+## Contents | Typical
 A shiny application report consists of two functions:
 
 - `shinyServer()`
@@ -43,8 +54,21 @@ A shiny application report consists of two functions:
 
 One says what to execute and the other states how to present it. Do all data manipulation, chart production in `shinyServer()`
 
+## Contents | "Lite"
+```{r}
+defaultdisplay<-list(width="100%", height="75%")
+
+shinyApp(
+    ui      = fluidPage(),
+  , server  = function(input, output) {}
+  , options = defaultdisplay
+)
+```
+
+
 ## Files
-You typically need two files:  
+You typically split into two files:  
+
 - server.R containing `shinyServer()`
 - ui.R containing `shinyUI()`
 
@@ -55,11 +79,18 @@ You can do a single file example `app.R` which contains both functions but this 
 ## Front-end layout
 Use these just inside `shinyUI()` to produce a layout
 
-- Fixed `shinyUI(fixedPage( ...))`
-- Fluid `shinyUI(fluidPage( ...))`
-- Bootstrap `shinyUI(bootstrapPage( ...))`
-- Nav Bar `shinyUI(navbarPage( ...))`
-- Side Panel `shinyUI(sidebarPage( ...))`
+```{r, echo=FALSE}
+lsp <- function(package, all.names = FALSE, pattern) 
+{
+  package <- deparse(substitute(package))
+  ls(
+      pos = paste("package", package, sep = ":"), 
+      all.names = all.names, 
+      pattern = pattern
+  )
+}
+data.table(`Page Types`=lsp(shiny,pattern = "Page"))
+```
 
 ```{r autodoc, child='TypicalInputs.Rmd', eval=TRUE}
 ```
@@ -67,8 +98,7 @@ Use these just inside `shinyUI()` to produce a layout
 ```{r autodoc, child='TypicalOutputs.Rmd', eval=TRUE}
 ```
 
-# Reactivity
-
+# Reactivity | Not covered in-depth
 ## Simple reactivity
 - Make functions that process inputs only when they change
 ```{r, eval=FALSE}
@@ -102,22 +132,29 @@ shinyApp(
 - Full list of CSS items doesn't exist, use F12 on chrome or check out selectorgadget via `rvest`
 - Simple stuff like body, h1 will all work
 
+## shinydashboards
+- Makers of shiny working on a framework: [Shiny Dashboard](http://rstudio.github.io/shinydashboard/)
+- A new dashboarding framework - still immature but useful
+- Excellent walkthrough on [Data Driven Security](http://datadrivensecurity.info/blog/posts/2015/Jan/building-security-dashboards-with-r-and-shiny-shinydashboard/)
+
 # Infrastructure
 ## Ad-hoc shiny
 - Rstudio (easiest) or just run directly
 - Use `shiny::runApp()`
+- Great for "expert" use
 
 ## Cloud
 - [shinyApps.io](https://www.shinyapps.io/)
 - Deploy with `shinyApps` package
 - Free for light use 
-- Extra management features with a range of levels
+- Extra management features at increased costs
+- Great for hands-off management
 
 ## Central server
 - shiny-server
 - Runs on linux
 - Free community edition
-- Extra management features & LDAP auth in Pro Edition
+- Extra management features & LDAP auth in Pro Edition (but can roll your own)
 - Great for sensitive &| db-driven appplications
 
 # Let's put it all together!
@@ -133,6 +170,7 @@ shinyApp(
 - [Reactivity Overview](http://shiny.rstudio.com/articles/reactivity-overview.html)
 - [shiny for teaching maths](https://github.com/hadley/reactive-docs)
 - [Show me Shiny!](http://www.showmeshiny.com/)
+- [Deploying shiny apps](http://shiny.rstudio.com/tutorial/lesson7/)
 
 ```{r autodoc, child='../presentationguff/AboutMe.Rmd', eval=TRUE}
 ```

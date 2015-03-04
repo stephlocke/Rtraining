@@ -2,7 +2,9 @@
 ## Dates
 ```{r}
 shinyApp(
-  ui = fluidPage(dateInput("date", "Pick a date:", format="dd/mm/yy")  ),
+  ui = fluidPage(dateInput("datePicker", "Pick a date:", format="dd/mm/yy"),
+                 dateRangeInput("dateRange", "Pick dates:", 
+                                start=Sys.Date(), end=Sys.Date()) ),
   server = function(input, output) {}
   ,options=defaultdisplay
 )
@@ -36,14 +38,15 @@ shinyApp(
 )
 ```
 
-## Text | Paragraph [TODO]
+## Text | Paragraph
 ```{r}
 shinyApp(
-  ui = fluidPage(textInput("char", "Insert text:")  ),
+  ui = fluidPage(tags$textarea(id="charbox", rows=3, cols=40, "Default value")  ),
   server = function(input, output) {}
   ,options=defaultdisplay
 )
 ```
+
 
 ## Selectors 
 ```{r}
@@ -54,4 +57,11 @@ shinyApp(
   server = function(input, output) {}
   ,options=defaultdisplay
 )
+```
+
+## List of input types
+
+```{r, echo=FALSE}
+
+data.table(`Input controls`=lsp(shiny,pattern = "Input"))
 ```
