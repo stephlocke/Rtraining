@@ -7,4 +7,4 @@
 
 Join me for a day of R training Apr 24th: [SQLSaturday Exeter](http://sqlsatexeter.azurewebsites.net/?page_id=342) SQLHERO15 
 
-[github.com/StephLocke](https://github.com/StephLocke) | [itsalocke.com](http://itsalocke.com) | [T: @SteffLocke](https://twitter.com/stefflocke)
+[github.com/StephLocke](https://github.com/StephLocke) | [itsalocke.com](http://itsalocke.com) | [T: SteffLocke](https://twitter.com/stefflocke)
