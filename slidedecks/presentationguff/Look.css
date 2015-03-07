@@ -21,7 +21,9 @@ body{
   color: white;
 }
 
-
+slide.dark {
+background: #90C226;
+}
 
 
 .prettyprint{

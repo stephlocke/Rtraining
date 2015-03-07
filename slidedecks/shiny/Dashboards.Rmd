@@ -1,26 +1,23 @@
 ---
 title: 'Shiny: dashboards in R'
-author: "Steph Locke"
-date: "@ SQLBits"
+author: "Steph Locke (@SteffLocke)"
+date: "at SQLBits"
 runtime: shiny
 output:
   ioslides_presentation:
-    css: Look.css
+      css: look.css
 ---
 
 ## Objective
-Learn how to build and deploy shiny dashboards
-
-### Sub-objectives
-- Learn what shiny is and how it works
-- Work through code for some sample reports
-- Deploy a report
+Learn what the heck shiny is and how you use it!
 
 ## Logistics
-- Approx 45 mins talk + 30 mins live code adventure
-- Ask your questions throughout
-- I'll do some whistlestop R but see my [Intro to R](https://rawgit.com/stephlocke/Rintro/master/Rintro.html#1) or for more in-depth my [SQLSaturday pre-con](http://sqlsatexeter.azurewebsites.net/?page_id=342)
+- Approx 55 mins talk + 20 mins adventure (liberally sprinkled)
 - Links going out during talk on twitter (@SteffLocke)
+- Ask your questions throughout
+- I'll do some whistlestop R but see my [Intro to R](https://rawgit.com/stephlocke/Rintro/master/Rintro.html) or for more in-depth my [SQLSaturday pre-con](http://sqlsatexeter.azurewebsites.net/?page_id=342)
+- Please give feedback & thanks to the organisers of @SQLBits
+
 
 ## FundaRmentals
 ```{r,echo=TRUE}
@@ -46,7 +43,7 @@ defaultdisplay<-list(
   )
 shinyAppDir(
   system.file("examples/06_tabsets", package="shiny"),
-  options=defaultdisplay
+  options = defaultdisplay
 )
 ```
 
@@ -101,20 +98,23 @@ data.table(`Page Types`=lsp(shiny,pattern = "Page"))
 ## Dates
 ```{r}
 shinyApp(
-  ui = fluidPage(dateInput("datePicker", "Pick a date:", format="dd/mm/yy"),
+  ui = fluidPage(dateInput("datePicker", "Pick a date:", 
+                           format="dd/mm/yy"),
                  dateRangeInput("dateRange", "Pick dates:", 
-                                start=Sys.Date(), end=Sys.Date()) ),
+                                start=Sys.Date(), 
+                                end=Sys.Date() ) ),
   server = function(input, output) {}
-  ,options=defaultdisplay
+  ,options = defaultdisplay
 )
 ```
 
 ## Values | Simple
 ```{r}
 shinyApp(
-  ui = fluidPage(numericInput("vals", "Insert a number:", value=15, min=10)  ),
+  ui = fluidPage(numericInput("vals", "Insert a number:", 
+                              value=15, min=10)  ),
   server = function(input, output) {}
-  ,options=defaultdisplay
+  ,options = defaultdisplay
 )
 ```
 
@@ -124,7 +124,7 @@ shinyApp(
   ui = fluidPage(sliderInput("vals", "Insert a number:", 
                              min=0, max=50, value=15)  ),
   server = function(input, output) {}
-  ,options=defaultdisplay
+  ,options = defaultdisplay
 )
 ```
 
@@ -133,16 +133,17 @@ shinyApp(
 shinyApp(
   ui = fluidPage(textInput("char", "Insert text:")  ),
   server = function(input, output) {}
-  ,options=defaultdisplay
+  ,options = defaultdisplay
 )
 ```
 
 ## Text | Paragraph
 ```{r}
 shinyApp(
-  ui = fluidPage(tags$textarea(id="charbox", rows=3, cols=40, "Default value")  ),
+  ui = fluidPage(tags$textarea(id="charbox", rows=3, 
+                               cols=40, "Default value")  ),
   server = function(input, output) {}
-  ,options=defaultdisplay
+  ,options = defaultdisplay
 )
 ```
 
@@ -154,14 +155,13 @@ shinyApp(
                              c("Green","Red","Blue"),
                              multiple=TRUE)  ),
   server = function(input, output) {}
-  ,options=defaultdisplay
+  ,options = defaultdisplay
 )
 ```
 
 ## List of input types
 
 ```{r, echo=FALSE}
-
 data.table(`Input controls`=lsp(shiny,pattern = "Input"))
 ```
 
@@ -174,8 +174,7 @@ shinyApp(
                  textOutput("text")  ),
   server = function(input, output) {
     output$text <- renderText(input$char)
-  }
-  ,options=defaultdisplay
+  }  ,options = defaultdisplay
 )
 ```
 
@@ -185,8 +184,7 @@ shinyApp(
   ui = fluidPage(tableOutput("basictable")  ),
   server = function(input, output) {
     output$basictable <- renderTable(head(iris,5))
-  }
-  ,options=defaultdisplay
+  }  ,options = defaultdisplay
 )
 ```
 
@@ -196,8 +194,7 @@ shinyApp(
   ui = fluidPage(dataTableOutput("datatable")  ),
   server = function(input, output) {
     output$datatable <- renderDataTable(head(iris,5))
-  }
-  ,options=defaultdisplay
+  }  ,options = defaultdisplay
 )
 ```
 
@@ -207,8 +204,7 @@ shinyApp(
   ui = fluidPage(plotOutput("chart")  ),
   server = function(input, output) {
     output$chart <- renderPlot(pairs(iris))
-  }
-  ,options=defaultdisplay
+  }  ,options = defaultdisplay
 )
 ```
 
@@ -232,7 +228,7 @@ shinyApp(
     output$textA <- renderText(paste(char(),collapse="+"))
     output$textB <- renderText(paste(char(),collapse="-"))
   }
-  ,options=defaultdisplay
+  ,options = defaultdisplay
 )
 ```
 
@@ -241,6 +237,7 @@ shinyApp(
 - Get a different look and feel with the package `shinythemes`
 - Uses a number of bootstrap based themes
 - Good-looking quickly, but of course not company branded
+- View themes at [bootswatch.com](http://bootswatch.com/)
 
 ## CSS
 - Shiny outputs html so you can write CSS that works with it
@@ -270,13 +267,11 @@ shinyApp(
 - Runs on linux
 - Free community edition
 - Extra management features & LDAP auth in Pro Edition (but can roll your own)
-- Great for sensitive &| db-driven appplications
+- Great for sensitive and/or db-driven appplications
 
 # Let's put it all together!
 
 # Q & A
-
-# The end!
 
 
 ## Recommended reading
@@ -290,3 +285,6 @@ shinyApp(
 ```{r autodoc, child='../presentationguff/AboutMe.Rmd', eval=TRUE}
 ```
 
+
+
+# The end!
