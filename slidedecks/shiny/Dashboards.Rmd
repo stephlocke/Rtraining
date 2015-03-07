@@ -5,7 +5,8 @@ date: "at SQLBits"
 runtime: shiny
 output:
   ioslides_presentation:
-      css: look.css
+    widescreen: true
+    css: Look.css
 ---
 
 ## Objective
