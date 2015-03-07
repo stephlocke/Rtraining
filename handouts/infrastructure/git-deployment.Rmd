@@ -1,0 +1,11 @@
+---
+title: "Deploying to shiny-server (via git)"
+author: "Steph Locke"
+date: "Wednesday, March 04, 2015"
+output: html_document
+---
+
+- Install git on shiny-server `sudo apt-get install git`
+- Get local copy of report `git clone "http://github.com/stephlocke/Rtraining"`
+- Copy relevant files to /srv/shiny-server `sudo cp Rtraining/ /srv/shiny-server -R`
+- Browseable directories `http://shinybox.cloudapp.net/Rtraining/`
