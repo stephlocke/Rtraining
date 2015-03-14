@@ -16,3 +16,10 @@ install.rtutor(update.github=TRUE)
 library(RTutor)
 ```
 You can get the latest version of this code on the [RTutor github](https://github.com/skranz/RTutor)
+
+We need a directory to store your exercises in:
+```{r}
+origlocation<-getwd()
+exerciselocation<- if (interactive()) choose.dir(getwd(), "Choose a suitable folder")
+run.ps(user.name="Your name here")
+```
