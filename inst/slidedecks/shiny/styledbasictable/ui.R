@@ -3,8 +3,7 @@ library(shinythemes)
 
 shinyUI(fluidPage(theme = shinytheme("cerulean"),
 
-  titlePanel("SQLBits - unregistered superheroes"),
-  h3( "Sessions that do not appear on the submissions list"),
+  titlePanel("SQLBits - extra superheroes"),
 
   sidebarLayout(
     sidebarPanel(
