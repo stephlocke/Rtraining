@@ -17,9 +17,14 @@ library(RTutor)
 ```
 You can get the latest version of this code on the [RTutor github](https://github.com/skranz/RTutor)
 
+## Running exercises
 We need a directory to store your exercises in:
 ```{r}
+library(RTutor)
+library(Rtraining)
 origlocation<-getwd()
 exerciselocation<- if (interactive()) choose.dir(getwd(), "Choose a suitable folder")
-run.ps(user.name="Your name here")
+   create.ps(sol.file=sol.file, ps.name=ps.name, user.name=NULL,libs=libs,dir)
+create.ps("example",dir=exerciselocation)
+run.ps(user.name="Jon Doe", pkg.dir="C:/Users/slocke/Documents/R/win-library/3.1/Rtraining/inst/exercises/Reporting")
 ```
