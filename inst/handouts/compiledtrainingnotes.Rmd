@@ -1,7 +1,7 @@
 ---
 title: "R: from analysis to integration"
 author: "Steph Locke"
-date: "Saturday, January 24, 2015"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

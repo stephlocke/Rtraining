@@ -1,7 +1,7 @@
 ---
 title: "Shiny Azure build - no AD component"
 author: "Steph Locke"
-date: "Wednesday, March 04, 2015"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 
@@ -17,10 +17,11 @@ Azure portal, using gallery creation for VM
 3. Use the login details in the creation wizard. *The password won't look like you're typing*
 3. Run `sudo apt-get update` to get the package repository metadata
 4. Run `sudo apt-get install r-base` to get R. *Will have lots of extra associated packages - select Y when prompted*
-5. Follow the [installation instructions](http://rstudio.github.io/shiny-server/latest/)
+5. Follow the [installation instructions](http://rstudio.github.io/shiny-server/latest/), using the [latest file](http://www.rstudio.com/products/shiny/download-server/)
     + Run `sudo su - -c "R -e \"install.packages('shiny', repos='http://cran.rstudio.com/')\""` to install shiny in R
     + Run `sudo apt-get install gdebi-core` to enable processing of shiny-server installation package
-    + And so on through the remaining two major steps in instructions
+    + Run (latest version of) `wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.3.0.403-amd64.deb`
+    + Run (latest version of) `sudo gdebi shiny-server-1.3.0.403-amd64.deb`
 
 ## Configuring port (away from 3838) and allowing on Azure
 1. Change shiny-server to run on port 80 by amending port in conf file `sudo nano /etc/shiny-server/shiny-server.conf`

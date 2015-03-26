@@ -1,7 +1,7 @@
 ---
 title: "Deploying to shiny-server (via git)"
 author: "Steph Locke"
-date: "Wednesday, March 04, 2015"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 
