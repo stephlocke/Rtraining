@@ -1,0 +1,63 @@
+# Problemset Example
+
+  
+```{r include=FALSE}
+
+ps.dir =  'C:/Users/slocke/Documents/Rtraining/inst/exercises/Reporting/ps' # set to the folder in which this file is stored
+ps.file = 'Example_sample_solution.Rmd' # set to the name of this file
+user.name = 'Jane Doe' # set to your user name
+
+library(RTutor)
+check.problem.set('Example', ps.dir, ps.file, user.name=user.name, reset=FALSE)
+
+# To check your solution in RStudio save (Ctrl-S) and then run all chunks (Ctrl-Alt-R)
+```
+Name: `r user.name`
+
+
+Example of an RTutor interactive Problemset
+Author:  Sebastian Kranz
+Date:    12.06.2014
+
+Adapt the working directory below and press Ctrl-Alt-R (run all chunks). This creates the problem set files and the sample solution from this solution file.
+
+## Exercise 1 -- Summary statistics
+
+a) First part
+
+Some Math:
+
+$$x = \beta^2$$
+
+info("Some math in an info block") # Run this line (Strg-Enter) to show info
+
+
+We often want to compute some summary statistic of a vector.
+For example:
+
+
+```{r "1 a)",fig.height=3}
+x = 10:20
+# Computing the sum of x
+sum(x)
+# Generating a data frame
+df = data.frame(a=c(1,1,2,2,2,3,3,4), b = runif(8), c="Hi")
+df
+```
+
+Now compute the mean of x.
+```{r "1 a) 2"}
+mean(x)
+```
+
+
+info("useful functions for numeric vectors") # Run this line (Strg-Enter) to show info
+
+
+
+## Exercise 2 -- Computing with vectors
+a) Let y be a vector that contains the squared elements of x. Show y
+```{r "2 a)"}
+y = x^2
+y
+```

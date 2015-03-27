@@ -1,0 +1,73 @@
+# Problemset Example
+
+  
+```{r include=FALSE}
+
+ps.dir =  'C:/Users/slocke/Documents/Rtraining/inst/exercises/Reporting/ps' # set to the folder in which this file is stored
+ps.file = 'Example_output_solution.Rmd' # set to the name of this file
+user.name = 'Jane Doe' # set to your user name
+
+library(RTutor)
+check.problem.set('Example', ps.dir, ps.file, user.name=user.name, reset=FALSE)
+
+# To check your solution in RStudio save (Ctrl-S) and then run all chunks (Ctrl-Alt-R)
+```
+Name: `r user.name`
+
+
+Example of an RTutor interactive Problemset
+Author:  Sebastian Kranz
+Date:    12.06.2014
+
+Adapt the working directory below and press Ctrl-Alt-R (run all chunks). This creates the problem set files and the sample solution from this solution file.
+
+## Exercise 1 -- Summary statistics
+
+a) First part
+
+Some Math:
+
+$$x = \beta^2$$
+
+### Info: Some math in an info block
+$$y = \alpha^2$$
+
+
+We often want to compute some summary statistic of a vector.
+For example:
+
+
+```{r "1_a_",fig.height=3}
+x = 10:20
+# Computing the sum of x
+sum(x)
+# Generating a data frame
+df = data.frame(a=c(1,1,2,2,2,3,3,4), b = runif(8), c="Hi")
+df
+```
+
+Now compute the mean of x.
+```{r "1_a__2"}
+mean(x)
+```
+
+
+### Info: useful functions for numeric vectors
+Here are examples for useful R functions
+```{r "1_a__3"}
+max(c(1,5,2)) # returns maximum
+min(c(1,5,2)) # returns minimum
+
+sum(c(1,5,2,NA), na.rm=TRUE) # returns sum of all numbers, ignore NA
+cumsum(c(1,5,2)) # returns cummulated sum
+diff(c(1,5,2)) # returns the vector of differences
+```
+
+
+
+## Exercise 2 -- Computing with vectors
+a) Let y be a vector that contains the squared elements of x. Show y
+```{r "2_a__4"}
+y = x^2
+y
+```
