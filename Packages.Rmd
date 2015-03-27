@@ -1,0 +1,11 @@
+```{r eval=FALSE, echo=TRUE}
+install.packages(c(
+  "RODBC",      # Database access
+  "data.table", # Table manipulation
+  "ggplot2",    # Charting
+  "scales",     # Scale manipulations
+  "rmarkdown",  # Presentation writing
+  "knitr",      # Presentation production
+  "shiny"       # Reporting
+  ))
+```

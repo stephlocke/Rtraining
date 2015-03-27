@@ -1,0 +1,33 @@
+
+body{
+   background-color: #90C226;}
+   
+.title-slide{
+   background-color: #90C226;
+   background-image: url("imgs/theNegativeLocke.gif");
+   background-position: right bottom;
+   background-repeat: no-repeat;
+   }
+
+.title-slide hgroup h1{
+  color: white;
+}
+
+.title-slide hgroup h2{
+  color: white;
+}
+
+.title-slide hgroup p{
+  color: white;
+}
+
+
+
+
+.prettyprint{
+  background-color: #EFFED0;
+}
+
+pre{
+  font-size: 26px;
+}
