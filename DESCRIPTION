@@ -9,4 +9,9 @@ LazyData: true
 Imports: devtools,
     data.table,
     httr,
-    jsonlite
+    jsonlite,
+    magrittr,
+    dplyr,
+    DiagrammeR,
+    shiny,
+    knitr

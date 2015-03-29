@@ -1,0 +1,65 @@
+---
+title: "R"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  slidy_presentation:
+    theme: cerulean
+    duration: 45
+---
+
+
+## About R
+> R is an integrated suite of software facilities for data manipulation, calculation and graphical display
+
+- Open source
+- In-memory, single-core, multi-platform
+- Extensible environment
+- Super-useful
+- <http://www.r-project.org/>
+
+## How it hangs together
+```{r,echo=FALSE,warning=FALSE,out.height='90%', out.width='90%'}
+library(DiagrammeR)
+hangs<-"graph TB
+subgraph High Level
+D[Data] --> R[Read into memory]
+R --> DM[Data manipulation]
+DM --> V[Visualisation]
+DM --> S[Statistical Analysis]
+DM --> O[Output]
+S --> V
+V --> Do[Document]
+Do --> O
+V --> I[Interactive report]
+I --> O
+end
+subgraph Package View
+Dp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, ...]
+Rp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]
+DMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]
+DMp --> Sp[caret, survival, nnet, ...]
+DMp --> Op[base, xlsx, RODBC, ...]
+Sp --> Vp
+Vp --> Dop[knitr, rmarkdown, ...]
+Dop --> Op
+Vp --> Ip[shiny, ...]
+Ip --> Op
+end"
+mermaid(hangs)
+```
+
+## Top 10 packages
+ 1. data.table
+ 2. ggplot2
+ 3. knitr
+ 4. shiny
+ 5. rmarkdown
+ 6. RODBC
+ 7. magrittr
+ 8. stringr
+ 9. dplyr
+ 10. httr
+
+
+ 

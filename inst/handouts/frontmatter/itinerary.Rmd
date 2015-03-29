@@ -1,23 +1,35 @@
 ---
 title: "R: from analysis to integration -- Itinerary""
 author: "Steph Locke"
-date: "Saturday, January 24, 2015"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 ## Itinerary
-
-### Analysis
-
- - The basics (using base R, `ggplot2`)
- - Effective R (using `dplyr`, `data.table`)
-
-### Reporting
-
- - Analytical documents (using `knitr` and `rmarkdown`)
- - Interactive reports (using `shiny`)
- - Development best practices (using Git, `devtools` & `testthat`)
-
-### Infrastructure
-
- - Linux in a Windows environment (Linux VMs with Rstudio server)
- - Reporting (using Shiny server)
+ - R
+    + About R
+    + How it all hangs together
+    + Top 10 packages
+ - Install time!
+ - The basics
+    + Syntax & structure
+    + Data types
+    + IO
+ - Effective R
+    + Wrangling tables
+    + Making charts
+    + Bonus round: magrittr & dplyr
+ - ReporteR
+    + Making documents
+    + Making reports
+    + Making diagrams
+    + Bonus round: LaTeX
+ - DevelopeR
+    + Source control
+    + Testing
+    + Package development
+    + Bonus round: Continuous integration with Travis-CI
+ - InfRastructure
+    + Linux basics
+    + Installing Rstudio
+    + Installing shiny-server
+    + Bonus round: AD authentication
