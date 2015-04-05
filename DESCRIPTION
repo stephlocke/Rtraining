@@ -14,4 +14,7 @@ Imports: devtools,
     dplyr,
     DiagrammeR,
     shiny,
-    knitr
+    knitr,
+    Hmisc,
+    foreach,
+    memisc

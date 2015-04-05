@@ -2,10 +2,13 @@
 title: "R: from analysis to integration"
 author: "Steph Locke"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  html_document:
+    toc: true
+    theme: united
 ---
 
-# Housekeeping
+# Front Matter
 ```{r autodoc, child='frontmatter/objective.Rmd', eval=TRUE}
 ```
 
@@ -15,32 +18,38 @@ output: html_document
 ```{r autodoc, child='frontmatter/aboutme.Rmd', eval=TRUE}
 ```
 
-# Fundamentals
-```{r autodoc, child='frontmatter/aboutr.Rmd', eval=TRUE}
+# R
+```{r autodoc, child='../slidedecks/R basics/R.Rmd', eval=TRUE}
 ```
 
-```{r autodoc, child='fundamentals/datatypes.Rmd', eval=TRUE}
+# Installation
+```{r autodoc, child='infrastructure/setting-up-a-windows-R-Machine.Rmd', eval=TRUE}
 ```
 
-```{r autodoc, child='fundamentals/datastructures.Rmd', eval=TRUE}
+
+#  Syntax & structure
+```{r autodoc, child='fundamentals/syntax.Rmd', eval=TRUE}
 ```
 
-```{r autodoc, child='fundamentals/operators.Rmd', eval=TRUE}
-```
+#  Data types
+#  IO
 
-```{r autodoc, child='fundamentals/functions.Rmd', eval=TRUE}
-```
+#  Wrangling tables
+#  Making charts
+#  Bonus round: magrittr & dplyr
 
-# data.table
 
-# dplyr
+#  Making documents
+#  Making reports
+#  Making diagrams
+#  Bonus round: LaTeX
 
-# ggplot2
+#  Source control
+#  Testing
+#  Package development
+#  Bonus round: Continuous integration with Travis-CI
 
-# Documents
-
-# Reports
-
-# Best practices
-
-# Infrastructure
+#  Linux basics
+#  Installing Rstudio
+#  Installing shiny-server
+#  Bonus round: AD authentication

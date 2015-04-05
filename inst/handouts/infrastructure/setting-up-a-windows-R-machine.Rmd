@@ -5,8 +5,12 @@ date: "`r Sys.Date()`"
 output:
   html_document:
     theme: readable
-    highlight: espresso
 ---
+```{r echo=FALSE,results='hide'}
+rootfolder<-file.path(find.package("Rtraining"),"handouts")
+imgfolder<-file.path(rootfolder,"imgs")
+imgfolder.unc<-gsub("/","\\",imgfolder,fixed=TRUE)
+```
 ## R
  * Download latest base R exe file from [cran.rstudio.com](http://cran.rstudio.com/)
  * Also download Rtools latest exe
@@ -23,8 +27,14 @@ output:
 ## Configuration
  * Open Rstudio
  * Go to Tools> global options and set rstudio to point at the location of your git.exe file
-![Git exe location](../imgs/rstudio-gitfolder.png)
+![Git exe location](`r paste0(imgfolder.unc,"\\rstudio-gitfolder.png")`)
  * Setup your details in git by going to git > shell in Rstudio or opening up command-prompt
      + Run `git config --global user.name="Your name"`
      + Run `git config --global user.email="email@addre.ss"`
  * Use Packages > Install to install devtools and installr
+ * Install Rtraining by executing
+```r
+library(devtools)
+# Case-sensitive!
+install_github("stephlocke/Rtaining")
+```
