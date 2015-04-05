@@ -56,13 +56,7 @@ Bitwise Or | `||` | c(TRUE,FALSE) `||` c(FALSE,FALSE) is `r c(TRUE,FALSE) || c(F
 In | %in% | "Red" %in% c("Blue","Red") = `r  "Red" %in% c("Blue","Red")`
 Not in | !( x %in% y) or Hmisc::%nin% |  "Red" %nin% c("Blue","Red") = `r !("Red" %in% c("Blue","Red"))`
 
-## Assignment operators
 
-Operator | Example
-------------- | -------------
-<- | a <- 10
-
-> NB: There are others you could use, but this is the best practice
 
 ## Control constructs
 
@@ -75,4 +69,25 @@ While loop | while(condition) {do something } | a<-0 ; while(a<3){a<-a+1} ; a re
 Switch | switch(value, ...) | switch(2, "a", "b") returns `r switch(2, "a", "b")`
 Case | memisc::cases(...) | cases("pi<3"=pi<3, "pi=3"=pi==3,"pi>3"=pi>3) returns `r memisc::cases("pi<3"=pi<3, "pi=3"=pi==3,"pi>3"=pi>3)`
 
-> NB: If you find yourself using a loop, there's probably another better, faster solution
+> NB: If you find yourself using a loop, there's probably a better, faster solution
+
+## Assignment operators
+
+Action | Operator | Example
+------------- | ------------- | -------------
+Create / update a variable | `<-` | a `<-` 10
+
+> NB: There are others you could use, but this is the best practice
+
+## Accessors
+
+Action | Operator | Example
+------------- | ------------- | -------------
+Use public function from package | :: | memisc::cases()
+Use private function from package | ::: | optiRum:::pounds_format()
+Get a component e.g a data.frame column | $ | iris$Sepal.Length
+Extract a property from a class | `@` | *Won't be used in this course*
+Refer to positions in a data.frame or vector | [ ] | iris[5:10,1]
+Refer to item in a list | [[ ]] | list(iris=iris,mtcars=mtcars)[["iris"]]
+
+

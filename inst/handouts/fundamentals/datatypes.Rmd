@@ -1,33 +1,45 @@
 ---
-title: "R: from analysis to integration -- Data types"
+title: "Data types"
 author: "Steph Locke"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  html_document:
+    theme: cosmo
 ---
 
-## Basic datatypes
+## Primitive data types
 
-### Numbers
-
-#### Numeric
-
-#### Integer
-
-
-### Strings
-
-#### Characters
-
-#### Factors
-
-#### Ordered factors
+Data type | Example
+------------- | -------------
+Integer | 1
+Logical | TRUE
+Numeric | 1.1
+String / character  | "Red"
+Factor (enumerated string) | "Amber" or 2 in c("Red","Amber","Green")
+Complex | i
 
 
-### Dates
+## Compound data types
+Data type | Info | Construction example(s)
+------------- | ------------- | -------------
+Vector | A 1D set of values of the same data type | c(1,"a") , 1:3 , LETTERS
+Matrix | A 2D set of values of the same data type | matrix(LETTERS,nrow=13, ncol=2) , rbind(1:5,2:6)
+Array | An nD set of values of the same data type | array(LETTERS, c(13,2))
+Data.frame  | A 2D set of values of different data types | data.frame(a=1:26, b=LETTERS)
+List | A collection of objects of various data types | list(vector=c(1,"a"), df=data.frame(a=1:6))
+Classes | A class is like a formalised list and can also contain functions i.e. methods | *Won't be covered in this class*
 
-#### Date
+> NB: Most of my work uses vectors, data.tables (a souped up version of data.frames), and lists
 
-#### Posix
+## Useful functions relating to data types
 
-
-### Best practices
+Function | Use
+------------- | -------------
+is.[data type] | Whether a vector is of a particular type
+as.[data type] | Attempts to coerce a vector to a data type
+str | Structure of an object including class/data type, dimensions 
+class | The class(es)/data type(s) an object belongs to
+summary | Summarises an object 
+dput | Get R code that recreates an object
+unlist | Simplify a list to a vector
+dim | Dimensions of a data type

@@ -12,9 +12,6 @@ output:
 ```{r autodoc, child='frontmatter/objective.Rmd', eval=TRUE}
 ```
 
-```{r autodoc, child='frontmatter/itinerary.Rmd', eval=TRUE}
-```
-
 ```{r autodoc, child='frontmatter/aboutme.Rmd', eval=TRUE}
 ```
 
@@ -26,12 +23,14 @@ output:
 ```{r autodoc, child='infrastructure/setting-up-a-windows-R-Machine.Rmd', eval=TRUE}
 ```
 
-
 #  Syntax & structure
 ```{r autodoc, child='fundamentals/syntax.Rmd', eval=TRUE}
 ```
 
 #  Data types
+```{r autodoc, child='fundamentals/datatypes.Rmd', eval=TRUE}
+```
+
 #  IO
 
 #  Wrangling tables

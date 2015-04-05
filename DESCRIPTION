@@ -17,4 +17,5 @@ Imports: devtools,
     knitr,
     Hmisc,
     foreach,
-    memisc
+    memisc,
+    optiRum
