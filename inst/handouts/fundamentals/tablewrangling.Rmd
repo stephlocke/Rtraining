@@ -1,0 +1,53 @@
+---
+title: "Wrangling Tables"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: journal
+---
+
+## SQL
+### data.table is "SQL-like"
+```
+DT[i, j, by]
+DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]
+```
+
+### data.table behaves like a database
+A data.table acts like an in-memory RDBMS:
+
+- The result of a query is a table
+- Can set clustered primary keys over single or multiple columns
+- Can set non-clustered secondary keys over single or multiple columns
+- Can perform a wide range of relational algebra
+
+
+### data.table differences to SQL Server
+There are some differences that need to be mentioned:
+
+- A primary key can have repeat values
+- No constrained foreign keys
+- Joins are done by *position in key* so tblA with key A, and tblB with key C,A would join on tblA[A] and tblB[C]
+- It's inherently dynamic so vectors of column names etc. can be provided
+
+## data.table cookbook -- Single table basics
+Task | Generic syntax | Example(s)`*`
+------------- | ------------- | -------------
+CREATE | data.table(...) | `data.table(a=1:3 , b=LETTERS[1:3])` `data.table(iris)`
+PRIMARY KEY | data.table(...,key=) setkey() | `data.table(a=1:3 , b=LETTERS[1:3], key="b")` `setkey(data.table(iris),Species)`
+SELECT basic | DT[ , .( ... )] | `irisDT[ , .(Species, Sepal.Length)]`
+SELECT alias | DT[ , .( a=... )] | `irisDT[ , .(Species, Length=Sepal.Length)]`
+SELECT aggregation | DT[ , .( sum(...) , .N )] | `irisDT[ , .(Count=.N, Length=mean(Sepal.Length))]`
+SELECT dynamically i.e. by reference | DT[ , colnames , with=FALSE] | `cols<-colnames(irisDT); irisDT[ , cols, with=FALSE]`
+WHERE exact on primary key | DT[value] DT[value, ...] | `irisDT["setosa"]` `irisDT["setosa", .(Count=.N)]`
+WHERE |  DT[condition] DT[condition, j, by] | `irisDT[Species=="setosa"]` `irisDT[Species=="setosa", .(Count=.N)]`
+ORDER asc. | DT[order(...)] DT[order(...), j, by] | `irisDT[order(Species)]`
+ORDER desc. | DT[order(-...)] DT[order(-...), j, by] | `irisDT[order(-Species)]`
+ORDER multiple | DT[order(...)] DT[order(...), j, by] | `irisDT[order(-Species, Petal.Width)]`
+GROUP BY single | DT[i, j, by] | `irisDT[,.N,by=Species]`
+GROUP BY multiple | DT[i, j, by] | `irisDT[,.N,by=.(Species,Width=Petal.Width)]`
+
+
+
+`*` Uses `irisDT<-data.table(iris)` throughout

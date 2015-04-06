@@ -36,6 +36,9 @@ output:
 ```
 
 #  Wrangling tables
+```{r autodoc, child='fundamentals/tablewrangling.Rmd', eval=TRUE}
+```
+
 #  Making charts
 #  Bonus round: magrittr & dplyr
 

@@ -110,7 +110,14 @@ img {
 <li><a href="#in">In</a></li>
 <li><a href="#out">Out</a></li>
 </ul></li>
-<li><a href="#wrangling-tables">Wrangling tables</a></li>
+<li><a href="#wrangling-tables">Wrangling tables</a><ul>
+<li><a href="#sql">SQL</a><ul>
+<li><a href="#data.table-is-sql-like">data.table is “SQL-like”</a></li>
+<li><a href="#data.table-behaves-like-a-database">data.table behaves like a database</a></li>
+<li><a href="#data.table-differences-to-sql-server">data.table differences to SQL Server</a></li>
+</ul></li>
+<li><a href="#data.table-cookbook-single-table-basics">data.table cookbook – Single table basics</a></li>
+</ul></li>
 <li><a href="#making-charts">Making charts</a></li>
 <li><a href="#bonus-round-magrittr-dplyr">Bonus round: magrittr &amp; dplyr</a></li>
 <li><a href="#making-documents">Making documents</a></li>
@@ -163,8 +170,8 @@ img {
 </div>
 <div id="how-it-hangs-together" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-3445" style="width:90%;height:90%;" class="DiagrammeR"></div>
-<script type="application/json" data-for="htmlwidget-3445">{ "x": {
+<p><div id="htmlwidget-6538" style="width:90%;height:90%;" class="DiagrammeR"></div>
+<script type="application/json" data-for="htmlwidget-6538">{ "x": {
  "diagram": "graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, ...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, xlsx, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nend" 
 },"evals": [  ] }</script></p>
 </div>
@@ -727,6 +734,114 @@ install_github(&quot;stephlocke/Rtaining&quot;)</code></pre></li>
 </div>
 <div id="wrangling-tables" class="section level1">
 <h1>Wrangling tables</h1>
+<div id="sql" class="section level2">
+<h2>SQL</h2>
+<div id="data.table-is-sql-like" class="section level3">
+<h3>data.table is “SQL-like”</h3>
+<pre><code>DT[i, j, by]
+DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
+</div>
+<div id="data.table-behaves-like-a-database" class="section level3">
+<h3>data.table behaves like a database</h3>
+<p>A data.table acts like an in-memory RDBMS:</p>
+<ul>
+<li>The result of a query is a table</li>
+<li>Can set clustered primary keys over single or multiple columns</li>
+<li>Can set non-clustered secondary keys over single or multiple columns</li>
+<li>Can perform a wide range of relational algebra</li>
+</ul>
+</div>
+<div id="data.table-differences-to-sql-server" class="section level3">
+<h3>data.table differences to SQL Server</h3>
+<p>There are some differences that need to be mentioned:</p>
+<ul>
+<li>A primary key can have repeat values</li>
+<li>No constrained foreign keys</li>
+<li>Joins are done by <em>position in key</em> so tblA with key A, and tblB with key C,A would join on tblA[A] and tblB[C]</li>
+<li>It’s inherently dynamic so vectors of column names etc. can be provided</li>
+</ul>
+</div>
+</div>
+<div id="data.table-cookbook-single-table-basics" class="section level2">
+<h2>data.table cookbook – Single table basics</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Task</th>
+<th align="left">Generic syntax</th>
+<th align="left">Example(s)<code>*</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CREATE</td>
+<td align="left">data.table(…)</td>
+<td align="left"><code>data.table(a=1:3 , b=LETTERS[1:3])</code> <code>data.table(iris)</code></td>
+</tr>
+<tr class="even">
+<td align="left">PRIMARY KEY</td>
+<td align="left">data.table(…,key=) setkey()</td>
+<td align="left"><code>data.table(a=1:3 , b=LETTERS[1:3], key=&quot;b&quot;)</code> <code>setkey(data.table(iris),Species)</code></td>
+</tr>
+<tr class="odd">
+<td align="left">SELECT basic</td>
+<td align="left">DT[ , .( … )]</td>
+<td align="left"><code>irisDT[ , .(Species, Sepal.Length)]</code></td>
+</tr>
+<tr class="even">
+<td align="left">SELECT alias</td>
+<td align="left">DT[ , .( a=… )]</td>
+<td align="left"><code>irisDT[ , .(Species, Length=Sepal.Length)]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">SELECT aggregation</td>
+<td align="left">DT[ , .( sum(…) , .N )]</td>
+<td align="left"><code>irisDT[ , .(Count=.N, Length=mean(Sepal.Length))]</code></td>
+</tr>
+<tr class="even">
+<td align="left">SELECT dynamically i.e. by reference</td>
+<td align="left">DT[ , colnames , with=FALSE]</td>
+<td align="left"><code>cols&lt;-colnames(irisDT); irisDT[ , cols, with=FALSE]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">WHERE exact on primary key</td>
+<td align="left">DT[value] DT[value, …]</td>
+<td align="left"><code>irisDT[&quot;setosa&quot;]</code> <code>irisDT[&quot;setosa&quot;, .(Count=.N)]</code></td>
+</tr>
+<tr class="even">
+<td align="left">WHERE</td>
+<td align="left">DT[condition] DT[condition, j, by]</td>
+<td align="left"><code>irisDT[Species==&quot;setosa&quot;]</code> <code>irisDT[Species==&quot;setosa&quot;, .(Count=.N)]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">ORDER asc.</td>
+<td align="left">DT[order(…)] DT[order(…), j, by]</td>
+<td align="left"><code>irisDT[order(Species)]</code></td>
+</tr>
+<tr class="even">
+<td align="left">ORDER desc.</td>
+<td align="left">DT[order(-…)] DT[order(-…), j, by]</td>
+<td align="left"><code>irisDT[order(-Species)]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">ORDER multiple</td>
+<td align="left">DT[order(…)] DT[order(…), j, by]</td>
+<td align="left"><code>irisDT[order(-Species, Petal.Width)]</code></td>
+</tr>
+<tr class="even">
+<td align="left">GROUP BY single</td>
+<td align="left">DT[i, j, by]</td>
+<td align="left"><code>irisDT[,.N,by=Species]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">GROUP BY multiple</td>
+<td align="left">DT[i, j, by]</td>
+<td align="left"><code>irisDT[,.N,by=.(Species,Width=Petal.Width)]</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>*</code> Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
+</div>
 </div>
 <div id="making-charts" class="section level1">
 <h1>Making charts</h1>
