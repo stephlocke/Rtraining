@@ -117,6 +117,7 @@ img {
 <li><a href="#data.table-differences-to-sql-server">data.table differences to SQL Server</a></li>
 </ul></li>
 <li><a href="#data.table-cookbook-single-table-basics">data.table cookbook – Single table basics</a></li>
+<li><a href="#data.table-cookbook-crud">data.table cookbook – CRUD</a></li>
 </ul></li>
 <li><a href="#making-charts">Making charts</a></li>
 <li><a href="#bonus-round-magrittr-dplyr">Bonus round: magrittr &amp; dplyr</a></li>
@@ -170,8 +171,8 @@ img {
 </div>
 <div id="how-it-hangs-together" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-6538" style="width:90%;height:90%;" class="DiagrammeR"></div>
-<script type="application/json" data-for="htmlwidget-6538">{ "x": {
+<p><div id="htmlwidget-5802" style="width:90%;height:90%;" class="DiagrammeR"></div>
+<script type="application/json" data-for="htmlwidget-5802">{ "x": {
  "diagram": "graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, ...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, xlsx, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nend" 
 },"evals": [  ] }</script></p>
 </div>
@@ -749,6 +750,8 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <li>Can set clustered primary keys over single or multiple columns</li>
 <li>Can set non-clustered secondary keys over single or multiple columns</li>
 <li>Can perform a wide range of relational algebra</li>
+<li>Can do CRUD operations</li>
+<li>Think in columns / sets not rows!</li>
 </ul>
 </div>
 <div id="data.table-differences-to-sql-server" class="section level3">
@@ -759,6 +762,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <li>No constrained foreign keys</li>
 <li>Joins are done by <em>position in key</em> so tblA with key A, and tblB with key C,A would join on tblA[A] and tblB[C]</li>
 <li>It’s inherently dynamic so vectors of column names etc. can be provided</li>
+<li>DELETE doesn’t exist explicitly</li>
 </ul>
 </div>
 </div>
@@ -837,6 +841,61 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <td align="left">GROUP BY multiple</td>
 <td align="left">DT[i, j, by]</td>
 <td align="left"><code>irisDT[,.N,by=.(Species,Width=Petal.Width)]</code></td>
+</tr>
+<tr class="even">
+<td align="left">TOP</td>
+<td align="left">head(DT, n)</td>
+<td align="left"><code>head(irisDT)</code></td>
+</tr>
+<tr class="odd">
+<td align="left">HAVING</td>
+<td align="left">DT[i, j, by][condition]</td>
+<td align="left"><code>irisDT[,.(Count=.N),by=Species][Count&gt;25]</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>*</code> Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
+</div>
+<div id="data.table-cookbook-crud" class="section level2">
+<h2>data.table cookbook – CRUD</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Task</th>
+<th align="left">Generic syntax</th>
+<th align="left">Example(s)<code>*</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">INSERT</td>
+<td align="left">DT &lt;- rbindlist(DT, newDT)</td>
+<td align="left"><code>irisDT&lt;-rbindlist(irisDT,irisDT[1])</code></td>
+</tr>
+<tr class="even">
+<td align="left">READ aka SELECT (see above)</td>
+<td align="left">DT[ , .( … )]</td>
+<td align="left"><code>irisDT[ , .(Species, Sepal.Length)]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">UPDATE / ADD column</td>
+<td align="left">DT[ , a := b ]</td>
+<td align="left"><code>irisDT[,Sepal.Area := Sepal.Width * Sepal.Length]</code></td>
+</tr>
+<tr class="even">
+<td align="left">UPDATE / ADD multiple columns</td>
+<td align="left">DT[ , `:=`(a = b, c = d) ]</td>
+<td align="left"><code>irisDT[,`:=`(CreatedDate = Sys.Date(), User = &quot;Steph&quot;)]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">UPDATE / ADD multiple columns by reference</td>
+<td align="left">DT[ , newcols:=vals ]</td>
+<td align="left"><code>irisDT[,c(&quot;a&quot;,&quot;b&quot;):=.(1,2)]</code></td>
+</tr>
+<tr class="even">
+<td align="left">DELETE</td>
+<td align="left">DT &lt;- DT[!condition]</td>
+<td align="left"><code>irisDT &lt;- irisDT[!(Species==&quot;setosa&quot; &amp; Petal.Length&gt;=1.5)]</code></td>
 </tr>
 </tbody>
 </table>

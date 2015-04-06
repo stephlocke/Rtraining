@@ -21,7 +21,8 @@ A data.table acts like an in-memory RDBMS:
 - Can set clustered primary keys over single or multiple columns
 - Can set non-clustered secondary keys over single or multiple columns
 - Can perform a wide range of relational algebra
-
+- Can do CRUD operations
+- Think in columns / sets not rows!
 
 ### data.table differences to SQL Server
 There are some differences that need to be mentioned:
@@ -30,6 +31,7 @@ There are some differences that need to be mentioned:
 - No constrained foreign keys
 - Joins are done by *position in key* so tblA with key A, and tblB with key C,A would join on tblA[A] and tblB[C]
 - It's inherently dynamic so vectors of column names etc. can be provided
+- DELETE doesn't exist explicitly
 
 ## data.table cookbook -- Single table basics
 Task | Generic syntax | Example(s)`*`
@@ -47,7 +49,19 @@ ORDER desc. | DT[order(-...)] DT[order(-...), j, by] | `irisDT[order(-Species)]`
 ORDER multiple | DT[order(...)] DT[order(...), j, by] | `irisDT[order(-Species, Petal.Width)]`
 GROUP BY single | DT[i, j, by] | `irisDT[,.N,by=Species]`
 GROUP BY multiple | DT[i, j, by] | `irisDT[,.N,by=.(Species,Width=Petal.Width)]`
+TOP | head(DT, n) | `head(irisDT)`
+HAVING | DT[i, j, by][condition] | `irisDT[,.(Count=.N),by=Species][Count>25]` 
 
+`*` Uses `irisDT<-data.table(iris)` throughout
 
+## data.table cookbook -- CRUD
+Task | Generic syntax | Example(s)`*`
+------------- | ------------- | -------------
+INSERT | DT <- rbindlist(DT, newDT) | `irisDT<-rbindlist(irisDT,irisDT[1])`
+READ aka SELECT (see above) | DT[ , .( ... )] | `irisDT[ , .(Species, Sepal.Length)]`
+UPDATE / ADD column | DT[ , a := b ] | `irisDT[,Sepal.Area := Sepal.Width * Sepal.Length]`
+UPDATE / ADD multiple columns | DT[ , \`:=\`(a = b, c = d) ] | ```r 'irisDT[,\x60:=\x60(CreatedDate = Sys.Date(), User = "Steph")]'` ``
+UPDATE / ADD multiple columns by reference | DT[ , newcols:=vals ] | `irisDT[,c("a","b"):=.(1,2)]`
+DELETE | DT <- DT[!condition] | `irisDT <- irisDT[!(Species=="setosa" & Petal.Length>=1.5)]`
 
 `*` Uses `irisDT<-data.table(iris)` throughout
