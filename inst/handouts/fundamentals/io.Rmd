@@ -1,0 +1,26 @@
+---
+title: "IO"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: cerulean
+---
+
+## In
+
+Format | Functions
+------------- | -------------
+CSV | read.csv , data.table::fread , readr::read_csv 
+Excel | readxl::read_excel 
+Database | RODBC::sqlQuery , DBI::dbGetQuery 
+SPSS / SAS / Stata | haven::read_[prog] 
+Hadoop | rHadoopClient::read.hdfs 
+NoSQL | mongodb::mongo.find , RNeo4Jj::getNodes
+
+
+## Out
+
+Format | Functions
+------------- | -------------
+CSV | write.csv

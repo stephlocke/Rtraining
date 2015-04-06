@@ -32,6 +32,8 @@ output:
 ```
 
 #  IO
+```{r autodoc, child='fundamentals/io.Rmd', eval=TRUE}
+```
 
 #  Wrangling tables
 #  Making charts

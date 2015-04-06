@@ -10,7 +10,7 @@
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2015-04-05" />
+<meta name="date" content="2015-04-06" />
 
 <title>R: from analysis to integration</title>
 
@@ -72,7 +72,7 @@ img {
 <div id="header">
 <h1 class="title">R: from analysis to integration</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2015-04-05</em></h4>
+<h4 class="date"><em>2015-04-06</em></h4>
 </div>
 
 <div id="TOC">
@@ -106,7 +106,10 @@ img {
 <li><a href="#compound-data-types">Compound data types</a></li>
 <li><a href="#useful-functions-relating-to-data-types">Useful functions relating to data types</a></li>
 </ul></li>
-<li><a href="#io">IO</a></li>
+<li><a href="#io">IO</a><ul>
+<li><a href="#in">In</a></li>
+<li><a href="#out">Out</a></li>
+</ul></li>
 <li><a href="#wrangling-tables">Wrangling tables</a></li>
 <li><a href="#making-charts">Making charts</a></li>
 <li><a href="#bonus-round-magrittr-dplyr">Bonus round: magrittr &amp; dplyr</a></li>
@@ -160,8 +163,8 @@ img {
 </div>
 <div id="how-it-hangs-together" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-7767" style="width:90%;height:90%;" class="DiagrammeR"></div>
-<script type="application/json" data-for="htmlwidget-7767">{ "x": {
+<p><div id="htmlwidget-3445" style="width:90%;height:90%;" class="DiagrammeR"></div>
+<script type="application/json" data-for="htmlwidget-3445">{ "x": {
  "diagram": "graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, ...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, xlsx, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nend" 
 },"evals": [  ] }</script></p>
 </div>
@@ -667,6 +670,60 @@ install_github(&quot;stephlocke/Rtaining&quot;)</code></pre></li>
 </div>
 <div id="io" class="section level1">
 <h1>IO</h1>
+<div id="in" class="section level2">
+<h2>In</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Format</th>
+<th align="left">Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CSV</td>
+<td align="left">read.csv , data.table::fread , readr::read_csv</td>
+</tr>
+<tr class="even">
+<td align="left">Excel</td>
+<td align="left">readxl::read_excel</td>
+</tr>
+<tr class="odd">
+<td align="left">Database</td>
+<td align="left">RODBC::sqlQuery , DBI::dbGetQuery</td>
+</tr>
+<tr class="even">
+<td align="left">SPSS / SAS / Stata</td>
+<td align="left">haven::read_[prog]</td>
+</tr>
+<tr class="odd">
+<td align="left">Hadoop</td>
+<td align="left">rHadoopClient::read.hdfs</td>
+</tr>
+<tr class="even">
+<td align="left">NoSQL</td>
+<td align="left">mongodb::mongo.find , RNeo4Jj::getNodes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="out" class="section level2">
+<h2>Out</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Format</th>
+<th align="left">Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CSV</td>
+<td align="left">write.csv</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="wrangling-tables" class="section level1">
 <h1>Wrangling tables</h1>
