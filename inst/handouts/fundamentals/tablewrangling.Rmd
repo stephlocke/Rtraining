@@ -32,6 +32,7 @@ There are some differences that need to be mentioned:
 - Joins are done by *position in key* so tblA with key A, and tblB with key C,A would join on tblA[A] and tblB[C]
 - It's inherently dynamic so vectors of column names etc. can be provided
 - DELETE doesn't exist explicitly
+- It's case-sensitive
 
 ## data.table cookbook -- Single table basics
 Task | Generic syntax | Example(s)`*`
@@ -65,3 +66,19 @@ UPDATE / ADD multiple columns by reference | DT[ , newcols:=vals ] | `irisDT[,c(
 DELETE | DT <- DT[!condition] | `irisDT <- irisDT[!(Species=="setosa" & Petal.Length>=1.5)]`
 
 `*` Uses `irisDT<-data.table(iris)` throughout
+
+## data.table cookbook -- Relationships
+Task | Generic syntax | Example(s)`*`
+------------- | ------------- | -------------
+INNER JOIN | X[Y] | `irisDT[lookupDT]`
+LEFT JOIN | Y[X] | `lookupDT[irisDT]`
+FULL JOIN| merge(X,Y,all=TRUE) | `merge(irisDT, lookupDT, all=TRUE)`
+CROSS JOIN | optiRum::CJ.dt(X,Y) | `CJ.dt(irisDT, lookupDT)`
+UNION ALL | rbindlist(list(X,Y),fill=TRUE) | `rbindlist(list(irisDT, lookupDT), fill=TRUE)`
+UNION | unique(rbindlist(list(X,Y),fill=TRUE)) | `unique(rbindlist(list(irisDT, lookupDT), fill=TRUE))`
+
+`*` Uses:
+```
+irisDT   <- data.table(iris, key="Species")
+lookupDT <- data.table(Species=c("setosa","virginica","Blah"), Band=c("A","B","A"), key="Species")
+``` 

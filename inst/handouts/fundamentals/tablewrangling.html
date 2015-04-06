@@ -96,6 +96,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <li>Joins are done by <em>position in key</em> so tblA with key A, and tblB with key C,A would join on tblA[A] and tblB[C]</li>
 <li>It’s inherently dynamic so vectors of column names etc. can be provided</li>
 <li>DELETE doesn’t exist explicitly</li>
+<li>It’s case-sensitive</li>
 </ul>
 </div>
 </div>
@@ -233,6 +234,53 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </tbody>
 </table>
 <p><code>*</code> Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
+</div>
+<div id="data.table-cookbook-relationships" class="section level2">
+<h2>data.table cookbook – Relationships</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Task</th>
+<th align="left">Generic syntax</th>
+<th align="left">Example(s)<code>*</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">INNER JOIN</td>
+<td align="left">X[Y]</td>
+<td align="left"><code>irisDT[lookupDT]</code></td>
+</tr>
+<tr class="even">
+<td align="left">LEFT JOIN</td>
+<td align="left">Y[X]</td>
+<td align="left"><code>lookupDT[irisDT]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">FULL JOIN</td>
+<td align="left">merge(X,Y,all=TRUE)</td>
+<td align="left"><code>merge(irisDT, lookupDT, all=TRUE)</code></td>
+</tr>
+<tr class="even">
+<td align="left">CROSS JOIN</td>
+<td align="left">optiRum::CJ.dt(X,Y)</td>
+<td align="left"><code>CJ.dt(irisDT, lookupDT)</code></td>
+</tr>
+<tr class="odd">
+<td align="left">UNION ALL</td>
+<td align="left">rbindlist(list(X,Y),fill=TRUE)</td>
+<td align="left"><code>rbindlist(list(irisDT, lookupDT), fill=TRUE)</code></td>
+</tr>
+<tr class="even">
+<td align="left">UNION</td>
+<td align="left">unique(rbindlist(list(X,Y),fill=TRUE))</td>
+<td align="left"><code>unique(rbindlist(list(irisDT, lookupDT), fill=TRUE))</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>*</code> Uses:</p>
+<pre><code>irisDT   &lt;- data.table(iris, key=&quot;Species&quot;)
+lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;,&quot;virginica&quot;,&quot;Blah&quot;), Band=c(&quot;A&quot;,&quot;B&quot;,&quot;A&quot;), key=&quot;Species&quot;)</code></pre>
 </div>
 
 
