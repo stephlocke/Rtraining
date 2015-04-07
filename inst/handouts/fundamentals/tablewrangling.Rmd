@@ -34,7 +34,8 @@ There are some differences that need to be mentioned:
 - DELETE doesn't exist explicitly
 - It's case-sensitive
 
-## data.table cookbook -- Single table basics
+## data.table cookbook 
+### Single table basics
 Task | Generic syntax | Example(s)`*`
 ------------- | ------------- | -------------
 CREATE | data.table(...) | `data.table(a=1:3 , b=LETTERS[1:3])` `data.table(iris)`
@@ -55,7 +56,7 @@ HAVING | DT[i, j, by][condition] | `irisDT[,.(Count=.N),by=Species][Count>25]`
 
 `*` Uses `irisDT<-data.table(iris)` throughout
 
-## data.table cookbook -- CRUD
+### CRUD
 Task | Generic syntax | Example(s)`*`
 ------------- | ------------- | -------------
 INSERT | DT <- rbindlist(DT, newDT) | `irisDT<-rbindlist(irisDT,irisDT[1])`
@@ -67,7 +68,7 @@ DELETE | DT <- DT[!condition] | `irisDT <- irisDT[!(Species=="setosa" & Petal.Le
 
 `*` Uses `irisDT<-data.table(iris)` throughout
 
-## data.table cookbook -- Relationships
+### Relationships
 Task | Generic syntax | Example(s)`*`
 ------------- | ------------- | -------------
 INNER JOIN | X[Y] | `irisDT[lookupDT]`

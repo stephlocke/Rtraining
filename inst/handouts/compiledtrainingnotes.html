@@ -10,7 +10,7 @@
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2015-04-06" />
+<meta name="date" content="2015-04-07" />
 
 <title>R: from analysis to integration</title>
 
@@ -72,7 +72,7 @@ img {
 <div id="header">
 <h1 class="title">R: from analysis to integration</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2015-04-06</em></h4>
+<h4 class="date"><em>2015-04-07</em></h4>
 </div>
 
 <div id="TOC">
@@ -116,9 +116,11 @@ img {
 <li><a href="#data.table-behaves-like-a-database">data.table behaves like a database</a></li>
 <li><a href="#data.table-differences-to-sql-server">data.table differences to SQL Server</a></li>
 </ul></li>
-<li><a href="#data.table-cookbook-single-table-basics">data.table cookbook – Single table basics</a></li>
-<li><a href="#data.table-cookbook-crud">data.table cookbook – CRUD</a></li>
-<li><a href="#data.table-cookbook-relationships">data.table cookbook – Relationships</a></li>
+<li><a href="#data.table-cookbook">data.table cookbook</a><ul>
+<li><a href="#single-table-basics">Single table basics</a></li>
+<li><a href="#crud">CRUD</a></li>
+<li><a href="#relationships">Relationships</a></li>
+</ul></li>
 </ul></li>
 <li><a href="#making-charts">Making charts</a></li>
 <li><a href="#bonus-round-magrittr-dplyr">Bonus round: magrittr &amp; dplyr</a></li>
@@ -172,8 +174,8 @@ img {
 </div>
 <div id="how-it-hangs-together" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-9098" style="width:90%;height:90%;" class="DiagrammeR"></div>
-<script type="application/json" data-for="htmlwidget-9098">{ "x": {
+<p><div id="htmlwidget-7422" style="width:90%;height:90%;" class="DiagrammeR"></div>
+<script type="application/json" data-for="htmlwidget-7422">{ "x": {
  "diagram": "graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, ...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, xlsx, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nend" 
 },"evals": [  ] }</script></p>
 </div>
@@ -768,8 +770,10 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </ul>
 </div>
 </div>
-<div id="data.table-cookbook-single-table-basics" class="section level2">
-<h2>data.table cookbook – Single table basics</h2>
+<div id="data.table-cookbook" class="section level2">
+<h2>data.table cookbook</h2>
+<div id="single-table-basics" class="section level3">
+<h3>Single table basics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -858,8 +862,8 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </table>
 <p><code>*</code> Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
 </div>
-<div id="data.table-cookbook-crud" class="section level2">
-<h2>data.table cookbook – CRUD</h2>
+<div id="crud" class="section level3">
+<h3>CRUD</h3>
 <table>
 <thead>
 <tr class="header">
@@ -903,8 +907,8 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </table>
 <p><code>*</code> Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
 </div>
-<div id="data.table-cookbook-relationships" class="section level2">
-<h2>data.table cookbook – Relationships</h2>
+<div id="relationships" class="section level3">
+<h3>Relationships</h3>
 <table>
 <thead>
 <tr class="header">
@@ -949,6 +953,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <p><code>*</code> Uses:</p>
 <pre><code>irisDT   &lt;- data.table(iris, key=&quot;Species&quot;)
 lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;,&quot;virginica&quot;,&quot;Blah&quot;), Band=c(&quot;A&quot;,&quot;B&quot;,&quot;A&quot;), key=&quot;Species&quot;)</code></pre>
+</div>
 </div>
 </div>
 <div id="making-charts" class="section level1">
