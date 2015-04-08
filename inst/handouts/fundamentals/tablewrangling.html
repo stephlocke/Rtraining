@@ -10,7 +10,7 @@
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2015-04-07" />
+<meta name="date" content="2015-04-08" />
 
 <title>Wrangling Tables</title>
 
@@ -64,7 +64,7 @@ img {
 <div id="header">
 <h1 class="title">Wrangling Tables</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2015-04-07</em></h4>
+<h4 class="date"><em>2015-04-08</em></h4>
 </div>
 
 
@@ -109,7 +109,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <tr class="header">
 <th align="left">Task</th>
 <th align="left">Generic syntax</th>
-<th align="left">Example(s)<code>*</code></th>
+<th align="left">Example(s)*</th>
 </tr>
 </thead>
 <tbody>
@@ -190,7 +190,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </tr>
 </tbody>
 </table>
-<p><code>*</code> Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
+<p>* Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
 </div>
 <div id="crud" class="section level3">
 <h3>CRUD</h3>
@@ -199,7 +199,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <tr class="header">
 <th align="left">Task</th>
 <th align="left">Generic syntax</th>
-<th align="left">Example(s)<code>*</code></th>
+<th align="left">Example(s)*</th>
 </tr>
 </thead>
 <tbody>
@@ -235,7 +235,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </tr>
 </tbody>
 </table>
-<p><code>*</code> Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
+<p>* Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
 </div>
 <div id="relationships" class="section level3">
 <h3>Relationships</h3>
@@ -244,7 +244,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <tr class="header">
 <th align="left">Task</th>
 <th align="left">Generic syntax</th>
-<th align="left">Example(s)<code>*</code></th>
+<th align="left">Example(s)*</th>
 </tr>
 </thead>
 <tbody>
@@ -280,9 +280,49 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </tr>
 </tbody>
 </table>
-<p><code>*</code> Uses:</p>
+<p>* Uses:</p>
 <pre><code>irisDT   &lt;- data.table(iris, key=&quot;Species&quot;)
 lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;,&quot;virginica&quot;,&quot;Blah&quot;), Band=c(&quot;A&quot;,&quot;B&quot;,&quot;A&quot;), key=&quot;Species&quot;)</code></pre>
+</div>
+<div id="intermediate-syntax" class="section level3">
+<h3>Intermediate syntax</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Task</th>
+<th align="left">Generic syntax</th>
+<th align="left">Example(s)*</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">UPDATE / ADD column of summary stat</td>
+<td align="left">DT[ , a := b ]</td>
+<td align="left"><code>irisDT[ , All.SL.Mean:=mean(Sepal.Length)]</code></td>
+</tr>
+<tr class="even">
+<td align="left">UPDATE / ADD column by group</td>
+<td align="left">DT[ , a := b , by]</td>
+<td align="left"><code>irisDT[ , Species.SL.Mean:=mean(Sepal.Length), by=Species]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">TOP by group</td>
+<td align="left">DT[ , head(.SD), by]</td>
+<td align="left"><code>irisDT[ , head(.SD,2) , by=Species]</code></td>
+</tr>
+<tr class="even">
+<td align="left">Largest record</td>
+<td align="left">DT[which.max(col)]</td>
+<td align="left"><code>irisDT[which.max(Sepal.Length)]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Largest record by group</td>
+<td align="left">DT[ , .SD[which.max(col)], by]</td>
+<td align="left"><code>irisDT[ , .SD[which.max(Sepal.Length)] , by=Species]</code></td>
+</tr>
+</tbody>
+</table>
+<p>* Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
 </div>
 </div>
 

@@ -16,7 +16,7 @@ output:
 ```
 
 # R
-```{r autodoc, child='../slidedecks/R basics/R.Rmd', eval=TRUE}
+```{r autodoc, child='fundamentals/R.Rmd', eval=TRUE}
 ```
 
 # Installation
