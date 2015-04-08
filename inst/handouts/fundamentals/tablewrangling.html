@@ -402,6 +402,30 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;,&quot;virginica&quot;,&qu
 </tr>
 </tbody>
 </table>
+</div>
+<div id="advanced-tasks" class="section level3">
+<h3>Advanced tasks</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Task</th>
+<th align="left">Generic syntax</th>
+<th align="left">Example(s)*</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">GROUP BY each new incidence of group</td>
+<td align="left">DT[ , cols , by=(col, rleid(col))]</td>
+<td align="left"><code>irisDT[order(Sepal.Length), .N, by=.(Species, rleid(Species))]</code></td>
+</tr>
+<tr class="even">
+<td align="left">Calculate using (previous/next/n) row</td>
+<td align="left">DT[ , col / shift( cols, n, fill, type)]</td>
+<td align="left"><code>irisDT[ , Sepal.Length / shift(Sepal.Length) ]</code></td>
+</tr>
+</tbody>
+</table>
 <p>* Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
 </div>
 </div>

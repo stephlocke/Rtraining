@@ -112,4 +112,11 @@ AGGREGATE multiple columns | DT[ , lapply(.SD, sum)] | `irisDT[ , lapply(.SD,sum
 AGGREGATE multiple columns by group | DT[ , lapply(.SD, sum) , by] | `irisDT[ , lapply(.SD,sum) , by=Species]`
 RANK | DT[ , frank(col) ] | `irisDT[,frank(Sepal.Length,ties.method="first")]`
 
+
+### Advanced tasks
+Task | Generic syntax | Example(s)\*
+------------- | ------------- | -------------
+GROUP BY each new incidence of group | DT[ , cols , by=(col, rleid(col))] | `irisDT[order(Sepal.Length), .N, by=.(Species, rleid(Species))]`
+Calculate using (previous/next/n) row | DT[ , col / shift( cols, n, fill, type)] | `irisDT[ , Sepal.Length / shift(Sepal.Length) ]`
+
 \* Uses `irisDT<-data.table(iris)` throughout

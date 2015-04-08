@@ -122,6 +122,7 @@ img {
 <li><a href="#metadata">Metadata</a></li>
 <li><a href="#relationships">Relationships</a></li>
 <li><a href="#intermediate-tasks">Intermediate tasks</a></li>
+<li><a href="#advanced-tasks">Advanced tasks</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#making-charts">Making charts</a></li>
@@ -176,8 +177,8 @@ img {
 </div>
 <div id="how-it-hangs-together" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-2762" style="width:90%;height:90%;" class="DiagrammeR"></div>
-<script type="application/json" data-for="htmlwidget-2762">{ "x": {
+<p><div id="htmlwidget-6432" style="width:90%;height:90%;" class="DiagrammeR"></div>
+<script type="application/json" data-for="htmlwidget-6432">{ "x": {
  "diagram": "graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, ...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, xlsx, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nend" 
 },"evals": [  ] }</script></p>
 </div>
@@ -1075,6 +1076,30 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;,&quot;virginica&quot;,&qu
 <td align="left">RANK</td>
 <td align="left">DT[ , frank(col) ]</td>
 <td align="left"><code>irisDT[,frank(Sepal.Length,ties.method=&quot;first&quot;)]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="advanced-tasks" class="section level3">
+<h3>Advanced tasks</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Task</th>
+<th align="left">Generic syntax</th>
+<th align="left">Example(s)*</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">GROUP BY each new incidence of group</td>
+<td align="left">DT[ , cols , by=(col, rleid(col))]</td>
+<td align="left"><code>irisDT[order(Sepal.Length), .N, by=.(Species, rleid(Species))]</code></td>
+</tr>
+<tr class="even">
+<td align="left">Calculate using (previous/next/n) row</td>
+<td align="left">DT[ , col / shift( cols, n, fill, type)]</td>
+<td align="left"><code>irisDT[ , Sepal.Length / shift(Sepal.Length) ]</code></td>
 </tr>
 </tbody>
 </table>
