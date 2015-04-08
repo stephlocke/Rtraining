@@ -42,6 +42,7 @@ CREATE | data.table(...) | `data.table(a=1:3 , b=LETTERS[1:3])` `data.table(iris
 PRIMARY KEY | data.table(...,key=) setkey() | `data.table(a=1:3 , b=LETTERS[1:3], key="b")` `setkey(data.table(iris),Species)`
 SELECT basic | DT[ , .( ... )] | `irisDT[ , .(Species, Sepal.Length)]`
 SELECT alias | DT[ , .( a=... )] | `irisDT[ , .(Species, Length=Sepal.Length)]`
+SELECT COUNT | DT[ , .N]  | `irisDT[ ,.N]`
 SELECT aggregation | DT[ , .( sum(...) , .N )] | `irisDT[ , .(Count=.N, Length=mean(Sepal.Length))]`
 SELECT dynamically i.e. by reference | DT[ , colnames , with=FALSE] | `cols<-colnames(irisDT); irisDT[ , cols, with=FALSE]`
 WHERE exact on primary key | DT[value] DT[value, ...] | `irisDT["setosa"]` `irisDT["setosa", .(Count=.N)]`
@@ -68,6 +69,16 @@ DELETE | DT <- DT[!condition] | `irisDT <- irisDT[!(Species=="setosa" & Petal.Le
 
 \* Uses `irisDT<-data.table(iris)` throughout
 
+### Metadata
+Task | Generic syntax | Example(s)\*
+------------- | ------------- | -------------
+Structure | str(DT) | `str(irisDT)`
+Column Names | colnames(DT) | `colnames(irisDT)`
+Summary stats | summary(DT) | `summary(irisDT)`
+Retrieve primary key info | key(DT) | `key(irisDT)`
+
+\* Uses `irisDT<-data.table(iris)` throughout
+
 ### Relationships
 Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
@@ -84,13 +95,19 @@ irisDT   <- data.table(iris, key="Species")
 lookupDT <- data.table(Species=c("setosa","virginica","Blah"), Band=c("A","B","A"), key="Species")
 ``` 
 
-### Intermediate syntax
+### Intermediate tasks
 Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
 UPDATE / ADD column of summary stat | DT[ , a := b ] | `irisDT[ , All.SL.Mean:=mean(Sepal.Length)]`
 UPDATE / ADD column by group | DT[ , a := b , by] | `irisDT[ , Species.SL.Mean:=mean(Sepal.Length), by=Species]`
 TOP by group | DT[ , head(.SD), by] | `irisDT[ , head(.SD,2) , by=Species]`
 Largest record | DT[which.max(col)] | `irisDT[which.max(Sepal.Length)]`
-Largest record by group | DT[ , .SD[which.max(col)], by]| `irisDT[ , .SD[which.max(Sepal.Length)] , by=Species]`
+Largest record by group | DT[ , .SD[which.max(col)], by] | `irisDT[ , .SD[which.max(Sepal.Length)] , by=Species]`
+Cumulative total | DT[ , cumsum(col) ] | `irisDT[ , cumsum(Sepal.Width)]`
+NEGATIVE SELECT | DT[ , .SD , .SDcols=-"colname"] | `irisDT[ , .SD , .SDcols=-"Species"]`
+AGGREGATE multiple columns | DT[ , lapply(.SD, sum)] | `irisDT[ , lapply(.SD,sum) , .SDcols=-"Species"]`
+AGGREGATE multiple columns by group | DT[ , lapply(.SD, sum) , by] | `irisDT[ , lapply(.SD,sum) , by=Species]`
+
+
 
 \* Uses `irisDT<-data.table(iris)` throughout
