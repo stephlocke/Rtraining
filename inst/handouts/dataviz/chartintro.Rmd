@@ -89,3 +89,11 @@ ggplot(data=iris, aes(x=Sepal.Width, y=Sepal.Length, colour=Species)) +
   optiRum::theme_optimum()
 
 ```
+
+### More resources
+
+ - Hadley's documentation is top notch so check out the [ggplot2 documentation](http://docs.ggplot2.org/current/)
+ - View the [source code](https://github.com/hadley/ggplot2-book) for Hadley's [ggplot2 book](http://www.amazon.co.uk/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403/ref=asap_bc?ie=UTF8)
+ - The online [R graphics cookbook](http://www.cookbook-r.com/Graphs/)
+ - A [ggplot2 cheatsheet](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/) blog post
+ - [Plot.ly library](https://plot.ly/ggplot2/)

@@ -23,4 +23,9 @@ NoSQL | mongodb::mongo.find , RNeo4Jj::getNodes
 
 Format | Functions
 ------------- | -------------
-CSV | write.csv
+CSV | write.csv 
+Excel |. 
+Database | RODBC::sqlSave , DBI::dbGetQuery 
+SPSS / SAS / Stata | .
+Hadoop |.
+NoSQL | .
