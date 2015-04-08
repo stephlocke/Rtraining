@@ -13,7 +13,19 @@ output:
  - necessary package: rmarkdown
  - necessary software: [pandoc](http://johnmacfarlane.net/pandoc/installing.html)
  - recommended software: [MiKTeX](http://miktex.org/)
+ 
+## Using R for documents
+Producing documents / documentation directly in R means that you closely interweave (knit) your analysis and R code together. This reduces rework time when you want to change or extend your code, it reduces time to produce new versions, and because it's code it's easier to apply strong software development principles to it.
 
+Oh, and you don't need to spend hours making text boxes in powerpoint! Win ;-)
+
+There are two languages which you can knit your r code into:
+
+ - markdown
+ - LaTeX (pronounced lay-tech alas)
+
+Markdown is great for very quick generation and light (or css driven) styling and is what this section focusses on. LaTeX is excellent for producing stunning, more flexible documents.
+ 
 ## rmarkdown standard text
 
 **The following text is the default text that gets created when you produce a new rmarkdown file in rstudio**

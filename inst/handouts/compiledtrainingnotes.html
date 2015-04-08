@@ -139,6 +139,7 @@ img {
 <li><a href="#bonus-round-magrittr-dplyr">Bonus round: magrittr &amp; dplyr</a></li>
 <li><a href="#making-documents">Making documents</a><ul>
 <li><a href="#requirements-2">Requirements</a></li>
+<li><a href="#using-r-for-documents">Using R for documents</a></li>
 <li><a href="#rmarkdown-standard-text">rmarkdown standard text</a></li>
 <li><a href="#rmarkdown-standard-documentation">rmarkdown standard documentation</a></li>
 </ul></li>
@@ -192,8 +193,8 @@ img {
 </div>
 <div id="how-it-hangs-together" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-1878" style="width:90%;height:90%;" class="DiagrammeR"></div>
-<script type="application/json" data-for="htmlwidget-1878">{ "x": {
+<p><div id="htmlwidget-1950" style="width:90%;height:90%;" class="DiagrammeR"></div>
+<script type="application/json" data-for="htmlwidget-1950">{ "x": {
  "diagram": "graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, ...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, xlsx, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nend" 
 },"evals": [  ] }</script></p>
 </div>
@@ -1341,6 +1342,17 @@ p</code></pre>
 <li>necessary software: <a href="http://johnmacfarlane.net/pandoc/installing.html">pandoc</a></li>
 <li>recommended software: <a href="http://miktex.org/">MiKTeX</a></li>
 </ul>
+</div>
+<div id="using-r-for-documents" class="section level2">
+<h2>Using R for documents</h2>
+<p>Producing documents / documentation directly in R means that you closely interweave (knit) your analysis and R code together. This reduces rework time when you want to change or extend your code, it reduces time to produce new versions, and because it’s code it’s easier to apply strong software development principles to it.</p>
+<p>Oh, and you don’t need to spend hours making text boxes in powerpoint! Win ;-)</p>
+<p>There are two languages which you can knit your r code into:</p>
+<ul>
+<li>markdown</li>
+<li>LaTeX (pronounced lay-tech alas)</li>
+</ul>
+<p>Markdown is great for very quick generation and light (or css driven) styling and is what this section focusses on. LaTeX is excellent for producing stunning, more flexible documents.</p>
 </div>
 <div id="rmarkdown-standard-text" class="section level2">
 <h2>rmarkdown standard text</h2>
