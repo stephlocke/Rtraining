@@ -1,0 +1,91 @@
+---
+title: "Chart intro"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+---
+
+
+## DISCLAIMER
+This intro covers the charting package ggplot2.
+
+The "base" charting functionality will not be covered because it's much more difficult to achieve good looking results quickly and I don't believe in that much effort for so little benefit!
+
+## ggplot2
+> ggplot2 is a plotting system for R, based on the grammar of graphics, which tries to take the good parts of base and lattice graphics and none of the bad parts. It takes care of many of the fiddly details that make plotting a hassle (like drawing legends) as well as providing a powerful model of graphics that makes it easy to produce complex multi-layered graphics.
+
+### Glossary
+
+Term | Explanation | Example(s)
+------------- | ------------- | -------------
+**plot** | A plot using the grammar of graphics | `ggplot()`
+**aes**thetics | attributes of the chart | colour, x, y
+mapping | relating a column in your data to an aesthetic 
+**stat**istical transformation | a translation of the raw data into a refined summary | `stat_density()`
+**geom**etry | the display of aesthetics | `geom_line()`, `geom_bar()`
+**scale** | the range of values | axes, legends
+**coord**inate system|  how geometries get laid out | `coord_flip()`
+**facet** | a means of subsetting the chart | `facet_grid()`
+**theme** | display properties | `theme_minimal()`
+
+
+### Constructing a chart - a step by step process
+
+ 1. Create the base plot
+```{r, echo=TRUE,eval=TRUE}
+library(ggplot2)
+
+p <- ggplot(data=iris)
+```
+
+ 2. Add aesthetic mappings
+```{r, echo=TRUE,eval=TRUE}
+p <- ggplot(data=iris, aes(x=Sepal.Width, y=Sepal.Length, colour=Species))
+```
+
+ 3. Add a geometry
+```{r, echo=TRUE,eval=TRUE}
+p <- p + geom_point()
+p
+```
+
+ 4. (Optional) Add a statistic
+ 
+```{r, echo=TRUE,eval=TRUE}
+p <- p + stat_boxplot(fill="transparent")
+p
+```
+
+ 5. (Optional) Alter coordinate system
+ 
+```{r, echo=TRUE,eval=TRUE}
+p <- p + coord_flip()
+p
+```
+
+ 6. (Optional) Facet the chart
+ 
+```{r, echo=TRUE,eval=TRUE}
+p <- p + facet_grid(.~Species)
+p
+```
+
+ 7. (Optional) Amend look and feel
+
+```{r, echo=TRUE,eval=TRUE}
+p <- p + optiRum::theme_optimum()
+p
+```
+
+### Constructing a chart - a one-step process
+```{r, echo=TRUE,eval=TRUE}
+ggplot(data=iris, aes(x=Sepal.Width, y=Sepal.Length, colour=Species)) + 
+  geom_point() +
+  stat_boxplot(fill="transparent") +
+  # coord_flip() + # Commented out
+  facet_grid(.~Species) +
+  optiRum::theme_optimum()
+
+```

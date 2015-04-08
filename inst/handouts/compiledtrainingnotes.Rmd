@@ -7,6 +7,9 @@ output:
     toc: true
     theme: united
 ---
+```{r setup, eval=TRUE, results='hide'}
+knitr::opts_knit$set(warning = FALSE, message= FALSE)
+```
 
 # Front Matter
 ```{r autodoc, child='frontmatter/objective.Rmd', eval=TRUE}
@@ -40,6 +43,9 @@ output:
 ```
 
 #  Making charts
+```{r autodoc, child='dataviz/chartintro.Rmd', eval=TRUE}
+```
+
 #  Bonus round: magrittr & dplyr
 
 

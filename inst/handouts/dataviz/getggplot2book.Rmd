@@ -1,0 +1,25 @@
+---
+title: "Get the ggplot2 book (windows)"
+author: "Steph Locke"
+date: "Wednesday, April 08, 2015"
+output: html_document
+---
+
+Let's get our own copy of Hadley Wickham's awesome ggplot2 book.
+
+ - Create a new package from source control (git) and use the url <https://github.com/hadley/ggplot2-book>
+
+ - Once this has been retrieved (you may get problems with "checking out", don't worry, simply open up the project) run the following r code to ensure you have the dependencies:
+```r
+install.packages(c("knitr", "ggplot2", "jpeg", "mgcv",
+                  "lubridate", "rvest", "magrittr",
+                  "gridExtra", "dplyr", "tidyr", "xtable",
+                  "nlme", "effects", "broom", "hexbin",
+                  "maps", "Hmisc"))
+devtools::install_github(c("adletaw/captioner", "hadley/bookdown"))
+
+```
+
+- We need a LaTeX installation too ... [MiKTeX](http://miktex.org/download) and an extra font (Inconsolata)
+
+Alternatively, we can just browse the markdown files on git but you won't be able to see the charts
