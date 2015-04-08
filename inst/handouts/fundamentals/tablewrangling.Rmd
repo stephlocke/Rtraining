@@ -67,7 +67,7 @@ INSERT | DT <- rbindlist(DT, newDT) | `irisDT<-rbindlist( irisDT, irisDT[1] )`
 READ aka SELECT (see above) | DT[ , .( cols )] | `irisDT[ , .(Species, Sepal.Length)]`
 UPDATE / ADD column | DT[ , a := b ] | `irisDT[ , Sepal.Area := Sepal.Width * Sepal.Length]`
 UPDATE / ADD multiple columns | DT[ , \`:=\`(a = b, c = d) ] | ```r 'irisDT[ , \x60:=\x60(CreatedDate = Sys.Date(), User = "Steph")]'` ``
-UPDATE / ADD multiple columns by reference | DT[ , newcols:=vals ] | `irisDT[ , c("a","b"):=.(1,2)]`
+UPDATE / ADD multiple columns by reference | DT[ , (newcols):=vals ] | `irisDT[ , c("a","b"):=.(1,2)]`
 DELETE | DT <- DT[!condition] | `irisDT <- irisDT[!(Species=="setosa" & Petal.Length>=1.5)]`
 
 \* Uses `irisDT <- data.table(iris)`
@@ -85,12 +85,13 @@ Retrieve primary key info | key(DT) | `key(irisDT)`
 ### Relationships
 Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
-INNER JOIN | X[Y] | `irisDT[lookupDT]`
+INNER JOIN | Y[X, nomatch=0L] | `lookupDT[irisDT,nomatch=0L]`
 LEFT JOIN | Y[X] | `lookupDT[irisDT]`
 FULL JOIN| merge(X, Y, all=TRUE) | `merge(irisDT, lookupDT, all=TRUE)`
 CROSS JOIN | optiRum::CJ.dt(X,Y) | `CJ.dt(irisDT, lookupDT)`
 UNION ALL | rbindlist( list(X,Y), fill=TRUE ) | `rbindlist( list(irisDT, lookupDT), fill=TRUE )`
 UNION | unique( rbindlist( list(X,Y), fill=TRUE ) ) | `unique( rbindlist( list(irisDT, lookupDT), fill=TRUE ) )`
+JOIN and AGGREGATE | Y[X, cols, by] | `lookupDT[irisDT,.(count=.N),by=Band]`
 
 \* Uses:
 ```
@@ -111,6 +112,8 @@ NEGATIVE SELECT | DT[ , .SD, .SDcols=-"colname"] | `irisDT[ , .SD, .SDcols=-"Spe
 AGGREGATE multiple columns | DT[ , lapply(.SD, sum)] | `irisDT[ , lapply(.SD,sum), .SDcols=-"Species"]`
 AGGREGATE multiple columns by group | DT[ , lapply(.SD, sum), by] | `irisDT[ , lapply(.SD,sum), by=Species]`
 RANK | DT[ , frank(col) ] | `irisDT[ , frank(Sepal.Length,ties.method="first")]`
+NULL count in every col by group | DT[ , lapply(.SD, function(x) sum(is.na(x))), by] | `irisDT[ , lapply(.SD,function(x) sum(is.na(x))), by=Species]`
+Cardinality in every column by group | DT[ , lapply(.SD, uniqueN), by] | `irisDT[ , lapply(.SD,uniqueN), by=Species]`
 
 \* Uses `irisDT <- data.table(iris)`
 
@@ -119,5 +122,6 @@ Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
 GROUP BY each new incidence of group | DT[ , cols , by=(col, rleid(col))] | `irisDT[order(Sepal.Length), .N, by=.(Species, rleid(Species))]`
 Calculate using (previous/next/n) row | DT[ , col / shift( cols, n, fill, type)] | `irisDT[ , prev.Sepal.Length:=shift(Sepal.Length), by=Species ]`
+Sub-queries | DT[...][...][...] | `irisDT[,.(Sepal.Length=mean(Sepal.Length)), by=Species][Sepal.Length>6,.(Species)]`
 
 \* Uses `irisDT <- data.table(iris)`
