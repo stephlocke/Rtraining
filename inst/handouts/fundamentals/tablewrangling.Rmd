@@ -53,10 +53,11 @@ WHERE LIKE | DT[like(col,pattern)] DT[ col %like% pattern ] | `irisDT[like(Speci
 ORDER asc. | DT[order(cols)] DT[order(cols), j, by] | `irisDT[order(Species)]`
 ORDER desc. | DT[order(-cols)] DT[order(-cols), j, by] | `irisDT[order(-Species)]`
 ORDER multiple | DT[order(cols)] DT[order(cols), j, by] | `irisDT[order(-Species, Petal.Width)]`
-GROUP BY single | DT[i, j, by] | `irisDT[,.N,by=Species]`
-GROUP BY multiple | DT[i, j, by] | `irisDT[,.N,by=.(Species,Width=Petal.Width)]`
+GROUP BY single | DT[i, j, by] | `irisDT[ ,.N, by=Species]`
+GROUP BY multiple | DT[i, j, by] | `irisDT[ ,.N, by=.(Species,Width=Petal.Width)]`
 TOP | head(DT, n) | `head(irisDT)`
-HAVING | DT[i, j, by][condition] | `irisDT[,.(Count=.N),by=Species][Count>25]` 
+HAVING | DT[i, j, by][condition] | `irisDT[ , .(Count=.N), by=Species][Count>25]` 
+Sub-queries | DT[...][...][...] | `irisDT[ , .(Sepal.Length=mean(Sepal.Length)), by=Species][Sepal.Length>6, .(Species)]`
 
 \* Uses `irisDT <- data.table(iris)`
 
@@ -85,7 +86,7 @@ Retrieve primary key info | key(DT) | `key(irisDT)`
 ### Relationships
 Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
-INNER JOIN | Y[X, nomatch=0L] | `lookupDT[irisDT,nomatch=0L]`
+INNER JOIN | Y[X, nomatch=0L] | `lookupDT[irisDT,nomatch=0]`
 LEFT JOIN | Y[X] | `lookupDT[irisDT]`
 FULL JOIN| merge(X, Y, all=TRUE) | `merge(irisDT, lookupDT, all=TRUE)`
 CROSS JOIN | optiRum::CJ.dt(X,Y) | `CJ.dt(irisDT, lookupDT)`
@@ -109,11 +110,11 @@ Largest record | DT[ which.max(col) ] | `irisDT[ which.max(Sepal.Length) ]`
 Largest record by group | DT[ , .SD[ which.max(col) ], by] | `irisDT[ , .SD[ which.max(Sepal.Length) ], by=Species]`
 Cumulative total | DT[ , cumsum(col) ] | `irisDT[ , cumsum(Sepal.Width)]`
 NEGATIVE SELECT | DT[ , .SD, .SDcols=-"colname"] | `irisDT[ , .SD, .SDcols=-"Species"]`
+RANK | DT[ , frank(col) ] | `irisDT[ , frank(Sepal.Length,ties.method="first")]`
 AGGREGATE multiple columns | DT[ , lapply(.SD, sum)] | `irisDT[ , lapply(.SD,sum), .SDcols=-"Species"]`
 AGGREGATE multiple columns by group | DT[ , lapply(.SD, sum), by] | `irisDT[ , lapply(.SD,sum), by=Species]`
-RANK | DT[ , frank(col) ] | `irisDT[ , frank(Sepal.Length,ties.method="first")]`
-NULL count in every col by group | DT[ , lapply(.SD, function(x) sum(is.na(x))), by] | `irisDT[ , lapply(.SD,function(x) sum(is.na(x))), by=Species]`
-Cardinality in every column by group | DT[ , lapply(.SD, uniqueN), by] | `irisDT[ , lapply(.SD,uniqueN), by=Species]`
+COUNT DISTINCT multiple columns by group | DT[ , lapply(.SD, uniqueN), by] | `irisDT[ , lapply(.SD,uniqueN), by=Species]`
+COUNT NULL multiple columns by group | DT[ , lapply(.SD, function(x) sum(is.na(x))), by] | `irisDT[ , lapply(.SD,function(x) sum(is.na(x))), by=Species]`
 
 \* Uses `irisDT <- data.table(iris)`
 
@@ -122,6 +123,5 @@ Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
 GROUP BY each new incidence of group | DT[ , cols , by=(col, rleid(col))] | `irisDT[order(Sepal.Length), .N, by=.(Species, rleid(Species))]`
 Calculate using (previous/next/n) row | DT[ , col / shift( cols, n, fill, type)] | `irisDT[ , prev.Sepal.Length:=shift(Sepal.Length), by=Species ]`
-Sub-queries | DT[...][...][...] | `irisDT[,.(Sepal.Length=mean(Sepal.Length)), by=Species][Sepal.Length>6,.(Species)]`
 
 \* Uses `irisDT <- data.table(iris)`

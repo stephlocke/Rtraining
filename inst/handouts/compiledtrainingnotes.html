@@ -186,8 +186,8 @@ img {
 </div>
 <div id="how-it-hangs-together" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-2038" style="width:90%;height:90%;" class="DiagrammeR"></div>
-<script type="application/json" data-for="htmlwidget-2038">{ "x": {
+<p><div id="htmlwidget-6429" style="width:90%;height:90%;" class="DiagrammeR"></div>
+<script type="application/json" data-for="htmlwidget-6429">{ "x": {
  "diagram": "graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, ...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, xlsx, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nend" 
 },"evals": [  ] }</script></p>
 </div>
@@ -897,12 +897,12 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <tr class="even">
 <td align="left">GROUP BY single</td>
 <td align="left">DT[i, j, by]</td>
-<td align="left"><code>irisDT[,.N,by=Species]</code></td>
+<td align="left"><code>irisDT[ ,.N, by=Species]</code></td>
 </tr>
 <tr class="odd">
 <td align="left">GROUP BY multiple</td>
 <td align="left">DT[i, j, by]</td>
-<td align="left"><code>irisDT[,.N,by=.(Species,Width=Petal.Width)]</code></td>
+<td align="left"><code>irisDT[ ,.N, by=.(Species,Width=Petal.Width)]</code></td>
 </tr>
 <tr class="even">
 <td align="left">TOP</td>
@@ -912,7 +912,12 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <tr class="odd">
 <td align="left">HAVING</td>
 <td align="left">DT[i, j, by][condition]</td>
-<td align="left"><code>irisDT[,.(Count=.N),by=Species][Count&gt;25]</code></td>
+<td align="left"><code>irisDT[ , .(Count=.N), by=Species][Count&gt;25]</code></td>
+</tr>
+<tr class="even">
+<td align="left">Sub-queries</td>
+<td align="left">DT[…][…][…]</td>
+<td align="left"><code>irisDT[ , .(Sepal.Length=mean(Sepal.Length)), by=Species][Sepal.Length&gt;6, .(Species)]</code></td>
 </tr>
 </tbody>
 </table>
@@ -951,7 +956,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </tr>
 <tr class="odd">
 <td align="left">UPDATE / ADD multiple columns by reference</td>
-<td align="left">DT[ , newcols:=vals ]</td>
+<td align="left">DT[ , (newcols):=vals ]</td>
 <td align="left"><code>irisDT[ , c(&quot;a&quot;,&quot;b&quot;):=.(1,2)]</code></td>
 </tr>
 <tr class="even">
@@ -1011,8 +1016,8 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">INNER JOIN</td>
-<td align="left">X[Y]</td>
-<td align="left"><code>irisDT[lookupDT]</code></td>
+<td align="left">Y[X, nomatch=0L]</td>
+<td align="left"><code>lookupDT[irisDT,nomatch=0]</code></td>
 </tr>
 <tr class="even">
 <td align="left">LEFT JOIN</td>
@@ -1038,6 +1043,11 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <td align="left">UNION</td>
 <td align="left">unique( rbindlist( list(X,Y), fill=TRUE ) )</td>
 <td align="left"><code>unique( rbindlist( list(irisDT, lookupDT), fill=TRUE ) )</code></td>
+</tr>
+<tr class="odd">
+<td align="left">JOIN and AGGREGATE</td>
+<td align="left">Y[X, cols, by]</td>
+<td align="left"><code>lookupDT[irisDT,.(count=.N),by=Band]</code></td>
 </tr>
 </tbody>
 </table>
@@ -1092,19 +1102,29 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;, &quot;virginica&quot;, &
 <td align="left"><code>irisDT[ , .SD, .SDcols=-&quot;Species&quot;]</code></td>
 </tr>
 <tr class="even">
+<td align="left">RANK</td>
+<td align="left">DT[ , frank(col) ]</td>
+<td align="left"><code>irisDT[ , frank(Sepal.Length,ties.method=&quot;first&quot;)]</code></td>
+</tr>
+<tr class="odd">
 <td align="left">AGGREGATE multiple columns</td>
 <td align="left">DT[ , lapply(.SD, sum)]</td>
 <td align="left"><code>irisDT[ , lapply(.SD,sum), .SDcols=-&quot;Species&quot;]</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">AGGREGATE multiple columns by group</td>
 <td align="left">DT[ , lapply(.SD, sum), by]</td>
 <td align="left"><code>irisDT[ , lapply(.SD,sum), by=Species]</code></td>
 </tr>
+<tr class="odd">
+<td align="left">COUNT DISTINCT multiple columns by group</td>
+<td align="left">DT[ , lapply(.SD, uniqueN), by]</td>
+<td align="left"><code>irisDT[ , lapply(.SD,uniqueN), by=Species]</code></td>
+</tr>
 <tr class="even">
-<td align="left">RANK</td>
-<td align="left">DT[ , frank(col) ]</td>
-<td align="left"><code>irisDT[ , frank(Sepal.Length,ties.method=&quot;first&quot;)]</code></td>
+<td align="left">COUNT NULL multiple columns by group</td>
+<td align="left">DT[ , lapply(.SD, function(x) sum(is.na(x))), by]</td>
+<td align="left"><code>irisDT[ , lapply(.SD,function(x) sum(is.na(x))), by=Species]</code></td>
 </tr>
 </tbody>
 </table>
