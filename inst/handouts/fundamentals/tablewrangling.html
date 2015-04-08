@@ -210,7 +210,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </tr>
 </tbody>
 </table>
-<p>* Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
+<p>* Uses <code>irisDT &lt;- data.table(iris)</code></p>
 </div>
 <div id="crud" class="section level3">
 <h3>CRUD</h3>
@@ -226,7 +226,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <tr class="odd">
 <td align="left">INSERT</td>
 <td align="left">DT &lt;- rbindlist(DT, newDT)</td>
-<td align="left"><code>irisDT&lt;-rbindlist(irisDT,irisDT[1])</code></td>
+<td align="left"><code>irisDT&lt;-rbindlist( irisDT, irisDT[1] )</code></td>
 </tr>
 <tr class="even">
 <td align="left">READ aka SELECT (see above)</td>
@@ -236,17 +236,17 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <tr class="odd">
 <td align="left">UPDATE / ADD column</td>
 <td align="left">DT[ , a := b ]</td>
-<td align="left"><code>irisDT[,Sepal.Area := Sepal.Width * Sepal.Length]</code></td>
+<td align="left"><code>irisDT[ , Sepal.Area := Sepal.Width * Sepal.Length]</code></td>
 </tr>
 <tr class="even">
 <td align="left">UPDATE / ADD multiple columns</td>
 <td align="left">DT[ , `:=`(a = b, c = d) ]</td>
-<td align="left"><code>irisDT[,`:=`(CreatedDate = Sys.Date(), User = &quot;Steph&quot;)]</code></td>
+<td align="left"><code>irisDT[ , `:=`(CreatedDate = Sys.Date(), User = &quot;Steph&quot;)]</code></td>
 </tr>
 <tr class="odd">
 <td align="left">UPDATE / ADD multiple columns by reference</td>
 <td align="left">DT[ , newcols:=vals ]</td>
-<td align="left"><code>irisDT[,c(&quot;a&quot;,&quot;b&quot;):=.(1,2)]</code></td>
+<td align="left"><code>irisDT[ , c(&quot;a&quot;,&quot;b&quot;):=.(1,2)]</code></td>
 </tr>
 <tr class="even">
 <td align="left">DELETE</td>
@@ -255,7 +255,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </tr>
 </tbody>
 </table>
-<p>* Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
+<p>* Uses <code>irisDT &lt;- data.table(iris)</code></p>
 </div>
 <div id="metadata" class="section level3">
 <h3>Metadata</h3>
@@ -290,7 +290,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </tr>
 </tbody>
 </table>
-<p>* Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
+<p>* Uses <code>irisDT &lt;- data.table(iris)</code></p>
 </div>
 <div id="relationships" class="section level3">
 <h3>Relationships</h3>
@@ -315,7 +315,7 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </tr>
 <tr class="odd">
 <td align="left">FULL JOIN</td>
-<td align="left">merge(X,Y,all=TRUE)</td>
+<td align="left">merge(X, Y, all=TRUE)</td>
 <td align="left"><code>merge(irisDT, lookupDT, all=TRUE)</code></td>
 </tr>
 <tr class="even">
@@ -325,19 +325,19 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </tr>
 <tr class="odd">
 <td align="left">UNION ALL</td>
-<td align="left">rbindlist(list(X,Y),fill=TRUE)</td>
-<td align="left"><code>rbindlist(list(irisDT, lookupDT), fill=TRUE)</code></td>
+<td align="left">rbindlist( list(X,Y), fill=TRUE )</td>
+<td align="left"><code>rbindlist( list(irisDT, lookupDT), fill=TRUE )</code></td>
 </tr>
 <tr class="even">
 <td align="left">UNION</td>
-<td align="left">unique(rbindlist(list(X,Y),fill=TRUE))</td>
-<td align="left"><code>unique(rbindlist(list(irisDT, lookupDT), fill=TRUE))</code></td>
+<td align="left">unique( rbindlist( list(X,Y), fill=TRUE ) )</td>
+<td align="left"><code>unique( rbindlist( list(irisDT, lookupDT), fill=TRUE ) )</code></td>
 </tr>
 </tbody>
 </table>
 <p>* Uses:</p>
 <pre><code>irisDT   &lt;- data.table(iris, key=&quot;Species&quot;)
-lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;,&quot;virginica&quot;,&quot;Blah&quot;), Band=c(&quot;A&quot;,&quot;B&quot;,&quot;A&quot;), key=&quot;Species&quot;)</code></pre>
+lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;, &quot;virginica&quot;, &quot;Blah&quot;), Band=c(&quot;A&quot;, &quot;B&quot;, &quot;A&quot;), key=&quot;Species&quot;)</code></pre>
 </div>
 <div id="intermediate-tasks" class="section level3">
 <h3>Intermediate tasks</h3>
@@ -357,7 +357,7 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;,&quot;virginica&quot;,&qu
 </tr>
 <tr class="even">
 <td align="left">UPDATE / ADD column by group</td>
-<td align="left">DT[ , a := b , by]</td>
+<td align="left">DT[ , a := b, by]</td>
 <td align="left"><code>irisDT[ , Species.SL.Mean:=mean(Sepal.Length), by=Species]</code></td>
 </tr>
 <tr class="odd">
@@ -367,13 +367,13 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;,&quot;virginica&quot;,&qu
 </tr>
 <tr class="even">
 <td align="left">Largest record</td>
-<td align="left">DT[which.max(col)]</td>
-<td align="left"><code>irisDT[which.max(Sepal.Length)]</code></td>
+<td align="left">DT[ which.max(col) ]</td>
+<td align="left"><code>irisDT[ which.max(Sepal.Length) ]</code></td>
 </tr>
 <tr class="odd">
 <td align="left">Largest record by group</td>
-<td align="left">DT[ , .SD[which.max(col)], by]</td>
-<td align="left"><code>irisDT[ , .SD[which.max(Sepal.Length)] , by=Species]</code></td>
+<td align="left">DT[ , .SD[ which.max(col) ], by]</td>
+<td align="left"><code>irisDT[ , .SD[ which.max(Sepal.Length) ], by=Species]</code></td>
 </tr>
 <tr class="even">
 <td align="left">Cumulative total</td>
@@ -382,26 +382,27 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;,&quot;virginica&quot;,&qu
 </tr>
 <tr class="odd">
 <td align="left">NEGATIVE SELECT</td>
-<td align="left">DT[ , .SD , .SDcols=-“colname”]</td>
-<td align="left"><code>irisDT[ , .SD , .SDcols=-&quot;Species&quot;]</code></td>
+<td align="left">DT[ , .SD, .SDcols=-“colname”]</td>
+<td align="left"><code>irisDT[ , .SD, .SDcols=-&quot;Species&quot;]</code></td>
 </tr>
 <tr class="even">
 <td align="left">AGGREGATE multiple columns</td>
 <td align="left">DT[ , lapply(.SD, sum)]</td>
-<td align="left"><code>irisDT[ , lapply(.SD,sum) , .SDcols=-&quot;Species&quot;]</code></td>
+<td align="left"><code>irisDT[ , lapply(.SD,sum), .SDcols=-&quot;Species&quot;]</code></td>
 </tr>
 <tr class="odd">
 <td align="left">AGGREGATE multiple columns by group</td>
-<td align="left">DT[ , lapply(.SD, sum) , by]</td>
-<td align="left"><code>irisDT[ , lapply(.SD,sum) , by=Species]</code></td>
+<td align="left">DT[ , lapply(.SD, sum), by]</td>
+<td align="left"><code>irisDT[ , lapply(.SD,sum), by=Species]</code></td>
 </tr>
 <tr class="even">
 <td align="left">RANK</td>
 <td align="left">DT[ , frank(col) ]</td>
-<td align="left"><code>irisDT[,frank(Sepal.Length,ties.method=&quot;first&quot;)]</code></td>
+<td align="left"><code>irisDT[ , frank(Sepal.Length,ties.method=&quot;first&quot;)]</code></td>
 </tr>
 </tbody>
 </table>
+<p>* Uses <code>irisDT &lt;- data.table(iris)</code></p>
 </div>
 <div id="advanced-tasks" class="section level3">
 <h3>Advanced tasks</h3>
@@ -426,7 +427,7 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;,&quot;virginica&quot;,&qu
 </tr>
 </tbody>
 </table>
-<p>* Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
+<p>* Uses <code>irisDT &lt;- data.table(iris)</code></p>
 </div>
 </div>
 

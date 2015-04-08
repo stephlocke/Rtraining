@@ -58,19 +58,19 @@ GROUP BY multiple | DT[i, j, by] | `irisDT[,.N,by=.(Species,Width=Petal.Width)]`
 TOP | head(DT, n) | `head(irisDT)`
 HAVING | DT[i, j, by][condition] | `irisDT[,.(Count=.N),by=Species][Count>25]` 
 
-\* Uses `irisDT<-data.table(iris)` throughout
+\* Uses `irisDT <- data.table(iris)`
 
 ### CRUD
 Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
-INSERT | DT <- rbindlist(DT, newDT) | `irisDT<-rbindlist(irisDT,irisDT[1])`
+INSERT | DT <- rbindlist(DT, newDT) | `irisDT<-rbindlist( irisDT, irisDT[1] )`
 READ aka SELECT (see above) | DT[ , .( cols )] | `irisDT[ , .(Species, Sepal.Length)]`
-UPDATE / ADD column | DT[ , a := b ] | `irisDT[,Sepal.Area := Sepal.Width * Sepal.Length]`
-UPDATE / ADD multiple columns | DT[ , \`:=\`(a = b, c = d) ] | ```r 'irisDT[,\x60:=\x60(CreatedDate = Sys.Date(), User = "Steph")]'` ``
-UPDATE / ADD multiple columns by reference | DT[ , newcols:=vals ] | `irisDT[,c("a","b"):=.(1,2)]`
+UPDATE / ADD column | DT[ , a := b ] | `irisDT[ , Sepal.Area := Sepal.Width * Sepal.Length]`
+UPDATE / ADD multiple columns | DT[ , \`:=\`(a = b, c = d) ] | ```r 'irisDT[ , \x60:=\x60(CreatedDate = Sys.Date(), User = "Steph")]'` ``
+UPDATE / ADD multiple columns by reference | DT[ , newcols:=vals ] | `irisDT[ , c("a","b"):=.(1,2)]`
 DELETE | DT <- DT[!condition] | `irisDT <- irisDT[!(Species=="setosa" & Petal.Length>=1.5)]`
 
-\* Uses `irisDT<-data.table(iris)` throughout
+\* Uses `irisDT <- data.table(iris)`
 
 ### Metadata
 Task | Generic syntax | Example(s)\*
@@ -80,38 +80,39 @@ Column Names | colnames(DT) | `colnames(irisDT)`
 Summary stats | summary(DT) | `summary(irisDT)`
 Retrieve primary key info | key(DT) | `key(irisDT)`
 
-\* Uses `irisDT<-data.table(iris)` throughout
+\* Uses `irisDT <- data.table(iris)`
 
 ### Relationships
 Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
 INNER JOIN | X[Y] | `irisDT[lookupDT]`
 LEFT JOIN | Y[X] | `lookupDT[irisDT]`
-FULL JOIN| merge(X,Y,all=TRUE) | `merge(irisDT, lookupDT, all=TRUE)`
+FULL JOIN| merge(X, Y, all=TRUE) | `merge(irisDT, lookupDT, all=TRUE)`
 CROSS JOIN | optiRum::CJ.dt(X,Y) | `CJ.dt(irisDT, lookupDT)`
-UNION ALL | rbindlist(list(X,Y),fill=TRUE) | `rbindlist(list(irisDT, lookupDT), fill=TRUE)`
-UNION | unique(rbindlist(list(X,Y),fill=TRUE)) | `unique(rbindlist(list(irisDT, lookupDT), fill=TRUE))`
+UNION ALL | rbindlist( list(X,Y), fill=TRUE ) | `rbindlist( list(irisDT, lookupDT), fill=TRUE )`
+UNION | unique( rbindlist( list(X,Y), fill=TRUE ) ) | `unique( rbindlist( list(irisDT, lookupDT), fill=TRUE ) )`
 
 \* Uses:
 ```
 irisDT   <- data.table(iris, key="Species")
-lookupDT <- data.table(Species=c("setosa","virginica","Blah"), Band=c("A","B","A"), key="Species")
+lookupDT <- data.table(Species=c("setosa", "virginica", "Blah"), Band=c("A", "B", "A"), key="Species")
 ``` 
 
 ### Intermediate tasks
 Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
 UPDATE / ADD column of summary stat | DT[ , a := b ] | `irisDT[ , All.SL.Mean:=mean(Sepal.Length)]`
-UPDATE / ADD column by group | DT[ , a := b , by] | `irisDT[ , Species.SL.Mean:=mean(Sepal.Length), by=Species]`
+UPDATE / ADD column by group | DT[ , a := b, by] | `irisDT[ , Species.SL.Mean:=mean(Sepal.Length), by=Species]`
 TOP by group | DT[ , head(.SD), by] | `irisDT[ , head(.SD,2) , by=Species]`
-Largest record | DT[which.max(col)] | `irisDT[which.max(Sepal.Length)]`
-Largest record by group | DT[ , .SD[which.max(col)], by] | `irisDT[ , .SD[which.max(Sepal.Length)] , by=Species]`
+Largest record | DT[ which.max(col) ] | `irisDT[ which.max(Sepal.Length) ]`
+Largest record by group | DT[ , .SD[ which.max(col) ], by] | `irisDT[ , .SD[ which.max(Sepal.Length) ], by=Species]`
 Cumulative total | DT[ , cumsum(col) ] | `irisDT[ , cumsum(Sepal.Width)]`
-NEGATIVE SELECT | DT[ , .SD , .SDcols=-"colname"] | `irisDT[ , .SD , .SDcols=-"Species"]`
-AGGREGATE multiple columns | DT[ , lapply(.SD, sum)] | `irisDT[ , lapply(.SD,sum) , .SDcols=-"Species"]`
-AGGREGATE multiple columns by group | DT[ , lapply(.SD, sum) , by] | `irisDT[ , lapply(.SD,sum) , by=Species]`
-RANK | DT[ , frank(col) ] | `irisDT[,frank(Sepal.Length,ties.method="first")]`
+NEGATIVE SELECT | DT[ , .SD, .SDcols=-"colname"] | `irisDT[ , .SD, .SDcols=-"Species"]`
+AGGREGATE multiple columns | DT[ , lapply(.SD, sum)] | `irisDT[ , lapply(.SD,sum), .SDcols=-"Species"]`
+AGGREGATE multiple columns by group | DT[ , lapply(.SD, sum), by] | `irisDT[ , lapply(.SD,sum), by=Species]`
+RANK | DT[ , frank(col) ] | `irisDT[ , frank(Sepal.Length,ties.method="first")]`
 
+\* Uses `irisDT <- data.table(iris)`
 
 ### Advanced tasks
 Task | Generic syntax | Example(s)\*
@@ -119,4 +120,4 @@ Task | Generic syntax | Example(s)\*
 GROUP BY each new incidence of group | DT[ , cols , by=(col, rleid(col))] | `irisDT[order(Sepal.Length), .N, by=.(Species, rleid(Species))]`
 Calculate using (previous/next/n) row | DT[ , col / shift( cols, n, fill, type)] | `irisDT[ , Sepal.Length / shift(Sepal.Length) ]`
 
-\* Uses `irisDT<-data.table(iris)` throughout
+\* Uses `irisDT <- data.table(iris)`
