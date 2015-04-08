@@ -177,8 +177,8 @@ img {
 </div>
 <div id="how-it-hangs-together" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-8609" style="width:90%;height:90%;" class="DiagrammeR"></div>
-<script type="application/json" data-for="htmlwidget-8609">{ "x": {
+<p><div id="htmlwidget-1157" style="width:90%;height:90%;" class="DiagrammeR"></div>
+<script type="application/json" data-for="htmlwidget-1157">{ "x": {
  "diagram": "graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, ...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, xlsx, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nend" 
 },"evals": [  ] }</script></p>
 </div>
@@ -1100,7 +1100,7 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;, &quot;virginica&quot;, &
 <tr class="even">
 <td align="left">Calculate using (previous/next/n) row</td>
 <td align="left">DT[ , col / shift( cols, n, fill, type)]</td>
-<td align="left"><code>irisDT[ , Sepal.Length / shift(Sepal.Length) ]</code></td>
+<td align="left"><code>irisDT[ , prev.Sepal.Length:=shift(Sepal.Length), by=Species ]</code></td>
 </tr>
 </tbody>
 </table>

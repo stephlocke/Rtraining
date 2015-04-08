@@ -423,7 +423,7 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;, &quot;virginica&quot;, &
 <tr class="even">
 <td align="left">Calculate using (previous/next/n) row</td>
 <td align="left">DT[ , col / shift( cols, n, fill, type)]</td>
-<td align="left"><code>irisDT[ , Sepal.Length / shift(Sepal.Length) ]</code></td>
+<td align="left"><code>irisDT[ , prev.Sepal.Length:=shift(Sepal.Length), by=Species ]</code></td>
 </tr>
 </tbody>
 </table>
