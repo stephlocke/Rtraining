@@ -1,0 +1,42 @@
+---
+title: "Writing documents"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: cerulean
+---
+
+## rmarkdown standard text
+
+**The following text is the default text that gets created when you produce a new rmarkdown file in rstudio**
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## rmarkdown standard documentation
+
+**The following text is part of the standard documentation on rmarkdown. I pull it from [github.com/rstudio/rmarkdown](https://raw.githubusercontent.com/rstudio/rmarkdown/gh-pages/authoring_basics.md) and integrate it using knitr. It is better than I could produce and the act of integrating it gives an extra example of useful ways to build documents.**
+
+```{r grab, echo=FALSE, results='hide', warning=FALSE}
+setInternet2(use = TRUE)
+x <- tempfile(fileext = "Rmd")
+on.exit(unlink(x))
+download.file("https://raw.githubusercontent.com/rstudio/rmarkdown/gh-pages/authoring_basics.md", x)
+```
+
+```{r test-main, child=x}
+```

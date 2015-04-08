@@ -50,6 +50,9 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 
 
 #  Making documents
+```{r autodoc, child='documents/writingdocuments.Rmd', eval=TRUE}
+```
+
 #  Making reports
 #  Making diagrams
 #  Bonus round: LaTeX
