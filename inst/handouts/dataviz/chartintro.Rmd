@@ -13,6 +13,13 @@ This intro covers the charting package ggplot2.
 
 The "base" charting functionality will not be covered because it's much more difficult to achieve good looking results quickly and I don't believe in that much effort for so little benefit!
 
+## Requirements 
+
+ - necessary package: ggplot2
+ - suggested package: RColorBrewer
+ - suggested package: ggthemes
+ - suggested package: optiRum
+
 ## ggplot2
 > ggplot2 is a plotting system for R, based on the grammar of graphics, which tries to take the good parts of base and lattice graphics and none of the bad parts. It takes care of many of the fiddly details that make plotting a hassle (like drawing legends) as well as providing a powerful model of graphics that makes it easy to produce complex multi-layered graphics.
 
@@ -33,14 +40,14 @@ mapping | relating a column in your data to an aesthetic
 
 ### Constructing a chart - a step by step process
 
- 1. Create the base plot
-```{r, echo=TRUE,eval=TRUE}
+ 1. Create the base plot (doesn't work on it's own)
+```{r, echo=TRUE,eval=TRUE,warning=FALSE}
 library(ggplot2)
 
 p <- ggplot(data=iris)
 ```
 
- 2. Add aesthetic mappings
+ 2. Add aesthetic mappings (doesn't work on it's own)
 ```{r, echo=TRUE,eval=TRUE}
 p <- ggplot(data=iris, aes(x=Sepal.Width, y=Sepal.Length, colour=Species))
 ```

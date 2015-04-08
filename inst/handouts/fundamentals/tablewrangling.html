@@ -68,6 +68,13 @@ img {
 </div>
 
 
+<div id="requirements" class="section level2">
+<h2>Requirements</h2>
+<ul>
+<li>necessary package: data.table (&gt;=v1.9.5)</li>
+<li>suggested package: optiRum</li>
+</ul>
+</div>
 <div id="sql" class="section level2">
 <h2>SQL</h2>
 <div id="data.table-is-sql-like" class="section level3">
@@ -419,6 +426,16 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;, &quot;virginica&quot;, &
 <td align="left">COUNT NULL multiple columns by group</td>
 <td align="left">DT[ , lapply(.SD, function(x) sum(is.na(x))), by]</td>
 <td align="left"><code>irisDT[ , lapply(.SD,function(x) sum(is.na(x))), by=Species]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">PIVOT data - to single value column</td>
+<td align="left">melt(DT,…)</td>
+<td align="left"><code>melt(irisDT)</code></td>
+</tr>
+<tr class="even">
+<td align="left">PIVOT data - to aggregate</td>
+<td align="left">dcast(DT, a~b, function)</td>
+<td align="left"><code>dcast(melt(irisDT), Species ~ variable, sum)</code></td>
 </tr>
 </tbody>
 </table>

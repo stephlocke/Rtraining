@@ -7,6 +7,13 @@ output:
     theme: cerulean
 ---
 
+## Requirements 
+
+ - necessary package: knitr
+ - necessary package: rmarkdown
+ - necessary software: [pandoc](http://johnmacfarlane.net/pandoc/installing.html)
+ - recommended software: [MiKTeX](http://miktex.org/)
+
 ## rmarkdown standard text
 
 **The following text is the default text that gets created when you produce a new rmarkdown file in rstudio**

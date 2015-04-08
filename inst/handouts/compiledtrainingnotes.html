@@ -111,6 +111,7 @@ img {
 <li><a href="#out">Out</a></li>
 </ul></li>
 <li><a href="#wrangling-tables">Wrangling tables</a><ul>
+<li><a href="#requirements">Requirements</a></li>
 <li><a href="#sql">SQL</a><ul>
 <li><a href="#data.table-is-sql-like">data.table is “SQL-like”</a></li>
 <li><a href="#data.table-behaves-like-a-database">data.table behaves like a database</a></li>
@@ -127,6 +128,7 @@ img {
 </ul></li>
 <li><a href="#making-charts">Making charts</a><ul>
 <li><a href="#disclaimer">DISCLAIMER</a></li>
+<li><a href="#requirements-1">Requirements</a></li>
 <li><a href="#ggplot2">ggplot2</a><ul>
 <li><a href="#glossary">Glossary</a></li>
 <li><a href="#constructing-a-chart---a-step-by-step-process">Constructing a chart - a step by step process</a></li>
@@ -136,6 +138,7 @@ img {
 </ul></li>
 <li><a href="#bonus-round-magrittr-dplyr">Bonus round: magrittr &amp; dplyr</a></li>
 <li><a href="#making-documents">Making documents</a><ul>
+<li><a href="#requirements-2">Requirements</a></li>
 <li><a href="#rmarkdown-standard-text">rmarkdown standard text</a></li>
 <li><a href="#rmarkdown-standard-documentation">rmarkdown standard documentation</a></li>
 </ul></li>
@@ -189,8 +192,8 @@ img {
 </div>
 <div id="how-it-hangs-together" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-8301" style="width:90%;height:90%;" class="DiagrammeR"></div>
-<script type="application/json" data-for="htmlwidget-8301">{ "x": {
+<p><div id="htmlwidget-1878" style="width:90%;height:90%;" class="DiagrammeR"></div>
+<script type="application/json" data-for="htmlwidget-1878">{ "x": {
  "diagram": "graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, ...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, xlsx, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nend" 
 },"evals": [  ] }</script></p>
 </div>
@@ -777,6 +780,13 @@ install_github(&quot;stephlocke/Rtaining&quot;)</code></pre></li>
 </div>
 <div id="wrangling-tables" class="section level1">
 <h1>Wrangling tables</h1>
+<div id="requirements" class="section level2">
+<h2>Requirements</h2>
+<ul>
+<li>necessary package: data.table (&gt;=v1.9.5)</li>
+<li>suggested package: optiRum</li>
+</ul>
+</div>
 <div id="sql" class="section level2">
 <h2>SQL</h2>
 <div id="data.table-is-sql-like" class="section level3">
@@ -1129,6 +1139,16 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;, &quot;virginica&quot;, &
 <td align="left">DT[ , lapply(.SD, function(x) sum(is.na(x))), by]</td>
 <td align="left"><code>irisDT[ , lapply(.SD,function(x) sum(is.na(x))), by=Species]</code></td>
 </tr>
+<tr class="odd">
+<td align="left">PIVOT data - to single value column</td>
+<td align="left">melt(DT,…)</td>
+<td align="left"><code>melt(irisDT)</code></td>
+</tr>
+<tr class="even">
+<td align="left">PIVOT data - to aggregate</td>
+<td align="left">dcast(DT, a~b, function)</td>
+<td align="left"><code>dcast(melt(irisDT), Species ~ variable, sum)</code></td>
+</tr>
 </tbody>
 </table>
 <p>* Uses <code>irisDT &lt;- data.table(iris)</code></p>
@@ -1166,6 +1186,15 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;, &quot;virginica&quot;, &
 <h2>DISCLAIMER</h2>
 <p>This intro covers the charting package ggplot2.</p>
 <p>The “base” charting functionality will not be covered because it’s much more difficult to achieve good looking results quickly and I don’t believe in that much effort for so little benefit!</p>
+</div>
+<div id="requirements-1" class="section level2">
+<h2>Requirements</h2>
+<ul>
+<li>necessary package: ggplot2</li>
+<li>suggested package: RColorBrewer</li>
+<li>suggested package: ggthemes</li>
+<li>suggested package: optiRum</li>
+</ul>
 </div>
 <div id="ggplot2" class="section level2">
 <h2>ggplot2</h2>
@@ -1233,13 +1262,13 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;, &quot;virginica&quot;, &
 <div id="constructing-a-chart---a-step-by-step-process" class="section level3">
 <h3>Constructing a chart - a step by step process</h3>
 <ol style="list-style-type: decimal">
-<li>Create the base plot</li>
+<li>Create the base plot (doesn’t work on it’s own)</li>
 </ol>
-<pre class="r"><code>library(ggplot2)</code></pre>
-<pre><code>## Warning: package 'ggplot2' was built under R version 3.1.3</code></pre>
-<pre class="r"><code>p &lt;- ggplot(data=iris)</code></pre>
+<pre class="r"><code>library(ggplot2)
+
+p &lt;- ggplot(data=iris)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Add aesthetic mappings</li>
+<li>Add aesthetic mappings (doesn’t work on it’s own)</li>
 </ol>
 <pre class="r"><code>p &lt;- ggplot(data=iris, aes(x=Sepal.Width, y=Sepal.Length, colour=Species))</code></pre>
 <ol start="3" style="list-style-type: decimal">
@@ -1304,6 +1333,15 @@ p</code></pre>
 </div>
 <div id="making-documents" class="section level1">
 <h1>Making documents</h1>
+<div id="requirements-2" class="section level2">
+<h2>Requirements</h2>
+<ul>
+<li>necessary package: knitr</li>
+<li>necessary package: rmarkdown</li>
+<li>necessary software: <a href="http://johnmacfarlane.net/pandoc/installing.html">pandoc</a></li>
+<li>recommended software: <a href="http://miktex.org/">MiKTeX</a></li>
+</ul>
+</div>
 <div id="rmarkdown-standard-text" class="section level2">
 <h2>rmarkdown standard text</h2>
 <p><strong>The following text is the default text that gets created when you produce a new rmarkdown file in rstudio</strong></p>

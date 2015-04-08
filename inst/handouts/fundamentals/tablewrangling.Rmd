@@ -6,7 +6,11 @@ output:
   html_document:
     theme: journal
 ---
+## Requirements 
 
+ - necessary package: data.table (>=v1.9.5)
+ - suggested package: optiRum
+ 
 ## SQL
 ### data.table is "SQL-like"
 ```
@@ -115,6 +119,8 @@ AGGREGATE multiple columns | DT[ , lapply(.SD, sum)] | `irisDT[ , lapply(.SD,sum
 AGGREGATE multiple columns by group | DT[ , lapply(.SD, sum), by] | `irisDT[ , lapply(.SD,sum), by=Species]`
 COUNT DISTINCT multiple columns by group | DT[ , lapply(.SD, uniqueN), by] | `irisDT[ , lapply(.SD,uniqueN), by=Species]`
 COUNT NULL multiple columns by group | DT[ , lapply(.SD, function(x) sum(is.na(x))), by] | `irisDT[ , lapply(.SD,function(x) sum(is.na(x))), by=Species]`
+PIVOT data - to single value column | melt(DT,...) | `melt(irisDT)`
+PIVOT data -  to aggregate | dcast(DT, a~b, function) | `dcast(melt(irisDT), Species ~ variable, sum)`
 
 \* Uses `irisDT <- data.table(iris)`
 
