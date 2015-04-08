@@ -119,8 +119,9 @@ img {
 <li><a href="#data.table-cookbook">data.table cookbook</a><ul>
 <li><a href="#single-table-basics">Single table basics</a></li>
 <li><a href="#crud">CRUD</a></li>
+<li><a href="#metadata">Metadata</a></li>
 <li><a href="#relationships">Relationships</a></li>
-<li><a href="#intermediate-syntax">Intermediate syntax</a></li>
+<li><a href="#intermediate-tasks">Intermediate tasks</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#making-charts">Making charts</a></li>
@@ -175,8 +176,8 @@ img {
 </div>
 <div id="how-it-hangs-together" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-3899" style="width:90%;height:90%;" class="DiagrammeR"></div>
-<script type="application/json" data-for="htmlwidget-3899">{ "x": {
+<p><div id="htmlwidget-4656" style="width:90%;height:90%;" class="DiagrammeR"></div>
+<script type="application/json" data-for="htmlwidget-4656">{ "x": {
  "diagram": "graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, ...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, xlsx, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nend" 
 },"evals": [  ] }</script></p>
 </div>
@@ -584,6 +585,10 @@ install_github(&quot;stephlocke/Rtaining&quot;)</code></pre></li>
 <td align="left">Complex</td>
 <td align="left">i</td>
 </tr>
+<tr class="odd">
+<td align="left">Date</td>
+<td align="left">“2015-04-24”</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -805,56 +810,61 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <td align="left"><code>irisDT[ , .(Species, Length=Sepal.Length)]</code></td>
 </tr>
 <tr class="odd">
+<td align="left">SELECT COUNT</td>
+<td align="left">DT[ , .N]</td>
+<td align="left"><code>irisDT[ ,.N]</code></td>
+</tr>
+<tr class="even">
 <td align="left">SELECT aggregation</td>
 <td align="left">DT[ , .( sum(…) , .N )]</td>
 <td align="left"><code>irisDT[ , .(Count=.N, Length=mean(Sepal.Length))]</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">SELECT dynamically i.e. by reference</td>
 <td align="left">DT[ , colnames , with=FALSE]</td>
 <td align="left"><code>cols&lt;-colnames(irisDT); irisDT[ , cols, with=FALSE]</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">WHERE exact on primary key</td>
 <td align="left">DT[value] DT[value, …]</td>
 <td align="left"><code>irisDT[&quot;setosa&quot;]</code> <code>irisDT[&quot;setosa&quot;, .(Count=.N)]</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">WHERE</td>
 <td align="left">DT[condition] DT[condition, j, by]</td>
 <td align="left"><code>irisDT[Species==&quot;setosa&quot;]</code> <code>irisDT[Species==&quot;setosa&quot;, .(Count=.N)]</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">ORDER asc.</td>
 <td align="left">DT[order(…)] DT[order(…), j, by]</td>
 <td align="left"><code>irisDT[order(Species)]</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">ORDER desc.</td>
 <td align="left">DT[order(-…)] DT[order(-…), j, by]</td>
 <td align="left"><code>irisDT[order(-Species)]</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">ORDER multiple</td>
 <td align="left">DT[order(…)] DT[order(…), j, by]</td>
 <td align="left"><code>irisDT[order(-Species, Petal.Width)]</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">GROUP BY single</td>
 <td align="left">DT[i, j, by]</td>
 <td align="left"><code>irisDT[,.N,by=Species]</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">GROUP BY multiple</td>
 <td align="left">DT[i, j, by]</td>
 <td align="left"><code>irisDT[,.N,by=.(Species,Width=Petal.Width)]</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">TOP</td>
 <td align="left">head(DT, n)</td>
 <td align="left"><code>head(irisDT)</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">HAVING</td>
 <td align="left">DT[i, j, by][condition]</td>
 <td align="left"><code>irisDT[,.(Count=.N),by=Species][Count&gt;25]</code></td>
@@ -908,6 +918,41 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 </table>
 <p>* Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
 </div>
+<div id="metadata" class="section level3">
+<h3>Metadata</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Task</th>
+<th align="left">Generic syntax</th>
+<th align="left">Example(s)*</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Structure</td>
+<td align="left">str(DT)</td>
+<td align="left"><code>str(irisDT)</code></td>
+</tr>
+<tr class="even">
+<td align="left">Column Names</td>
+<td align="left">colnames(DT)</td>
+<td align="left"><code>colnames(irisDT)</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Summary stats</td>
+<td align="left">summary(DT)</td>
+<td align="left"><code>summary(irisDT)</code></td>
+</tr>
+<tr class="even">
+<td align="left">Retrieve primary key info</td>
+<td align="left">key(DT)</td>
+<td align="left"><code>key(irisDT)</code></td>
+</tr>
+</tbody>
+</table>
+<p>* Uses <code>irisDT&lt;-data.table(iris)</code> throughout</p>
+</div>
 <div id="relationships" class="section level3">
 <h3>Relationships</h3>
 <table>
@@ -955,8 +1000,8 @@ DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]</code></pre>
 <pre><code>irisDT   &lt;- data.table(iris, key=&quot;Species&quot;)
 lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;,&quot;virginica&quot;,&quot;Blah&quot;), Band=c(&quot;A&quot;,&quot;B&quot;,&quot;A&quot;), key=&quot;Species&quot;)</code></pre>
 </div>
-<div id="intermediate-syntax" class="section level3">
-<h3>Intermediate syntax</h3>
+<div id="intermediate-tasks" class="section level3">
+<h3>Intermediate tasks</h3>
 <table>
 <thead>
 <tr class="header">
@@ -990,6 +1035,26 @@ lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;,&quot;virginica&quot;,&qu
 <td align="left">Largest record by group</td>
 <td align="left">DT[ , .SD[which.max(col)], by]</td>
 <td align="left"><code>irisDT[ , .SD[which.max(Sepal.Length)] , by=Species]</code></td>
+</tr>
+<tr class="even">
+<td align="left">Cumulative total</td>
+<td align="left">DT[ , cumsum(col) ]</td>
+<td align="left"><code>irisDT[ , cumsum(Sepal.Width)]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">NEGATIVE SELECT</td>
+<td align="left">DT[ , .SD , .SDcols=-“colname”]</td>
+<td align="left"><code>irisDT[ , .SD , .SDcols=-&quot;Species&quot;]</code></td>
+</tr>
+<tr class="even">
+<td align="left">AGGREGATE multiple columns</td>
+<td align="left">DT[ , lapply(.SD, sum)]</td>
+<td align="left"><code>irisDT[ , lapply(.SD,sum) , .SDcols=-&quot;Species&quot;]</code></td>
+</tr>
+<tr class="odd">
+<td align="left">AGGREGATE multiple columns by group</td>
+<td align="left">DT[ , lapply(.SD, sum) , by]</td>
+<td align="left"><code>irisDT[ , lapply(.SD,sum) , by=Species]</code></td>
 </tr>
 </tbody>
 </table>

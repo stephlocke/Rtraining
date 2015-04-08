@@ -17,6 +17,7 @@ Numeric | 1.1
 String / character  | "Red"
 Factor (enumerated string) | "Amber" or 2 in c("Red","Amber","Green")
 Complex | i
+Date | "2015-04-24"
 
 
 ## Compound data types
