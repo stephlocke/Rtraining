@@ -8,15 +8,21 @@ output:
     highlight: tango
 ---
 
+```{r echo=FALSE,results='hide'}
+rootfolder<-file.path(find.package("Rtraining"),"handouts")
+imgfolder<-file.path(rootfolder,"imgs")
+imgfolder.unc<-gsub("/","\\",imgfolder,fixed=TRUE)
+```
+
 ## Server creation
 Azure portal, using gallery creation for VM
-![quickcreate](../imgs/azure-OS.png)
-![quickcreate](../imgs/azure-OSpassword.png)
+![quickcreate](`r paste0(imgfolder.unc,"\\azure-OS.png")`)
+![quickcreate](`r paste0(imgfolder.unc,"\\azure-OSpassword.png")`)
 
 ## Configuring the VM
 1. Get [PuTTY](http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe)
 2. Connect to your VM via the public IP
-![quickcreate](../imgs/putty-connection.png)
+![quickcreate](`r paste0(imgfolder.unc,"\\putty-connection.png")`)
 3. Use the login details in the creation wizard. *The password won't look like you're typing*
 3. Run `sudo apt-get update` to get the package repository metadata
 4. Run `sudo apt-get install r-base` to get R. *Will have lots of extra associated packages - select Y when prompted*
@@ -30,5 +36,5 @@ Azure portal, using gallery creation for VM
 1. Change shiny-server to run on port 80 by amending port in conf file `sudo nano /etc/shiny-server/shiny-server.conf`
 2. Restart shiny-server to apply port change `sudo restart shiny-server`
 3. Add port 80 to Azure endpoints for the VM
-![port specify](../imgs/azure-endpoint.png)
-![shiny-server first view](../imgs/shiny-server.png)
+![port specify](`r paste0(imgfolder.unc,"\\azure-endpoint.png")`)
+![shiny-server first view](`r paste0(imgfolder.unc,"\\shiny-server.png")`)

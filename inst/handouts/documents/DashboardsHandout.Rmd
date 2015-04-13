@@ -1,0 +1,261 @@
+---
+title: 'Shiny: dashboards in R'
+author: "Steph Locke (@SteffLocke)"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: journal
+---
+
+## What's Shiny?
+- An interactive report framework
+- An R package that is available free (as is the server edition)
+- Uses "modern web standards" like bootstrap under the hood 
+
+## Quick example
+```{r, eval=FALSE, echo = TRUE}
+library(data.table)
+library(shiny)
+defaultdisplay<-list(
+    width="100%", height="75%"
+  )
+shinyAppDir(
+  system.file("examples/06_tabsets", package="shiny"),
+  options = defaultdisplay
+)
+```
+
+## Shiny structure
+### Typical Contents
+A shiny application report consists of two functions:
+
+- `shinyServer()`
+- `shinyUI()`
+
+One says what to execute and the other states how to present it. Do all data manipulation, chart production in `shinyServer()`
+
+### "Lite" Contents
+```{r, eval=FALSE}
+defaultdisplay<-list(width="100%", height="75%")
+
+shinyApp(
+    ui      = fluidPage(),
+  , server  = function(input, output) {}
+  , options = defaultdisplay
+)
+```
+
+
+## Files
+You typically split into two files:  
+
+- server.R containing `shinyServer()`
+- ui.R containing `shinyUI()`
+
+This can then be run with `runApp()`
+
+You can do a single file example `app.R` which contains both functions but this is typically better for very short apps.
+
+## Front-end layout
+Use these just inside `shinyUI()` to produce a layout
+
+```{r, echo=FALSE}
+library(shiny)
+library(data.table)
+lsp <- function(package, all.names = FALSE, pattern) 
+{
+  package <- deparse(substitute(package))
+  ls(
+      pos = paste("package", package, sep = ":"), 
+      all.names = all.names, 
+      pattern = pattern
+  )
+}
+data.table(`Page Types`=lsp(shiny,pattern = "Page"))
+```
+
+## Typical Inputs
+### Dates
+```{r, eval=FALSE}
+shinyApp(
+  ui = fluidPage(dateInput("datePicker", "Pick a date:", 
+                           format="dd/mm/yy"),
+                 dateRangeInput("dateRange", "Pick dates:", 
+                                start=Sys.Date(), 
+                                end=Sys.Date() ) ),
+  server = function(input, output) {}
+  ,options = defaultdisplay
+)
+```
+
+### Values 
+Basic
+```{r, eval=FALSE}
+shinyApp(
+  ui = fluidPage(numericInput("vals", "Insert a number:", 
+                              value=15, min=10)  ),
+  server = function(input, output) {}
+  ,options = defaultdisplay
+)
+```
+
+Sliders
+
+```{r, eval=FALSE}
+shinyApp(
+  ui = fluidPage(sliderInput("vals", "Insert a number:", 
+                             min=0, max=50, value=15)  ),
+  server = function(input, output) {}
+  ,options = defaultdisplay
+)
+```
+
+### Text
+A single line
+```{r, eval=FALSE}
+shinyApp(
+  ui = fluidPage(textInput("char", "Insert text:")  ),
+  server = function(input, output) {}
+  ,options = defaultdisplay
+)
+```
+
+A paragraph
+```{r, eval=FALSE}
+shinyApp(
+  ui = fluidPage(tags$textarea(id="charbox", rows=3, 
+                               cols=40, "Default value")  ),
+  server = function(input, output) {}
+  ,options = defaultdisplay
+)
+```
+
+
+### Selectors 
+```{r, eval=FALSE}
+shinyApp(
+  ui = fluidPage(selectInput("multiselect", "Pick favourites:",
+                             c("Green","Red","Blue"),
+                             multiple=TRUE)  ),
+  server = function(input, output) {}
+  ,options = defaultdisplay
+)
+```
+
+## List of input types
+
+```{r, echo=FALSE}
+data.table(`Input controls`=lsp(shiny,pattern = "Input"))
+```
+
+
+## Typical Outputs
+### Input values
+```{r, eval=FALSE}
+shinyApp(
+  ui = fluidPage(textInput("char", "Insert text:") ,
+                 textOutput("text")  ),
+  server = function(input, output) {
+    output$text <- renderText(input$char)
+  }  ,options = defaultdisplay
+)
+```
+
+### Basic tables
+```{r, eval=FALSE}
+shinyApp(
+  ui = fluidPage(tableOutput("basictable")  ),
+  server = function(input, output) {
+    output$basictable <- renderTable(head(iris,5))
+  }  ,options = defaultdisplay
+)
+```
+
+### Interactive tables
+```{r, eval=FALSE}
+shinyApp(
+  ui = fluidPage(dataTableOutput("datatable")  ),
+  server = function(input, output) {
+    output$datatable <- renderDataTable(head(iris,5))
+  }  ,options = defaultdisplay
+)
+```
+
+### Charts
+```{r, eval=FALSE}
+shinyApp(
+  ui = fluidPage(plotOutput("chart")  ),
+  server = function(input, output) {
+    output$chart <- renderPlot(pairs(iris))
+  }  ,options = defaultdisplay
+)
+```
+
+
+## Reactivity
+### Simple reactivity
+- Make functions that process inputs only when they change
+```{r, eval=FALSE}
+a <- reactive({input$a})
+a
+```
+- Use these reactive functions in downstream server items for DRY & to reduce processing effort
+
+### An Example
+```{r, eval=FALSE}
+shinyApp(
+  ui = fluidPage(textInput("char", "Insert text:") ,
+                 textOutput("textA"),textOutput("textB") ),
+  server = function(input, output) {
+    char<-reactive({rep(input$char,5)})
+    output$textA <- renderText(paste(char(),collapse="+"))
+    output$textB <- renderText(paste(char(),collapse="-"))
+  }
+  ,options = defaultdisplay
+)
+```
+
+## Styling
+### shinythemes
+- Get a different look and feel with the package `shinythemes`
+- Uses a number of bootstrap based themes
+- Good-looking quickly, but of course not company branded
+- View themes at [bootswatch.com](http://bootswatch.com/)
+
+### CSS
+- Shiny outputs html so you can write CSS that works with it
+- Full list of CSS items doesn't exist, use F12 on chrome or check out selectorgadget via `rvest`
+- Simple stuff like body, h1 will all work
+
+### shinydashboards
+- Makers of shiny working on a framework: [Shiny Dashboard](http://rstudio.github.io/shinydashboard/)
+- A new dashboarding framework - still immature but useful
+- Excellent walkthrough on [Data Driven Security](http://datadrivensecurity.info/blog/posts/2015/Jan/building-security-dashboards-with-r-and-shiny-shinydashboard/)
+
+## Infrastructure
+### Ad-hoc shiny
+- Rstudio (easiest) or just run directly
+- Use `shiny::runApp()`
+- Great for "expert" use
+
+### Cloud
+- [shinyApps.io](https://www.shinyapps.io/)
+- Deploy with `shinyApps` package
+- Free for light use 
+- Extra management features at increased costs
+- Great for hands-off management
+
+### Central server
+- shiny-server
+- Runs on linux
+- Free community edition
+- Extra management features & LDAP auth in Pro Edition (but can roll your own)
+- Great for sensitive and/or db-driven appplications
+
+### Recommended reading
+- [Shiny site](http://shiny.rstudio.com/)
+- A bit outdated but: [Web Application Development with R Using Shiny](http://www.amazon.co.uk/gp/product/B00G395OOY)
+- [Reactivity Overview](http://shiny.rstudio.com/articles/reactivity-overview.html)
+- [shiny for teaching maths](https://github.com/hadley/reactive-docs)
+- [Show me Shiny!](http://www.showmeshiny.com/)
+- [Deploying shiny apps](http://shiny.rstudio.com/tutorial/lesson7/)

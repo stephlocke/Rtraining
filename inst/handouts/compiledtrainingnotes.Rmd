@@ -54,6 +54,9 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```
 
 #  Making reports
+```{r autodoc, child='documents/DashboardsHandout.Rmd', eval=TRUE}
+```
+
 #  Making diagrams
 #  Bonus round: LaTeX
 
@@ -64,5 +67,9 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 
 #  Linux basics
 #  Installing Rstudio
+
 #  Installing shiny-server
+```{r autodoc, child='infrastructure/shiny-server build.Rmd', eval=TRUE}
+```
+
 #  Bonus round: AD authentication
