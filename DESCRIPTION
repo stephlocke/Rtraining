@@ -18,4 +18,5 @@ Imports: devtools,
     Hmisc,
     foreach,
     memisc,
-    optiRum
+    optiRum,
+    git2r
