@@ -1,0 +1,44 @@
+---
+title: "LaTeX"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: united
+---
+
+## About LaTeX
+>Pronunciation: lay-tech
+
+LaTeX is an open source markup language with a typesetting engine. It's been around since the 70s and generally makes awesome documents.
+
+LaTeX is designed to work stand-alone, or integrate with other languages. It's particularly good with R.
+
+It works in the way rmarkdown does with knitr, but allows for more sophisticated document styling.
+
+## Why LaTeX?
+
+ - Seamless integration between code and content
+ - Fantastic looking documentation
+ - Works on all operating systems and has a number of cloud/internet hosted services
+ - Can use markdown and append LaTeX style
+ - Use for more polished presentations without having to go into PowerPoint
+ 
+## Get LaTeX
+ - Online: [Overleaf.com](http://overleaf.com)
+ - Windows: [proTeXt](http://www.tug.org/protext/)
+ - Mac: [MacTex](http://www.tug.org/mactex/)
+ - Linux: `sudo apt-get texlive`
+ 
+Once you have a LaTeX installation, you can write LaTeX in Rstudio.
+
+In Rstudio, select the File type "R Sweave" which saves as a .Rnw file.
+
+## Learn LaTeX
+LaTeX is a very deep language, so no attempt is made to teach you here. 
+
+One of the easiest ways of getting started with LaTeX (generally) is to pick one of the examples / templates on [overleaf.com](http://overleaf.com) and play with it.
+
+For using R and LaTeX, you can use the minimal examples on [yihui.name/knitr](http://yihui.name/knitr/demo/minimal/) to get started.
+
+See the [LaTeX wikibook](http://en.wikibooks.org/wiki/LaTeX) for lots of info about LaTeX.
