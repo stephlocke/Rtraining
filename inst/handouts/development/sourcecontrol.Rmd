@@ -1,0 +1,63 @@
+---
+title: "Source Control"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: united
+    highlight: tango
+---
+
+```{r echo=FALSE,results='hide'}
+rootfolder<-file.path(find.package("Rtraining"),"handouts")
+imgfolder<-file.path(rootfolder,"imgs")
+imgfolder.unc<-gsub("/","\\",imgfolder,fixed=TRUE)
+```
+
+
+![version control all the things](`r paste0(imgfolder.unc,"\\versioncontrolallthings.jpg")`)
+
+> SOURCE CONTROL IS FOR ALL THE THINGS
+
+## Fundamentals
+Source control is important because it provides:
+
+ - a backup system for your code
+ - a means of tracking *why* you made changes
+ - a way of sharing code
+ - a system for multiple people to work safely
+ - another potential way to deploy code manually
+ - options for automated testing and deployment
+ - audit trails
+ 
+There are two types of source control systems:
+
+ - centralised
+ - distributed
+
+Centralised means that there is a single storage location and to work on a file it must be exclusively checked out. Distributed systems involve taking copies of the code base, making changes, and pushing these back to primary storage location.
+
+Both have their own disadvantages but since with distributed source control you never get the situation where someone's left a file checked out as they go on holiday and no-one else can use it, I'm a big fan of distributed source control systems.
+
+## Git
+Git is a distributed source control system. 
+
+It integrates neatly into Rstudio, making it easy to source control your analysis.
+
+
+
+### The git conceptual model ([\@cthydng](https://twitter.com/cthydng/status/575483540202106880))
+![git model](`r paste0(imgfolder.unc,"\\gitmodel.jpg")`)
+
+### Git glossary
+
+ - Repository: Your project and it's history
+ - Remote: The (TFS/GitHub/VSO etc) server
+ - Clone:Take a linked copy of a repository
+ - Fork: Take an unlinked copy of a repository
+ - Pull: Update your copy of a repository
+ - Add: Include a file in a change
+ - Commit: Make the latest state of all the added files the new default state
+ - Push: Update the central copy of the repository with your commits
+ 
+There are more terms. For a friendly glossary see [Github's git glossary](https://help.github.com/articles/github-glossary/), and for an extensive, technical glossary see the official [Git glossary](https://www.kernel.org/pub/software/scm/git/docs/gitglossary.html)

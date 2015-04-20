@@ -1,0 +1,30 @@
+---
+title: "tfsR"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: spacelab
+---
+
+
+```{r grab1, echo=FALSE, results='hide', warning=FALSE}
+if (!require(devtools)) install.packages("devtools")
+if(!require(tfsR)) devtools::install_github("stephlocke/tfsR", build_vignettes = TRUE)
+library(devtools)
+library(tfsR)
+setInternet2(use = TRUE)
+x <- tempfile(fileext = "Rmd")
+on.exit(unlink(x))
+download.file("https://raw.githubusercontent.com/stephlocke/tfsR/master/vignettes/WorkingwithTFSandGit.Rmd", x)
+```
+## TFS
+In TFS2013 and Visual Studio Online, you can use git repositories **inside** TFS. This gives the ability to leverage all the advantages of a distributed source control system whilst still giving you all the functionality of TFS.
+
+If you're using SourceSafe or earlier editions of TFS, UPGRADE for everyone's sakes.
+
+If you're not using any source control, consider getting Visual Studio Online as it's free for 5 users (plus unlimited MSDN users), requires no hosting or maintenance on your part, and has fine grained permissions management.
+
+## Working with your TFS site in R with tfsR
+```{r test-main1, child=x}
+```

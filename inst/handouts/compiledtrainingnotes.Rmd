@@ -5,13 +5,16 @@ date: "`r Sys.Date()`"
 output:
   html_document:
     toc: true
-    theme: united
+    theme: readable
 ---
-```{r setup, eval=TRUE, results='hide'}
+```{r setup, eval=TRUE, results='hide', echo=FALSE}
 knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```
 
 # Front Matter
+
+<a href="#top">Back to top</a>
+
 ```{r autodoc, child='frontmatter/objective.Rmd', eval=TRUE}
 ```
 
@@ -19,51 +22,108 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```
 
 # R
+
+<a href="#top">Back to top</a>
+
 ```{r autodoc, child='fundamentals/R.Rmd', eval=TRUE}
 ```
 
 # Installation
+
+<a href="#top">Back to top</a>
+
 ```{r autodoc, child='infrastructure/setting-up-a-windows-R-Machine.Rmd', eval=TRUE}
 ```
 
 #  Syntax & structure
+
+<a href="#top">Back to top</a>
+
 ```{r autodoc, child='fundamentals/syntax.Rmd', eval=TRUE}
 ```
 
 #  Data types
+
+<a href="#top">Back to top</a>
+
 ```{r autodoc, child='fundamentals/datatypes.Rmd', eval=TRUE}
 ```
 
 #  IO
+
+<a href="#top">Back to top</a>
+
 ```{r autodoc, child='fundamentals/io.Rmd', eval=TRUE}
 ```
 
 #  Wrangling tables
+
+<a href="#top">Back to top</a>
+
 ```{r autodoc, child='fundamentals/tablewrangling.Rmd', eval=TRUE}
 ```
 
 #  Making charts
+
+<a href="#top">Back to top</a>
+
 ```{r autodoc, child='dataviz/chartintro.Rmd', eval=TRUE}
 ```
 
-#  Bonus round: magrittr & dplyr
-
 
 #  Making documents
+
+<a href="#top">Back to top</a>
+
 ```{r autodoc, child='documents/writingdocuments.Rmd', eval=TRUE}
 ```
 
 #  Making reports
+
+<a href="#top">Back to top</a>
+
 ```{r autodoc, child='documents/DashboardsHandout.Rmd', eval=TRUE}
 ```
 
 #  Making diagrams
-#  Bonus round: LaTeX
 
-#  Source control
+#  LaTeX
+
+<a href="#top">Back to top</a>
+
+```{r autodoc, child='documents/latex.Rmd', eval=TRUE}
+```
+
+#  Source control - theory
+
+<a href="#top">Back to top</a>
+
+```{r autodoc, child='development/sourcecontrol.Rmd', eval=TRUE}
+```
+
+# Source control - tfsR
+
+<a href="#top">Back to top</a>
+
+```{r autodoc, child='development/tfsR.Rmd', eval=TRUE}
+```
+
+<!--
+# Source control - git2r
+
+<a href="#top">Back to top</a>
+
+```{r autodoc, child='development/git2r.Rmd', eval=TRUE}
+```
+
+-->
+
 #  Testing
 #  Package development
-#  Bonus round: Continuous integration with Travis-CI
+#  Continuous integration with Travis-CI
+
+```{r autodoc, child='development/travisci.Rmd', eval=TRUE}
+```
 
 #  Linux basics
 #  Installing Rstudio
@@ -72,4 +132,4 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```{r autodoc, child='infrastructure/shiny-server build.Rmd', eval=TRUE}
 ```
 
-#  Bonus round: AD authentication
+#  AD authentication

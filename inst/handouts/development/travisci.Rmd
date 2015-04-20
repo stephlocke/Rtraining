@@ -1,0 +1,35 @@
+---
+title: "Travis-CI"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: journal
+---
+
+Once you have a package and unit tests, then a great way of making sure that as you change things you don't break them is to perform [Continuous Integration](http://www.thoughtworks.com/continuous-integration) whenever you commit a change.
+
+The easiest, cheapest, and fastest way of setting up CI for your R work is [Travis-CI](https://travis-ci.com/) which is free if you use github as a remote server for your code.
+
+The means to configure it is to set up a Travis-CI account that is linked to your github. Once it's linked tell Travis which project(s) you'd like to do CI on.
+
+Additionally, whilst we're doing this we should be awesome and set up test coverage checks as well. Go to [coveralls.io](https://coveralls.io/), set up an account linked to your github and flip the switch for your project(s).
+
+Then you add a really simple file into the root of your project called `.travis.yml`. 
+
+This should contain, at minimum, the following:
+```
+language: r
+sudo: required
+
+r_github_packages:
+ - jimhester/covr
+
+after_success:
+  - Rscript -e 'library(covr);coveralls()'
+```
+*NB - be careful with the indentation, YAML is very sensitive!*
+
+Once you've flipped the switch on Travis and Coveralls, every time you do a commit Travis will basically build a server with all the requirements needed to run R and build R packages. It'll then install all your package's dependencies, check the package for minimum quality standards and also run your testthat tests. Once this is done the final bit tests your code coverage and passes the results to Coverall.
+
+Great, so you've checked the sites and it's working but you should show the world it's working! You can get some some snippets of code from each of the sites that you can paste into your README file. These stay uptodate with the latest results so that you (and everyone else) can see the status of your package.
