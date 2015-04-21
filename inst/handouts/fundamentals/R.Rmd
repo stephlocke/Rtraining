@@ -13,7 +13,7 @@ output:
 > R is an integrated suite of software facilities for data manipulation, calculation and graphical display
 
 - Open source
-- In-memory, single-core, multi-platform
+- In-memory, single-core (by default), multi-platform
 - Extensible environment
 - Super-useful
 - <http://www.r-project.org/>
@@ -35,11 +35,11 @@ V --> I[Interactive report]
 I --> O
 end
 subgraph Package View
-Dp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, ...]
+Dp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, readr,...]
 Rp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]
 DMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]
 DMp --> Sp[caret, survival, nnet, ...]
-DMp --> Op[base, xlsx, RODBC, ...]
+DMp --> Op[base, readr, RODBC, ...]
 Sp --> Vp
 Vp --> Dop[knitr, rmarkdown, ...]
 Dop --> Op
@@ -56,10 +56,21 @@ mermaid(hangs)
  4. shiny
  5. rmarkdown
  6. RODBC
- 7. magrittr
+ 7. readxl
  8. stringr
  9. dplyr
  10. httr
 
+I lied...
+ 11. foreach
+ 12. doMC
+ 13. magrittr
+ 14. xtable
+ 15. devtools
+ 16. testthat
+ 17. DiagrammeR
+ 18. git2r
+ 19. rvest
+ 20. zoo
 
  
