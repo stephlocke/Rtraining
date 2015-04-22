@@ -11,6 +11,7 @@ output:
 - An interactive report framework
 - An R package that is available free (as is the server edition)
 - Uses "modern web standards" like bootstrap under the hood 
+- Cross-browser/Cross-device compatibility, out of box!
 
 ## Quick example
 ```{r, eval=FALSE, echo = TRUE}

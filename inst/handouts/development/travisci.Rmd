@@ -7,14 +7,24 @@ output:
     theme: journal
 ---
 
-Once you have a package and unit tests, then a great way of making sure that as you change things you don't break them is to perform [Continuous Integration](http://www.thoughtworks.com/continuous-integration) whenever you commit a change.
+With [excellent guidance](http://r-pkgs.had.co.nz/) and [tooling](http://cran.r-project.org/web/packages/devtools/) on making R packages, it's becoming really easy to make a package to hold your R functionality. This has a host of benefits, not least source control (via GitHub) and unit testing (via the [`testthat`](http://cran.r-project.org/web/packages/testthat/) package). Once you have a package and unit tests, a great way of making sure that as you change things you don't break them is to perform [Continuous integration](http://www.thoughtworks.com/continuous-integration).
 
-The easiest, cheapest, and fastest way of setting up CI for your R work is [Travis-CI](https://travis-ci.com/) which is free if you use github as a remote server for your code.
+What this means is that **every** time you make a change, your package is built and thoroughly checked for any issues. If issues are found the "build's broke" and you have to fix it ASAP.
 
-The means to configure it is to set up a Travis-CI account that is linked to your github. Once it's linked tell Travis which project(s) you'd like to do CI on.
+The easiest, cheapest, and fastest way of setting up continuous integration for R stuff is to use [Travis-CI](https://travis-ci.com/), which is free if you use [GitHub](http://github.com) as a remote server for your code.
+*NB - it doesn't have to be your only remote server*
 
-Additionally, whilst we're doing this we should be awesome and set up test coverage checks as well. Go to [coveralls.io](https://coveralls.io/), set up an account linked to your github and flip the switch for your project(s).
+## Account setup
+The first thing that needs doing is setting up your accounts and turning on CI for your repositories. The website is pretty good so I won't go into a lot of detail, but the process is:
 
+ 1. sign up for a Travis-CI account
+ 2. link it to your GitHub account
+ 3. say which repositories you want to do CI on
+ 4. add config to your repositories
+
+Additionally, whilst we're doing this we should be awesome and set up test coverage checks as well. The process is really similar, but for [coveralls.io](https://coveralls.io/) and we only need the one set of config details in our package.
+
+## The config file
 Then you add a really simple file into the root of your project called `.travis.yml`. 
 
 This should contain, at minimum, the following:
@@ -30,6 +40,9 @@ after_success:
 ```
 *NB - be careful with the indentation, YAML is very sensitive!*
 
-Once you've flipped the switch on Travis and Coveralls, every time you do a commit Travis will basically build a server with all the requirements needed to run R and build R packages. It'll then install all your package's dependencies, check the package for minimum quality standards and also run your testthat tests. Once this is done the final bit tests your code coverage and passes the results to Coverall.
+This is the latest set of values that work as it takes into account the recent support for R, the ability to reference github packages, and also Travis' move towards docker containers which don't accept sudo commands.
 
-Great, so you've checked the sites and it's working but you should show the world it's working! You can get some some snippets of code from each of the sites that you can paste into your README file. These stay uptodate with the latest results so that you (and everyone else) can see the status of your package.
+Once you've flipped the switch on Travis and Coveralls, every push to GitHub will trigger Travis. Travis will basically build a server with all the requirements needed to run R and build R packages. It'll then install all your package's dependencies, check the package for minimum quality standards and also run your testthat tests. Once this is done the final bit tests your code coverage and passes the results to Coverall.
+
+## Badge of honour
+Great, so you've checked the sites and it's working but you should show the world it's working! You can get some some snippets of code from each of the sites that you can paste into your README file. These stay up to date with the latest results so that you (and everyone else) can see the status of your package.

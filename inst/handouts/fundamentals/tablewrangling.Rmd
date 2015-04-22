@@ -34,7 +34,7 @@ There are some differences that need to be mentioned:
 - A primary key can have repeat values
 - No constrained foreign keys
 - Joins are done by *position in key* so tblA with key A, and tblB with key C,A would join on tblA[A] and tblB[C]
-- It's inherently dynamic so vectors of column names etc. can be provided
+- It's inherently dynamic so vectors of column names etc. can be provided to it
 - DELETE doesn't exist explicitly
 - It's case-sensitive
 
@@ -42,15 +42,14 @@ There are some differences that need to be mentioned:
 ### Single table basics
 Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
-CREATE | data.table(...) | `data.table(a=1:3 , b=LETTERS[1:3])` `data.table(iris)`
+CREATE | data.table(...) setDT() | `data.table(a=1:3 , b=LETTERS[1:3])` `data.table(iris)`
 PRIMARY KEY | data.table(...,key) setkey() | `data.table(a=1:3 , b=LETTERS[1:3], key="b")` `setkey(data.table(iris),Species)`
 SELECT basic | DT[ , .( cols )] | `irisDT[ , .(Species, Sepal.Length)]`
 SELECT alias | DT[ , .( a=col )] | `irisDT[ , .(Species, Length=Sepal.Length)]`
 SELECT COUNT | DT[ , .N]  | `irisDT[ ,.N]`
 SELECT COUNT DISTINCT | DT[ , uniqueN(cols)] |  `irisDT[ ,uniqueN(.SD)]`
 SELECT aggregation | DT[ , .( sum(col) , .N )] | `irisDT[ , .(Count=.N, Length=mean(Sepal.Length))]`
-SELECT dynamically i.e. by reference | DT[ , colnames , with=FALSE] | `cols<-colnames(irisDT); irisDT[ , cols, with=FALSE]`
-WHERE exact on primary key | DT[value] DT[value, ] | `irisDT["setosa"]` `irisDT["setosa", .(Count=.N)]`
+WHERE exact on primary key| DT[value] DT[value, ] | `irisDT["setosa"]` `irisDT["setosa", .(Count=.N)]`
 WHERE |  DT[condition] DT[condition, j, by] | `irisDT[Species=="setosa"]` `irisDT[Species=="setosa", .(Count=.N)]`
 WHERE BETWEEN | DT[between(col, min, max)] DT[ col %between% c(min,max) ]| `irisDT[between(Sepal.Length, 1, 5)]` `irisDT[Sepal.Length %between% c(1,5)]`
 WHERE LIKE | DT[like(col,pattern)] DT[ col %like% pattern ] | `irisDT[like(Species,"set")]` `irisDT[Species %like% "set"]`
@@ -74,6 +73,8 @@ UPDATE / ADD column | DT[ , a := b ] | `irisDT[ , Sepal.Area := Sepal.Width * Se
 UPDATE / ADD multiple columns | DT[ , \`:=\`(a = b, c = d) ] | ```r 'irisDT[ , \x60:=\x60(CreatedDate = Sys.Date(), User = "Steph")]'` ``
 UPDATE / ADD multiple columns by reference | DT[ , (newcols):=vals ] | `irisDT[ , c("a","b"):=.(1,2)]`
 DELETE | DT <- DT[!condition] | `irisDT <- irisDT[!(Species=="setosa" & Petal.Length>=1.5)]`
+DROP table | DT <- NULL | `irisDT<-NULL`
+DROP column | DT[,col:=NULL] | `iristDT[,Species:=NULL]`
 
 \* Uses `irisDT <- data.table(iris)`
 
@@ -84,13 +85,14 @@ Structure | str(DT) | `str(irisDT)`
 Column Names | colnames(DT) | `colnames(irisDT)`
 Summary stats | summary(DT) | `summary(irisDT)`
 Retrieve primary key info | key(DT) | `key(irisDT)`
+List all data.tables | tables() | `tables()`
 
 \* Uses `irisDT <- data.table(iris)`
 
 ### Relationships
 Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
-INNER JOIN | Y[X, nomatch=0L] | `lookupDT[irisDT,nomatch=0]`
+INNER JOIN | Y[X, nomatch=0] | `lookupDT[irisDT,nomatch=0]`
 LEFT JOIN | Y[X] | `lookupDT[irisDT]`
 FULL JOIN| merge(X, Y, all=TRUE) | `merge(irisDT, lookupDT, all=TRUE)`
 CROSS JOIN | optiRum::CJ.dt(X,Y) | `CJ.dt(irisDT, lookupDT)`
@@ -107,6 +109,9 @@ lookupDT <- data.table(Species=c("setosa", "virginica", "Blah"), Band=c("A", "B"
 ### Intermediate tasks
 Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
+SELECT dynamically | DT[ , colnames , with=FALSE] , DT[ , .SD , .SDcols=colnames| `cols<-colnames(irisDT); irisDT[ , cols, with=FALSE]` `cols<-colnames(irisDT); irisDT[ , .SD, .SDcols=colnames]`
+GROUP BY dynamically | DT[ , ..., by=colnames] | `irisDT[,.N,by=c("Species")]` 
+GROUP BY, ORDER BY group | DT[ , ... , keyby] |`irisDT[,.N,keyby=Species]`  
 UPDATE / ADD column of summary stat | DT[ , a := b ] | `irisDT[ , All.SL.Mean:=mean(Sepal.Length)]`
 UPDATE / ADD column by group | DT[ , a := b, by] | `irisDT[ , Species.SL.Mean:=mean(Sepal.Length), by=Species]`
 TOP by group | DT[ , head(.SD), by] | `irisDT[ , head(.SD,2) , by=Species]`
@@ -121,6 +126,9 @@ COUNT DISTINCT multiple columns by group | DT[ , lapply(.SD, uniqueN), by] | `ir
 COUNT NULL multiple columns by group | DT[ , lapply(.SD, function(x) sum(is.na(x))), by] | `irisDT[ , lapply(.SD,function(x) sum(is.na(x))), by=Species]`
 PIVOT data - to single value column | melt(DT,...) | `melt(irisDT)`
 PIVOT data -  to aggregate | dcast(DT, a~b, function) | `dcast(melt(irisDT), Species ~ variable, sum)`
+Convert a large data.frame or list | setDT() |  `iris<-iris; setDT(iris)`
+ROW_NUMBER | DT[ , .I] | `irisDT[ , .I]`
+GROUP number | DT[, .GRP ,by] | `irisDT[ , .GRP, by=Species]`  
 
 \* Uses `irisDT <- data.table(iris)`
 
@@ -128,6 +136,18 @@ PIVOT data -  to aggregate | dcast(DT, a~b, function) | `dcast(melt(irisDT), Spe
 Task | Generic syntax | Example(s)\*
 ------------- | ------------- | -------------
 GROUP BY each new incidence of group | DT[ , cols , by=(col, rleid(col))] | `irisDT[order(Sepal.Length), .N, by=.(Species, rleid(Species))]`
-Calculate using (previous/next/n) row | DT[ , col / shift( cols, n, fill, type)] | `irisDT[ , prev.Sepal.Length:=shift(Sepal.Length), by=Species ]`
+Calculate using (previous/next) N row | DT[ ,  shift( cols, n)] | `irisDT[ , prev.Sepal.Length:=shift(Sepal.Length), by=Species ]`
+ORDER underlying table | setorder() | `setorder(irisDT,Species)`
+JOIN & GROUP by keys | X[Y, .N, by=.EACHI] | `irisDT[lookupDT, .N, by=.EACHI]`
+TRANSPOSE data.table | transpose(DT) | `transpose(irisDT)`
+Split string to columns | DT[, tstrsplit(charCol, pattern) ] | `irisDT[ , tstrsplit(as.character(Species),"e")]`
 
-\* Uses `irisDT <- data.table(iris)`
+
+\* Uses:
+```
+irisDT   <- data.table(iris, key="Species")
+lookupDT <- data.table(Species=c("setosa", "virginica", "Blah"), Band=c("A", "B", "A"), key="Species")
+``` 
+
+## More resources
+ - [data.table wiki](https://github.com/Rdatatable/data.table/wiki/Getting-started)

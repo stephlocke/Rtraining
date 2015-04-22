@@ -61,3 +61,10 @@ It integrates neatly into Rstudio, making it easy to source control your analysi
  - Push: Update the central copy of the repository with your commits
  
 There are more terms. For a friendly glossary see [Github's git glossary](https://help.github.com/articles/github-glossary/), and for an extensive, technical glossary see the official [Git glossary](https://www.kernel.org/pub/software/scm/git/docs/gitglossary.html)
+
+## git2r
+The package `git2r` supports a source control workflow directly within R. This means you can continue to use Rstudio for even complex git tasks. And of course there's always the shell option in Rstudio.
+
+For a handy Git cheatsheet, check out this [GitHub one](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf).
+
+The [git2r documentation](https://github.com/ropensci/git2r) is pretty good. It's easier though to use once you've been utilising the Rstudio GUI for a bit, and dabbling with the command line.
