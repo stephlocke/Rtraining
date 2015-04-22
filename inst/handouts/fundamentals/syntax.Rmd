@@ -11,50 +11,50 @@ output:
 
 Action | Operator | Example
 ------------- | ------------- | -------------
-Subtract | - | 5 - 4 = `r 5 - 4`
-Add | + | 5 + 4 = `r 5 + 4`
-Multiply | * | 5 * 4 = `r 5 * 4`
-Divide | / | 5 / 4 = `r 5 / 4`
-Raise to the power | ^ | 5 ^ 4 = `r 5 ^ 4`
-Modulus | %% | 10 %% 4 = `r 10 %% 4`
-Absolute remainder | %/% | 9 %/% 4 = `r 9 %/% 4`
-Basic sequence | : | sum(1:3) = `r sum(1:3)`
+Subtract | - | `5 - 4` = `r 5 - 4`
+Add | + | `5 + 4` = `r 5 + 4`
+Multiply | * | `5 * 4` = `r 5 * 4`
+Divide | / | `5 / 4` = `r 5 / 4`
+Raise to the power | ^ | `5 ^ 4` = `r 5 ^ 4`
+Modulus | %% | `10 %% 4` = `r 10 %% 4`
+Absolute remainder | %/% | `9 %/% 4` = `r 9 %/% 4`
+Basic sequence | : | `sum(1:3)` = `r sum(1:3)`
 
 ## Comparison operators
 
 Action | Operator | Example
 ------------- | ------------- | -------------
-Less than | < | 5 < 5 = `r 5 < 5`
-Less than or equal to | <= | 5 <= 5 = `r 5 <= 5`
-Greater than | > | 5 > 5 = `r 5 > 5`
-Greater than or equal to | >= | 5 >= 5 = `r 5 >= 5`
-Exactly equal | == | (0.5 - 0.3) == (0.3 - 0.1) is `r (0.5 - 0.3) == (0.3 - 0.1)`, 2 == 2 is `r 2==2`
-Not equal | != | (0.5 - 0.3) != (0.3 - 0.1) is `r (0.5 - 0.3) != (0.3 - 0.1)`, 2 != 2 is `r 2!=2`
-Equal | all.equal() | all.equal(0.5 - 0.3,0.3 - 0.1) is `r all.equal(0.5 - 0.3,0.3 - 0.1)`
+Less than | < | `5 < 5` = `r 5 < 5`
+Less than or equal to | <= | `5 <= 5` = `r 5 <= 5`
+Greater than | > | `5 > 5` = `r 5 > 5`
+Greater than or equal to | >= | `5 >= 5` = `r 5 >= 5`
+Exactly equal | == | `(0.5 - 0.3) == (0.3 - 0.1)` is `r (0.5 - 0.3) == (0.3 - 0.1)`, 2 == 2 is `r 2==2`
+Not equal | != | `(0.5 - 0.3) != (0.3 - 0.1)` is `r (0.5 - 0.3) != (0.3 - 0.1)`, 2 != 2 is `r 2!=2`
+Equal | all.equal() | `all.equal(0.5 - 0.3,0.3 - 0.1)` is `r all.equal(0.5 - 0.3,0.3 - 0.1)`
 
 ## States
 
 States | Representation  
 ------------- | -------------
-True | TRUE , 1
-False | FALSE , 0
-Empty | NULL
-Unknown | NA
-Not a number e.g. `0/0`| NaN
-Infinite e.g. `1/0` | Inf
+True | `TRUE` `1`
+False | `FALSE` `0`
+Empty | `NULL`
+Unknown | `NA`
+Not a number e.g. `0/0`| `NaN`
+Infinite e.g. `1/0` | `Inf`
 
 ## Logical operators
 
 Action | Operator | Example
 ------------- | ------------- | -------------
-Not | ! | !TRUE is `r !TRUE`
-And | &| TRUE & FALSE is `r TRUE & FALSE`, c(TRUE,TRUE) & c(FALSE,TRUE) is `r c(TRUE,TRUE) & c(FALSE,TRUE)`
-Or | `|` | TRUE `|` FALSE is `r TRUE | FALSE`, c(TRUE,FALSE) `|` c(FALSE,FALSE) is `r c(TRUE,FALSE) | c(FALSE,FALSE)`
-Xor | xor() | xor(TRUE,FALSE) is `r xor(TRUE,FALSE)`
-Bitwise And | && | c(TRUE,TRUE) && c(FALSE,TRUE) is `r c(TRUE,TRUE) && c(FALSE,TRUE)`
-Bitwise Or | `||` | c(TRUE,FALSE) `||` c(FALSE,FALSE) is `r c(TRUE,FALSE) || c(FALSE,FALSE)`
-In | %in% | "Red" %in% c("Blue","Red") = `r  "Red" %in% c("Blue","Red")`
-Not in | !( x %in% y) or Hmisc::%nin% |  "Red" %nin% c("Blue","Red") = `r !("Red" %in% c("Blue","Red"))`
+Not | ! | `!TRUE` is `r !TRUE`
+And | & | `TRUE & FALSE` is `r TRUE & FALSE`, `c(TRUE,TRUE) & c(FALSE,TRUE)` is `r c(TRUE,TRUE) & c(FALSE,TRUE)`
+Or | `|` | `TRUE | FALSE` is `r TRUE | FALSE`, `c(TRUE,FALSE) | c(FALSE,FALSE)` is `r c(TRUE,FALSE) | c(FALSE,FALSE)`
+Xor | xor() | `xor(TRUE,FALSE)` is `r xor(TRUE,FALSE)`
+Bitwise And | && | `c(TRUE,TRUE) && c(FALSE,TRUE)` is `r c(TRUE,TRUE) && c(FALSE,TRUE)`
+Bitwise Or | `||` | `c(TRUE,FALSE) || c(FALSE,FALSE)` is `r c(TRUE,FALSE) || c(FALSE,FALSE)`
+In | %in% | `"Red" %in% c("Blue","Red")` is `r  "Red" %in% c("Blue","Red")`
+Not in | !( x %in% y) or Hmisc::%nin% | `"Red" %nin% c("Blue","Red")` = `r !("Red" %in% c("Blue","Red"))`
 
 
 
@@ -62,12 +62,12 @@ Not in | !( x %in% y) or Hmisc::%nin% |  "Red" %nin% c("Blue","Red") = `r !("Red
 
 Type | Implementation | Example
 ------------- | ------------- | -------------
-If | if(condition) {dosomething} | if(TRUE) { 2 } returns `r if(TRUE) { 2 }`
-If else | if(condition) {do something} else {do something different} or ifelse(condition, do something, do something else) | if(FALSE) { 2 } else { 3 } returns `r if(FALSE) { 2 } else { 3 }`, ifelse(FALSE, 2, 3) returns `r ifelse(FALSE, 2, 3)`
-For loop | for(i in seq) {dosomething} or foreach::foreach(i=1:3) %do% {something} | foreach(i=1:3) %do%  {TRUE} returns `r library(foreach);foreach(i=1:3) %do% {TRUE}` 
-While loop | while(condition) {do something } | a<-0 ; while(a<3){a<-a+1} ; a returns `r a<-0 ; while(a<3){a<-a+1} ; a`
-Switch | switch(value, ...) | switch(2, "a", "b") returns `r switch(2, "a", "b")`
-Case | memisc::cases(...) | cases("pi<3"=pi<3, "pi=3"=pi==3,"pi>3"=pi>3) returns `r memisc::cases("pi<3"=pi<3, "pi=3"=pi==3,"pi>3"=pi>3)`
+If | if(condition) {dosomething} | `if(TRUE) { 2 }` is `r if(TRUE) { 2 }`
+If else | if(condition) {do something} else {do something different} or ifelse(condition, do something, do something else) | `if(FALSE) { 2 } else { 3 }` is `r if(FALSE) { 2 } else { 3 }` `ifelse(FALSE, 2, 3)` is `r ifelse(FALSE, 2, 3)`
+For loop | for(i in seq) {dosomething} or foreach::foreach(i=1:3) %do% {something} | `foreach(i=1:3) %do%  {TRUE}` is `r library(foreach);foreach(i=1:3) %do% {TRUE}` 
+While loop | while(condition) {do something } | `a<-0 ; while(a<3){a<-a+1} ; a` is `r a<-0 ; while(a<3){a<-a+1} ; a`
+Switch | switch(value, ...) | `switch(2, "a", "b")` is `r switch(2, "a", "b")`
+Case | memisc::cases(...) | `cases("pi<3"=pi<3, "pi=3"=pi==3,"pi>3"=pi>3)` is `r memisc::cases("pi<3"=pi<3, "pi=3"=pi==3,"pi>3"=pi>3)`
 
 > NB: If you find yourself using a loop, there's probably a better, faster solution
 
@@ -75,7 +75,7 @@ Case | memisc::cases(...) | cases("pi<3"=pi<3, "pi=3"=pi==3,"pi>3"=pi>3) returns
 
 Action | Operator | Example
 ------------- | ------------- | -------------
-Create / update a variable | `<-` | a `<-` 10
+Create / update a variable | <- | `a <- 10`
 
 > NB: There are others you could use, but this is the best practice
 
@@ -83,11 +83,17 @@ Create / update a variable | `<-` | a `<-` 10
 
 Action | Operator | Example
 ------------- | ------------- | -------------
-Use public function from package | :: | memisc::cases()
-Use private function from package | ::: | optiRum:::pounds_format()
-Get a component e.g a data.frame column | $ | iris$Sepal.Length
+Use public function from package | :: | `memisc::cases()`
+Use private function from package | ::: | `optiRum:::pounds_format()`
+Get a component e.g a data.frame column | $ | `iris$Sepal.Length`
 Extract a property from a class | `@` | *Won't be used in this course*
-Refer to positions in a data.frame or vector | [ ] | iris[5:10,1]
-Refer to item in a list | [[ ]] | list(iris=iris,mtcars=mtcars)[["iris"]]
+Refer to positions in a data.frame or vector | [ ] | `iris[5:10,1]`
+Refer to item in a list | [[ ]] | `list(iris=iris,mtcars=mtcars)[["iris"]]`
 
+## Meta-operators
 
+Action | Operator | Example
+------------- | ------------- | -------------
+Comment | # | `# This is my comment`
+Help | ? | `?data.table`
+Identifier | \` |  ```r 'irisDT[ , \x60:=\x60(CreatedDate = Sys.Date())]'` ``

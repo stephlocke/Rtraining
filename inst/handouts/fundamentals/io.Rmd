@@ -7,6 +7,12 @@ output:
     theme: cerulean
 ---
 
+## Requirements 
+
+ - suggested package: data.table
+ - suggested package: readr
+ - suggested package: readxl
+ 
 ## In
 
 Format | Functions
@@ -15,8 +21,6 @@ CSV | read.csv , data.table::fread , readr::read_csv
 Excel | readxl::read_excel 
 Database | RODBC::sqlQuery , DBI::dbGetQuery 
 SPSS / SAS / Stata | haven::read_[prog] 
-Hadoop | rHadoopClient::read.hdfs 
-NoSQL | mongodb::mongo.find , RNeo4Jj::getNodes
 
 
 ## Out
@@ -24,8 +28,9 @@ NoSQL | mongodb::mongo.find , RNeo4Jj::getNodes
 Format | Functions
 ------------- | -------------
 CSV | write.csv 
-Excel |. 
-Database | RODBC::sqlSave , DBI::dbGetQuery 
-SPSS / SAS / Stata | .
-Hadoop |.
-NoSQL | .
+Excel | openxlsx::write.xlsx
+Database | RODBC::sqlSave , DBI::dbWriteTable 
+SPSS / SAS / Stata | foreign::write.foreign
+
+## Other file types
+As well standard formats, there's a lot of connector packages out there, including a suite for [Hadoop](https://github.com/RevolutionAnalytics/RHadoop/wiki).
