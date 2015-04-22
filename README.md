@@ -13,4 +13,5 @@ There are other useful packages here on GitHub that are utilised or recommended.
 
 ```{r}
 devtools::install_github("stephlocke/tfsR")
+devtools::install_github("stephlocke/optiRum")
 ```
