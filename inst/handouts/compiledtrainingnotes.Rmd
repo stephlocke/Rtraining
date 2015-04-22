@@ -85,7 +85,6 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```{r autodoc, child='documents/DashboardsHandout.Rmd', eval=TRUE}
 ```
 
-#  Making diagrams
 
 #  LaTeX
 
@@ -94,7 +93,7 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```{r autodoc, child='documents/latex.Rmd', eval=TRUE}
 ```
 
-#  Source control - theory
+#  Source control
 
 <a href="#top">Back to top</a>
 
@@ -108,28 +107,27 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```{r autodoc, child='development/tfsR.Rmd', eval=TRUE}
 ```
 
-<!--
-# Source control - git2r
-
+#  Package development
 <a href="#top">Back to top</a>
 
-```{r autodoc, child='development/git2r.Rmd', eval=TRUE}
+```{r autodoc, child='development/packages.Rmd', eval=TRUE}
 ```
 
--->
-
 #  Testing
-#  Package development
-#  Continuous integration with Travis-CI
 
+
+#  Continuous integration with Travis-CI
 ```{r autodoc, child='development/travisci.Rmd', eval=TRUE}
 ```
 
-#  Linux basics
 #  Installing Rstudio
+```{r autodoc, child='infrastructure/rstudio build.Rmd', eval=TRUE}
+```
 
 #  Installing shiny-server
 ```{r autodoc, child='infrastructure/shiny-server build.Rmd', eval=TRUE}
 ```
+
+#  Linux basics
 
 #  AD authentication

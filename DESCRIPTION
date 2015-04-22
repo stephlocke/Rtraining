@@ -20,3 +20,4 @@ Imports: devtools,
     memisc,
     optiRum,
     git2r
+Suggests: testthat

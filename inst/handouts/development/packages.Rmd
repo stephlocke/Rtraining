@@ -1,0 +1,64 @@
+---
+title: "Package development"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: readable
+---
+
+## Requirements 
+
+ - necessary package: devtools
+ - suggested package: testthat
+
+## What's a package?
+A package is a collection of functionality designed to achieve one or more purposes. Commonly it is a bundle of functions that help tackle a certain type of analysis.
+
+Packages are great ways to modularise your code and create standardised ways of doing specific tasks in your organisation, like charts (`optiRum::theme_optimum()`).
+
+## The package development Bible
+There is an [R foundation guide to writing packages](http://cran.r-project.org/doc/manuals/r-release/R-exts.html). I don't recommend you start with that! It is however what any package that you submit to the central repository of R packages (CRAN) will be held against - so if you'd like to get a package on CRAN you will need to read this.
+
+The better, more accessible book [R packages](http://r-pkgs.had.co.nz/) is by Hadley Wickham and will cover things in a lot of depth but is more accesable and has exercises.
+
+## How do you build a package?
+The easiest way to build a good quality package is to use the package devtools. This is a package designed specifically to make life easier for package developers. 
+
+Here is my typical workflow:
+```r
+library(devtools)
+pkg<-"newPackage"
+create(pkg)
+
+# Open the project!
+
+library(devtools)
+
+# Add unit test framework
+add_test_infrastructure()
+
+# Add CI framework
+add_travis()
+
+# Add folder for macro-level help files
+use_vignette()
+
+# Add file for providing info about your package
+use_package_doc()
+
+# Add a file for storing comments about the release if submitting to CRAN
+use_cran_comments()
+
+# Create various useful files
+file.create("README.md")
+file.create("NEWS")
+
+# Set git up
+library(git2r)
+init(".")
+```
+
+Once I have this skeleton I fill in the various bits of info about my package in DESCRIPTION, README, R/package.R, and so forth.
+
+After I've done some basic hygiene, I can start building my R functions and associated tests.
