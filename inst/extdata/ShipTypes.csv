@@ -1,0 +1,125 @@
+Ship Type,Category
+Barge,Generic
+Barge carrier,Carrier
+Barge oil,Gas/oil
+Barter Trade Boat,Generic
+Boat,Generic
+Bulk and container carrier,Carrier
+Bulk carrier,Carrier
+Bulk Carrier,Carrier
+Cable-Layer,Specialist
+Car carrier,Carrier
+Cargo ship,Carrier
+Cargo Ship,Carrier
+Catamaran,Specialist
+Cellular Container ship,Carrier
+Cement carrier,Tanker
+Chemical carrier,Tanker
+Chemical tanker,Tanker
+Chemical Tanker,Tanker
+Chemical/oil tanker,Gas/oil
+Coast Guard ship,Specialist
+Coaster,Generic
+Combination carrier,Carrier
+Container,Carrier
+Container ship,Carrier
+Container Ship,Carrier
+Container/General cargo ship,Carrier
+Crude Oil tanker,Gas/oil
+Cutter/dredger,Generic
+Dhow,Generic
+Dredger,Generic
+Dry bulk carrier,Carrier
+Dry cargo ship,Carrier
+Factory ship,Specialist
+Feeder container,Carrier
+Ferry,Passenger
+Fishing boat,Fishing
+Fishing trawler,Fishing
+Fishing vessel,Fishing
+Fishing vessels,Fishing
+Flat-top cargo barge,Generic
+Flush-tween/3 decker,Generic
+Freighter/Log carrier,Carrier
+Gas carrier,Gas/oil
+Gas carrier - LNG,Gas/oil
+Gas carrier - LPG,Gas/oil
+Gas carrier - non-specified,Gas/oil
+Gas carrier/tanker,Gas/oil
+Gas carrier-LPG,Gas/oil
+Gas/Oil tanker,Gas/oil
+General cargo,Carrier
+General cargo ship,Carrier
+General dry cargo ship,Carrier
+Heavy load carrier,Carrier
+Hopper/Dregger,Generic
+Landing craft,Generic
+Liquefied gas carrier,Gas/oil
+Liquefied Gas/Oil tanker,Gas/oil
+Livestock carrier,Carrier
+Log carrier,Carrier
+Log/Bulk carrier,Carrier
+LPG,Gas/oil
+LPG tanker,Gas/oil
+Merchant ships/Fishing trawlers,Fishing
+Mobile offshore drilling unit,Specialist
+Motor tanker,Tanker
+Motor yacht,Passenger
+Multi purpose ship,Generic
+Multipurpose,Generic
+Multipurpose cargo ship,Generic
+Multipurpose tweendecker,Generic
+NA,NA
+Navy ship,Specialist
+Offshore Barge carrier,Carrier
+Offshore Supply ship,Generic
+Offshore Support Vessel,Generic
+Offshore tug/Supply ship,Generic
+Oil product tanker,Gas/oil
+Oil Products Tanker,Gas/oil
+Oil tanker,Gas/oil
+Oil Tanker,Gas/oil
+Oil/Chemical tanker,Gas/oil
+Ore/Bulk/oil carrier,Gas/oil
+Ore/Bulk/Oil carrier,Gas/oil
+Ore/bulk/oil carrier,Gas/oil
+Ore/bulk/oil Carrier,Gas/oil
+Panama,Generic
+Passenger ship,Passenger
+Product /Motor tanker,Tanker
+Product tanker,Tanker
+Product Tanker,Tanker
+Product/Motor tanker,Tanker
+Reefer,Generic
+Reefer/Container ship,Generic
+Refrigerated cargo carrier,Carrier
+Refrigerated cargo ship,Carrier
+Refrigerated ship,Carrier
+Rescue/standby ship,Specialist
+Research ship,Specialist
+Ro-Ro cargo ship,ro-ro
+Ro-Ro ferry passenger ship,ro-ro
+Ro-ro passenger vessel,ro-ro
+Ro-ro ship,ro-ro
+Ro-ro-cargo ship,ro-ro
+Ro-Ro-cargo ship,ro-ro
+Salvage tug,Generic
+Special purpose ship,Specialist
+Speedboat,Passenger
+Steel-Bulk Carrier,Carrier
+Supply ship,Generic
+Tanker,Tanker
+Tanker (VLCC),Tanker
+Tanker ship,Tanker
+Tanker VLCC,Tanker
+Towing tug,Generic
+Trading ship,Generic
+Tug,Generic
+Tug/lighter,Generic
+Unitised vessel,NA
+Unknown,NA
+Vehicle carrier,Carrier
+VLCC,Tanker
+Warship,Specialist
+Wood chip carrier,Carrier
+Yacht,Passenger
