@@ -1,0 +1,101 @@
+---
+title: "Unit testing"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: journal
+---
+## Requirements 
+ - necessary package: testthat
+ 
+## What's unit testing?
+Unit testing is the technique of writing tests that assess low-level functionality against requirements.
+
+## Why should I unit test - I do charts and databases?
+In reports, databases, and code we typically encode business rules, conventions, and our own conventions. Bringing these into reusable functions means less code reproduction, no variances between team members, and lower time to change.
+
+All of these are verifiably correct and so can be tested. Therefore, why test them manually, or why risk someone "tweaking" the code and changing the rules without people knowing? Your unit tests save you time over the long run, and protect against unexpected behaviour changes.
+
+Reconciliations can also be done inside your unit tests. If you have "canonical answers", you can test new transformations against these to ensure you're consistent.
+
+## How to unit test?
+I'm not a developer so this may be the wrong approach but here are the scenarios I write tests for:
+
+ 1. A single set of values that represent "normal" and expect this matches a correct answer
+ 2. A dataset that represents "normal" and expecting this to match correct answers
+ 3. Various permutations of bad input values and expect errors (ideally specific error messages)
+ 4. Edge cases that cover extreme values or boundaries for any inequalities or conditions
+ 5. Any bugs or compatibility issues
+ 
+Also, if you're struggling to test because it's got really complex inputs, outputs, or intermediate calculations, consider breaking up the code and rewriting. It's more likely that things are going to go wrong and you won't know if something is particularly complex.
+
+## How to unit test in R?
+Let's build a sample function:
+
+```r
+myfunc<-function(a=1,b=2,c="blah"){
+stopifnot(is.numeric(a), is.numeric(b),
+            is.character(c))
+d<-if(a<0){
+          a*b
+          }else{
+          a/b
+          }
+
+e<-paste0(c,d)
+
+return(e)
+}
+
+```
+
+Let's write some tests (in a file `tests/testthat/test-myfunc.r`)
+```r
+# Add a high-level name for group of tests, typically the function name
+context("myfunc")
+
+# Simplest test
+test_that("Defaults return expected result",{
+  result<-myfunc()
+  check<-"blah0.5"
+  expect_equal(result,check)
+})
+
+# Vector test
+test_that("Basic vectorisation works",{
+  result<-myfunc(a=c(1,1),b=c(2,2), c=c("blah","blah"))
+  check<-c("blah0.5","blah0.5")
+  expect_equal(result,check)
+})
+
+# Non-uniform vectorisation test
+test_that("Complex vectorisation works",{
+  result<-myfunc(a=c(1,1),b=c(2,2))
+  check<-c("blah0.5","blah0.5")
+  expect_equal(result,check)
+})
+
+# Test a different condition
+test_that("Negative a values result in multiplication",{
+  result<-myfunc(a=c(-1,-2),b=c(2,2))
+  check<-c("blah-2","blah-4")
+  expect_equal(result,check)
+})
+
+# Test a different condition
+test_that("a=0 values result in 0",{
+  result<-myfunc(a=0)
+  check<-c("blah0")
+  expect_equal(result,check)
+})
+
+# Test some duff inputs
+test_that("errors expectedly",{
+  expect_error(myfunc(a="0"))
+  expect_error(myfunc(b="0"))
+  expect_error(myfunc(c=0))
+})
+```
+
+There are a lot more expectation functions you can use and you can make your own.

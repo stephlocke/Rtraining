@@ -114,20 +114,28 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```
 
 #  Testing
+<a href="#top">Back to top</a>
 
+```{r autodoc, child='development/unittesting.Rmd', eval=TRUE}
+```
 
 #  Continuous integration with Travis-CI
+<a href="#top">Back to top</a>
 ```{r autodoc, child='development/travisci.Rmd', eval=TRUE}
 ```
 
 #  Installing Rstudio
+<a href="#top">Back to top</a>
 ```{r autodoc, child='infrastructure/rstudio build.Rmd', eval=TRUE}
 ```
 
 #  Installing shiny-server
+<a href="#top">Back to top</a>
 ```{r autodoc, child='infrastructure/shiny-server build.Rmd', eval=TRUE}
 ```
 
+<!--
 #  Linux basics
 
 #  AD authentication
+-->
