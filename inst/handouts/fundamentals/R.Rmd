@@ -62,6 +62,7 @@ mermaid(hangs)
  10. httr
 
 I lied...
+
  11. foreach
  12. doMC
  13. magrittr
