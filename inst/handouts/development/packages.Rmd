@@ -22,6 +22,8 @@ There is an [R foundation guide to writing packages](http://cran.r-project.org/d
 
 The better, more accessible book [R packages](http://r-pkgs.had.co.nz/) is by Hadley Wickham and will cover things in a lot of depth but is more accesable and has exercises.
 
+For quick learning abotu devtools you can check out [the cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/03/devtools-cheatsheet.pdf)
+
 ## How do you build a package?
 The easiest way to build a good quality package is to use the package devtools. This is a package designed specifically to make life easier for package developers. 
 
@@ -62,3 +64,72 @@ init(".")
 Once I have this skeleton I fill in the various bits of info about my package in DESCRIPTION, README, R/package.R, and so forth.
 
 After I've done some basic hygiene, I can start building my R functions and associated tests.
+
+## Writing quality functions
+
+ 1. Plan it out
+ 2. Write the documentation first
+ 3. Keep testing foremost in your mind - ideally, write unit tests first
+ 4. Choose sensible defaults for paramaters
+ 5. (Without strong reason) make your function return an object that has to be specifically assigned to the global environment
+ 6. Add validation of inputs and error handling
+ 7. Avoid loops
+ 8. Make dependencies obvious
+ 9. Consider how you will be able to test the function
+ 10. Use the ellipsis (`...`) argument to pass values through to optional components in functions
+
+```r
+#' A function quick description
+#' 
+#' A more detailed description that can span multiple lines
+#' for readability. Covers concepts, typical usages etc.
+#'
+#' @param  param1 Info about param1 e.g. data type, guidance
+#' @param  param2 Info about param1 e.g. data type, guidance
+#' @param  ...    Additional values to pass to x, y, z
+#'
+#' @return returnDT Info about what is returned by the function
+#' 
+#' @keywords words allowing search
+#' @family ifPartOfABundle
+#' 
+#' @examples
+#' # Sample code that illustrates usage
+#'
+#' @export
+
+myFuncName<- function(param1, param2="Blah", ...){
+stopifnot(param1>0, is.character(param2))
+
+# Function code routinely commented with WHY or
+# explanations of complex HOW (but consider 
+# breaking these up / simplifying)
+}
+
+```
+
+## Verification process
+Let's make sure your code is all working (assumes you've got unit tests)
+
+```r
+library(devtools)
+
+# Build help files
+document()
+
+# Run unit tests
+test()
+
+# Check against CRAN standards
+check()
+```
+
+Each of these steps could identify things to fix. It's great to get rid of as many ERRORs, WARNINGs, and NOTEs as possible.
+
+## Publishing your package
+There are a number of locations but I'll cover two:
+
+ 1. CRAN: The central repository of packages, this is ensures a minimum level of quality. It does however have some weird rules (like Title Case demands) and one or two of the gate-keepers aren't very patient with people. It's great to do, but be prepared for rework and some comments that could make you wince.
+ 2. GitHub: GitHub is becoming more and more indexed and well utilised asa location for R packages.
+ 
+My personal recommendations are to use GitHub as your active development environment, so that people can download the latest version, and periodically attempt to release to CRAN. This helps push up your package quality and makes your code more widely available.
