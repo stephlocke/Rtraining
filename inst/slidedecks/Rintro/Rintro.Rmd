@@ -1,7 +1,7 @@
 ---
 title: "Intro to R"
 author: "Steph Locke"
-date: "@ London Business Analytics Group"
+date:  "`r Sys.Date()`"
 output:
   ioslides_presentation:
     css: Look.css
