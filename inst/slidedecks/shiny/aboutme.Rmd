@@ -1,0 +1,16 @@
+---
+title: "About Me"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: spacelab
+---
+
+- Modelling and Data Analytics Manager (MaDAM) for [Optimum Credit Ltd](http://optimumcredit.co.uk)
+- 7 years of analysis & BI
+- Presenter (obviously!) on R, and other BI topics
+- User group leader: [SQL Cardiff](http://www.meetup.com/Cardiff-SQL-Server-User-Group), [diff.Net](http://www.meetup.com/diff-net), and [CaRdiff R User Group](http://www.meetup.com/Cardiff-R-User-Group/)
+- Co-author of [Tribal SQL](http://tribalsql.com/)
+
+[itsalocke.com](http://itsalocke.com) | [github.com/stephlocke](https://github.com/stephlocke) | [\@SteffLocke](https://twitter.com/stefflocke)

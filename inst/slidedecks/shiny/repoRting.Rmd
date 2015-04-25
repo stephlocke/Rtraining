@@ -70,3 +70,8 @@ Create an ubuntu VM, run the following commands
  1. `shinyapps::deployApp()`
 
 ## DEMO
+`git clone https://github.com/rstudio/shiny-examples`
+
+## About Me
+```{r autodoc, child='aboutme.Rmd', eval=TRUE}
+```
