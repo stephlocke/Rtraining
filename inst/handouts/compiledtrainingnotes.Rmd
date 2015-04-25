@@ -17,7 +17,7 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 
 ```{r autodoc, child='frontmatter/objective.Rmd', eval=TRUE}
 ```
-
+## About Me
 ```{r autodoc, child='frontmatter/aboutme.Rmd', eval=TRUE}
 ```
 

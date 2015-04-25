@@ -13,7 +13,7 @@ imgfolder.unc<-gsub("/","\\",imgfolder,fixed=TRUE)
 ```
 ## R
  * Download latest base R exe file from [cran.rstudio.com](http://cran.rstudio.com/)
- * Also download Rtools latest exe
+ * Also download Rtools latest exe *During release period of 3.2.0 there may be some difficulties with latest version - use Rtools3.1 instead*
  * Install R then Rtools - if 64bit, install both 32 and 64 as it saves you hassle with other drivers
 
 ## Rstudio
@@ -36,5 +36,5 @@ imgfolder.unc<-gsub("/","\\",imgfolder,fixed=TRUE)
 ```r
 library(devtools)
 # Case-sensitive!
-install_github("stephlocke/Rtaining")
+install_github("stephlocke/Rtraining")
 ```
