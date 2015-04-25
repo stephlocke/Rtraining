@@ -1,0 +1,72 @@
+---
+title: 'shiny: repoRting'
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output: 
+  ioslides_presentation:
+    css: Look.css
+---
+
+## Shiny
+ - R
+ - An interactive report framework
+ - An open source package
+ - Uses "modern web standards" like bootstrap under the hood 
+
+## Examples
+ - [Winston Chang Activity Dashboard](https://winston.shinyapps.io/activity-dashboard/)
+ - [Movie explorer](http://shiny.rstudio.com/gallery/movie-explorer.html)
+
+## Code example
+```{r, eval=FALSE}
+library(shiny)
+
+shinyAppDir(
+  system.file("examples/06_tabsets", 
+              package="shiny")
+)
+```
+ 
+## Pros & Cons
+Pros | Cons
+--------|--------
+Free(mium) | Linux
+Modern | != LDAP auth (free version)
+Extensible | Fast pace of change
+Solid SDLC | Code
+
+## How do you build an app?
+```{r, eval=FALSE}
+shinyApp(
+    ui      = fluidPage(),
+  , server  = function(input,
+                       output) {}
+  , options = defaultdisplay
+)
+```
+
+## DEMO
+
+## How do you do the infrastructure?
+Create an ubuntu VM, run the following commands
+
+ - `sudo apt-get update`
+ - `sudo apt-get install r-base`
+ - `sudo su - -c "R -e \"install.packages('shiny', repos='http://cran.rstudio.com/')\""`
+ - `sudo apt-get install gdebi-core`
+ - `wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.3.0.403-amd64.deb`
+ - `sudo gdebi shiny-server-1.3.0.403-amd64.deb`
+ - `sudo nano /etc/shiny-server/shiny-server.conf`
+ - `sudo restart shiny-server`
+
+## DEMO
+
+## How do you deploy apps?
+### On-site
+ 1. [winSCP](http://winscp.net/eng/index.php)
+ 2. `git clone`
+ 
+### shinyApps.io
+ 1. `shinyapps::deployApp()`
+
+## DEMO
