@@ -5,7 +5,7 @@ library(data.table)
 piracy<-readxl::read_excel("inst/extdata/ListOfIncidentsPirate.xlsx")
 setDT(piracy)
 
-## FFirst summaries ----
+## First summaries ----
 summary(piracy)
 ## Unique values
 piracy[,lapply(.SD,uniqueN)]
