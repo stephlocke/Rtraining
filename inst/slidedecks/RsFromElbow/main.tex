@@ -1,0 +1,47 @@
+%!TEX program = xelatex
+\documentclass[10pt, compress]{beamer}
+\usetheme[titleprogressbar]{m}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+%\usepackage{minted}
+
+\usepgfplotslibrary{dateplot}
+
+%\usemintedstyle{trac}
+
+$if(title)$
+\title{$title$}
+$endif$
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$
+$if(author)$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+$endif$
+\date{$date$}
+$if(institute)$
+\institute{$institute$}
+$endif$
+
+
+% let's do some specifics customisation
+\usepackage{hyperref}
+      \hypersetup{
+        colorlinks=true,     % false: boxed links; true: colored links
+        linkcolor=,          % color of internal links
+        citecolor=,          % color of links to bibliography
+        filecolor=,          % color of file links
+        urlcolor=mLightBrown    % color of external links
+      }
+
+\begin{document}
+
+$if(title)$
+\frame{\titlepage}
+$endif$
+
+$body$
+
+
+\end{document}
