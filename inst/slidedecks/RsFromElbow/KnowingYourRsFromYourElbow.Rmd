@@ -11,27 +11,95 @@ output:
     ]
 ---
 
-## R Markdown
+## Steph Locke | Not my Rs
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+- Star of presentations such as "the LaTeX show"!
+- Local user group leader
+- blog: [itsalocke.com](http://itsalocke.com)
+- t: [\@stefflocke](http://twitter.com/stefflocke)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+## What's this about Rs?
+- R is an open source language, made out of the ashes of S
+- It started off stats
+- Now has excellent graphics, .js, & doc facilities
 
-## Slide with Bullets
+## Why should you know your Rs from your elbow?
+- Markdown!
+- Interactive data viz via js libraries
+- Fully CI/CD capable
+- Tons of non-web uses
+- Easier payloads from analytical teams
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+## What does it look like? | Basics
+```{r}
+#Define a variable
+a<-25
 
-## Slide with R Code and Output
+#Call a variable
+a
+
+#Do something to it
+a+1
+```
+
+## What does it look like? | Functions
+```{r}
+#Define a function
+inflateAudienceFigs<-function(x) x*100
+
+#Call a function
+inflateAudienceFigs(a)
+```
+
+## What does it look like? | Extensions
+```{r, eval=FALSE }
+#Get a package
+install.packages("commonmark")
+
+#Activate a package
+library(commonmark)
+```
+
+
+## What does it look like? | OO
+```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
+library("R6")
+```
 
 ```{r}
-summary(cars)
+# Orig OO (s3): cyclismo.org/tutorial/R/s3Classes.html
+library(R6)
+Loan<-R6Class("Loan", 
+              public=list(term=NA
+                         ,initialize=function(term){
+                           if(!missing(term)){ 
+                              self$term<-term 
+                              }} 
+                         ,extendBy=function(ext){ 
+                            self$term<-self$term+ext
+                            }))
 ```
 
-## Slide with Plot
-
-```{r, echo=FALSE}
-plot(cars)
+## What does it look like? | OO
+```{r}
+acc<-Loan$new(36)
+acc$extendBy(6)
+acc$term
 ```
 
+## What does it look like? | Piping
+```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
+library(magrittr)
+```
+
+```{r, results='hide', eval=FALSE}
+library(magrittr)
+
+#Typical
+pairs(iris)
+
+#Pipe
+iris %>% pairs
+iris %>% tail(.) %>% pairs
+iris %>% {tail(.,nrow(.)/5)} %>% pairs
+```
