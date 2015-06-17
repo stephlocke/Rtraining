@@ -30,7 +30,7 @@ output:
 - Tons of non-web uses
 - Easier payloads from analytical teams
 
-## What does it look like? | Basics
+## What does R look like? | Basics
 ```{r}
 #Define a variable
 a<-25
@@ -42,7 +42,7 @@ a
 a+1
 ```
 
-## What does it look like? | Functions
+## What does R look like? | Functions
 ```{r}
 #Define a function
 inflateAudienceFigs<-function(x) x*100
@@ -51,7 +51,7 @@ inflateAudienceFigs<-function(x) x*100
 inflateAudienceFigs(a)
 ```
 
-## What does it look like? | Extensions
+## What does R look like? | Extensions
 ```{r, eval=FALSE }
 #Get a package
 install.packages("commonmark")
@@ -61,7 +61,7 @@ library(commonmark)
 ```
 
 
-## What does it look like? | OO
+## What does R look like? | OO
 ```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
 library("R6")
 ```
@@ -80,14 +80,14 @@ Loan<-R6Class("Loan",
                             }))
 ```
 
-## What does it look like? | OO
+## What does R look like? | OO
 ```{r}
 acc<-Loan$new(36)
 acc$extendBy(6)
 acc$term
 ```
 
-## What does it look like? | Piping
+## What does R look like? | Piping
 ```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
 library(magrittr)
 ```
@@ -103,3 +103,5 @@ iris %>% pairs
 iris %>% tail(.) %>% pairs
 iris %>% {tail(.,nrow(.)/5)} %>% pairs
 ```
+
+## Let's do some JS stuff!

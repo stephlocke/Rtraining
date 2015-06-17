@@ -1,0 +1,45 @@
+---
+title: "Play with JS"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## The analyst's R workflow | DiagrammeR
+```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
+library(DiagrammeR)
+```
+
+```{r}
+library(DiagrammeR)
+mermaid("graph TB
+subgraph High Level
+D[Data] --> R[Read into memory]
+R --> DM[Data manipulation]
+DM --> V[Visualisation]
+DM --> S[Statistical Analysis]
+DM --> O[Output]
+S --> V
+V --> Do[Document]
+Do --> O
+V --> I[Interactive report]
+I --> O
+end")
+
+```
+
+
+## Some mapping
+```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
+library(data.table)
+library(leaflet)
+```
+
+```{r, warning=FALSE, message=FALSE}
+library(data.table)
+library(leaflet)
+dt<-fread(system.file("extdata/Accidents2013.csv",package = "Rtraining"))
+leaflet(data = tail(dt,50)) %>% addTiles() %>%
+  addMarkers(~Longitude, ~Latitude, popup = ~as.character(Accident_Index))
+
+```
