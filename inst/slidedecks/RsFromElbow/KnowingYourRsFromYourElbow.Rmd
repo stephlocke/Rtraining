@@ -105,3 +105,25 @@ iris %>% {tail(.,nrow(.)/5)} %>% pairs
 ```
 
 ## Let's do some JS stuff!
+
+## Find out more
+
+### Online
+- Modern R [DataCamp](http://datacamp.com) 
+- Statistics R [Coursera](https://www.coursera.org/specialization/jhudatascience) 
+- [R-bloggers](http://www.r-bloggers.com/) 
+- [Advanced R programming](http://adv-r.had.co.nz/)
+- [Writing R packages](http://r-pkgs.had.co.nz/)
+
+
+### In-person
+- R user groups e.g. [CaRdiff](http://meetup.com/cardiff-r-user-group)
+- Conferences e.g. [EARL](http://www.earl-conference.com/) and [My training day @ SQLSaturday](http://manchesterpass.ddns.net/)
+
+
+## Get this presentation
+This presentation is available on [github.com/stephlocke/Rtraining](https://github.com/stephlocke/Rtraining). All the code is available for you to take a copy and play with to help you learn on the go.
+
+If you have any questions, contact me! 
+
+[itsalocke.com](http://itsalocke.com) | [github.com/StephLocke](https://github.com/StephLocke) | [\@SteffLocke](https://twitter.com/stefflocke)
