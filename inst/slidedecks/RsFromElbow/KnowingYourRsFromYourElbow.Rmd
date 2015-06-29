@@ -118,7 +118,8 @@ iris %>% {tail(.,nrow(.)/5)} %>% pairs
 
 ### In-person
 - R user groups e.g. [CaRdiff](http://meetup.com/cardiff-r-user-group)
-- Conferences e.g. [EARL](http://www.earl-conference.com/) and [My training day @ SQLSaturday](http://manchesterpass.ddns.net/)
+- Conferences e.g. [EARL](http://www.earl-conference.com/) 
+- Training days inc [my hands-on training day, Jul 24](http://manchesterpass.ddns.net/)
 
 
 ## Get this presentation

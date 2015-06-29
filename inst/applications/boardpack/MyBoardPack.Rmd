@@ -1,0 +1,65 @@
+---
+title: "My sample board pack"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 1
+    number_sections: true
+---
+
+```{r, echo=FALSE}
+knitr::read_chunk("D1MI.R")
+knitr::read_chunk("D2MI.R")
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',
+                      echo=FALSE, warning=FALSE, message=FALSE)
+commentfunc<-function(figCommentID){
+  var<-paste0("input$",figCommentID)
+if(exists("input")){
+get(var)
+}else{
+cat( paste0(figCommentID," commentary to be determined"))
+}
+}
+```
+
+```{r LoadD1}
+```
+
+```{r LoadD2}
+```
+
+# Car accident data
+```{r TableD1input, results='asis'}
+commentfunc("TableD1")
+
+```
+
+```{r TableD1}
+```
+
+```{r ChartD1input, results='asis'}
+commentfunc("ChartD1")
+
+```
+
+```{r ChartD1}
+```
+
+# Piracy data
+```{r TableD2input, results='asis'}
+commentfunc("TableD2")
+
+```
+
+```{r TableD2}
+```
+
+```{r ChartD2input, results='asis'}
+commentfunc("ChartD2")
+
+```
+
+```{r ChartD2}
+```

@@ -1,0 +1,56 @@
+---
+title: "Board Packs"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output: ioslides_presentation
+---
+
+## What's a board pack?
+
+- A collection of key metrics from around the business
+- An account of performance from department heads
+- A high visibility piece of MI
+- A very time consuming document to produce!
+- A very expensive document to produce!
+
+## What's a board pack like?
+
+- A research update
+- Other pieces of MI
+- Business Plans
+- Annual Returns
+- Other documents with multiple diagrams and associated text
+
+## How is it typically done?
+
+- Lots of people across the company beavering away in spreadsheets
+- Outputting to Word (hopefully)
+- Lots of stuff gets emailed
+- Lots of stuff gets typed, then emailed
+- Someone painstakingly consolidates all the sheets / docs into a PDF
+- Lots of people criticise / feedback
+- Repeat all of above, eventually just publish anyway
+
+## What's would we like to achieve?
+
+- Reduction in sending work back upstream
+- Reduction in executive time to produce
+- Standardisation of look and feel
+- Reduction in spreadsheets
+
+## Translating aim to reality
+```{r, echo=FALSE}
+library(DiagrammeR)
+mermaid("
+        graph LR
+        R[R code] --> L[LaTeX]
+        R --> S[Shiny App]
+        S --> L
+        D[Database] -.-> R
+        D -.-> S
+        C(Commentary) --> S
+        L --> P(PDF)
+        ")
+```
+
+## Demo
