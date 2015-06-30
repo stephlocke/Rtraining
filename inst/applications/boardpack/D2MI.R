@@ -12,7 +12,8 @@ dt2<-piracy[shiptypes]
 dt2[,PiracyDate:=as.Date(Date)]
 
 # ---- TableD2 ----
-knitr::kable(t(dt2[,lapply(.SD,uniqueN)]))
+interestingCols<-colnames(dt2)[1:5]
+knitr::kable(dt2[,lapply(.SD,uniqueN),.SDcols=interestingCols])
 
 # ---- ChartD2 ----
 library(ggplot2)

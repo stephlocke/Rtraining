@@ -32,7 +32,8 @@ cat( paste0(figCommentID," commentary to be determined"))
 
 # Car accident data
 ```{r TableD1input, results='asis'}
-commentfunc("TableD1")
+#commentfunc("TableD1")
+cat(input$TableD1)
 
 ```
 
@@ -40,7 +41,8 @@ commentfunc("TableD1")
 ```
 
 ```{r ChartD1input, results='asis'}
-commentfunc("ChartD1")
+#commentfunc("ChartD1")
+cat(input$ChartD1)
 
 ```
 
@@ -49,7 +51,8 @@ commentfunc("ChartD1")
 
 # Piracy data
 ```{r TableD2input, results='asis'}
-commentfunc("TableD2")
+#commentfunc("TableD2")
+cat(input$TableD2)
 
 ```
 
@@ -57,7 +60,8 @@ commentfunc("TableD2")
 ```
 
 ```{r ChartD2input, results='asis'}
-commentfunc("ChartD2")
+#commentfunc("ChartD2")
+cat(input$ChartD2)
 
 ```
 

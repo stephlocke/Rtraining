@@ -2,7 +2,7 @@ library(shiny)
 library(knitr)
 
 shinyServer(function(input, output, session) {
-  boardpreview<-reactive(read_file(
+  boardpreview<-reactive(readr::read_file(
     knit2html(input = "MyBoardPack.Rmd",output = "MyBoardPack.html")))
   output$knitDoc <- renderUI({
     HTML(boardpreview() )
