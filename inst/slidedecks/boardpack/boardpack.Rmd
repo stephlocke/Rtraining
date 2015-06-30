@@ -42,7 +42,7 @@ output: ioslides_presentation
 ```{r, echo=FALSE}
 library(DiagrammeR)
 mermaid("
-        graph LR
+        graph TB
         R[R code] --> L[LaTeX]
         R --> S[Shiny App]
         S --> L
@@ -54,3 +54,14 @@ mermaid("
 ```
 
 ## Demo
+
+## What's next
+- Save for later functionality
+- Upload PDFs to be stitched in
+- Dynamic Rmd generation (from db)
+
+## Get the code
+```{r, eval=FALSE}
+if (!require(devtools)) install.packages("devtools")
+devtools::install_github("stephlocke/Rtraining")
+```
