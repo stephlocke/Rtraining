@@ -11,9 +11,11 @@ rootfolder<-file.path(find.package("Rtraining"),"handouts")
 imgfolder<-file.path(rootfolder,"imgs")
 imgfolder.unc<-gsub("/","\\",imgfolder,fixed=TRUE)
 ```
+Please note these instructions were tested on a Windows 8.1 clean VM from Azure on 20/07/2015 - updates to r, rstudio, packages, or the training package could cause drift between what works and what doesn't and you'll have to wing it. If you do have to wing it, let me know and I'll update my instructions!
+
 ## R
  * Download latest base R exe file from [cran.rstudio.com](http://cran.rstudio.com/)
- * Also download Rtools latest exe *During release period of 3.2.0 there may be some difficulties with latest version - use Rtools3.1 instead*
+ * Also download Rtools latest exe 
  * Install R then Rtools - if 64bit, install both 32 and 64 as it saves you hassle with other drivers
 
 ## Rstudio
@@ -23,18 +25,21 @@ imgfolder.unc<-gsub("/","\\",imgfolder,fixed=TRUE)
 ## Git
  * Download latest git version from [git-scm.com](http://git-scm.com/download/win)
  * Install
+ * Install the client from [](https://msysgit.github.io/)
 
 ## Configuration
  * Open Rstudio
  * Go to Tools> global options and set rstudio to point at the location of your git.exe file
 ![Git exe location](`r paste0(imgfolder.unc,"\\rstudio-gitfolder.png")`)
- * Setup your details in git by going to git > shell in Rstudio or opening up command-prompt
+ * Open up command-prompt
      + Run `git config --global user.name="Your name"`
      + Run `git config --global user.email="email@addre.ss"`
- * Use Packages > Install to install devtools and installr
- * Install Rtraining by executing
+ * Use Packages > Install to install devtools and installr (this can take a while due to dependencies)
+ 
+## Rtraining
+ * Install Rtraining (this can take a while due to dependencies, as I want you to have the most commonly used packages) by executing
 ```r
-library(devtools)
 # Case-sensitive!
-install_github("stephlocke/Rtraining")
+devtools::install_github("stephlocke/Rtraining")
 ```
+ * Get the project from source control by going to New Project in Rstudio, selecting from version control, and pasting in the URL ```https://github.com/stephlocke/Rtraining.git```
