@@ -19,5 +19,7 @@ Imports: devtools,
     foreach,
     memisc,
     optiRum,
-    git2r
+    git2r,
+    readxl,
+    readr
 Suggests: testthat
