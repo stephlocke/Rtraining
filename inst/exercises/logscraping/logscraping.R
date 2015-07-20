@@ -3,6 +3,8 @@ library(chron)
 library(ggplot2)
 library(stringr)
 
+origwd<-getwd()
+setwd("inst/exercises/logscraping/")
 # This doesn't cope with spaces in URLs grr!!
 url_pattern <- "http[s]?://(?:[@blank:]|[a-zA-Z]|[0-9]|[$-_@.&+ ]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
 
@@ -26,3 +28,7 @@ ggplot(raw.log,aes(x=log.date,y=..count..,group=download,fill=download))+
 
 ## Do a basic summary
 raw.log[,.(Volume=.N), by=.(log.date,source,download)]
+
+
+## reset dir
+setwd(origwd)
