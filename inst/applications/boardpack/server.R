@@ -2,11 +2,16 @@ library(shiny)
 library(knitr)
 
 shinyServer(function(input, output, session) {
-  boardpreview<-reactive(readr::read_file(
-    knit2html(input = "MyBoardPack.Rmd",output = "MyBoardPack.html")))
+  
+  boardpreview<-reactive(
+    readr::read_file(
+      knit2html(input = "MyBoardPack.Rmd",output = "MyBoardPack.html"))
+  )
+  
   output$knitDoc <- renderUI({
     HTML(boardpreview() )
   })
+  
   output$report = downloadHandler(
     filename <- paste0("MyBoardPack",format(Sys.Date(),"%Y%m%d"),".pdf"),
     

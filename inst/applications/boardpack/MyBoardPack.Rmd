@@ -1,12 +1,13 @@
 ---
 title: "My sample board pack"
 author: "Steph Locke"
-date: "`r Sys.Date()`"
+date: '`r Sys.Date()`'
 output:
   pdf_document:
-    toc: true
+    number_sections: yes
+    toc: yes
     toc_depth: 1
-    number_sections: true
+classoption: article
 ---
 
 ```{r, echo=FALSE}

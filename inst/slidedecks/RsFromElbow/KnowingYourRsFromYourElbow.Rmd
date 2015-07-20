@@ -27,8 +27,8 @@ output:
 - Markdown!
 - Interactive data viz via js libraries
 - Fully CI/CD capable
-- Tons of non-web uses
-- Easier payloads from analytical teams
+- Reclaim your time from Excel
+- Great analysis
 
 ## What does R look like? | Basics
 ```{r}
@@ -60,7 +60,7 @@ install.packages("commonmark")
 library(commonmark)
 ```
 
-
+<!--
 ## What does R look like? | OO
 ```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
 library("R6")
@@ -86,7 +86,7 @@ acc<-Loan$new(36)
 acc$extendBy(6)
 acc$term
 ```
-
+-->
 ## What does R look like? | Piping
 ```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
 library(magrittr)
@@ -104,7 +104,6 @@ iris %>% tail(.) %>% pairs
 iris %>% {tail(.,nrow(.)/5)} %>% pairs
 ```
 
-## Let's do some JS stuff!
 
 ## Find out more
 
@@ -118,8 +117,8 @@ iris %>% {tail(.,nrow(.)/5)} %>% pairs
 
 ### In-person
 - R user groups e.g. [CaRdiff](http://meetup.com/cardiff-r-user-group)
-- Conferences e.g. [EARL](http://www.earl-conference.com/) 
-- Training days inc [my hands-on training day, Jul 24](http://manchesterpass.ddns.net/)
+- Conferences e.g. [EARL](http://www.earl-conference.com/), [SQL Relay](http://sqlrelay.co.uk)
+- Training days inc [my hands-on training day, next week](http://manchesterpass.ddns.net/)
 
 
 ## Get this presentation
