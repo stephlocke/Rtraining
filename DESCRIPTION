@@ -22,4 +22,6 @@ Imports: devtools,
     git2r,
     readxl,
     readr
-Suggests: testthat
+Suggests: testthat,
+    knitr
+VignetteBuilder: knitr
