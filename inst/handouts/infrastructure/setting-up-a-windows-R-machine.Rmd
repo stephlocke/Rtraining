@@ -1,8 +1,9 @@
 ---
 title: "Installing R on Windows"
 author: "Steph Locke"
-date: "`r Sys.Date()`"
+date: '`r Sys.Date()`'
 output:
+  word_document: default
   html_document:
     theme: readable
 ---
@@ -23,21 +24,25 @@ Please note these instructions were tested on a Windows 8.1 clean VM from Azure 
  * Select correct install file for your PC, and install
  
 ## Git
- * Download latest git version from [git-scm.com](http://git-scm.com/download/win)
+ * Download latest git version from [msysgit.github.io](https://msysgit.github.io/)
  * Install
- * Install the client from [](https://msysgit.github.io/)
 
 ## Configuration
  * Open Rstudio
- * Go to Tools> global options and set rstudio to point at the location of your git.exe file
+ * Go to Tools > Global Options and set Rstudio to point at the location of your git.exe file
 ![Git exe location](`r paste0(imgfolder.unc,"\\rstudio-gitfolder.png")`)
- * Open up command-prompt
+ * Restart Rstudio
+     + If you don't automatically get the Git pane (top RHS) then Create a New Project and tick the source control checkbox
+ * Open up command-prompt (or use the Git pane and select Shell in the extra options)
      + Run `git config --global user.name="Your name"`
      + Run `git config --global user.email="email@addre.ss"`
- * Use Packages > Install to install devtools and installr (this can take a while due to dependencies)
+ * Go to the Packages area (bottom RHS) and select Install. Install devtools and installr
+     + This can take a while due to dependencies
+     + If you encounter any packages that could not download or install you won't be able to install Rtraining successfully, but typically re-performing ths install will pick up any packages a second time around
  
 ## Rtraining
- * Install Rtraining (this can take a while due to dependencies, as I want you to have the most commonly used packages) by executing
+ * Install Rtraining
+     + This can take a while due to dependencies, as I want you to have the most commonly used packages
 ```r
 # Case-sensitive!
 devtools::install_github("stephlocke/Rtraining")
