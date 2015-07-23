@@ -1,0 +1,14 @@
+language: r
+sudo: required
+
+env:
+ global:
+   - CRAN: http://cran.rstudio.com
+
+r_github_packages:
+ - Rdatatable/data.table
+ 
+notifications:
+  email:
+    on_success: change
+    on_failure: change
