@@ -42,7 +42,7 @@ output: ioslides_presentation
 ```{r, echo=FALSE}
 library(DiagrammeR)
 mermaid("
-        graph TB
+        graph LR
         R[R code] --> L[LaTeX]
         R --> S[Shiny App]
         S --> L
