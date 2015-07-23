@@ -13,5 +13,9 @@ notifications:
     on_success: stephanie.g.locke@gmail.com
     on_failure: stephanie.g.locke@gmail.com
 
+before_install:
+  - chmod 755 ./.push_gh_pages.sh
+  - chmod 755 ./ghgenerate.R
+  
 after_success:
   - ./.push_gh_pages.sh
