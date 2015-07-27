@@ -21,7 +21,8 @@ Imports: devtools,
     optiRum,
     git2r,
     readxl,
-    readr
+    readr,
+    RODBC
 Suggests: testthat,
     knitr
 VignetteBuilder: knitr
