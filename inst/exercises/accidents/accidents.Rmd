@@ -1,0 +1,31 @@
+---
+title: "Accident Data - Steph's solution"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Objective
+Perform basic analysis on the car accidents in 2013, visualise the data, and time permitting do some inferential statistics!
+
+## Reading in the data
+```{r}
+library(data.table)
+accidents<-fread(system.file("extdata/Accidents2013.csv",package = "Rtraining"))
+
+summary(accidents)
+```
+
+## Slice and dice the data
+
+```{r}
+knitr::kable(accidents[order(Police_Force),
+                       .(Volume=.N,
+                         TypicalSeverity=mean(Accident_Severity),
+                         SevSD=sd(Accident_Severity),
+                         TypicalCasualties=mean(Number_of_Casualties),
+                         CasSD=sd(Number_of_Casualties)
+                         ),
+                       Urban_or_Rural_Area])
+
+```
