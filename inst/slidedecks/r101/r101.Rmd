@@ -1,0 +1,184 @@
+---
+title: "R 101"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  beamer_presentation:
+    template: default.tex
+    theme: m
+    pandoc_args: [
+      "--latex-engine=xelatex"
+    ]
+---
+
+## Steph Locke | Who I am
+
+- Credit Risk & BI specialist
+- Soon to be consultant with Mango Solutions
+- Owner of a BA in Philosophy
+- github: [stephlocke/Rtraining](http://github.com/stephlocke/Rtraining)
+- blog: [itsalocke.com](http://itsalocke.com)
+- t: [\@stefflocke](http://twitter.com/stefflocke)
+
+# R
+
+## R | A brief history
+- S, born 1976 in Bell Laboratories
+- R, born 1997 in a uni in NZ
+- R Foundation, born 2002
+- R Consortium, born 2015
+- R now ranked 6th most popular language by IEEE
+
+## R | Why use it?
+- For the stats
+- For the reproducibility
+- For the time it can save
+- For the flexibility
+- For the money
+
+## R | Why not Python?
+Firstly, Python is a valid way to go. There are number of really good libraries out there for number crunching etc. and it is a well written language with few "quirks"
+
+Secondly, why R is my preference:
+
+- Easy install
+- Strong community base
+- Data focused
+- Very flexible and extendable
+- It's the favourite to win
+
+But... "production" code is probably better in Python 
+
+# R funadamentals
+## What does R look like? | Basics
+```{r}
+# Define a variable
+a=25
+a<-25
+
+# Call a variable
+a
+
+# Do something to it
+a+1
+```
+
+## What does R look like? | Data types
+```{r}
+# Numeric
+25
+
+# Character
+"25"
+
+# Factor
+a = factor("25")
+as.numeric(a)
+as.character(a)
+```
+
+## What does R look like? | Constructs p1
+```{r}
+# Vector
+a<-c(25, 30)
+
+# Matrix
+matrix(a)
+```
+
+## What does R look like? | Constructs p2
+```{r}
+# Data frame
+data.frame(a,b=a/5,c=LETTERS[1:2])
+
+# List
+list(vector=a, matrix=matrix(a))
+```
+
+
+## What does R look like? | Functions
+```{r}
+# Define a function
+showAsPercent<-function(x) {
+  paste0(round(x*100 ,0) ,"%")
+}
+
+# Call a function
+showAsPercent(0.1)
+```
+
+## What does R look like? | Extensions
+```{r, eval=FALSE }
+# Get a package
+install.packages("caret")
+
+# Activate a package
+library(caret)
+```
+
+<!--
+## What does R look like? | OO
+```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
+library("R6")
+```
+
+```{r}
+# Orig OO (s3): cyclismo.org/tutorial/R/s3Classes.html
+library(R6)
+Loan<-R6Class("Loan", 
+              public=list(term=NA
+                         ,initialize=function(term){
+                           if(!missing(term)){ 
+                              self$term<-term 
+                              }} 
+                         ,extendBy=function(ext){ 
+                            self$term<-self$term+ext
+                            }))
+```
+
+## What does R look like? | OO
+```{r}
+acc<-Loan$new(36)
+acc$extendBy(6)
+acc$term
+```
+-->
+## What does R look like? | Piping
+```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
+library(magrittr)
+```
+
+```{r, results='hide', eval=FALSE}
+library(magrittr)
+
+#Typical
+pairs(iris)
+
+#Pipe
+iris %>% pairs
+iris %>% tail(.) %>% pairs
+iris %>% {tail(.,nrow(.)/5)} %>% pairs
+```
+
+# Next steps
+## Find out more
+
+### Online
+- Modern R [DataCamp](http://datacamp.com) 
+- Statistics R [Coursera](https://www.coursera.org/specialization/jhudatascience) 
+- [R-bloggers](http://www.r-bloggers.com/) 
+- [Advanced R programming](http://adv-r.had.co.nz/)
+- [Writing R packages](http://r-pkgs.had.co.nz/)
+
+
+### In-person
+- R user groups e.g. [CaRdiff](http://meetup.com/cardiff-r-user-group)
+- Conferences e.g. [EARL](http://www.earl-conference.com/), [SQL Relay](http://sqlrelay.co.uk)
+
+
+## Get this presentation
+This presentation is available on [github.com/stephlocke/Rtraining](https://github.com/stephlocke/Rtraining). All the code is available for you to take a copy and play with to help you learn on the go.
+
+If you have any questions, contact me! 
+
+[itsalocke.com](http://itsalocke.com) | [github.com/StephLocke](https://github.com/StephLocke) | [\@SteffLocke](https://twitter.com/stefflocke)

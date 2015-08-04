@@ -1,0 +1,347 @@
+% Beamer mtheme
+%
+% Copyright 2014 Matthias Vogelgesang
+% Licensed under CC-BY-SA 4.0 International.
+%
+% The initial template comes from the HSRM beamer theme by Benjamin Weiss, which
+% you can find at https://github.com/hsrmbeamertheme/hsrmbeamertheme.
+%
+
+\ProvidesPackage{beamerthemem}
+
+%{{{ --- Packages ---------------------
+
+\usepackage[no-math]{fontspec}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calc}
+
+\usecolortheme{metropolis}
+\usefonttheme{metropolis}
+
+%}}}
+%{{{ --- Options ----------------------
+
+\newif\if@useTitleProgressBar
+\@useTitleProgressBarfalse
+\DeclareOption{titleprogressbar}{\@useTitleProgressBartrue}
+
+\ProcessOptions\relax
+
+%}}}
+%{{{ --- Titlepage --------------------
+
+\def\maketitle{\ifbeamer@inframe\titlepage\else\frame[plain]{\titlepage}\fi}
+
+\def\titlepage{\usebeamertemplate{title page}}
+\setbeamertemplate{title page}
+{
+  \begin{minipage}[b][\paperheight]{\textwidth}
+    \vfill
+    \ifx\inserttitle\@empty%
+    \else%
+    {\raggedright\linespread{1.0}\usebeamerfont{title}\usebeamercolor[fg]{title}\scshape\MakeLowercase{\inserttitle}\par}%
+    \vspace*{0.5em}
+    \fi%
+    \ifx\insertsubtitle\@empty%
+    \else%
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+    \vspace*{0.5em}
+    \fi%
+    \begin{tikzpicture}\draw[mLightBrown] (0, 0) -- (\textwidth, 0);\end{tikzpicture}%
+    \vspace*{1em}
+    \ifx\insertauthor\@empty%
+    \else%
+    {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}%
+    \vspace*{0.25em}
+    \fi%
+    \ifx\insertdate\@empty%
+    \else%
+    {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}%
+    \fi%
+    \ifx\insertinstitut\@empty%
+    \else%
+    \vspace*{3mm}
+    {\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}%
+    \fi%
+    \vfill
+    \vspace*{5mm}
+  \end{minipage}
+}
+
+%}}}
+%{{{ --- Progressbar ------------------
+
+\makeatletter
+\def\progressbar@sectionprogressbar{}
+\def\progressbar@titleprogressbar{}
+\newcount\progressbar@tmpcounta % auxiliary counter
+\newcount\progressbar@tmpcountb % auxiliary counter
+\newdimen\progressbar@pbht      % progressbar height
+\newdimen\progressbar@pbwd      % progressbar width
+\newdimen\progressbar@tmpdim    % auxiliary dimension
+
+\progressbar@pbwd=22em
+\progressbar@pbht=0.4pt
+
+% the progress bar
+\def\progressbar@sectionprogressbar{%
+  \progressbar@tmpcounta=\insertframenumber
+  \progressbar@tmpcountb=\inserttotalframenumber
+  \progressbar@tmpdim=\progressbar@pbwd
+    \divide\progressbar@tmpdim by 100
+  \multiply\progressbar@tmpdim by \progressbar@tmpcounta
+  \divide\progressbar@tmpdim by \progressbar@tmpcountb
+    \multiply\progressbar@tmpdim by 100
+
+  \makebox[\textwidth][c]{
+    \begin{tikzpicture}[tight background]
+
+      \node[anchor=west, mDarkTeal, inner sep=0pt] at (0pt, 0pt) {\insertsectionHEAD};
+
+      \draw[anchor=west, mDarkTeal!20, fill=mDarkTeal!20, inner sep=0pt]
+      (2pt, -16pt) rectangle ++ (\progressbar@pbwd, \progressbar@pbht);
+
+      \draw[anchor=west, mDarkTeal, fill=mDarkTeal, inner sep=0pt]
+      (2pt, -16pt) rectangle ++ (\progressbar@tmpdim, \progressbar@pbht);
+    \end{tikzpicture}%
+  }
+}
+
+\if@useTitleProgressBar
+  \def\progressbar@titleprogressbar{%
+    \progressbar@tmpcounta=\insertframenumber
+    \progressbar@tmpcountb=\inserttotalframenumber
+    \progressbar@tmpdim=\paperwidth
+      \divide\progressbar@tmpdim by 100
+    \multiply\progressbar@tmpdim by \progressbar@tmpcounta
+    \divide\progressbar@tmpdim by \progressbar@tmpcountb
+      \multiply\progressbar@tmpdim by 100
+
+    \begin{tikzpicture}[tight background]
+      \draw[mDarkBrown, fill=mDarkBrown] (0, 0) rectangle ($(\paperwidth, 0.2pt) - (0.4pt, 0)$);
+      \draw[mLightBrown, fill=mLightBrown] (0, 0) rectangle (\progressbar@tmpdim, 0.2pt);
+    \end{tikzpicture}
+  }
+\fi
+%}}}
+%{{{ --- Commands ---------------------
+
+\newcommand{\insertsectionHEAD}{%
+  \expandafter\insertsectionHEADaux\insertsectionhead}
+  \newcommand{\insertsectionHEADaux}[3]{\textsc{\MakeLowercase{#3}}
+}
+
+\newcommand{\plain}[2][]{%
+  \begingroup
+  \setbeamercolor{background canvas}{bg=mDarkTeal}
+  \begin{frame}{#1}
+    \centering
+    \vfill\vspace{1em}\usebeamerfont{section title}\textcolor{white}{\scshape #2}\vfill
+  \end{frame}
+  \endgroup
+}
+
+%}}}
+%{{{ --- Itemize ----------------------
+
+\setlength{\leftmargini}{1em}
+
+% Actually one level should be enough but ...
+\setlength{\leftmarginii}{1em}
+\setlength{\leftmarginiii}{1em}
+
+\newcommand{\itemBullet}{∙}
+
+\setbeamertemplate{itemize item}{\itemBullet}
+\setbeamertemplate{itemize subitem}{\itemBullet}
+\setbeamertemplate{itemize subsubitem}{\itemBullet}
+\setlength{\parskip}{0.5em}
+
+%}}}
+%{{{ --- Sections ---------------------
+
+% Insert frame with section title at every section start
+\AtBeginSection[]
+{
+  \begingroup
+  \setbeamercolor{background canvas}{bg=black!2}
+  \begin{frame}[plain]
+    \vspace{2em}\usebeamerfont{section title}
+    \progressbar@sectionprogressbar%
+  \end{frame}
+  \endgroup
+}
+
+%}}}
+%{{{ --- Captions ---------------------
+
+\setbeamertemplate{caption label separator}{: }
+
+%}}}
+%{{{ --- Footline/footnote ------------
+
+\usenavigationsymbolstemplate{}
+\setbeamertemplate{footline}
+{%
+\begin{beamercolorbox}[wd=\textwidth,ht=3ex,dp=3ex,leftskip=0.3cm,rightskip=0.3cm]{structure}%
+  \hfill\usebeamerfont{page number in head/foot}%
+  \insertframenumber%
+\end{beamercolorbox}%
+}
+
+\setbeamertemplate{footnote}
+{%
+  \parindent 0em\noindent%
+  \raggedright
+  \usebeamercolor{footnote}\hbox to 0.8em{\hfil\insertfootnotemark}\insertfootnotetext\par%
+}
+
+%}}}
+%{{{ --- Frametitle -------------------
+
+\setbeamertemplate{frametitle}{%
+\nointerlineskip
+\begin{beamercolorbox}[wd=\paperwidth,leftskip=0.3cm,rightskip=0.3cm,ht=2.5ex,dp=1.5ex]{frametitle}
+  \usebeamerfont{frametitle}\MakeLowercase{\protect\insertframetitle}%
+\end{beamercolorbox}%
+\if@useTitleProgressBar
+  \vspace{-.6em}
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1pt,dp=0pt]{frametitle}
+    \progressbar@titleprogressbar
+  \end{beamercolorbox}
+\fi
+\vspace{2em}
+}
+%}}}
+%{{{ --- pgfplots ---------------------
+
+%{{{ Colors
+
+% TolColors from http://www.r-bloggers.com/the-paul-tol-21-color-salute/
+\definecolor{TolColor1}{HTML}{332288}   % dark purple
+\definecolor{TolColor2}{HTML}{6699CC}   % dark blue
+\definecolor{TolColor3}{HTML}{88CCEE}   % light blue
+\definecolor{TolColor4}{HTML}{44AA99}   % light green
+\definecolor{TolColor5}{HTML}{117733}   % dark green
+\definecolor{TolColor6}{HTML}{999933}   % dark brown
+\definecolor{TolColor7}{HTML}{DDCC77}   % light brown
+\definecolor{TolColor8}{HTML}{661100}   % dark red
+\definecolor{TolColor9}{HTML}{CC6677}   % light red
+\definecolor{TolColor10}{HTML}{AA4466}  % light pink
+\definecolor{TolColor11}{HTML}{882255}  % dark pink
+\definecolor{TolColor12}{HTML}{AA4499}  % light purple
+
+%}}}
+%{{{ Color cycles
+
+\pgfplotscreateplotcyclelist{mbarplot cycle}{%
+  {draw=TolColor2, fill=TolColor2!70},
+  {draw=TolColor7, fill=TolColor7!70},
+  {draw=TolColor4, fill=TolColor4!70},
+  {draw=TolColor11, fill=TolColor11!70},
+  {draw=TolColor1, fill=TolColor1!70},
+  {draw=TolColor8, fill=TolColor8!70},
+  {draw=TolColor6, fill=TolColor6!70},
+  {draw=TolColor9, fill=TolColor9!70},
+  {draw=TolColor10, fill=TolColor10!70},
+  {draw=TolColor12, fill=TolColor12!70},
+  {draw=TolColor3, fill=TolColor3!70},
+  {draw=TolColor5, fill=TolColor5!70},
+}
+
+\pgfplotscreateplotcyclelist{mlineplot cycle}{%
+  {TolColor2, mark=*, mark size=1.5pt},
+  {TolColor7, mark=square*, mark size=1.3pt},
+  {TolColor4, mark=triangle*, mark size=1.5pt},
+  {TolColor6, mark=diamond*, mark size=1.5pt},
+}
+
+%}}}
+%{{{ Styles
+
+\pgfplotsset{
+  compat=1.9,
+  mbaseplot/.style={
+    legend style={
+      draw=none,
+      fill=none,
+      cells={anchor=west},
+    },
+    x tick label style={
+      font=\footnotesize
+    },
+    y tick label style={
+      font=\footnotesize
+    },
+    legend style={
+      font=\footnotesize
+    },
+    major grid style={
+      dotted,
+    },
+    axis x line*=bottom,
+  },
+  mlineplot/.style={
+    mbaseplot,
+    xmajorgrids=true,
+    ymajorgrids=true,
+    major grid style={dotted},
+    axis x line=bottom,
+    axis y line=left,
+    legend style={
+      cells={anchor=west},
+      draw=none
+    },
+    cycle list name=mlineplot cycle,
+  },
+  mbarplot base/.style={
+    mbaseplot,
+    bar width=6pt,
+    axis y line*=none,
+  },
+  mbarplot/.style={
+    mbarplot base,
+    ybar,
+    xmajorgrids=false,
+    ymajorgrids=true,
+    area legend,
+    legend image code/.code={%
+      \draw[#1] (0cm,-0.1cm) rectangle (0.15cm,0.1cm);
+    },
+    cycle list name=mbarplot cycle,
+  },
+  horizontal mbarplot/.style={
+    mbarplot base,
+    xmajorgrids=true,
+    ymajorgrids=false,
+    xbar stacked,
+    area legend,
+    legend image code/.code={%
+      \draw[#1] (0cm,-0.1cm) rectangle (0.15cm,0.1cm);
+    },
+    cycle list name=mbarplot cycle,
+  },
+  disable thousands separator/.style={
+    /pgf/number format/.cd,
+      1000 sep={}
+  },
+}
+
+%}}}
+
+%}}}
+
+\mode
+<all>
+
+% {{{ misc
+\let\otp\titlepage
+\renewcommand{\titlepage}{\otp\addtocounter{framenumber}{-1}}
+\newcommand{\mreducelistspacing}{\vspace{-\topsep}}
+
+\linespread{1.15}
+%}}}
