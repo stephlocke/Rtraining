@@ -14,6 +14,21 @@
 # 11. Write a query that returns the best ever sale (by TotalDue) record for each region
 # 12. Write a query that returns for each region, the best 5 salesman ever (by TotalDue)
 
+
+## Workspace ----
+
+
+
+
+
+
+
+
+
+
+
+## Answers ----
+
 # 1. Turn on access to ODBC
 library("RODBC")
 
