@@ -72,15 +72,17 @@ a+1
 
 # Logical
 TRUE
-
-# Dates
-as.Date("2015-08-05")
 ```
 
 ## Data types | p2
 ```{r}
+# Dates
+as.Date("2015-08-05")
 as.POSIXct("2015-08-01")
+```
 
+## Data types | p3
+```{r}
 # Factor
 as.numeric(factor("25"))
 as.character(factor("25"))
@@ -239,7 +241,18 @@ This is easiest and most portable option
 write.csv(iris,"iris.csv", row.names = FALSE)
 ```
 
-## Doing stats | Some simple stats
+## Script best practices
+- Make sure to declare packages using `library()` at the top of the script
+- Label sections of work using `# ---- SectionName ----` to allow you to pick up the code into a LaTeX or markdown doc later
+- Never delete <- always make new objects with modifications
+- If comfortable with coding, or have a lot of data to process use `data.table` over `dplyr`
+- Try to do all data manipulation at the top of the script
+- Reuse your code by writing functions for anything you do frequently
+
+
+# Apply some models to your data
+
+## Some common models
 ```{r, eval=FALSE}
 # linear models (inc. logistic)
 glm(data=iris, Sepal.Width~Sepal.Length)
@@ -248,29 +261,36 @@ glm(data=iris, Sepal.Width~Sepal.Length)
 kmeans(iris[,1:4],centers = 3)
 ```
 
-## Doing stats | Sample
+## Sampling
 ```{r, eval=FALSE}
 library(caret)
-sampleRecords<-createDataPartition(iris$Species, groups = 2, p = 0.7)$Resample1
+sampleRecords<-createDataPartition(iris$Species
+                                   , groups = 2, p = 0.7)$Resample1
 irisTraining<-iris[sampleRecords,]
 irisHoldout<-iris[-sampleRecords,]
 ```
 
-## Doing stats | More info
+## Extracting predictions
+```{r, eval=FALSE}
+# linear models (inc. logistic)
+myModel<-glm(data=irisTraining, Sepal.Width~Sepal.Length)
+
+# predictions for training sample
+myModel$fitted.values
+
+# predictions for a new set of data
+predict(myModel,irisHoldout)
+```
+
+## More info
 - There is a lot of documentation out there on stats in R
 - Use [Cross Validated](http://stats.stackexchange.com/) for stats questions
 - The package `caret` is really powerful and provides an interface to lots of statistical methods and utilities.
 
-## Script best practices
-- Make sure to declare packages using `library()` at the top of the script
-- Label sections of work using `# ---- SectionName ----` to allow you to pick up the code into a LaTeX or markdown doc later
-- Never delete <- always make new objects with modifications
-- If comfortable with coding, or have a lot of data to process use `data.table` over `dplyr`
-- Try to do all data manipulation at the top of the script
-- Reuse your code by writing functions for anything you do frequently
-- Use Rstudio
 
-# Presentation
+
+# "Best" practices
+
 ## Charts
 ```{r, echo=TRUE,eval=TRUE, fig.height=4}
 library(ggplot2)
@@ -290,6 +310,17 @@ Document as you go!
 
 ## Interactive reports
 Consider doing a `shiny` application that explores the data and findings
+
+
+## Workflow best practices
+- Focus on working code & documentation
+- Use source control (github)
+- Write tests (`assertive`, `assertthat`, `testthat`)
+- Regularly visualise (`ggplot2`)
+- Do code reviews
+- Modularise
+- Use Rstudio
+- Consider structuring as a package
 
 # Next steps
 ## Find out more
