@@ -49,11 +49,10 @@ Secondly, why R is my preference:
 
 But... "production" code is probably better in Python 
 
-# R funadamentals
-## What does R look like? | Basics
+# R fundamentals
+## Basics
 ```{r}
 # Define a variable
-a=25
 a<-25
 
 # Call a variable
@@ -63,7 +62,7 @@ a
 a+1
 ```
 
-## What does R look like? | Data types
+## Data types | p1
 ```{r}
 # Numeric
 25
@@ -71,13 +70,23 @@ a+1
 # Character
 "25"
 
-# Factor
-a = factor("25")
-as.numeric(a)
-as.character(a)
+# Logical
+TRUE
+
+# Dates
+as.Date("2015-08-05")
 ```
 
-## What does R look like? | Constructs p1
+## Data types | p2
+```{r}
+as.POSIXct("2015-08-01")
+
+# Factor
+as.numeric(factor("25"))
+as.character(factor("25"))
+```
+
+## Constructs | p1
 ```{r}
 # Vector
 a<-c(25, 30)
@@ -86,7 +95,7 @@ a<-c(25, 30)
 matrix(a)
 ```
 
-## What does R look like? | Constructs p2
+## Constructs | p2
 ```{r}
 # Data frame
 data.frame(a,b=a/5,c=LETTERS[1:2])
@@ -95,8 +104,28 @@ data.frame(a,b=a/5,c=LETTERS[1:2])
 list(vector=a, matrix=matrix(a))
 ```
 
+## Subsetting | Vectors
+```{r}
+a <- sample(1:20, size = 5, replace = TRUE) # setup
+a # visual check
+a[1:2] # row numbers
+a[a<=10] # value filters
+```
 
-## What does R look like? | Functions
+## Subsetting | Data.frames p1
+```{r}
+df <- data.frame(a=1:10, b = LETTERS[1:5]) # setup
+df[1:2,] # row numbers
+df[df$a<2,] # value filters
+```
+
+## Subsetting | Data.frames p2
+```{r}
+df[df$a<3,1] # column filter
+df[df$a<3,1, drop=FALSE] # column filter (keep data.frame)
+```
+
+## Functions
 ```{r}
 # Define a function
 showAsPercent<-function(x) {
@@ -107,7 +136,7 @@ showAsPercent<-function(x) {
 showAsPercent(0.1)
 ```
 
-## What does R look like? | Extensions
+## Extending R
 ```{r, eval=FALSE }
 # Get a package
 install.packages("caret")
@@ -143,22 +172,124 @@ acc$extendBy(6)
 acc$term
 ```
 -->
-## What does R look like? | Piping
+
+# Building up an R script
+
+## Commands | magrittr
+magrittr allows you to pass one thing into another instead of writing lots of brackets
 ```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
 library(magrittr)
 ```
 
 ```{r, results='hide', eval=FALSE}
 library(magrittr)
-
-#Typical
+# Typical
 pairs(iris)
+pairs(tail(iris))
+pairs(tail(iris,nrow(iris)/5))
 
-#Pipe
+# Pipe
 iris %>% pairs
-iris %>% tail(.) %>% pairs
+iris %>% tail %>% pairs
 iris %>% {tail(.,nrow(.)/5)} %>% pairs
 ```
+
+## Commands | dplyr
+Use `dplyr` to transform your datasets
+
+```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
+library(dplyr)
+library(magrittr)
+```
+
+```{r}
+library(dplyr)
+iris %>% 
+  filter(Petal.Width<2) %>%
+  group_by(Species) %>%
+  summarise_each(funs(mean))
+```
+
+## Read data | CSV & Excel
+```{r, eval=FALSE}
+library(readr)
+OrderData<-read_csv("Order.csv")
+
+library(readxl)
+OrderData<-read_sheet("Order.xlsx","Orders")
+```
+
+## Read data | Databases
+```{r, eval=FALSE}
+library(RODBC)
+azure <- odbcDriverConnect(
+  "Driver={SQL Server Native Client 11.0};
+  Server=mhknbn2kdz.database.windows.net;
+  Database=AdventureWorks2012;
+  Uid=sqlfamily;
+  Pwd=sqlf@m1ly;")
+
+Order    <- sqlQuery( azure, 
+            "SELECT * FROM [Sales].[SalesOrderHeader]")
+```
+
+## Write data | CSV
+This is easiest and most portable option
+```{r, eval=FALSE}
+write.csv(iris,"iris.csv", row.names = FALSE)
+```
+
+## Doing stats | Some simple stats
+```{r, eval=FALSE}
+# linear models (inc. logistic)
+glm(data=iris, Sepal.Width~Sepal.Length)
+
+# k-means clustering
+kmeans(iris[,1:4],centers = 3)
+```
+
+## Doing stats | Sample
+```{r, eval=FALSE}
+library(caret)
+sampleRecords<-createDataPartition(iris$Species, groups = 2, p = 0.7)$Resample1
+irisTraining<-iris[sampleRecords,]
+irisHoldout<-iris[-sampleRecords,]
+```
+
+## Doing stats | More info
+- There is a lot of documentation out there on stats in R
+- Use [Cross Validated](http://stats.stackexchange.com/) for stats questions
+- The package `caret` is really powerful and provides an interface to lots of statistical methods and utilities.
+
+## Script best practices
+- Make sure to declare packages using `library()` at the top of the script
+- Label sections of work using `# ---- SectionName ----` to allow you to pick up the code into a LaTeX or markdown doc later
+- Never delete <- always make new objects with modifications
+- If comfortable with coding, or have a lot of data to process use `data.table` over `dplyr`
+- Try to do all data manipulation at the top of the script
+- Reuse your code by writing functions for anything you do frequently
+- Use Rstudio
+
+# Presentation
+## Charts
+```{r, echo=TRUE,eval=TRUE, fig.height=4}
+library(ggplot2)
+ggplot(data=iris, 
+       aes(x=Sepal.Width, y=Sepal.Length, colour=Species)) + 
+  geom_point() 
+```
+
+## Documentation
+Document as you go!
+
+- Use markdown to use a light syntax for integrating your code and commentary
+- Use LaTeX for finer level of control on output layout
+- Use these instead of Excel or Word so that a change in assumption means updating the code and re-running the doc
+- Load your main R file up and use the labels from `# ---- SectionName ----` to save repetition
+- Present in HTML, slide decks, PDF, Word at the click of a button
+
+## Interactive reports
+Consider doing a `shiny` application that explores the data and findings
 
 # Next steps
 ## Find out more
@@ -172,7 +303,7 @@ iris %>% {tail(.,nrow(.)/5)} %>% pairs
 
 
 ### In-person
-- R user groups e.g. [CaRdiff](http://meetup.com/cardiff-r-user-group)
+- R user groups e.g. [LondonR](http://www.londonr.org/)
 - Conferences e.g. [EARL](http://www.earl-conference.com/), [SQL Relay](http://sqlrelay.co.uk)
 
 
