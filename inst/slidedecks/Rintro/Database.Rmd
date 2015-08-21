@@ -8,7 +8,7 @@ I'll report on global bike sales from our company's database
 ------
 
 ### Establishing a connection
-```{r dbconnect, echo=TRUE, eval=TRUE,warning=FALSE}
+```{r dbconnect, echo=TRUE, eval=TRUE,warning=FALSE, message=FALSE, results='hide'}
 # Getting data
 library("RODBC")
 
@@ -29,7 +29,7 @@ azure <- odbcDriverConnect(
 ------
 
 ### Getting our starting data
-```{r, echo=TRUE, eval=FALSE}
+```{r, echo=TRUE, eval=FALSE, results='hide'}
 Order    <- data.table( sqlQuery( azure, 
          "SELECT * FROM [Sales].[SalesOrderHeader]"))
 
@@ -40,7 +40,7 @@ Region   <- data.table( sqlQuery( azure,
          "SELECT * FROM [Person].[CountryRegion]"))
 ```
 
-```{r datagen, echo=FALSE, eval=TRUE}
+```{r datagen, echo=FALSE, eval=TRUE,results='hide', warning=FALSE}
 if(azure!=-1L){
 Order    <- data.table( sqlQuery( azure, 
          "SELECT * FROM [Sales].[SalesOrderHeader]"))

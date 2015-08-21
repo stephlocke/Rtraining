@@ -60,6 +60,8 @@ Region   <- data.table(
   sqlQuery( azure, 
             "SELECT * FROM [Person].[CountryRegion]"))
 
+library(assertive)
+assertive::
 
 # 4. Write a query that returns the best 5 sales ever (by TotalDue)
 Order[order(TotalDue,decreasing = TRUE)[1:5]]
