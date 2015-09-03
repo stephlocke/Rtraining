@@ -1,6 +1,6 @@
 Package: Rtraining
-Title: Training materials on R
-Version: 0.2
+Title: Training Materials on R
+Version: 0.21
 Authors@R: person("Steph", "Locke",  , "stephanie.g.locke@gmail.com", role = c("aut", "cre"))
 Description: From presentations to hands-on learning materials, this package contains stuff Steph thinks you should know about! 
 Depends: R (>= 3.1.2)
@@ -22,7 +22,7 @@ Imports: devtools,
     git2r,
     readxl,
     readr,
-    RODBC
-Suggests: testthat,
+    RODBC,
+    testthat,
     knitr
 VignetteBuilder: knitr
