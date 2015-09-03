@@ -1,6 +1,7 @@
 language: r
 sudo: required
 warnings_are_errors: false
+r_check_revdep: false
 
 env:
  global:
@@ -9,6 +10,9 @@ env:
 r_github_packages:
  - Rdatatable/data.table
  
+apt_packages:
+ - unixodbc-dev
+
 notifications:
   email:
     on_success: stephanie.g.locke@gmail.com
