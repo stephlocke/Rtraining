@@ -4,6 +4,14 @@ author: "Steph Locke"
 date: "`r Sys.Date()`"
 output: ioslides_presentation
 ---
+## Who am I?
+> I'm Steph Locke
+
+- BI & R fan
+- Principal Consultant at Mango
+- Speaker and user group leader
+- [\@SteffLocke](https://twitter.com/stefflocke)
+- [github.com/stephlocke](https://github.com/stephlocke)
 
 ## What's a board pack?
 
@@ -24,7 +32,7 @@ output: ioslides_presentation
 ## How is it typically done?
 
 - Lots of people across the company beavering away in spreadsheets
-- Outputting to Word (hopefully)
+- Outputting to Word (hopefully not Excel)
 - Lots of stuff gets emailed
 - Lots of stuff gets typed, then emailed
 - Someone painstakingly consolidates all the sheets / docs into a PDF
@@ -39,19 +47,21 @@ output: ioslides_presentation
 - Reduction in spreadsheets
 
 ## Translating aim to reality
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 library(DiagrammeR)
 mermaid("
         graph LR
-        R[R code] --> L[LaTeX]
-        R --> S[Shiny App]
+        R[R] --> L[LaTeX]
+        R --> S[Shiny]
         S --> L
-        D[Database] -.-> R
+        D[DB] -.-> R
         D -.-> S
         C(Commentary) --> S
         L --> P(PDF)
         ")
 ```
+
+![Architecture Overview](Flowchart.png)
 
 ## Demo
 
@@ -62,6 +72,8 @@ mermaid("
 
 ## Get the code
 ```{r, eval=FALSE}
-if (!require(devtools)) install.packages("devtools")
-devtools::install_github("stephlocke/Rtraining")
+if (!require(git2r)){
+  install.packages("git2r")
+} 
+git2r::clone("https://github.com/stephlocke/Rtraining")
 ```
