@@ -10,15 +10,15 @@ OK, some basics covered but where to go from here? (```F```= Free, ```*```=Disco
 - [Writing R packages](http://r-pkgs.had.co.nz/) ```F```
 
 ### In-person
-- R user groups e.g. [LondonR](http://www.londonr.org/) ```F```
+- R user groups (none yet in NEwcastle, so start one!) ```F```
 - Training courses e.g. [Mango](mailto://training@mango-solutions.com) ```*```
-- Conferences e.g. [EARL](http://www.earl-conference.com/) and [My training day @ SQLSaturday](http://sqlsatexeter.azurewebsites.net/?page_id=342) ```* HO```
+- Conferences e.g. [EARL](http://www.earl-conference.com/) ```* HO``` and [SQL Relay](http://sqlrelay.co.uk)  ```F HO``` 
 
 
 
 ## Get this presentation
-This presentation is available on [github.com/stephlocke/Rintro](https://github.com/stephlocke/Rintro). All the code is available for you to take a copy and play with to help you learn on the go.
+This presentation is available on [github.com/stephlocke/Rtraining](https://github.com/stephlocke/Rtraining). All the code is available for you to take a copy and play with to help you learn on the go.
 
 If you have any questions, contact me! 
 
-[itsalocke.com](http://itsalocke.com) | [github.com/StephLocke](https://github.com/StephLocke) | [`@`SteffLocke](https://twitter.com/stefflocke)
+[itsalocke.com](http://itsalocke.com) | [github.com/StephLocke](https://github.com/StephLocke) | [\@SteffLocke](https://twitter.com/stefflocke)

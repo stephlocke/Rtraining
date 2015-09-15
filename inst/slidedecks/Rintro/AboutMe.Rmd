@@ -1,8 +1,8 @@
 ## Steph Locke
-- BI & Credit Risk analyst for [Optimum Credit Ltd]()
+- Principal Consultant \@ Mango Solutions
 - 7 years of analysis & BI
 - Presenter (obviously!) on R, and other BI topics
 - User group leader: [SQL Cardiff](http://www.meetup.com/Cardiff-SQL-Server-User-Group) and [CaRdiff R User Group](http://www.meetup.com/Cardiff-R-User-Group/)
 - Co-author of [Tribal SQL](http://tribalsql.com/)
 
-[itsalocke.com](http://itsalocke.com) | [github.com/StephLocke](https://github.com/StephLocke) | [`@`SteffLocke](https://twitter.com/stefflocke)
+[itsalocke.com](http://itsalocke.com) | [github.com/StephLocke](https://github.com/StephLocke) | [\@SteffLocke](https://twitter.com/stefflocke)

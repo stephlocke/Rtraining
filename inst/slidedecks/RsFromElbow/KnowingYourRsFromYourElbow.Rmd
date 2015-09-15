@@ -14,6 +14,7 @@ output:
 ## Steph Locke | Not my Rs
 
 - Star of presentations such as "the LaTeX show"!
+- Principal consultant at Mango Solutions
 - Local user group leader
 - blog: [itsalocke.com](http://itsalocke.com)
 - t: [\@stefflocke](http://twitter.com/stefflocke)
@@ -24,11 +25,11 @@ output:
 - Now has excellent graphics, .js, & doc facilities
 
 ## Why should you know your Rs from your elbow?
+- Great analysis
+- Reclaim your time from Excel
 - Markdown!
 - Interactive data viz via js libraries
 - Fully CI/CD capable
-- Reclaim your time from Excel
-- Great analysis
 
 ## What does R look like? | Basics
 ```{r}
@@ -54,10 +55,10 @@ inflateAudienceFigs(a)
 ## What does R look like? | Extensions
 ```{r, eval=FALSE }
 #Get a package
-install.packages("commonmark")
+install.packages("data.table")
 
 #Activate a package
-library(commonmark)
+library(data.table)
 ```
 
 <!--
@@ -118,7 +119,7 @@ iris %>% {tail(.,nrow(.)/5)} %>% pairs
 ### In-person
 - R user groups e.g. [CaRdiff](http://meetup.com/cardiff-r-user-group)
 - Conferences e.g. [EARL](http://www.earl-conference.com/), [SQL Relay](http://sqlrelay.co.uk)
-- Training days inc [my hands-on training day, next week](http://manchesterpass.ddns.net/)
+- Training days
 
 
 ## Get this presentation

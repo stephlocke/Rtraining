@@ -22,7 +22,8 @@ I [Google](http://lmgtfy.com/?q=what+is+r) frantically and find out...
 - R (birthed out of S) has been around for ages
 - Has [massively increased in popularity](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html)
 - Lots of big players like SAP, TIBCO, and Oracle have implemented it
-- It's statistician heaven!
+- Microsoft are catching up quick!
+- It's statistician heaven
 - It produces very pretty charts
 - Huh, you can make [XKCD cartoons in it](http://stackoverflow.com/questions/12675147/how-can-we-make-xkcd-style-graphs-in-r)?
 

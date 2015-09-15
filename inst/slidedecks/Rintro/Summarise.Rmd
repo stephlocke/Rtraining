@@ -7,7 +7,7 @@ OK, let's produce some tables!
 ------
 
 ### Basic summary
-```{r, echo=TRUE, eval=FALSE}
+```{r agg1, echo=TRUE, eval=FALSE}
 OrderTerritory[  , #Nothing in 1st position
                .( Value  = sum(TotalDue) ,
                   Volume = .N ), # Aggregations
@@ -30,7 +30,7 @@ knitr::kable(OrderTerritory[  , #Nothing in 1st position
 ------
 
 ### Top 5 sales ever
-```{r, echo=TRUE, eval=FALSE}
+```{r agg2, echo=TRUE, eval=FALSE}
 OrderTerritory[order(-TotalDue)[1:5],
                # Picks first 5 rows of TotalDue desc
                .( SalesOrderNumber, # multi-select
@@ -61,7 +61,7 @@ knitr::kable(OrderTerritory[order(-TotalDue)[1:5],
 ------
 
 ### Top sale ever for each region
-```{r, echo=TRUE, eval=FALSE}
+```{r agg3, echo=TRUE, eval=FALSE}
 OrderTerritory[  ,
                .SD[which.max(TotalDue),
                # .SD is subset of rows within group

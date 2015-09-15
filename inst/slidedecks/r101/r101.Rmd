@@ -13,8 +13,8 @@ output:
 
 ## Steph Locke | Who I am
 
-- Credit Risk & BI specialist
-- Soon to be consultant with Mango Solutions
+- Data specialist
+- Principal Consultant \@ Mango Solutions
 - Owner of a BA in Philosophy
 - github: [stephlocke/Rtraining](http://github.com/stephlocke/Rtraining)
 - blog: [itsalocke.com](http://itsalocke.com)
