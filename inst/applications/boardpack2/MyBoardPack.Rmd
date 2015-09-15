@@ -1,0 +1,58 @@
+---
+title: "My sample board pack"
+author: "Steph Locke"
+date: '`r Sys.Date()`'
+output:
+  pdf_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 1
+classoption: article
+---
+
+```{r, echo=FALSE}
+knitr::read_chunk("D1MI.R")
+knitr::read_chunk("D2MI.R")
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',
+                      echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+```{r LoadD1, results='hide'}
+```
+
+```{r LoadD2}
+```
+
+# Car accident data
+```{r TableD1input, results='asis'}
+cat(input$TableD1)
+
+```
+
+```{r TableD1}
+```
+
+```{r ChartD1input, results='asis'}
+cat(input$ChartD1)
+
+```
+
+```{r ChartD1}
+```
+
+# Piracy data
+```{r TableD2input, results='asis'}
+cat(input$TableD2)
+
+```
+
+```{r TableD2}
+```
+
+```{r ChartD2input, results='asis'}
+cat(input$ChartD2)
+
+```
+
+```{r ChartD2}
+```
