@@ -10,7 +10,7 @@ shinyUI(
     HTML('<textarea id="ChartD2" rows="3" cols="50">ChartD2</textarea><br>')   ,
     h2("Download the PDF when you're happy"),
     downloadButton('report'),
-    h2("Preview the Board pack"),
+    h2("Preview the Board pack"),    
     htmlOutput("knitDoc")
   )
 )

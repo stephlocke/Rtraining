@@ -1,12 +1,14 @@
 library(shiny)
 library(knitr)
+if(!require(devtools)) install.packages("devtools",repos = "https://cran.rstudio.com")
+if(!require(Rtraining)) devtools::install_github("stephlocke/Rtraining")
 
 shinyServer(function(input, output, session) {
   
-  boardpreview<-reactive(
-    readr::read_file(
-      knit2html(input = "MyBoardPack.Rmd",output = "MyBoardPack.html"))
-  )
+  boardpreview<-  reactive(  readr::read_file(
+      knit2html(input = "MyBoardPack.Rmd",output = "MyBoardPack.html")))
+  
+  
   
   output$knitDoc <- renderUI({
     HTML(boardpreview() )

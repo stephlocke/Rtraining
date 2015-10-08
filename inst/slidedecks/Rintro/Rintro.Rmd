@@ -74,7 +74,8 @@ Phew, he's got something to show to the Board & a web page he can play with all 
 We learnt along the way:
 
 - connect to our data using `RODBC`
-- manipulate it with `ggplot2`
+- manipulate it with `data.table`
+- chart it with `ggplot2`
 - make documents with `rmarkdown`
 - produce interactive reports using `shiny` 
 

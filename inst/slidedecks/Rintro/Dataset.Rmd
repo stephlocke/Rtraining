@@ -1,10 +1,15 @@
 ## Step 4: Create big dataset
 Hmm, I need to put all the data into a "flat-file" view
 
+```
+DT[i, j, by]
+DT[WHERE | JOIN | ORDER , 
+  SELECT | UPDATE , 
+  GROUP][...]
+```
+
 - Set "primary keys" with `setkey`
 - Join in format `Y[X]` to join Y on to X
-- Equivalent of `LEFT JOIN`s in SQL
-- Equivalent of extensive `VLOOKUP`s in Excel
 
 
 ------

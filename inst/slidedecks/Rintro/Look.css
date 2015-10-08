@@ -1,20 +1,20 @@
 
 body{
-   background-color: #90C226;}
+   background-color: #fea814;}
    
 .title-slide{
-   background-color: #90C226;
-   background-image: url("imgs/theNegativeLocke.gif");
+   background-color: #ffffff;
+   background-image: url("imgs/mango.png");
    background-position: right bottom;
    background-repeat: no-repeat;
    }
 
 .title-slide hgroup h1{
-  color: white;
+  color: #000000;
 }
 
 .title-slide hgroup h2{
-  color: white;
+  color: #000000;
 }
 
 .title-slide hgroup p{
@@ -25,7 +25,7 @@ body{
 
 
 .prettyprint{
-  background-color: #EFFED0;
+  background-color: #FECC72;
 }
 
 pre{

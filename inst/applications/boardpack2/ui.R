@@ -1,6 +1,7 @@
 library(shiny)
 
-textarea<-function(id) gsub(pattern="BLAH",x='<textarea id="BLAH" rows="3" cols="50">BLAH</textarea><br>',replacement=id)
+textarea<-function(id) gsub(pattern="BLAH",
+                            x='<textarea id="BLAH" rows="3" cols="50">BLAH</textarea><br>',replacement=id)
 
 shinyUI(
   bootstrapPage(

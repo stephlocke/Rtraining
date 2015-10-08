@@ -1,5 +1,5 @@
 ---
-title: "R 101"
+title: "R for developers"
 author: "Steph Locke"
 date: "`r Sys.Date()`"
 output:
@@ -15,7 +15,6 @@ output:
 
 - Data specialist
 - Principal Consultant \@ Mango Solutions
-- Owner of a BA in Philosophy
 - github: [stephlocke/Rtraining](http://github.com/stephlocke/Rtraining)
 - blog: [itsalocke.com](http://itsalocke.com)
 - t: [\@stefflocke](http://twitter.com/stefflocke)
@@ -31,6 +30,7 @@ output:
 
 ## R | Why use it?
 - For the stats
+- For the cross-platform capability
 - For the reproducibility
 - For the time it can save
 - For the flexibility
@@ -47,7 +47,7 @@ Secondly, why R is my preference:
 - Very flexible and extendable
 - It's the favourite to win
 
-But... "production" code is probably better in Python 
+But... "production" code can be faster in Python 
 
 # R fundamentals
 ## Basics
@@ -147,7 +147,7 @@ install.packages("caret")
 library(caret)
 ```
 
-<!--
+
 ## What does R look like? | OO
 ```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
 library("R6")
@@ -173,7 +173,7 @@ acc<-Loan$new(36)
 acc$extendBy(6)
 acc$term
 ```
--->
+
 
 # Building up an R script
 
@@ -249,7 +249,7 @@ write.csv(iris,"iris.csv", row.names = FALSE)
 - Try to do all data manipulation at the top of the script
 - Reuse your code by writing functions for anything you do frequently
 
-
+<!--
 # Apply some models to your data
 
 ## Some common models
@@ -286,8 +286,7 @@ predict(myModel,irisHoldout)
 - There is a lot of documentation out there on stats in R
 - Use [Cross Validated](http://stats.stackexchange.com/) for stats questions
 - The package `caret` is really powerful and provides an interface to lots of statistical methods and utilities.
-
-
+-->
 
 # "Best" practices
 

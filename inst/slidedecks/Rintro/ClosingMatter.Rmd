@@ -2,7 +2,6 @@
 OK, some basics covered but where to go from here? (```F```= Free, ```*```=Discount, ```HO```=Hands on)
 
 ### Online
-- Basic R [CodeSchool](http://tryr.codeschool.com) ```F HO```
 - Modern R [DataCamp](http://datacamp.com) ```F/*  HO```
 - Statistics R [Coursera](https://www.coursera.org/specialization/jhudatascience) ```F HO```
 - [R-bloggers](http://www.r-bloggers.com/) ```F```
@@ -10,11 +9,9 @@ OK, some basics covered but where to go from here? (```F```= Free, ```*```=Disco
 - [Writing R packages](http://r-pkgs.had.co.nz/) ```F```
 
 ### In-person
-- R user groups (none yet in NEwcastle, so start one!) ```F```
+- R user groups ```F```
 - Training courses e.g. [Mango](mailto://training@mango-solutions.com) ```*```
-- Conferences e.g. [EARL](http://www.earl-conference.com/) ```* HO``` and [SQL Relay](http://sqlrelay.co.uk)  ```F HO``` 
-
-
+- Conferences e.g. [SQL Relay](http://sqlrelay.co.uk)  ```F HO``` 
 
 ## Get this presentation
 This presentation is available on [github.com/stephlocke/Rtraining](https://github.com/stephlocke/Rtraining). All the code is available for you to take a copy and play with to help you learn on the go.
