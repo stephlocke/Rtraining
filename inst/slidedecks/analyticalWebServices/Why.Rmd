@@ -1,0 +1,6 @@
+## Why do it
+
+- You (and future people) have R skills
+- Saves re-writing stuff
+- Already "fast enough"
+- Blackbox to other systems

@@ -1,0 +1,10 @@
+## When to do it
+Said earlier "post-modelling" and for "predicting"
+
+### Post-modelling
+- Once an initial candidate model has been created
+- With source-control start building for v0.1 of model
+
+### Predicting
+- When you want a value for each new case
+- Transactional systems

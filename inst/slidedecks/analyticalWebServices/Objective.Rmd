@@ -1,0 +1,9 @@
+## Objective
+Take analysis to production
+
+ - What code
+ - Why do it
+ - Who should do it
+ - Where to put it
+ - When to do it
+ - How to implement

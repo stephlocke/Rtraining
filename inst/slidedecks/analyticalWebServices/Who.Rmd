@@ -1,0 +1,5 @@
+## Who should do it
+
+- Small teams
+- Low IT availability
+- People looking to move fast

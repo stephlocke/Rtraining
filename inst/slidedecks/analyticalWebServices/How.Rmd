@@ -1,0 +1,72 @@
+## How to implement
+
+### Ideal
+- Write a package
+- Add unit tests
+- Use source control
+- Use best of breed packages
+- Do DataOps
+- Deploy to right architecture for your business
+
+## How to implement
+
+### Quick & dirty
+- Write some code as a function
+- Use `AzureML` package to publish code
+
+## How to implement - AzureML demo
+
+### Setup
+
+```{r echo=TRUE, eval=FALSE}
+library("AzureML")
+MLID<-"16ed88890b0644239ea800a90063bc0f"
+AuthToken<-"e1e2d4f99b0041269c6435c0c6ccb07d"
+```
+
+## How to implement - AzureML demo
+
+### Make a model
+
+```{r echo=TRUE, eval=FALSE}
+myLM<-lm(data = iris,Sepal.Length~Sepal.Width,model = FALSE)
+adhocPred<-predict(myLM,newdata = data.frame(Sepal.Width=5.7))
+adhocPred
+```
+
+## How to implement - AzureML demo
+
+### Make a predict function
+```{r echo=TRUE, eval=FALSE}
+myPrediction<-function(SW=0){
+  # You would store coeficients
+  # In place of modelling every time!
+  myCoefsLM<-coef(lm(data = iris,
+           Sepal.Length~Sepal.Width,
+           model = FALSE))
+  myCoefScores<-crossprod(myCoefsLM,c(1,SW))
+  return(sum(myCoefScores))
+  
+}
+```
+
+## How to implement - AzureML demo
+
+### Publish a predict function
+```{r echo=TRUE, eval=FALSE}
+response <- publishWebService("myPrediction", "myPredictionOnline",                              list("SW"="float"), list("r"="float"), 
+                              MLID, AuthToken)
+```
+
+
+## How to implement - AzureML demo
+
+### Use a published functions
+```{r echo=TRUE, eval=FALSE}
+webservices <- getWebServices(MLID, AuthToken)
+endpoints <- getEndpoints(MLID, AuthToken, webservices[[1]]$Id)
+response <- consumeLists(endpoints[[1]]$PrimaryKey, endpoints[[1]]$ApiLocation, 
+                         list("SW"=9))
+
+response
+```

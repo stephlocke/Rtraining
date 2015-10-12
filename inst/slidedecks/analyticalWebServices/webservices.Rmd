@@ -1,0 +1,32 @@
+---
+title: "Analytical web services"
+author: "Steph Locke"
+date:  "`r Sys.Date()`"
+output:
+  ioslides_presentation:
+    css: Look.css
+---
+
+```{r autodoc, child='Objective.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='AboutMe.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='What.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='Why.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='Who.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='Where.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='When.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='How.Rmd', eval=TRUE}
+```

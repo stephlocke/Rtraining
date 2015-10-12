@@ -1,0 +1,46 @@
+## Where to put it
+- shiny
+- Rserve
+- rApache
+- DeployR
+- AzureML
+
+## shiny
+Shiny is the interactive dashboard system
+
+[shiny.rstudio.com](http://shiny.rstudio.com/)
+
+- Good for providing a GUI
+- Bad for programmatic access
+
+## Rserve
+Rserve is an API system for R that allows access to an R environment
+
+[rforge.net/Rserve/](https://rforge.net/Rserve/)
+
+- Good for other languages to use R commands
+- Bad for doing a lot of grunt work in R
+
+## rApache
+rApache is an apache module that serves the results of R scripts
+
+[rapache.net](http://rapache.net/)
+
+- Good for executing big scripts to return results in XML / HTML / JSON etc
+- Bad for people who don't know apache
+
+## DeployR
+DeployR is an API system for accessing R and R scripts
+
+[deployr.revolutionanalytics.com](http://deployr.revolutionanalytics.com/)
+
+- Good for providing access to multiple applications
+- Bad for people who need to get things in "yesterday"
+
+## AzureML
+AzureML is a GUI analysis system that can transform your model to a web service
+
+[studio.azureml.net](https://studio.azureml.net/)
+
+- Good for people with low stats & R knowledge
+- Bad for cloud-phobes
