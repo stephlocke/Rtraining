@@ -19,10 +19,6 @@ git config user.email "travis"
 R CMD INSTALL Rtraining
 R CMD BATCH '../Rtraining/ghgenerate.R'
 
-for files in '../Rtraining/genFiles/*.html'; do
-        cp $files .
-done
-
 git add .
 git commit -m "deployed to github pages"
 git push --force --quiet $FULL_REPO master:gh-pages
