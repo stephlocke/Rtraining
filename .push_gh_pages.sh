@@ -19,7 +19,7 @@ git config user.email "travis"
 R CMD INSTALL Rtraining
 R CMD BATCH '../Rtraining/ghgenerate.R'
 
-for files in '../Rtraining/inst/doc/*.html'; do
+for files in '../Rtraining/genFiles/*.html'; do
         cp $files .
 done
 
