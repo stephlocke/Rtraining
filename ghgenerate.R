@@ -1,4 +1,6 @@
 setwd("../out")
+message(getwd())
+message(list.files("../Rtraining" ,recursive = TRUE))
 slidedecks<-list.files("../Rtraining/inst/slidedecks/", 
                        pattern = "*.Rmd",recursive = TRUE,full.names = TRUE)
 for(f in slidedecks) rmarkdown::render(f, output_format="io_slides",

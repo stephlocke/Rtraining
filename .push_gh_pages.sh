@@ -16,7 +16,6 @@ git init
 git config user.name "stephs-travis"
 git config user.email "travis"
 
-R CMD INSTALL Rtraining
 R CMD BATCH '../Rtraining/ghgenerate.R'
 
 git add .
