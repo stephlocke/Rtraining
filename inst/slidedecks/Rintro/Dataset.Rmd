@@ -15,7 +15,7 @@ DT[WHERE | JOIN | ORDER ,
 ------
 
 ### Join Territory to the Order
-```{r, echo=TRUE, eval=TRUE}
+```{r d1, echo=TRUE, eval=TRUE}
 # Specify the columns to join by
 setkey(Order     , TerritoryID)
 setkey(Territory , TerritoryID)
@@ -28,7 +28,7 @@ OrderTerritory <- Territory[Order]
 ------
 
 ### Join Region to the OrderTerritory
-```{r, echo=TRUE, eval=TRUE}
+```{r d2, echo=TRUE, eval=TRUE}
 # Specify the columns to join by
 setkey(OrderTerritory , CountryRegionCode)
 setkey(Region         , CountryRegionCode)
