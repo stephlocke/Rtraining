@@ -2,11 +2,14 @@ Package: Rtraining
 Title: Training Materials on R
 Version: 0.21
 Authors@R: person("Steph", "Locke",  , "stephanie.g.locke@gmail.com", role = c("aut", "cre"))
-Description: From presentations to hands-on learning materials, this package contains stuff Steph thinks you should know about! 
-Depends: R (>= 3.1.2)
+Description: From presentations to hands-on learning materials, this package
+    contains stuff Steph thinks you should know about!
+Depends:
+    R (>= 3.1.2)
 License: MIT + file LICENSE
 LazyData: true
-Imports: devtools,
+Imports:
+    devtools,
     data.table,
     httr,
     jsonlite,
@@ -26,3 +29,4 @@ Imports: devtools,
     testthat,
     knitr
 VignetteBuilder: knitr
+RoxygenNote: 5.0.0
