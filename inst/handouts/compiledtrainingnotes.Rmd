@@ -32,7 +32,7 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 
 <a href="#top">Back to top</a>
 
-```{r autodoc, child='infrastructure/setting-up-a-windows-R-Machine.Rmd', eval=TRUE}
+```{r autodoc, child='infrastructure/setting-up-a-windows-R-machine.Rmd', eval=TRUE}
 ```
 
 #  Syntax & structure
