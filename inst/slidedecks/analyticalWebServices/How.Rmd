@@ -29,8 +29,14 @@ AuthToken<-"e1e2d4f99b0041269c6435c0c6ccb07d"
 ### Make a model
 
 ```{r echo=TRUE, eval=FALSE}
-myLM<-lm(data = iris,Sepal.Length~Sepal.Width,model = FALSE)
-adhocPred<-predict(myLM,newdata = data.frame(Sepal.Width=5.7))
+myLM<-lm(data = iris,
+         Sepal.Length~Sepal.Width,
+         model = FALSE)
+
+adhocPred<-predict(myLM,
+                   newdata = data.frame(
+                     Sepal.Width=5.7)
+                   )
 adhocPred
 ```
 
@@ -54,8 +60,12 @@ myPrediction<-function(SW=0){
 
 ### Publish a predict function
 ```{r echo=TRUE, eval=FALSE}
-response <- publishWebService("myPrediction", "myPredictionOnline",                              list("SW"="float"), list("r"="float"), 
-                              MLID, AuthToken)
+response <- publishWebService(
+  "myPrediction", 
+  "myPredictionOnline", 
+  list("SW"="float"), 
+  list("r"="float"), 
+  MLID, AuthToken)
 ```
 
 
@@ -64,9 +74,15 @@ response <- publishWebService("myPrediction", "myPredictionOnline",             
 ### Use a published functions
 ```{r echo=TRUE, eval=FALSE}
 webservices <- getWebServices(MLID, AuthToken)
-endpoints <- getEndpoints(MLID, AuthToken, webservices[[1]]$Id)
-response <- consumeLists(endpoints[[1]]$PrimaryKey, endpoints[[1]]$ApiLocation, 
-                         list("SW"=9))
+
+endpoints <- getEndpoints(MLID, 
+                          AuthToken, 
+                          webservices[[1]]$Id)
+
+response <- consumeLists(
+  endpoints[[1]]$PrimaryKey, 
+  endpoints[[1]]$ApiLocation, 
+  list("SW"=9))
 
 response
 ```

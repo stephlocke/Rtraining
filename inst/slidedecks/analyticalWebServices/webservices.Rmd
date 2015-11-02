@@ -22,11 +22,16 @@ output:
 ```{r autodoc, child='Who.Rmd', eval=TRUE}
 ```
 
+<!--
+```{r autodoc, child='When.Rmd', eval=TRUE}
+```
+-->
+
 ```{r autodoc, child='Where.Rmd', eval=TRUE}
 ```
 
-```{r autodoc, child='When.Rmd', eval=TRUE}
+```{r autodoc, child='How.Rmd', eval=TRUE}
 ```
 
-```{r autodoc, child='How.Rmd', eval=TRUE}
+```{r autodoc, child='Conclusion.Rmd', eval=TRUE}
 ```
