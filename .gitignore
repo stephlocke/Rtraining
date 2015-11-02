@@ -9,3 +9,8 @@
 .Rproj.user
 .httr-oauth
 inst/doc
+
+# Artefacts
+*.html
+*.pdf
+*.docx

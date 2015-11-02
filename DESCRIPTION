@@ -28,6 +28,7 @@ Imports:
     RODBC,
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    leaflet
 VignetteBuilder: knitr
 RoxygenNote: 5.0.0
