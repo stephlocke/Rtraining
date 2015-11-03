@@ -7,16 +7,9 @@ env:
  global:
    - CRAN: http://cran.rstudio.com
 
-r_github_packages:
- - Rdatatable/data.table
- 
 apt_packages:
  - unixodbc-dev
-
-notifications:
-  email:
-    on_success: stephanie.g.locke@gmail.com
-    on_failure: stephanie.g.locke@gmail.com
+ - openssl
 
 before_install:
   - chmod 755 ./.push_gh_pages.sh
