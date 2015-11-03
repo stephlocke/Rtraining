@@ -51,7 +51,7 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 **The following text is part of the standard documentation on rmarkdown. I pull it from [github.com/rstudio/rmarkdown](https://raw.githubusercontent.com/rstudio/rmarkdown/gh-pages/authoring_basics.md) and integrate it using knitr. It is better than I could produce and the act of integrating it gives an extra example of useful ways to build documents.**
 
 ```{r grab, echo=FALSE, results='hide', warning=FALSE}
-setInternet2(use = TRUE)
+#setInternet2(use = TRUE)
 x <- tempfile(fileext = "Rmd")
 on.exit(unlink(x))
 download.file("https://raw.githubusercontent.com/rstudio/rmarkdown/gh-pages/authoring_basics.md", x)
