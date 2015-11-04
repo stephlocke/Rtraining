@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r echo=FALSE,results='hide'}
-rootfolder<-file.path(find.package("Rtraining"),"handouts")
+rootfolder<-file.path("..","handouts")
 imgfolder<-file.path(rootfolder,"imgs")
 imgfolder.unc<-gsub("/","\\",imgfolder,fixed=TRUE)
 ```
