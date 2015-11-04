@@ -9,7 +9,7 @@ env:
 
 apt_packages:
  - unixodbc-dev
- - libcurl-dev
+ - libcurl
 
 before_install:
   - chmod 755 ./.push_gh_pages.sh
