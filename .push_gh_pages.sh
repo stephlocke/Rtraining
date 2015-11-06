@@ -9,6 +9,7 @@ FULL_REPO="https://$GH_TOKEN$GH_REPO"
 
 R CMD BATCH '../Rtraining/ghgenerate.R'
 
+cp ghgenerate.Rout out
 cd out
 git init
 git config user.name "stephs-travis"
