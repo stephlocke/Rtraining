@@ -19,9 +19,9 @@ cache:
     - $HOME/bin
 
 before_install:
-  - export PATH=$HOME/bin
-  - chmod 755 ./.push_gh_pages.sh
-  - chmod 755 ./ghgenerate.R
+  - export PATH=$HOME/bin:$PATH
+  - chmod 755 .push_gh_pages.sh
+  - chmod 755 ghgenerate.R
 
 install:
   - mkdir -p ~/Rlib
