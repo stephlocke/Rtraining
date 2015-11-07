@@ -5,7 +5,7 @@ for(f in slidedecks) rmarkdown::render(f, output_format="ioslides_presentation",
 devtools::install_version("DiagrammeR","0.7","http://cran.rstudio.com")
 handouts<-list.files("../Rtraining/inst/handouts/",
                      pattern = "*.Rmd",recursive = TRUE,full.names = TRUE)
-handouts<-handouts[-grep("(javascript|frontmatter|compiled|source)",x=handouts)]
+handouts<-handouts[-grep("(javascript|frontmatter|compiled|source|tfs)",x=handouts)]
 for(f in handouts) rmarkdown::render(f, output_format="html_document",
                                      output_dir="out")
 
