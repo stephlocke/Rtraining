@@ -3,6 +3,8 @@ title: "Knowing your Rs from your elbow"
 author: "Steph Locke"
 date: "`r Sys.Date()`"
 output:
+  Rtraining::stephSlideStyle:
+    css: NULL
   beamer_presentation:
     template: main2.tex
     theme: m

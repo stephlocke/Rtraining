@@ -1,0 +1,33 @@
+
+body{
+   background-color: #fea814;}
+   
+.title-slide{
+   background-color: #ffffff;
+   background-image: url("mango.png");
+   background-position: right bottom;
+   background-repeat: no-repeat;
+   }
+
+.title-slide hgroup h1{
+  color: #000000;
+}
+
+.title-slide hgroup h2{
+  color: #000000;
+}
+
+.title-slide hgroup p{
+  color: white;
+}
+
+
+
+
+.prettyprint{
+  background-color: #FECC72;
+}
+
+pre{
+  font-size: 26px;
+}

@@ -2,9 +2,8 @@
 title: 'shiny: repoRting'
 author: "Steph Locke"
 date: "`r Sys.Date()`"
-output: 
-  ioslides_presentation:
-    css: Look.css
+output:
+  Rtraining::stephSlideStyle
 ---
 
 ## Shiny
@@ -73,5 +72,5 @@ Create an ubuntu VM, run the following commands
 `git clone https://github.com/rstudio/shiny-examples`
 
 ## About Me
-```{r autodoc, child='aboutme.Rmd', eval=TRUE}
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
 ```

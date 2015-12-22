@@ -1,8 +1,0 @@
-## Objective
-Learn about R and do useful day-job stuff with it
-
-### Sub-objectives
-- Effective R
-- DevelopeR
-- R is for Reporting
-- InfRastructure Time

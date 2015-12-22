@@ -4,9 +4,7 @@ author: "Steph Locke (@SteffLocke)"
 date: "at SQLBits"
 runtime: shiny
 output:
-  ioslides_presentation:
-    widescreen: true
-    css: Look.css
+  Rtraining::stephSlideStyle
 ---
 
 ## Objective
@@ -283,7 +281,7 @@ shinyApp(
 - [Show me Shiny!](http://www.showmeshiny.com/)
 - [Deploying shiny apps](http://shiny.rstudio.com/tutorial/lesson7/)
 
-```{r autodoc, child='../presentationguff/AboutMe.Rmd', eval=TRUE}
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
 ```
 
 

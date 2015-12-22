@@ -3,17 +3,16 @@ title: "Intro to R"
 author: "Steph Locke"
 date:  "`r Sys.Date()`"
 output:
-  ioslides_presentation:
-    css: Look.css
+  Rtraining::stephSlideStyle
 ---
 
-```{r autodoc, child='Objective.Rmd', eval=TRUE}
+```{r autodoc, child='subDocs/Objective.Rmd', eval=TRUE}
 ```
 
-```{r autodoc, child='AboutMe.Rmd', eval=TRUE}
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
 ```
 
-```{r autodoc, child='Scenario.Rmd', eval=TRUE}
+```{r autodoc, child='subDocs/Scenario.Rmd', eval=TRUE}
 ```
 
 ## Step 1: Google "What is R?"
@@ -37,19 +36,19 @@ OK, I need to get this thing called R installed on my laptop!
 - Use R to nab some useful packages
 
 ------
-```{r autodoc, child='Packages.Rmd', eval=TRUE}
+```{r autodoc, child='subDocs/Packages.Rmd', eval=TRUE}
 ```
 
-```{r autodoc, child='Database.Rmd', eval=TRUE}
+```{r autodoc, child='subDocs/Database.Rmd', eval=TRUE}
 ```
 
-```{r autodoc, child='Dataset.Rmd', eval=TRUE}
+```{r autodoc, child='subDocs/Dataset.Rmd', eval=TRUE}
 ```
 
-```{r autodoc, child='Summarise.Rmd', eval=TRUE}
+```{r autodoc, child='subDocs/Summarise.Rmd', eval=TRUE}
 ```
 
-```{r autodoc, child='Visualisation.Rmd', eval=TRUE}
+```{r autodoc, child='subDocs/Visualisation.Rmd', eval=TRUE}
 ```
 
 ## Step 7: Produce presentation
@@ -62,12 +61,12 @@ I need a slide deck for the boss to take use!
 - Use a modular design
 - Re-knit to get latest data 
 
-```{r autodoc, child='Shiny.Rmd', eval=TRUE}
+```{r autodoc, child='subDocs/Shiny.Rmd', eval=TRUE}
 ```
 
 ## Conclusion { .columns-2 }
 
-![Pointy Haired Boss](imgs/PointyHairedBoss.jpg)
+![Pointy Haired Boss](../../style/PointyHairedBoss.jpg)
 
 Phew, he's got something to show to the Board & a web page he can play with all day long.
 
@@ -81,5 +80,5 @@ We learnt along the way:
 
 Not bad for a day's work!
 
-```{r autodoc, child='ClosingMatter.Rmd', eval=TRUE}
+```{r autodoc, child='subDocs/ClosingMatter.Rmd', eval=TRUE}
 ```

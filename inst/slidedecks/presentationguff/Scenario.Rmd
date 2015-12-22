@@ -1,8 +1,0 @@
-## Scenario { .columns-2 }
-
-
-![Pointy Haired Boss](imgs/PointyHairedBoss.jpg)
-
-I've heard about this new thing called R. Apparently everyone's using it so we need to. Make me something using it, by tomorrow!
-
-

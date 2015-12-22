@@ -1,34 +1,32 @@
 Package: Rtraining
 Title: Training Materials on R
-Version: 0.21
+Version: 1.0.1
 Authors@R: person("Steph", "Locke",  , "stephanie.g.locke@gmail.com", role = c("aut", "cre"))
 Description: From presentations to hands-on learning materials, this package
     contains stuff Steph thinks you should know about!
 Depends:
-    R (>= 3.1.2)
-License: MIT + file LICENSE
-LazyData: true
-Imports:
+    R (>= 3.1.2),
     devtools,
     data.table,
-    httr,
-    jsonlite,
-    magrittr,
     dplyr,
     DiagrammeR,
     shiny,
-    knitr,
     Hmisc,
     foreach,
     memisc,
     optiRum,
-    git2r,
     readxl,
     readr,
     RODBC,
     testthat,
-    knitr,
+    ezknitr,
     rmarkdown,
-    leaflet
+    knitr,
+    leaflet,
+    dygraphs,
+    plotly,
+    DT
+License: MIT + file LICENSE
+LazyData: true
 VignetteBuilder: knitr
-RoxygenNote: 5.0.0
+RoxygenNote: 5.0.1

@@ -1,0 +1,62 @@
+## Step 3: Connect to the database
+I'll report on global bike sales from our company's database
+
+- [Database provided by Redgate, hosted on Azure](http://bit.ly/1jrl7V6)
+- Use your relevant driver (often the one you'll use in Excel) data
+- You can also connect to hundreds of other data stores like Excel
+
+------
+
+### Establishing a connection
+```{r dbconnect, echo=TRUE, eval=TRUE,warning=FALSE, message=FALSE, results='hide'}
+# Getting data
+library("RODBC")
+
+# Manipulating data
+library("data.table")
+
+# Build a connection to the DB for reuse
+# Driver names can vary eg 
+# {ODBC Driver 11 for SQL Server}
+azure <- odbcDriverConnect(
+          "Driver={ODBC Driver 11 for SQL Server};
+          Server=mhknbn2kdz.database.windows.net;
+          Database=AdventureWorks2012;
+          Uid=sqlfamily;
+          Pwd=sqlf@m1ly;")
+```
+
+------
+
+### Getting our starting data
+```{r, echo=TRUE, eval=FALSE, results='hide'}
+Order    <- data.table( sqlQuery( azure, 
+         "SELECT * FROM [Sales].[SalesOrderHeader]"))
+
+Territory<- data.table( sqlQuery( azure, 
+         "SELECT * FROM [Sales].[SalesTerritory]"))
+
+Region   <- data.table( sqlQuery( azure, 
+         "SELECT * FROM [Person].[CountryRegion]"))
+```
+
+```{r datagen, echo=FALSE, eval=TRUE,results='hide', warning=FALSE}
+if(azure!=-1L){
+Order    <- data.table( sqlQuery( azure, 
+         "SELECT * FROM [Sales].[SalesOrderHeader]"))
+
+Territory<- data.table( sqlQuery( azure, 
+         "SELECT * FROM [Sales].[SalesTerritory]"))
+
+Region   <- data.table( sqlQuery( azure, 
+         "SELECT * FROM [Person].[CountryRegion]"))
+}
+#Some error handling for if generating purely offline
+if(azure==-1L){
+library(data.table)
+Order<-fread(system.file("extdata","Order.csv",package = "Rtraining"))
+Region<-fread(system.file("extdata","Region.csv",package = "Rtraining"))
+Territory<-fread(system.file("extdata","Territory.csv",package = "Rtraining"))
+}
+
+```

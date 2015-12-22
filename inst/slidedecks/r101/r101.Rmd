@@ -3,6 +3,8 @@ title: "R for developers"
 author: "Steph Locke"
 date: "`r Sys.Date()`"
 output:
+  Rtraining::stephSlideStyle:
+    css: NULL
   beamer_presentation:
     template: default.tex
     theme: m

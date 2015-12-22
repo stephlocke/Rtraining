@@ -2,7 +2,8 @@
 title: "Board Packs"
 author: "Steph Locke"
 date: "`r Sys.Date()`"
-output: ioslides_presentation
+output:
+  Rtraining::stephSlideStyle
 ---
 ## Who am I?
 > I'm Steph Locke
