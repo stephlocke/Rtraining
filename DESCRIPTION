@@ -24,7 +24,8 @@ Depends:
     knitr,
     leaflet,
     dygraphs,
-    plotly
+    plotly,
+    DT
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
