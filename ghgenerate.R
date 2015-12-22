@@ -1,5 +1,6 @@
 library(ezknitr)
 library(rmarkdown)
+library(Rtraining)
 slidedecks <- list.files(
   "inst/slidedecks/",
   pattern = "*.Rmd",recursive = TRUE,full.names = TRUE
