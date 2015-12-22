@@ -54,10 +54,9 @@ Region   <- data.table( sqlQuery( azure,
 #Some error handling for if generating purely offline
 if(azure==-1L){
 library(data.table)
-Order<-fread("DataBackups/Order.csv")
-OrderTerritory<-fread("DataBackups/OrderTerritory.csv")
-Region<-fread("DataBackups/Region.csv")
-Territory<-fread("DataBackups/Territory.csv")
+Order<-fread(system.file("extdata","Order.csv",package = "Rtraining"))
+Region<-fread(system.file("extdata","Region.csv",package = "Rtraining"))
+Territory<-fread(system.file("extdata","Territory.csv",package = "Rtraining"))
 }
 
 ```
