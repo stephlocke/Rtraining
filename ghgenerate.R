@@ -1,11 +1,14 @@
-slidedecks<-list.files("../Rtraining/inst/slidedecks/", 
-                       pattern = "*.Rmd",recursive = TRUE,full.names = TRUE)
-for(f in slidedecks) rmarkdown::render(f, output_format="ioslides_presentation",
-                                       output_dir="out",quiet=TRUE)
-devtools::install_version("DiagrammeR","0.7","http://cran.rstudio.com")
-handouts<-list.files("../Rtraining/inst/handouts/",
-                     pattern = "*.Rmd",recursive = TRUE,full.names = TRUE)
-handouts<-handouts[-grep("(javascript|frontmatter|compiled|source|tfs)",x=handouts)]
-for(f in handouts) rmarkdown::render(f, output_format="html_document",
-                                     output_dir="out")
+library(ezknitr)
+library(rmarkdown)
+slidedecks <- list.files(
+  "inst/slidedecks/",
+  pattern = "*.Rmd",recursive = TRUE,full.names = TRUE
+)
+slidedecks<-slidedecks[-grep("subDocs|demo",slidedecks)]
+for (f in slidedecks) render(f,output_dir = "out")
 
+handouts <- list.files(
+  "inst/handouts/",
+  pattern = "*.Rmd",recursive = TRUE,full.names = TRUE
+)
+for (f in handouts) ezknit(f,out_dir = "out",keep_md = FALSE)

@@ -15,10 +15,8 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 
 <a href="#top">Back to top</a>
 
-```{r autodoc, child='frontmatter/objective.Rmd', eval=TRUE}
-```
 ## About Me
-```{r autodoc, child='frontmatter/aboutme.Rmd', eval=TRUE}
+```{r autodoc,child='../generics/AboutMe.Rmd', eval=TRUE}
 ```
 
 # R
@@ -126,12 +124,12 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 
 #  Installing Rstudio
 <a href="#top">Back to top</a>
-```{r autodoc, child='infrastructure/rstudio build.Rmd', eval=TRUE}
+```{r autodoc, child='infrastructure/rstudio_build.Rmd', eval=TRUE}
 ```
 
 #  Installing shiny-server
 <a href="#top">Back to top</a>
-```{r autodoc, child='infrastructure/shiny-server build.Rmd', eval=TRUE}
+```{r autodoc, child='infrastructure/shiny-server_build.Rmd', eval=TRUE}
 ```
 
 <!--

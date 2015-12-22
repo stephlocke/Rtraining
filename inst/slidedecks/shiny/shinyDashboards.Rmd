@@ -3,8 +3,7 @@ title: 'Shiny: dashboards in R'
 author: "Steph Locke (@SteffLocke)"
 date: '`r Sys.Date()`'
 output:
-  ioslides_presentation:
-    css: Look.css
+  Rtraining::stephSlideStyle
 runtime: shiny
 resource_files:
 - mango.png
@@ -355,7 +354,7 @@ devtools::install_github("stephlocke/Rtraining")
 - [Show me Shiny!](http://www.showmeshiny.com/)
 - [Deploying shiny apps](http://shiny.rstudio.com/tutorial/lesson7/)
 
-```{r autodoc, child='AboutMe.Rmd', eval=TRUE}
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
 ```
 
 

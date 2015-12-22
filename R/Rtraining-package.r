@@ -2,7 +2,7 @@
 #'
 #' @name Rtraining
 #' @docType package
-#' @import data.table httr devtools jsonlite Hmisc magrittr dplyr DiagrammeR shiny knitr foreach
-#' @import memisc optiRum readxl readr RODBC testthat knitr rmarkdown leaflet
-#' @import dygraphs plotly
+##' @import devtools data.table dplyr DiagrammeR shiny Hmisc
+##' @import foreach memisc optiRum readxl readr RODBC testthat
+##' @import ezknitr rmarkdown leaflet dygraphs plotly knitr
 NULL

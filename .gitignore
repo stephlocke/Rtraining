@@ -8,9 +8,15 @@
 .Rproj.user/
 .Rproj.user
 .httr-oauth
+
+# Folders
 inst/doc
+out
 
 # Artefacts
 *.html
 *.pdf
 *.docx
+*.sqlite
+
+/inst/slidedecks/shiny/rs-connect/

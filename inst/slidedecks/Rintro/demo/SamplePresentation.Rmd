@@ -1,0 +1,42 @@
+---
+title: "Bike Sales"
+author: "Steph Locke"
+date: "Sunday, January 18, 2015"
+output: ioslides_presentation
+---
+
+## Summary Tables
+```{r , eval=TRUE, echo=FALSE, results='hide', message=FALSE,warning=FALSE}
+library(knitr)
+#Extract r code (`purl`) from my presentation where necessary and run it( `source`)
+source(purl("../subDocs/Database.Rmd"))
+source(purl("../subDocs/Dataset.Rmd"))
+read_chunk(purl("../subDocs/Summarise.Rmd"))
+read_chunk(purl("../subDocs/Visualisation.Rmd"))
+```
+
+```{r firsttable, eval=TRUE, echo=FALSE, results='as-is'}
+```
+
+------
+```{r secondtable, eval=TRUE, echo=FALSE, results='as-is'}
+```
+
+------
+```{r thirdtable, eval=TRUE, echo=FALSE, results='as-is'}
+```
+
+## Summary Charts
+
+```{r chartone, eval=TRUE, echo=FALSE, results='as-is'}
+```
+
+------
+
+```{r charttwo, eval=TRUE, echo=FALSE, results='as-is'}
+```
+
+------
+
+```{r chartthree, eval=TRUE, echo=FALSE, results='as-is'}
+```
