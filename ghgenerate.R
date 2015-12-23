@@ -13,3 +13,6 @@ handouts <- list.files(
   pattern = "*.Rmd",recursive = TRUE,full.names = TRUE
 )
 for (f in handouts) ezknit(f,out_dir = "out",keep_md = FALSE)
+
+# index
+render("inst/index.Rmd",output_dir = "out")

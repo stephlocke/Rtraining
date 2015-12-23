@@ -1,0 +1,26 @@
+---
+title: "Rtraining"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output: 
+  html_document: 
+    number_sections: no
+    theme: readable
+    toc: no
+---
+
+Here are the areas of Rtraining that you can peruse
+
+```{r, echo=FALSE}
+fileTbl<-function(f,name){
+  names<-gsub(".Rmd","",basename(f))
+  df<-data.frame(paste0(" [",names,"](",names,".html)"))
+  names(df)<-name
+knitr::kable(df)
+}
+fileTbl(slidedecks,"Presentations")
+```
+
+```{r, echo=FALSE}
+fileTbl(handouts,"Handouts")
+```
