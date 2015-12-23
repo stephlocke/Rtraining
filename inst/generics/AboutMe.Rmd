@@ -1,10 +1,8 @@
 ## Steph Locke
-- Modelling & Analytics Manager (MAM) for [Optimum Credit Ltd](http://optimumcredit.co.uk)
+- Principal Consultant at Mango Solutions
 - 8 years of analysis & BI
-- Presenter (obviously!) on R, and other BI topics
+- Presenter on BI, DataOps, and Data Science
 - User group leader: [SQL Cardiff](http://www.meetup.com/Cardiff-SQL-Server-User-Group), [CaRdiff](http://www.meetup.com/Cardiff-R-User-Group/), & [diff.Net](http://www.meetup.com/diff-NET/)
 - Co-author of [Tribal SQL](http://tribalsql.com/)
-
-Join me for a day of R training Apr 24th: [SQLSaturday Exeter](http://sqlsatexeter.azurewebsites.net/?page_id=342) SQLHERO15 
 
 [github.com/StephLocke](https://github.com/StephLocke) | [itsalocke.com](http://itsalocke.com) | [T: SteffLocke](https://twitter.com/stefflocke)
