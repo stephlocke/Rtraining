@@ -1,6 +1,5 @@
 context("Formats")
 
-skip_on_cran()
 
 test_that("formats successfully produce a document", {
   
