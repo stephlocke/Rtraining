@@ -4,11 +4,9 @@
 \alias{stephPDFSlideStyle}
 \title{Doc template for presentations}
 \usage{
-stephPDFSlideStyle(theme = NULL, template = NULL, pandoc_args = NULL, ...)
+stephPDFSlideStyle(template = NULL, pandoc_args = NULL, ...)
 }
 \arguments{
-\item{theme}{Which theme to use}
-
 \item{template}{Which template to use}
 
 \item{pandoc_args}{Any additional pandoc arguments (in a list)}
