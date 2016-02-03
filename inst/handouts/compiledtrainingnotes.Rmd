@@ -98,13 +98,14 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```{r autodoc, child='development/sourcecontrol.Rmd', eval=TRUE}
 ```
 
+<!--
 # Source control - tfsR
 
 <a href="#top">Back to top</a>
 
 ```{r autodoc, child='development/tfsR.Rmd', eval=TRUE}
 ```
-
+-->
 #  Package development
 <a href="#top">Back to top</a>
 
