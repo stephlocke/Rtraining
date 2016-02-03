@@ -11,4 +11,4 @@ vignette: >
 
 This package is designed to equip people with the packages and knowledge for learning R. It is designed as a package to make the package downloads easy.
 
-The materials have been developed by Stephanie Locke, and shared with community at large. It is given under an MIT license so people can reuse and modify it, but the LICENSE file should be retained for propoer attribution.
+The materials have been developed by Stephanie Locke, and shared with community at large. It is given under an MIT license so people can reuse and modify it, but the LICENSE file should be retained for proper attribution.
