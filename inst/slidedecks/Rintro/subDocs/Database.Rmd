@@ -19,7 +19,7 @@ library("data.table")
 # Driver names can vary eg 
 # {ODBC Driver 11 for SQL Server}
 azure <- odbcDriverConnect(
-          "Driver={ODBC Driver 11 for SQL Server};
+          "Driver={SQL Server Native Client 11.0};
           Server=mhknbn2kdz.database.windows.net;
           Database=AdventureWorks2012;
           Uid=sqlfamily;
