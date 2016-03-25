@@ -5,13 +5,12 @@ date: '`r Sys.Date()`'
 output:
   Rtraining::stephSlideStyle
 runtime: shiny
-resource_files:
-- mango.png
 ---
 
 ## Objective
 Learn what the heck shiny is and how you use it!
 
+<!--
 ## FundaRmentals
 ```{r,echo=TRUE}
 # variable assignment
@@ -27,6 +26,7 @@ paste0(c("SQL","Star "),c("Bits","Wars"))
 b <- data.frame(a,c=1:5,l=letters[5:1])
 b
 ```
+-->
 
 ## What's Shiny?
 - An interactive report framework
@@ -51,12 +51,13 @@ shinyAppDir(
 
 ## Complex example
 [Board pack](https://github.com/stephlocke/Rtraining/tree/master/inst/applications/boardpack2)
-
+<!--
 ## Why shiny, not PowerBI?
 >- Firstly, PowerBI is amazeballs
 >- It's excellent at allowing easy consumption
 >- It does not however facilitate a workflow
 >- Shiny does the dashboarding stuff + processing
+-->
 
 # Shiny structure
 ## Contents | Typical
@@ -331,7 +332,6 @@ shinyApp(ui = fluidPage(uilist)
 >- shiny has a variety of deployment options
 
 ## Get the code
-- I'll link on twitter (@SteffLocke)
 - Browse on github: [stephlocke/Rtraining](https://github.com/stephlocke/Rtraining/blob/master/inst/slidedecks/shiny/shinyDashboards.Rmd)
 - Download **everything**: 
 ```r
@@ -344,7 +344,7 @@ devtools::install_github("stephlocke/Rtraining")
 ## Thank you
 >- Attendees
 >- Organisers and volunteers
->- Sponsors
+<!-- >- Sponsors -->
 
 ## Recommended reading
 - [Shiny site](http://shiny.rstudio.com/)
