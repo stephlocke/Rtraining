@@ -1,8 +1,10 @@
 language: r
 cache: packages
-apt_packages:
-  - unixodbc-dev
-  - libcurl4-openssl-dev
+addons:
+  apt:
+    packages:
+    - unixodbc-dev
+    - libcurl4-openssl-dev
 
 after_success:
   - chmod 755 .push_gh_pages.sh
