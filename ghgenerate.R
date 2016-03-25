@@ -6,13 +6,13 @@ slidedecks <- list.files(
   pattern = "*.Rmd",recursive = TRUE,full.names = TRUE
 )
 slidedecks<-slidedecks[-grep("subDocs|demo",slidedecks)]
-for (f in slidedecks) render(f,output_dir = "out")
+for (f in slidedecks) render(f,output_dir = "out",output_format = Rtraining::stephSlideStyle())
 
 handouts <- list.files(
   "inst/handouts/",
   pattern = "*.Rmd",recursive = TRUE,full.names = TRUE
 )
-handouts<-handouts[-grep("tfsR",handouts)]
+handouts<-handouts
 for (f in handouts) ezknit(f,out_dir = "out",keep_md = FALSE)
 
 # index
