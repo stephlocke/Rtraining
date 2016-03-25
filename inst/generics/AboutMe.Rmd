@@ -1,8 +1,7 @@
 ## Steph Locke
-- Principal Consultant at Mango Solutions
-- 8 years of analysis & BI
+- Lead Data Scientist @ CensorNet
 - Presenter on BI, DataOps, and Data Science
 - User group leader: [SQL Cardiff](http://www.meetup.com/Cardiff-SQL-Server-User-Group), [CaRdiff](http://www.meetup.com/Cardiff-R-User-Group/), & [diff.Net](http://www.meetup.com/diff-NET/)
-- Co-author of [Tribal SQL](http://tribalsql.com/)
+- Conference organiser: [satRdays](http://planning.satrdays.org) & [SQL Relay](http://sqlrelay.co.uk)
 
 [github.com/StephLocke](https://github.com/StephLocke) | [itsalocke.com](http://itsalocke.com) | [T: SteffLocke](https://twitter.com/stefflocke)
