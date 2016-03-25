@@ -1,10 +1,16 @@
 
 body{
    background-color: #2165B6;}
-   
+
+slides{
+  height: 900px;
+  width: 1200px;
+  margin-left: -450px;
+}
+
 .title-slide{
-   background-color: #ffffff;
-   background-image: url("mango.png");
+   background-color: #2165B6;
+   background-image: url("WebBackground.png");
    background-position: right bottom;
    background-repeat: no-repeat;
    }
