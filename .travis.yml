@@ -5,7 +5,7 @@ addons:
     packages:
     - unixodbc-dev
     - libcurl4-openssl-dev
-
+    - texlive-full
 after_success:
   - chmod 755 .push_gh_pages.sh
   - chmod 755 ghgenerate.R
