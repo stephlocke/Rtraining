@@ -2,25 +2,26 @@
 body{
    background-color: #2165B6;}
 
-slides{
+slides, slide{
   height: 900px;
   width: 1200px;
-  margin-left: -450px;
+  margin-left: 450px;
 }
 
 .title-slide{
    background-color: #2165B6;
    background-image: url("WebBackground.png");
    background-position: right bottom;
-   background-repeat: no-repeat;
+   background-repeat: no-repeat;    
+   background-size: 300px;
    }
 
 .title-slide hgroup h1{
-  color: #000000;
+  color: #fff;
 }
 
 .title-slide hgroup h2{
-  color: #000000;
+  color: white;
 }
 
 .title-slide hgroup p{
