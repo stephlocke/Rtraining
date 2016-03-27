@@ -8,6 +8,8 @@ addons:
     - libcurl4-openssl-dev
     - texlive-full
 after_success:
+  - R CMD build .
+  - Rscript -e 'devtools::install(pkg = ".")'
   - chmod 755 .push_gh_pages.sh
   - chmod 755 ghgenerate.R
   - ./.push_gh_pages.sh
