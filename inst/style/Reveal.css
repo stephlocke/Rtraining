@@ -57,3 +57,7 @@
 font-size: 36px;
 max-height: 800px;
 line-height: 45px;}
+
+.reveal a {
+    color: #90C226;
+}
