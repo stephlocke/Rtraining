@@ -10,6 +10,7 @@ addons:
 after_success:
   - R CMD build .
   - Rscript -e 'devtools::install(pkg = ".")'
+  - Rscript -e 'devtools::install_github("stephlocke/tfsR")'
   - chmod 755 .push_gh_pages.sh
   - chmod 755 ghgenerate.R
   - ./.push_gh_pages.sh
