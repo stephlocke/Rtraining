@@ -54,9 +54,6 @@
 }
 
 .reveal pre code {
-display: block;
-padding: 5px;
-overflow: auto;
-font-size: xx-large;
+font-size: 36px;
 max-height: 800px;
-word-wrap: normal; }
+line-height: 2em;}
