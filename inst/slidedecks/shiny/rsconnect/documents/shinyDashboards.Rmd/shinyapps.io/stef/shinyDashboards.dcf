@@ -1,8 +1,0 @@
-name: shinyDashboards
-account: stef
-server: shinyapps.io
-bundleId: 329459
-url: https://stef.shinyapps.io/shinyDashboards
-when: 1449918873.66258
-asMultiple: FALSE
-asStatic: FALSE
