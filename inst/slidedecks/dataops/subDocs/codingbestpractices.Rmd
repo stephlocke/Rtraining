@@ -1,0 +1,28 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+# Coding best practices
+
+## Hello world
+>- Hello world!
+>- KISS
+>- DRY
+>- Modularise
+>- Test, test, test
+>- Document as you go
+
+## Style
+>- White space
+>- Comments
+>- Sometimes bigger is better
+>- Consistency
+
+## Paradigms
+Take the time to learn about the language works
+- Procedural
+- Declarative
+- Functional
+- Object-Oriented

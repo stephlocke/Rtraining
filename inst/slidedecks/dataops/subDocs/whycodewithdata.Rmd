@@ -1,0 +1,28 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+# Why code with data
+
+## Have any of these happened to you?
+>- Someone changed a database in production and now everything has gone Pete Tong
+>- Someone changed a report and now someone says the numbers are wrong, but what was changed?
+>- Someone deleted the spreadsheet on the F:/ drive
+
+## Have any of these happened to you?
+>- All the charts in a Word report are pictures, now you have to go through the spreadsheet again and make them
+>- None of the charts in a Word report were pictures, someone played with spreadsheet, and now you have to go through and put it all back the way it was
+>- Someone wants some new information in a report and you have to amend the SQL, the pivot charts, the reports, the text
+
+## Have any of these happened to you?
+>- The auditors want to know how you know you're right
+>- Someone decided to change the company font and all the reports must conform by YESTERDAY
+>- Someone didn't set the range up on Excel correctly and the report has been missing data for months
+
+## Positives!
+- Reproducible
+- Controllable
+- Auditable
+- Extendible

@@ -1,0 +1,27 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+# What coding languages can be used?
+
+## Excel
+> Not everything *has* to be coded
+
+- VBA
+- M & DAX
+
+## Databases
+- SQL
+- XML
+- BIML
+
+## Analytics
+- Python
+- R
+- JavaScript
+- SQL
+
+## Glue
+- PowerShell
+- bash

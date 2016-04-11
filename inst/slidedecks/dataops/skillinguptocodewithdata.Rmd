@@ -1,0 +1,34 @@
+---
+title: 'Skilling up to code with data'
+author: "Steph Locke (@SteffLocke)"
+date: '`r Sys.Date()`'
+output:
+  Rtraining::stephRevealSlideStyle
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
+```
+
+# Agenda
+## Agenda
+- Why code with data
+- What coding languages can be used
+- Coding best practices
+- Source control
+- Testing
+- Continuous testing (& deployment)
+- Coding your infrastructure
+- Wrap up
+
+```{r autodoc, child='subDocs/whycodewithdata.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/whatcodinglanguages.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/codingbestpractices.Rmd', eval=TRUE}
+```
