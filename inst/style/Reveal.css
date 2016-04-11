@@ -52,3 +52,8 @@
   background: transparent;
   box-shadow: 0 0 0;
 }
+
+pre{
+  font-size: xx-large;
+  max-height: 800px;
+}
