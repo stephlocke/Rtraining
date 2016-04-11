@@ -10,13 +10,14 @@ output:
 
 ```{r grab1, echo=FALSE, results='hide', warning=FALSE}
 if (!require(devtools)) install.packages("devtools")
+if (!require(curl)) install.packages("curl")
 if(!require(tfsR)) devtools::install_github("stephlocke/tfsR", build_vignettes = TRUE)
 library(devtools)
 library(tfsR)
 #setInternet2(use = TRUE)
 x <- tempfile(fileext = "Rmd")
 on.exit(unlink(x))
-download.file("https://raw.githubusercontent.com/stephlocke/tfsR/master/vignettes/WorkingwithTFSandGit.Rmd", x, method="curl")
+download.file("https://raw.githubusercontent.com/stephlocke/tfsR/master/vignettes/WorkingwithTFSandGit.Rmd", x, method="curl",extra = "-k")
 ```
 ## TFS
 In TFS2013 and Visual Studio Online, you can use git repositories **inside** TFS. This gives the ability to leverage all the advantages of a distributed source control system whilst still giving you all the functionality of TFS.
