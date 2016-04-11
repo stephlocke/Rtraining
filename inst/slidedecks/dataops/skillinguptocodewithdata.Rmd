@@ -32,3 +32,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r autodoc, child='subDocs/codingbestpractices.Rmd', eval=TRUE}
 ```
+
+```{r autodoc, child='subDocs/sourcecontrol.Rmd', eval=TRUE}
+```

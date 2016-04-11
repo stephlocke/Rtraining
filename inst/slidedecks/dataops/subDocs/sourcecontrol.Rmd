@@ -1,0 +1,32 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+# Source Control
+
+## Commandment
+> Thou shalt source control all the things
+![](https://raw.githubusercontent.com/stephlocke/Rtraining/master/inst/handouts/imgs/versioncontrolallthings.jpg)
+
+## Why?
+> Coz reasons
+
+ - a backup system for your code
+ - a means of tracking *why* you made changes
+ - a way of sharing code
+ - a system for multiple people to work safely
+ - another potential way to deploy code manually
+ - options for automated testing and deployment
+ - audit trails
+
+## Core concepts
+>- Centralised vs Distributed
+>- Repository
+>- Branch
+>- Commit
+
+-----
+
+[Find out more](http://stephlocke.github.io/Rtraining/sourcecontrol.html)
