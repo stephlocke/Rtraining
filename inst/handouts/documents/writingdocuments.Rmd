@@ -54,7 +54,7 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 #setInternet2(use = TRUE)
 x <- tempfile(fileext = "Rmd")
 on.exit(unlink(x))
-download.file("https://raw.githubusercontent.com/rstudio/rmarkdown/gh-pages/authoring_basics.md", x, method="curl")
+download.file("https://raw.githubusercontent.com/rstudio/rmarkdown/gh-pages/authoring_basics.md", x, method="curl", extra = "-k")
 ```
 
 ```{r test-main, child=x}
