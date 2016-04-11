@@ -11,6 +11,7 @@ output:
 ```{r grab1, echo=FALSE, results='hide', warning=FALSE}
 if (!require(devtools)) install.packages("devtools")
 if (!require(curl)) install.packages("curl")
+if (!require(random)) install.packages("random")
 if(!require(tfsR)) devtools::install_github("stephlocke/tfsR", build_vignettes = TRUE)
 library(devtools)
 library(tfsR)
