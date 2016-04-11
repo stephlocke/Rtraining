@@ -1,0 +1,54 @@
+.reveal {
+  background: #2165B6;
+  color: white;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6, .reveal p {
+  color: white;
+}
+
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: white; }
+
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: white; }
+
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: white; }
+
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: white; }
+
+.reveal .controls .navigate-left.enabled:hover {
+  border-right-color: #8F220E; }
+
+.reveal .controls .navigate-right.enabled:hover {
+  border-left-color: #8F220E; }
+
+.reveal .controls .navigate-up.enabled:hover {
+  border-bottom-color: #8F220E; }
+
+.reveal .controls .navigate-down.enabled:hover {
+  border-top-color: #8F220E; }
+
+.reveal pre code {
+  background: white;
+  color: black;
+}
+
+
+
+.vega, .mark-group {
+  background: white;
+}
+
+
+.reveal section img{
+  border-style: none;
+  background: transparent;
+  box-shadow: 0 0 0;
+}

@@ -2,11 +2,19 @@ library(ezknitr)
 library(rmarkdown)
 library(Rtraining)
 slidedecks <- list.files(
-  "inst/slidedecks/",
+  "inst/slidedecks",
   pattern = "*.Rmd",recursive = TRUE,full.names = TRUE
 )
+
+shinydecks<-list.files(
+  "inst/slidedecks/shiny",
+  pattern = "*.Rmd",recursive = TRUE,full.names = TRUE
+)
+  
 slidedecks<-slidedecks[-grep("subDocs|demo",slidedecks)]
-for (f in slidedecks) render(f,output_dir = "out",output_format = Rtraining::stephSlideStyle())
+slidedecks<-setdiff(slidedecks,shinydecks)
+for (f in slidedecks) render(f,output_dir = "out",output_format = Rtraining::stephRevealSlideStyle())
+for (f in shinydecks) render(f,output_dir = "out",output_format = Rtraining::stephSlideStyle())
 
 handouts <- list.files(
   "inst/handouts/",

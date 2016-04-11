@@ -1,6 +1,6 @@
 Package: Rtraining
 Title: Training Materials on R
-Version: 1.1.0
+Version: 1.1.1
 Authors@R: person("Steph", "Locke",  , "stephanie.g.locke@gmail.com", role = c("aut", "cre"))
 Description: From presentations to hands-on learning materials, this package
     contains stuff Steph thinks you should know about!
@@ -25,7 +25,8 @@ Depends:
     leaflet,
     dygraphs,
     plotly,
-    DT
+    DT,
+    revealjs
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
