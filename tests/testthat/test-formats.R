@@ -14,5 +14,7 @@ testFormat <- function(output_format) {
 
 testFormat(stephSlideStyle())
 testFormat(stephPDFSlideStyle())
+testFormat(stephRevealSlideStyle())
+
 
 })
