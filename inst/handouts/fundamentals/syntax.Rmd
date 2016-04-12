@@ -10,6 +10,7 @@ output:
 ```{r echo=FALSE, results='hide'}
 library(foreach)
 ```
+
 ## Basic operators
 
 Action | Operator | Example
@@ -67,7 +68,7 @@ Type | Implementation | Example
 ------------- | ------------- | -------------
 If | if(condition) {dosomething} | `if(TRUE) { 2 }` is `r if(TRUE) { 2 }`
 If else | if(condition) {do something} else {do something different} or ifelse(condition, do something, do something else) | `if(FALSE) { 2 } else { 3 }` is `r if(FALSE) { 2 } else { 3 }` `ifelse(FALSE, 2, 3)` is `r ifelse(FALSE, 2, 3)`
-For loop | for(i in seq) {dosomething} or foreach::foreach(i=1:3) %do% {something} | `foreach(i=1:3) %do%  {TRUE}` is `r foreach(i=1:3) %do% TRUE` 
+For loop | for(i in seq) {dosomething} or foreach::foreach(i=1:3) %do% {something} | `foreach(i=1:3) %do%  {TRUE}` is `r foreach(i=1:3) %do% {TRUE}` 
 While loop | while(condition) {do something } | `a<-0 ; while(a<3){a<-a+1} ; a` is `r a<-0 ; while(a<3){a<-a+1} ; a`
 Switch | switch(value, ...) | `switch(2, "a", "b")` is `r switch(2, "a", "b")`
 Case | memisc::cases(...) | `cases("pi<3"=pi<3, "pi=3"=pi==3,"pi>3"=pi>3)` is `r memisc::cases("pi<3"=pi<3, "pi=3"=pi==3,"pi>3"=pi>3)`
