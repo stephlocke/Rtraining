@@ -1,0 +1,27 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+# Continuous testing (& delivery)
+
+## Why do it?
+>- Avoid works on my machine
+>- Verify that everyones changes work
+>- More faith in the product
+>- Less time spent manually doing it
+
+## Core concepts
+>- Build
+>- Job
+>- Results
+
+## Tools
+- MS Build
+- Travis CI
+- Bamboo
+- GitLab
+- ...
+
+-----

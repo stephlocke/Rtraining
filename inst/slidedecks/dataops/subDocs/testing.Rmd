@@ -1,0 +1,30 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+# Testing
+
+## Commandment
+>Thou shalt always test before committing
+
+## Types of tests
+>- Unit
+>- Functional
+>- User
+>- Smoke test
+>- Reconciliation
+
+## Unit testing
+Test discrete bits of code
+
+- Success
+- Errors
+- Warnings
+- Edge cases
+- Bugs
+
+-----
+[MSFT BI testing]()
+[R testthat]()

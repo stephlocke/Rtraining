@@ -15,7 +15,7 @@ imgfolder.unc<-gsub("/","\\",imgfolder,fixed=TRUE)
 ```
 
 
-![version control all the things](`r paste0(imgfolder.unc,"\\versioncontrolallthings.jpg")`)
+![version control all the things](../imgs/versioncontrolallthings.jpg)
 
 > SOURCE CONTROL IS FOR ALL THE THINGS
 

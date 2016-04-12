@@ -1,0 +1,30 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+# Coded infrastructure
+
+## Why do it?
+>- Avoid infrastructure!
+>- Confidence in the environments
+>- Time saving
+
+## Local
+- Chocolatey
+- PowerShell
+
+## General
+- PowerShell
+- Puppet
+- Chef
+
+## Containers
+- Contained code
+- Scripted infrastructure
+- Bundled dependencies
+- Lower maintenance than VMs
+- Docker
+
+-----

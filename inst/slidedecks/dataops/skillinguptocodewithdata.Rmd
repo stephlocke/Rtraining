@@ -35,3 +35,30 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r autodoc, child='subDocs/sourcecontrol.Rmd', eval=TRUE}
 ```
+
+```{r autodoc, child='subDocs/testing.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/ci.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/codedinfrastructure.Rmd', eval=TRUE}
+```
+
+# Conclusion
+## Why code?
+>- To save time
+>- To be right and know it
+>- To be replacable
+
+## What to code?
+From databases to reports, you can code it!
+
+## How best to do it?
+>- KISS
+>- Test, test, test
+
+## Where to go from here?
+>- Get this online & use the various links
+>- Get started!
+>- Keep in touch: @SteffLocke
