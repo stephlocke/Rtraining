@@ -25,13 +25,13 @@ fileTbl<-function(f,name, yml=TRUE){
   names(df)<-name
 knitr::kable(df)
 }
-fileTbl(slidedecks,"Presentations")
+fileTbl(gsub("inst/","",slidedecks),"Presentations")
 ```
 
 ```{r, echo=FALSE}
-fileTbl(shinydecks,"Shiny presentations (not interactive)")
+fileTbl(gsub("inst/","",shinydecks),"Shiny presentations (not interactive)")
 ```
 
 ```{r, echo=FALSE}
-fileTbl(handouts,"Handouts",yml=FALSE)
+fileTbl(gsub("inst/","",handouts),"Handouts",yml=FALSE)
 ```
