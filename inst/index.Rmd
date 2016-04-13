@@ -14,7 +14,12 @@ Here are the areas of Rtraining that you can peruse
 ```{r, echo=FALSE}
 fileTbl<-function(f,name){
   names<-gsub(".Rmd","",basename(f))
-  df<-data.frame(paste0(" [",names,"](",names,".html)"))
+  gettitle<-function(x){
+    res<-readLines(x)
+    gsub("(title: )|[[:punct:]]","",res[2])
+  }
+  titles<-lapply(f,gettitle)
+  df<-data.frame(paste0(" [",titles,"](",names,".html)"))
   names(df)<-name
 knitr::kable(df)
 }
