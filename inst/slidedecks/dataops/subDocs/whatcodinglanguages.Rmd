@@ -25,3 +25,10 @@ output:
 ## Glue
 - PowerShell
 - bash
+
+-----
+
+- [Learn R]()
+- [Learn Python]()
+- [Learn SQL]()
+

@@ -26,5 +26,8 @@ Test discrete bits of code
 - Bugs
 
 -----
-[MSFT BI testing]()
-[R testthat]()
+
+- [Types of testing]()
+- [MSFT BI testing]()
+- [R testthat]()
+

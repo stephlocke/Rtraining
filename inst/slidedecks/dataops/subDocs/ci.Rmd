@@ -25,3 +25,7 @@ output:
 - ...
 
 -----
+
+- [Continuous integration explained]()
+- [Get started with Travis CI]()
+

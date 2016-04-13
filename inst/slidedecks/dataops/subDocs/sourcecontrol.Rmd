@@ -29,4 +29,7 @@ output:
 
 -----
 
-[Find out more](http://stephlocke.github.io/Rtraining/sourcecontrol.html)
+- [My intro to source control](http://stephlocke.github.io/Rtraining/sourcecontrol.html)
+- [Git cheatsheet]()
+- [Git book]()
+

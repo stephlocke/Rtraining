@@ -17,12 +17,20 @@ output:
 ## Style
 >- White space
 >- Comments
->- Sometimes bigger is better
+>- (Sometimes) bigger is better
 >- Consistency
 
 ## Paradigms
-Take the time to learn about the language works
+> Take the time to learn about how the language works
+
 - Procedural
 - Declarative
 - Functional
 - Object-Oriented
+
+-----
+
+- [Key coding concepts]()
+- [Programming paradigms]()
+- [Google style guides]()
+
