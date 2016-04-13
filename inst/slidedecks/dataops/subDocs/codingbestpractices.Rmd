@@ -30,7 +30,7 @@ output:
 
 -----
 
-- [Key coding concepts]()
-- [Programming paradigms]()
-- [Google style guides]()
+- [Key coding concepts](https://howtoprogramwithjava.com/programming-101-the-5-basic-concepts-of-any-programming-language/)
+- [Programming paradigms](http://cs.lmu.edu/~ray/notes/paradigms/)
+- [Google style guides](https://github.com/google/styleguide)
 

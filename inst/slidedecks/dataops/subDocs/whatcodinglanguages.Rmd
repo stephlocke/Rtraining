@@ -28,7 +28,8 @@ output:
 
 -----
 
-- [Learn R]()
-- [Learn Python]()
-- [Learn SQL]()
+- [Hour of code](https://hourofcode.com/uk)
+- [Learn R](https://www.datacamp.com/)
+- [Learn Python](http://www.learnpython.org/)
+- [Learn SQL](https://www.codecademy.com/learn/learn-sql)
 

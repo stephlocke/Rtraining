@@ -27,7 +27,7 @@ Test discrete bits of code
 
 -----
 
-- [Types of testing]()
-- [MSFT BI testing]()
-- [R testthat]()
+- [Types of testing](http://www.tutorialspoint.com/software_testing/)
+- [MSFT BI testing](http://itsalocke.com/database-bi-related-unit-testing-options/)
+- [R testthat](http://r-pkgs.had.co.nz/tests.html)
 

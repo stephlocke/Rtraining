@@ -29,9 +29,9 @@ output:
 
 -----
 
-- [chocolatey]()
-- [Why script infrastructure?]()
-- [Get started with docker]()
-- [Get started with PowerShell]()
+- [chocolatey](https://chocolatey.org/)
+- [Why script infrastructure?](http://www.cio.com/article/3017722/infrastructure/what-is-infrastructure-as-code-and-why-should-you-embrace-it.html)
+- [Get started with docker](https://docs.docker.com/windows/)
+- [PowerShell in a month of lunches](http://www.amazon.co.uk/Learn-Windows-PowerShell-Month-Lunches/dp/1617290211)
 
 

@@ -30,6 +30,6 @@ output:
 -----
 
 - [My intro to source control](http://stephlocke.github.io/Rtraining/sourcecontrol.html)
-- [Git cheatsheet]()
-- [Git book]()
+- [Git cheatsheet](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf)
+- [Git book](https://git-scm.com/book/en/v2)
 

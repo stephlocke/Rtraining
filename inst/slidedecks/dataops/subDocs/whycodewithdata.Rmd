@@ -30,6 +30,6 @@ output:
 
 -----
 
-- [DataOps]()
-- [EUSpRIG]()
+- [DataOps](http://itsalocke.com/dataops-its-a-thing-honest/)
+- [EuSpRiG](http://www.eusprig.org/)
 

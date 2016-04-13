@@ -26,6 +26,6 @@ output:
 
 -----
 
-- [Continuous integration explained]()
-- [Get started with Travis CI]()
+- [Continuous integration explained](https://www.thoughtworks.com/continuous-integration)
+- [Get started with Travis CI](https://docs.travis-ci.com/user/getting-started/)
 
