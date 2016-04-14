@@ -13,6 +13,9 @@ imgURL(x, repo = "stephlocke/lazyCDN", branch = "master")
 
 \item{branch}{If in gh-pages or something}
 }
+\value{
+url
+}
 \description{
 Produce link to file stored on github repo
 }
