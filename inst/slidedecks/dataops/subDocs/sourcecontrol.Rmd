@@ -8,7 +8,7 @@ output:
 
 ## Commandment
 > Thou shalt source control all the things
-![](https://raw.githubusercontent.com/stephlocke/Rtraining/master/inst/handouts/imgs/versioncontrolallthings.jpg)
+![](`r imgURL("versioncontrolallthings.jpg")`)
 
 ## Why?
 > Coz reasons

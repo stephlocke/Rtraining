@@ -7,11 +7,7 @@ output:
   html_document:
     theme: readable
 ---
-```{r echo=FALSE,results='hide'}
-rootfolder<-file.path("..","handouts")
-imgfolder<-file.path(rootfolder,"imgs")
-imgfolder.unc<-gsub("/","\\",imgfolder,fixed=TRUE)
-```
+
 Please note these instructions were tested on a Windows 8.1 clean VM from Azure on 20/07/2015 - updates to r, rstudio, packages, or the training package could cause drift between what works and what doesn't and you'll have to wing it. If you do have to wing it, let me know and I'll update my instructions!
 
 ## R
@@ -30,7 +26,7 @@ Please note these instructions were tested on a Windows 8.1 clean VM from Azure 
 ## Configuration
  * Open Rstudio
  * Go to Tools > Global Options and set Rstudio to point at the location of your git.exe file
-![Git exe location](`r paste0(imgfolder.unc,"\\rstudio-gitfolder.png")`)
+![Git exe location](`r imgURL("rstudio-gitfolder.png")`)
  * Restart Rstudio
      + If you don't automatically get the Git pane (top RHS) then Create a New Project and tick the source control checkbox
  * Open up command-prompt (or use the Git pane and select Shell in the extra options)

@@ -8,14 +8,7 @@ output:
     highlight: tango
 ---
 
-```{r echo=FALSE,results='hide'}
-rootfolder<-file.path("..","handouts")
-imgfolder<-file.path(rootfolder,"imgs")
-imgfolder.unc<-gsub("/","\\",imgfolder,fixed=TRUE)
-```
-
-
-![version control all the things](../imgs/versioncontrolallthings.jpg)
+![version control all the things](`r imgURL("versioncontrolallthings.jpg")`)
 
 > SOURCE CONTROL IS FOR ALL THE THINGS
 
@@ -47,7 +40,7 @@ It integrates neatly into Rstudio, making it easy to source control your analysi
 
 
 ### The git conceptual model ([\@cthydng](https://twitter.com/cthydng/status/575483540202106880))
-![git model](`r paste0(imgfolder.unc,"\\gitmodel.jpg")`)
+![git model](`r imgURL("gitmodel.jpg")`)
 
 ### Git glossary
 
