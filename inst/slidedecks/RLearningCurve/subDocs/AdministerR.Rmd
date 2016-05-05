@@ -30,7 +30,12 @@ output:
 - Regular updates required
 - Unit tests of key behaviours should be done
 - Dev environments always a plus!
+- miniCRAN
 
 ## Deployment
 - Ad-hoc facilities
 - Via Continuous Deployment
+
+## Next steps
+- Learn some [Linux fundamentals](http://linuxsurvival.com/)
+- Determine what sort of capacity requirements are needed
