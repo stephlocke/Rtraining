@@ -1,0 +1,10 @@
+---
+title: "Cut the R Learning Curve"
+author: "Steph Locke"
+date:  "`r Sys.Date()`"
+output:
+  Rtraining::stephSlideStyle
+---
+
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
+```
