@@ -5,7 +5,104 @@ output:
 ---
 # Super R
 
-## Data Manipulation
-## Visualisation
-## Statistics / Machine Learning
-## Reporting
+## data.table 
+![](https://github.com/stephlocke/lazyCDN/raw/master/datatable.png)
+
+## data.table
+1. Super-fast slicing & dicing
+1. Low memory footprint vs data.frames
+1. Fast joins
+1. Auto-indexing
+1. Many saved characters!
+1. Active dev
+
+## data.table
+Task | How 
+------------- | ------------- 
+Read CSV | `irisDT <- fread(“iris.csv”)`
+Return everything | `irisDT       irisDT[  ]`
+Select columns | `irisDT[  ,  .(Sepal.Length, Sepal.Width) ]`
+Restrict rows | `irisDT[ Sepal.Length >=5 , ]`
+Aggregate | `irisDT[ , mean(Sepal.Length)]`
+Aggregate by group | `irisDT[ , mean(Sepal.Length) , Species ]`
+Count | `irisDT[ , .N ]`
+
+## The "Hadleyverse"
+[Hadley Wickham](http://had.co.nz/), insanely prolific developer of R packages has produced a great ecosystem:
+
+- httr
+- ggplot2
+- purrr
+- readxl
+- haven
+- dplyr
+- rvest
+- ... 
+
+## dplyr
+- filter() (and slice())
+- arrange()
+- select() (and rename())
+- distinct()
+- mutate() (and transmute())
+- summarise()
+- sample_n() and sample_frac()
+
+## dplyr
+1. Relatively clear verbs
+1. Quite easy to get started with
+1. Verbose
+
+## ggplot2
+![](https://github.com/stephlocke/lazyCDN/raw/master/samplegganimate.gif)
+
+## ggplot2
+1. Clean conceptual implementation
+1. Highly customisable
+1. Simple to start with
+1. Big ecosystem
+
+## ggplot2
+Term | Explanation | Example(s)
+------------- | ------------- | -------------
+**plot** | A plot using the grammar of graphics | `ggplot()`
+**aes**thetics | attributes of the chart | colour, x, y
+mapping | relating a column in your data to an aesthetic 
+**stat**istical transformation | a translation of the raw data into a refined summary | `stat_density()`
+**geom**etry | the display of aesthetics | `geom_line()`, `geom_bar()`
+**scale** | the range of values | axes, legends
+**coord**inate system|  how geometries get laid out | `coord_flip()`
+**facet** | a means of subsetting the chart | `facet_grid()`
+**theme** | display properties | `theme_minimal()`
+
+## caret
+> A single point of contact for myriad statistical & machine learning algorithms
+
+>- Plus handy data prep!
+>- Find out more at [caret homepage](http://topepo.github.io/caret/)
+
+## AzureML
+> Interact with AzureML in R
+
+1. No GUI
+1. All the development environments of R
+1. Consume AzureML webservice
+
+## rmarkdown
+> Write markdown, interweave code
+
+1. Data provenance
+1. Ease of documenting & developing solutions
+1. Extendible & customisable
+
+## miniCRAN
+> Make your own CRAN
+
+1. R interface
+1. Control over packages
+1. Internal package deployment
+
+## Next steps
+1. Play with the popular packages
+1. Look at [CRAN task views](https://cran.r-project.org/web/views/)
+1. Ask for recommendations!
