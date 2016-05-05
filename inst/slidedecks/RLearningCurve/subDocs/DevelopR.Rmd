@@ -4,3 +4,6 @@ output:
     variant: markdown_github
 ---
 # Develop R
+## Dependency management
+## Testing
+## CI

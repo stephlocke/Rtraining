@@ -4,3 +4,8 @@ output:
     variant: markdown_github
 ---
 # Super R
+
+## Data Manipulation
+## Visualisation
+## Statistics / Machine Learning
+## Reporting

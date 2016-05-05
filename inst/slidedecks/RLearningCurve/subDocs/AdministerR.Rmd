@@ -4,3 +4,7 @@ output:
     variant: markdown_github
 ---
 # Administer R
+## Infrastructure
+## R
+## Packages
+## Deployment
