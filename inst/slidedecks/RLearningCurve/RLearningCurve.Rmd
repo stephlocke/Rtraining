@@ -3,8 +3,71 @@ title: "Cut the R Learning Curve"
 author: "Steph Locke"
 date:  "`r Sys.Date()`"
 output:
-  Rtraining::stephSlideStyle
+  Rtraining::stephRevealSlideStyle
 ---
 
 ```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
 ```
+
+# Agenda
+## Agenda
+- R overview
+- R + Microsoft
+- RefresheR
+- Super R
+    + Data Manipulation
+    + Visualisation
+    + Statistics / Machine Learning
+    + Reporting
+- Develop R
+    + Dependency management
+    + Testing
+    + CI
+- Administer R
+    + Infrastructure
+    + R
+    + Packages
+    + Deployment
+- Wrap up
+
+```{r autodoc, child='subDocs/Roverview.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/RMicrosoft.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/RefresheR.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/SuperR.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/DevelopR.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/AdministerR.Rmd', eval=TRUE}
+```
+
+# Wrap up
+## Covered
+- R overview
+- R + Microsoft
+- RefresheR
+- Super R
+    + Data Manipulation
+    + Visualisation
+    + Statistics / Machine Learning
+    + Reporting
+- Develop R
+    + Dependency management
+    + Testing
+    + CI
+- Administer R
+    + Infrastructure
+    + R
+    + Packages
+    + Deployment
+
+## Next steps
+
+## Q&A
