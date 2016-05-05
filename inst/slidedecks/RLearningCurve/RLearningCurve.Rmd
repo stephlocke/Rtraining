@@ -43,20 +43,10 @@ output:
 - R + Microsoft
 - RefresheR
 - Super R
-    + Data Manipulation
-    + Visualisation
-    + Statistics / Machine Learning
-    + Reporting
 - Develop R
-    + Dependency management
-    + Testing
-    + CI
 - Administer R
-    + Infrastructure
-    + R
-    + Packages
-    + Deployment
 
 ## Next steps
-
+- Get more detail from my [training materials](https://stephlocke.github.io/Rtraining)
+- Follow up the Next Steps sections
 ## Q&A
