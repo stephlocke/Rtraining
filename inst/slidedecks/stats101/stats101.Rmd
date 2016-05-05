@@ -1,0 +1,239 @@
+---
+title: "Stats 101"
+author: "Steph Locke"
+date:  "`r Sys.Date()`"
+output:
+  Rtraining::stephRevealSlideStyle
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, dev="svg",
+     out.height = "500px",  strip.white=TRUE
+     ,collapse = TRUE, dev.args = list(bg="transparent")
+)
+library(ggplot2)
+library(vegalite)
+library(DT)
+library(readxl)
+library(data.table)
+
+vegalite <- vegalite() %>%
+    cell_size(700, 500) %>%
+  legend_color(orient="left")
+#vegalite <- vegalite()
+
+ggopts<-theme_bw(base_size=24)+theme(
+    panel.background= element_rect(fill="transparent", colour="transparent"),
+    plot.background= element_rect(fill="transparent", colour="transparent"),
+    panel.border = element_rect(fill = NA, 
+                colour = NA), 
+    axis.ticks = element_line(colour = "white"),
+    text=element_text(colour="white")
+)
+
+Mode <- function(x) {
+ux <- unique(x)
+ux[which.max(tabulate(match(x, ux)))]
+}
+
+myFile<-"Predicting Age.xlsx"
+```
+
+# Aim
+
+## Aim
+
+ - Predict the ages of SQL Saturday Exeter attendees
+
+# Our data
+
+## Our data
+We have the results from our survey.
+```{r}
+basedata<-setDT(read_excel(myFile))
+results<-basedata[Age<100&Age>Experience,]
+```
+Our sample has `r nrow(basedata)` records but with basic data cleansing we will be working with `r nrow(results)`.
+
+## Results
+```{r eval=FALSE }
+DT::datatable(results)
+```
+
+```{r echo=FALSE }
+DT::datatable(results,style="bootstrap",options=list(dom = "lftir" ))
+```
+
+## Age Distribution
+```{r}
+ggplot(results)+ggopts+
+  aes(x = Age, y=..count..)+
+  geom_histogram(bins = 10, fill="white", colour="white")
+```
+
+## Experience Distribution
+```{r}
+vegalite %>%
+  add_data(results) %>%
+  encode_x("Experience","quantitative") %>%
+  encode_y("*", "quantitative", aggregate="count") %>%
+  bin_x(maxbins=10) %>%  mark_bar()
+```
+
+## Field Distribution
+```{r}
+vegalite %>%
+  add_data(results) %>%
+  encode_x("Field","ordinal") %>%
+  encode_y("*", "quantitative", aggregate="count") %>%
+  mark_bar()
+```
+
+
+## All data
+```{r}
+vegalite %>%
+  add_data(results) %>%
+  encode_x("Experience","quantitative") %>%
+  encode_y("Age", "quantitative") %>%
+  encode_color("Field", "nominal") %>%
+  mark_point()
+```
+
+
+# Sampling
+
+```{r}
+testPer<-.75
+inTest<-sample(1:nrow(results),nrow(results)*testPer)
+training<-results[inTest,]
+holdout<-results[!inTest,]
+```
+
+## Training
+```{r}
+vegalite %>%
+  add_data(training) %>%
+  encode_x("Experience","quantitative") %>%
+  encode_y("Age", "quantitative") %>%
+  encode_color("Field", "nominal") %>%
+  mark_point()
+```
+
+## Holdout
+```{r}
+vegalite %>%
+  add_data(holdout) %>%
+  encode_x("Experience","quantitative") %>%
+  encode_y("Age", "quantitative") %>%
+  encode_color("Field", "nominal") %>%
+  mark_point()
+```
+
+# One size fits all
+
+## One size fits all
+We could take some measure of central tendency to predict the age of attendees.
+
+```{r}
+averages<-training[,.(Mean=floor(mean(Age))
+                      ,Median=floor(median(Age))
+                      ,Mode=Mode(Age)
+                      )]
+knitr::kable(averages)
+```
+
+## Results
+```{r}
+holdout[,colnames(averages):=averages]
+holdout.m<-melt(holdout, measure.vars = c("Age",colnames(averages)))
+vegalite %>%
+   add_data(holdout.m) %>%
+  encode_x("Name", "ordinal") %>%
+  encode_y("value", "quantitative") %>%
+  encode_color("variable", "nominal")%>%
+  mark_point()
+```
+
+## Assessing results
+```{r}
+holdout.lse<-melt(holdout, measure.vars = colnames(averages))
+holdout.lse[,Error:=(Age-value)^2]
+knitr::kable(holdout.lse[,.(LSE=sum(Error)), variable][order(LSE)])
+```
+
+# Line of best fit
+$y=mx+c$
+
+```{r}
+expLM<-lm(Age~Experience, training)
+summary(expLM)
+```
+
+## Model
+```{r}
+training[,expLMres:=expLM$fitted]
+ggplot(training, aes(x=Experience, y=Age))+
+  geom_point()+
+  geom_line(aes(y=expLMres),colour="blue")+
+  theme_minimal()
+```
+
+## Results
+```{r}
+holdout[,expLMres:=predict(expLM,holdout)]
+holdout.m<-melt(holdout, measure.vars = c("Age","expLMres"))
+vegalite %>%
+   add_data(holdout.m) %>%
+  encode_x("Name", "ordinal") %>%
+  encode_y("value", "quantitative") %>%
+  encode_color("variable", "nominal")%>%
+  mark_point()
+```
+
+## Assessing results
+```{r}
+holdout.lse<-melt(holdout, measure.vars = c("expLMres",colnames(averages)))
+holdout.lse[,Error:=(Age-value)^2]
+knitr::kable(holdout.lse[,.(LSE=sum(Error)), variable][order(LSE)])
+```
+
+# Complex linear regression
+## Complex linear regression
+- $y=m_1 x_1 +...+ m_n x_n +c$
+- Contrasts
+
+```{r}
+fieldLM<-lm(Age~Experience + Field, training)
+summary(fieldLM)
+```
+
+## Model
+```{r}
+training[,fieldLMres:=fieldLM$fitted]
+ggplot(training, aes(x=Experience, y=Age, group=Field, colour=Field))+
+  geom_point()+
+  geom_line(aes(y=fieldLMres, group=Field),colour="blue")+
+  facet_wrap(~Field)+
+  theme_minimal()
+```
+
+## Results
+```{r}
+holdout[,fieldLMres:=predict(fieldLM,holdout)]
+holdout.m<-melt(holdout, measure.vars = c("Age","fieldLMres"))
+vegalite %>%
+   add_data(holdout.m) %>%
+  encode_x("Name", "ordinal") %>%
+  encode_y("value", "quantitative") %>%
+  encode_color("variable", "nominal")%>%
+  mark_point()
+```
+
+## Assessing results
+```{r}
+holdout.lse<-melt(holdout, measure.vars = c("fieldLMres","expLMres",colnames(averages)))
+holdout.lse[,Error:=(Age-value)^2]
+knitr::kable(holdout.lse[,.(LSE=sum(Error)), variable][order(LSE)])
+```
+
