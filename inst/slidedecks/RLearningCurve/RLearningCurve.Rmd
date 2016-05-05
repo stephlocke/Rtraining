@@ -11,7 +11,7 @@ output:
 
 # Agenda
 ## Agenda
-- R overview
+- R
 - R + Microsoft
 - RefresheR
 - Super R

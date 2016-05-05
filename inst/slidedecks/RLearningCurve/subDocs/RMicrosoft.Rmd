@@ -4,3 +4,18 @@ output:
     variant: markdown_github
 ---
 # R + Microsoft
+## Microsoft R Server
+- Formerly, Revolution R for Enterprise
+- Available on Windows and Linux
+- Specialised connectors available for SQL Server, Hadoop, Oracle, & Teradata
+
+## AzureML
+- Uses R throughout
+
+## PowerBI
+- R as a data source
+- Use R for data visualisations
+- Any R variant
+
+## SQL Server
+- Call R from inside SQL

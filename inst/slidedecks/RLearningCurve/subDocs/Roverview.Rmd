@@ -4,4 +4,71 @@ output:
     variant: markdown_github
 ---
 
-# R Overview
+# R
+## R
+> R is an integrated suite of software facilities for data manipulation, calculation and graphical display
+
+- Open source
+- In-memory & single-core (by default)
+- Multi-platform
+- Extensible environment
+- Delivered by the [R Foundation](https://www.r-project.org/foundation/), supported by the [R Consortium](https://www.r-consortium.org/), grown by R developers 
+- [r-project.org](http://www.r-project.org/)
+
+## Setup on Windows
+- Get R
+- Get R Tools
+- Get RStudio or Visual Studio + VS R Tools
+
+## There's a package for that
+- R is extended with packages of functionality
+- More than 8,000 active packages according to [MetaCRAN](http://www.r-pkg.org/)
+- [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/)
+- [Github](https://github.com) via [devtools](https://cran.r-project.org/package=devtools)
+
+## How it hangs together
+```{r,echo=FALSE,warning=FALSE, eval=FALSE}
+library(DiagrammeR)
+hangs<-"graph TB
+D[Data] --> R[Read into memory]
+R --> DM[Data manipulation]
+DM --> V[Visualisation]
+DM --> S[Statistical Analysis]
+DM --> O[Output]
+S --> V
+V --> Do[Document]
+Do --> O
+V --> I[Interactive report]
+I --> O
+S --> W[Webservice]
+W --> I
+W --> O"
+mermaid(hangs)
+```
+![](https://github.com/stephlocke/lazyCDN/raw/master/RHighlevel.png)
+
+## How it hangs together
+```{r,echo=FALSE,warning=FALSE, eval=FALSE}
+hangs<-"graph LR
+Dp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, readr,...]
+Rp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]
+DMp --> Vp[ggplot2, DiagrammeR, vegalite, ...]
+DMp --> Sp[caret, survival, nnet, ...]
+DMp --> Op[base, readr, RODBC, ...]
+Sp --> Vp
+Vp --> Dop[knitr, rmarkdown, ...]
+Dop --> Op
+Vp --> Ip[shiny, ...]
+Ip --> Op
+Sp --> Wp[AzureML, jug, ...]
+Wp --> Ip
+Wp --> Op"
+mermaid(hangs)
+```
+
+![](https://github.com/stephlocke/lazyCDN/raw/master/Rpackages.png)
+
+
+## Next steps
+1. Check out the [R website](http://www.r-project.org/)
+1. Install [R](http://www.r-project.org/) & [RStudio](http://rstudio.com) (or [R Tools for Visual Studio](https://www.visualstudio.com/en-us/features/rtvs-vs.aspx))
