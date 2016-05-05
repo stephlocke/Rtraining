@@ -4,6 +4,52 @@ output:
     variant: markdown_github
 ---
 # Develop R
-## Dependency management
-## Testing
-## CI
+## Utility packages
+- testthat
+- devtools (useful for other things)
+- microbenchmark
+- packrat
+
+## Package development
+```r
+library(devtools)
+pkg<-"newPackage"
+create(pkg)
+
+library(devtools) # Open the project!
+add_test_infrastructure() # Add unit test framework
+add_travis() # Add CI framework
+use_vignette() # Add folder for macro-level help files
+use_package_doc() # Add file for providing info about your package
+use_readme_rmd() # Make a README!
+```
+
+## What to unit test
+ 1. A single set of values that represent "normal" and expect this matches a correct answer
+ 2. A dataset that represents "normal" and expecting this to match correct answers
+ 3. Various permutations of bad input values and expect errors (ideally specific error messages)
+ 4. Edge cases that cover extreme values or boundaries for any inequalities or conditions
+ 5. Any bugs or compatibility issues
+
+## How to test
+```{r}
+myfunc<-function(a=1,b=2,c="blah"){
+stopifnot(is.numeric(a), is.numeric(b), is.character(c))
+d<-ifelse(a<0,a*b,a/b)
+e<-paste0(c,d)
+return(e)
+}
+# Add a high-level name for group of tests, typically the function name
+context("myfunc")
+
+# Simplest test
+test_that("Defaults return expected result",{
+  result<-myfunc()
+  check<-"blah0.5"
+  expect_equal(result,check)
+})
+```
+
+## Next steps
+1. Read Hadley's [Package Development guide](http://r-pkgs.had.co.nz/)
+1. Practice!
