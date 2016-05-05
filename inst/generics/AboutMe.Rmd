@@ -1,4 +1,4 @@
-## Steph Locke
+## Steph Locke {data-background="https://github.com/stephlocke/lazyCDN/raw/master/StephLocke.jpg"}
 - Lead Data Scientist @ CensorNet
 - Presenter on BI, DataOps, and Data Science
 - User group leader: [SQL Cardiff](http://www.meetup.com/Cardiff-SQL-Server-User-Group), [CaRdiff](http://www.meetup.com/Cardiff-R-User-Group/), & [diff.Net](http://www.meetup.com/diff-NET/)
