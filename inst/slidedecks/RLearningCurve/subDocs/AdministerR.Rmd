@@ -16,6 +16,9 @@ output:
 - CPU should be decent
 - Physical storage can be low
 - Virus scanning not a problem
+- AD auth (fairly simple)
+- File share availability
+- Backups or scripted builds?
 
 ## R
 >- Microsoft R or base R?
