@@ -4,3 +4,25 @@ output:
     variant: markdown_github
 ---
 # RefresheR
+
+## Syntax
+Action | Operator | Example
+------------- | ------------- | -------------
+Create / update a variable | <- | `a <- 10`
+Comment | # | `# This is my comment`
+Help | ? | `?mean`
+Identifier | \` |  `` `1`<-2``
+Get a component e.g a data.frame column | $ | `iris$Sepal.Length`
+Reference positions within an object | [ ] | iris[ 1 , 1]
+
+## Objects
+- Vector
+- Matrix
+- Array
+- List
+- data.frame
+
+
+## Next steps
+- Go through the first sections of the [R for Microsoft Data Platform](http://stephlocke.github.io/RMSFTDP) pre-con
+- Try the [datacamp R intro course](https://campus.datacamp.com/courses/free-introduction-to-r)
