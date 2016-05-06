@@ -26,7 +26,8 @@ Depends:
     dygraphs,
     plotly,
     DT,
-    revealjs
+    revealjs,
+    vegalite
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
