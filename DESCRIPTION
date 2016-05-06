@@ -28,7 +28,7 @@ Depends:
     DT,
     revealjs,
     vegalite,
-    testhat
+    testthat
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
