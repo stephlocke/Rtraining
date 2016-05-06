@@ -39,6 +39,7 @@ d<-ifelse(a<0,a*b,a/b)
 e<-paste0(c,d)
 return(e)
 }
+library(testthat)
 # Add a high-level name for group of tests, typically the function name
 context("myfunc")
 

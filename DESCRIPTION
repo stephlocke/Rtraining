@@ -27,7 +27,8 @@ Depends:
     plotly,
     DT,
     revealjs,
-    vegalite
+    vegalite,
+    testhat
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
