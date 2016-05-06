@@ -1,6 +1,6 @@
 ---
 title: "Cut the R Learning Curve"
-author: "Steph Locke"
+author: "Steph Locke (@SteffLocke)"
 date:  "`r Sys.Date()`"
 output:
   Rtraining::stephRevealSlideStyle
@@ -49,5 +49,6 @@ output:
 ## Next steps
 - Get more detail from my [training materials](https://stephlocke.github.io/Rtraining)
 - Follow up the Next Steps sections
+- Let me know how you get on: @SteffLocke
 
 ## Q&A
