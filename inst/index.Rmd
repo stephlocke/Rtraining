@@ -23,7 +23,7 @@ fileTbl<-function(f,name, yml=TRUE){
   if(!yml) titles<-names
   df<-data.frame(paste0(" [",titles,"](",names,".html)"))
   names(df)<-name
-knitr::kable(df)
+knitr::kable(sort(df))
 }
 fileTbl(gsub("inst/","",slidedecks),"Presentations")
 ```
