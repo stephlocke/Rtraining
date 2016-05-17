@@ -1,5 +1,5 @@
 ---
-title: 'My ways of being lazy with infrastructure'
+title: 'Being lazy with infrastructure'
 author: "Steph Locke (@SteffLocke)"
 date: '`r Sys.Date()`'
 output:

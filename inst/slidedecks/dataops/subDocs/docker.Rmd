@@ -21,7 +21,7 @@ output:
 - Run the Docker Quickstart Terminal
 
 ```
-> docker run ubuntu -i -t /bin/bash
+> docker run -it ubuntu /bin/bash
 ```
 
 ## Considerations
