@@ -1,0 +1,88 @@
+---
+title: 'My ways of being lazy with infrastructure'
+author: "Steph Locke (@SteffLocke)"
+date: '`r Sys.Date()`'
+output:
+  Rtraining::stephRevealSlideStyle
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
+```
+
+# Agenda
+## Agenda
+- Laziness
+- My machine
+- My servers
+- Wrap up
+
+# Laziness
+
+## Laziness
+> The art of doing simple(ish) things now to avoid hardwork at a later date
+
+>- Automation is a tactic for enduring laziness
+
+----
+
+![XKCD automation cartoon](http://imgs.xkcd.com/comics/automation.png)
+
+----
+
+![XKCD automation cartoon](http://imgs.xkcd.com/comics/is_it_worth_the_time.png)
+
+----
+
+## Laziness commandments
+- Do work today that avoids repeat work down the line
+- Do boring work today so tomorrow's work is new and interesting
+- Don't end up in the situation where you have to the same bit of work twice
+
+
+# My machine
+```{r autodoc, child='subDocs/chocolatey.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/docker.Rmd', eval=TRUE}
+```
+
+## Storage
+> Never rely on your machine for more than temporary storage
+
+- Source control
+- Dropbox (or OneDrive)
+
+## And ...
+- PowerShell
+- Soon ... Ubuntu!
+
+# My servers
+
+## Servers
+> Don't own any
+
+## Azure VMs
+- Pre-canned where possible
+- Use Azure Resource Manager templates for scripted builds
+
+## Ubuntu
+- I confess to preferring Linux than Windows Server!
+- DigitalOcean is a really neat cloud provider
+
+## Ditching the servers
+![Pizza as a Service](https://media.licdn.com/mpr/mpr/p/7/005/078/213/19656ee.jpg)
+
+# Wrap up
+## Laziness commandments
+- Do work today that avoids repeat work down the line
+- Do boring work today so tomorrow's work is new and interesting
+- Don't end up in the situation where you have to the same bit of work twice
+
+## Where to go from here?
+>- Get this online & use the various links
+>- Get started!
+>- Keep in touch: @SteffLocke

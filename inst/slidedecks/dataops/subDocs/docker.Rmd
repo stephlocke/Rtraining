@@ -1,0 +1,34 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+# Docker {data-background-iframe="https://www.docker.com/"}
+
+## Docker
+- Contained code
+- Scripted infrastructure
+- Bundled dependencies
+- Lower maintenance than VMs
+
+## Why use it?
+- Scripted installs
+- Saved from "Next, Next, Next"
+- Insanely disposable
+
+## How to use it
+- Install it
+- Run the Docker Quickstart Terminal
+
+```
+> docker run ubuntu -i -t /bin/bash
+```
+
+## Considerations
+- *Currently* uses a VM that requires memory allocation (default = 2 Gb)
+- Make sure to bin old images or instances
+- Big shift in thinking
+
+-----
+- [Why script infrastructure?](http://www.cio.com/article/3017722/infrastructure/what-is-infrastructure-as-code-and-why-should-you-embrace-it.html)
+- [Get started with docker](https://docs.docker.com/windows/)

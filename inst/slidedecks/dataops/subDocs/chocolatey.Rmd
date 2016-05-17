@@ -1,0 +1,37 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+# Chocolatey {data-background-iframe="https://chocolatey.org/"}
+
+## Chocolatey
+> A package manager for Windows
+
+- Command line interface
+- "packages" are community or software developer delivered
+
+## Why use it?
+- Scripted installs
+- Saved from "Next, Next, Next"
+- Can handle updates
+
+## How to use it
+- Install it
+- "run as admin" the command line
+
+```
+> choco install greenshot
+```
+
+## Considerations
+- Inevitably, there can be bugs in package install processes
+- Can lag behind latest versions of software
+
+
+
+-----
+
+- [Chocolatey site](https://chocolatey.org/)
+- [My Cholatey bat files]()
+
