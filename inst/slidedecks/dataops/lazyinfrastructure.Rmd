@@ -58,7 +58,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## And ...
 - PowerShell
-- Soon ... Ubuntu!
+- Soon ... native bash
 
 # My servers
 
@@ -67,11 +67,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Azure VMs
 - Pre-canned where possible
-- Use Azure Resource Manager templates for scripted builds
+- Use [Azure Resource Manager templates](https://azure.microsoft.com/en-us/documentation/templates) for scripted builds
 
 ## Ubuntu
 - I confess to preferring Linux than Windows Server!
-- DigitalOcean is a really neat cloud provider
+- DigitalOcean is a really neat cloud provider for simple Linux
 
 ## Ditching the servers
 ![Pizza as a Service](https://media.licdn.com/mpr/mpr/p/7/005/078/213/19656ee.jpg)
@@ -83,6 +83,7 @@ knitr::opts_chunk$set(echo = TRUE)
 - Don't end up in the situation where you have to the same bit of work twice
 
 ## Where to go from here?
->- Get this online & use the various links
->- Get started!
->- Keep in touch: @SteffLocke
+- Microsoft Channel 9
+- PluralSight
+- Get the slides: [bit.ly/stephsR](http://bit.ly/stephsR)
+- Keep in touch: @SteffLocke
