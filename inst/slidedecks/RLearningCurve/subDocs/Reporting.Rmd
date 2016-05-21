@@ -1,0 +1,21 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+# R for Reporting
+
+## Types of reports
+- Interactive
+- Static
+
+## Interactive reports
+- shiny
+- flexdashboards
+
+## Static reports
+- rmarkdown
+- knitr
+
+## I'm going to show off {data-background="http://i.giphy.com/ZQjUvxPYUQ21q.gif"}

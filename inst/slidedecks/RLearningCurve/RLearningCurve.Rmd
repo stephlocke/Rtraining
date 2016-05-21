@@ -15,6 +15,7 @@ output:
 - R + Microsoft
 - RefresheR
 - Super R
+- R for Reporting
 - Develop R
 - Administer R
 - Wrap up
@@ -31,6 +32,9 @@ output:
 ```{r autodoc, child='subDocs/SuperR.Rmd', eval=TRUE}
 ```
 
+```{r autodoc, child='subDocs/Reporting.Rmd', eval=TRUE}
+```
+
 ```{r autodoc, child='subDocs/DevelopR.Rmd', eval=TRUE}
 ```
 
@@ -43,6 +47,7 @@ output:
 - R + Microsoft
 - RefresheR
 - Super R
+- R for Reporting
 - Develop R
 - Administer R
 
