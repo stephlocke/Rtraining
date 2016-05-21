@@ -13,7 +13,8 @@ Here are the areas of Rtraining that you can peruse
 
 ```{r, echo=FALSE, warning=FALSE}
 fileTbl<-function(f,name, yml=TRUE){
-  names<-sort(gsub(".Rmd","",basename(f)))
+  f<-f[order(basename(f))]
+  names<-gsub(".Rmd","",basename(f))
   gettitle<-function(x){
     res<-readLines(x)
     gsub("(title: )|[[:punct:]]","",res[2])
