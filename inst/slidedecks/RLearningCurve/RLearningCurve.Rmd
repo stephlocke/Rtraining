@@ -47,7 +47,7 @@ output:
 - Administer R
 
 ## Next steps
-- Get more detail from my [training materials](https://stephlocke.github.io/Rtraining)
+- Get the deck & more at [bit.ly/stephsR](https://stephlocke.github.io/Rtraining)
 - Follow up the Next Steps sections
 - Let me know how you get on: @SteffLocke
 
