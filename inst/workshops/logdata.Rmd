@@ -1,0 +1,68 @@
+---
+title: "Log data in R"
+author: "Steph Locke (@SteffLocke)"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_document: 
+    code_folding: show
+    number_sections: yes
+    toc: yes
+    toc_float: true
+    toc_depth: 2
+---
+
+
+# Read log data
+```{r}
+library(readr)
+logs<-read_log("https://raw.githubusercontent.com/elastic/examples/master/ELK_apache/apache_logs")
+
+library(data.table)
+setDT(logs)
+knitr::kable(head(logs))
+```
+
+# Supplement log data
+## Rename columns
+```{r}
+setnames(logs, colnames(logs)
+         ,c( "ip", "identd", "uname", "time", "request", "status", "respsize", "referer", "agent"))
+# http://stackoverflow.com/questions/9234699/understanding-apache-access-log
+#  %h is the remote host (ie the client IP)
+# %l is the identity of the user determined by identd (not usually # used since not reliable)
+# %u is the user name determined by HTTP authentication
+# %t is the time the request was received.
+# %r is the request line from the client. ("GET / HTTP/1.0")
+# %>s is the status code sent from the server to the client (200, # 404 etc.)
+# %b is the size of the response to the client (in bytes)
+# Referer is the page that linked to this URL.
+# User-agent is the browser identification string.
+
+knitr::kable(head(logs))
+str(logs)
+```
+
+## Format existing data
+```{r}
+library(lubridate)
+logs[,time:=dmy_hms(time)]
+```
+
+## Split out
+
+
+# Geolocation packages
+- rgeolocate
+- ggmap
+- iptools
+- ipapi (gh: hrbrmstr/ipapi)
+
+Play it smart - don't call for every record, call for every unique record
+
+```{r}
+if(!require(ipapi)) devtools::install_github("hrbrmstr/ipapi")
+library(ipapi)
+ips<-logs[,unique(ip)]
+ip_tbl<-ipapi::geolocate(ips)[,status:=NULL]
+logs<-ip_tbl[logs, on=c(query="ip")]
+```

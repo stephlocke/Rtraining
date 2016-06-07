@@ -1,6 +1,6 @@
 Package: Rtraining
 Title: Training Materials on R
-Version: 1.1.21
+Version: 1.1.22
 Authors@R: person("Steph", "Locke",   email="stephanie.g.locke@gmail.com", role = c("aut", "cre"))
 Description: From presentations to hands-on learning materials, this package
     contains stuff Steph thinks you should know about!
@@ -28,7 +28,8 @@ Depends:
     DT,
     revealjs,
     vegalite,
-    testthat
+    testthat,
+    lubridate
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
