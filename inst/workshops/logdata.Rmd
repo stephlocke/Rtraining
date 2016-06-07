@@ -13,6 +13,8 @@ output:
 
 
 # Read log data
+- readr::read_log is more forgiving than data.table::fread
+
 ```{r}
 library(readr)
 rawlogs<-read_log("https://raw.githubusercontent.com/elastic/examples/master/ELK_apache/apache_logs")
@@ -23,6 +25,7 @@ knitr::kable(head(logs))
 ```
 
 ## Rename columns
+Logs usually don't have headers so you need to update the default column titles to something more expressive.
 ```{r}
 setnames(logs, colnames(logs)
          ,c( "ip", "identd", "uname", "time", "request", "status", "respsize", "referer", "agent"))
@@ -38,11 +41,11 @@ setnames(logs, colnames(logs)
 # User-agent is the browser identification string.
 
 knitr::kable(head(logs))
-str(logs)
 ```
 
 
 # Time handling
+There is date handling capability out of the box with R, however, the lubridate package makes it easier to convert strings to dates, and perform manipulations.
 ```{r}
 library(lubridate)
 logs[,time:=dmy_hms(time)]
@@ -53,25 +56,35 @@ logs[,`:=`(hour=hour(time), wday=wday(time)
 
 
 # Geolocation packages
+There are few packages for resolving IPs:
 - rgeolocate
 - ggmap
 - iptools
 - ipapi (gh: hrbrmstr/ipapi)
 
-Play it smart - don't call for every record, call for every unique record
+Which one to use depends on API preferences, plus any additional requirements.
+
+> Play it smart - don't call for every record, call for every unique record. Cache values where possible!
 
 ```{r}
 if(!require(ipapi)) devtools::install_github("hrbrmstr/ipapi")
 library(ipapi)
 ips<-logs[,unique(ip)]
 
-Sys.setenv(TRAVIS="faked")
-ip_tbl<-if(Sys.getenv("TRAVIS")!="") fread("https://raw.githubusercontent.com/stephlocke/lazyCDN/master/sampleIPtbl.csv") else(
-  tryCatch(ipapi::geolocate(ips)[,status:=NULL],
-                 error=function(e){ fread("https://raw.githubusercontent.com/stephlocke/lazyCDN/master/sampleIPtbl.csv")}
-))
+example<-TRUE
+iptblloc<-"https://raw.githubusercontent.com/stephlocke/lazyCDN/master/sampleIPtbl.csv"
+
+ip_tbl<-if(example) fread(iptblloc) 
+
+#ip_tbl<- ipapi::geolocate(ips)[, status:=NULL]
+
+# Join IP results to log data
 logs<-logs[ip_tbl, on=c(ip="query")]
 ```
+
+# URL handling
+
+The format of the Apache request log means that the request component needs splitting up. The values are not always in quite the right format so you should always check for errors.
 
 ```{r}
 logs[,c("verb","url","scheme"):=tstrsplit(request," ")[1:3]]
@@ -83,23 +96,24 @@ errors<-logs[issues,]
 logs<-logs[!issues, ]
 ```
 
-# URL handling
 ```{r}
 library(urltools)
 logs[,c("path","params"):=.(path(url),parameters(url))]
 ```
 
 # Event steps
+Often you need to worry about steps taken over time. The data.table package gives you an easy way to add IDs to rows or groups.
 ```{r}
 logs[order(time),`:=`(order=.SD[,.I], visit=.GRP), .(ip,agent)]
 ```
 
 ## Most common landing pages
 ```{r}
-knitr::kable(logs[order==1,.N,path][order(-N)[1:10],])
+knitr::kable(logs[order==1,.N,path][
+  order(-N)[1:10],])
 ```
 
-## Most common leaving pages
+## Most common exit pages
 ```{r}
 knitr::kable(logs[,.SD[which.max(order)],visit][
   ,.N,path][order(-N)[1:10],])
@@ -181,5 +195,5 @@ plot(xts_df)
 ```{r}
 devtools::install_github("twitter/AnomalyDetection")
 library(AnomalyDetection)
-AnomalyDetectionTs(ad_Ts, max_anoms=0.05, direction='both',plot=TRUE)
+AnomalyDetectionTs(setDF(logs[,.N,align.time(time)]), max_anoms=0.05, direction='both',plot=TRUE)
 ```
