@@ -15,10 +15,10 @@ output:
 # Read log data
 ```{r}
 library(readr)
-logs<-read_log("https://raw.githubusercontent.com/elastic/examples/master/ELK_apache/apache_logs")
+rawlogs<-read_log("https://raw.githubusercontent.com/elastic/examples/master/ELK_apache/apache_logs")
 
 library(data.table)
-setDT(logs)
+logs<-data.table(rawlogs)
 knitr::kable(head(logs))
 ```
 
@@ -63,6 +63,19 @@ Play it smart - don't call for every record, call for every unique record
 if(!require(ipapi)) devtools::install_github("hrbrmstr/ipapi")
 library(ipapi)
 ips<-logs[,unique(ip)]
-ip_tbl<-ipapi::geolocate(ips)[,status:=NULL]
+
+ip_tbl<-tryCatch(ipapi::geolocate(ips)[,status:=NULL],
+                 error=function(e){ fread("https://raw.githubusercontent.com/stephlocke/lazyCDN/master/sampleIPtbl.csv")}
+)
 logs<-ip_tbl[logs, on=c(query="ip")]
+```
+
+```{r}
+logs[,c("verb","url","scheme"):=tstrsplit(request," ")[1:3]]
+
+# isolate issues!
+issues<-logs[,!((verb %like% "^[A-Z]{3,}$")&
+                 (scheme %like% "^HTTP"))]
+errors<-logs[issues,]
+logs<-logs[!issues, ]
 ```

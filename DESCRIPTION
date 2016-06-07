@@ -29,7 +29,8 @@ Depends:
     revealjs,
     vegalite,
     testthat,
-    lubridate
+    lubridate,
+    stringi
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
