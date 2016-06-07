@@ -30,7 +30,9 @@ Depends:
     vegalite,
     testthat,
     lubridate,
-    stringi
+    stringi,
+    ggmap,
+    xts
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr

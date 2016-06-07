@@ -22,7 +22,6 @@ logs<-data.table(rawlogs)
 knitr::kable(head(logs))
 ```
 
-# Supplement log data
 ## Rename columns
 ```{r}
 setnames(logs, colnames(logs)
@@ -42,13 +41,15 @@ knitr::kable(head(logs))
 str(logs)
 ```
 
-## Format existing data
+
+# Time handling
 ```{r}
 library(lubridate)
 logs[,time:=dmy_hms(time)]
+logs[,`:=`(hour=hour(time), wday=wday(time)
+           ,morning=am(time))]
 ```
 
-## Split out
 
 
 # Geolocation packages
@@ -64,10 +65,12 @@ if(!require(ipapi)) devtools::install_github("hrbrmstr/ipapi")
 library(ipapi)
 ips<-logs[,unique(ip)]
 
-ip_tbl<-tryCatch(ipapi::geolocate(ips)[,status:=NULL],
+Sys.setenv(TRAVIS="faked")
+ip_tbl<-if(Sys.getenv("TRAVIS")!="") fread("https://raw.githubusercontent.com/stephlocke/lazyCDN/master/sampleIPtbl.csv") else(
+  tryCatch(ipapi::geolocate(ips)[,status:=NULL],
                  error=function(e){ fread("https://raw.githubusercontent.com/stephlocke/lazyCDN/master/sampleIPtbl.csv")}
-)
-logs<-ip_tbl[logs, on=c(query="ip")]
+))
+logs<-logs[ip_tbl, on=c(ip="query")]
 ```
 
 ```{r}
@@ -78,4 +81,105 @@ issues<-logs[,!((verb %like% "^[A-Z]{3,}$")&
                  (scheme %like% "^HTTP"))]
 errors<-logs[issues,]
 logs<-logs[!issues, ]
+```
+
+# URL handling
+```{r}
+library(urltools)
+logs[,c("path","params"):=.(path(url),parameters(url))]
+```
+
+# Event steps
+```{r}
+logs[order(time),`:=`(order=.SD[,.I], visit=.GRP), .(ip,agent)]
+```
+
+## Most common landing pages
+```{r}
+knitr::kable(logs[order==1,.N,path][order(-N)[1:10],])
+```
+
+## Most common leaving pages
+```{r}
+knitr::kable(logs[,.SD[which.max(order)],visit][
+  ,.N,path][order(-N)[1:10],])
+```
+
+## Most common bounce pages
+```{r}
+knitr::kable(logs[,.SD[which.max(order)],visit][
+  order==1,.N,path][order(-N)[1:10],])
+```
+
+# Visualising
+## Mapping
+```{r}
+library(ggmap)
+ggplot(map_data('world')) +
+  geom_polygon(aes(x = long, y = lat, group = group), fill = 'grey90', colour = 'white') + 
+geom_point(aes(x = lon, y = lat, size = N), color = '#2165B6',
+           data = logs[, .N, by = .(lon, lat)]) +
+  xlab('') + ylab('') + 
+  theme_minimal() + theme('legend.position' = 'top')
+```
+
+## Heatmap
+```{r}
+library(ggplot2)
+
+heatmap<-function(ggplot,size=20){
+  ggplot+ coord_equal()+
+    geom_tile(color="white", size=0.1)+
+    labs(x=NULL, y=NULL, title=NULL)+
+    scale_x_continuous(breaks=seq(0,24,6))+
+    scale_fill_gradient()
+}
+
+ip_activity<-logs[,.N,.(country,hour)]
+ga<-ggplot(ip_activity, aes(x=hour, y=country, fill=N))
+heatmap(ga)
+
+```
+
+## Flow Diagram
+```{r}
+library(DiagrammeR)
+
+URLids<-logs[,.N,.(labels_col=path)][,nodes:=.I][N>50]
+activity<-URLids[logs, on=c(labels_col="path")][
+  !is.na(nodes),.(visit, order, nodes)]
+
+# Get a cross join of activity
+moves<-activity[activity, on=c("visit"), allow.cartesian=TRUE][
+  # Filter to only include next site
+  order==i.order-1][ 
+    # Get nodes and position
+    ,.(tooltip=.N),.(from=nodes,to=i.nodes)][,penwidth:=10*tooltip/max(tooltip)]
+
+gr<-create_graph(setDF(URLids), setDF(moves))
+
+render_graph(gr)
+```
+
+# Time series
+```{r}
+top10<-logs[,.N,country][order(-N)[1:10],country]
+tz_ts<-logs[country %in% top10,.N,.(country, xts::align.time(time,n=60*5))]
+ggplot(tz_ts, aes(x=xts, y=N, group=1))+
+  geom_line()+
+  geom_smooth()+
+  facet_wrap(~country, scales="free_y")
+```
+
+```{r}
+library(xts)
+ts<-logs[order(time),.N,.(time=xts::align.time(time,n=60))]
+xts_df<-xts(ts$N,ts$time)
+plot(xts_df)
+```
+
+```{r}
+devtools::install_github("twitter/AnomalyDetection")
+library(AnomalyDetection)
+AnomalyDetectionTs(ad_Ts, max_anoms=0.05, direction='both',plot=TRUE)
 ```
