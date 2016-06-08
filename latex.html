@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>About LaTeX</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h2>About LaTeX</h2>
+
+<blockquote>
+<p>Pronunciation: lay-tech</p>
+</blockquote>
+
+<p>LaTeX is an open source markup language with a typesetting engine. It&#39;s been around since the 70s and generally makes awesome documents.</p>
+
+<p>LaTeX is designed to work stand-alone, or integrate with other languages. It&#39;s particularly good with R.</p>
+
+<p>It works in the way rmarkdown does with knitr, but allows for more sophisticated document styling.</p>
+
+<h2>Why LaTeX?</h2>
+
+<ul>
+<li>Seamless integration between code and content</li>
+<li>Fantastic looking documentation</li>
+<li>Works on all operating systems and has a number of cloud/internet hosted services</li>
+<li>Can use markdown and append LaTeX style</li>
+<li>Use for more polished presentations without having to go into PowerPoint</li>
+</ul>
+
+<h2>Get LaTeX</h2>
+
+<ul>
+<li>Online: <a href="http://overleaf.com">Overleaf.com</a></li>
+<li>Windows: <a href="http://www.tug.org/protext/">proTeXt</a></li>
+<li>Mac: <a href="http://www.tug.org/mactex/">MacTex</a></li>
+<li>Linux: <code>sudo apt-get texlive</code></li>
+</ul>
+
+<p>Once you have a LaTeX installation, you can write LaTeX in Rstudio.</p>
+
+<p>In Rstudio, select the File type &ldquo;R Sweave&rdquo; which saves as a .Rnw file.</p>
+
+<h2>Learn LaTeX</h2>
+
+<p>LaTeX is a very deep language, so no attempt is made to teach you here. </p>
+
+<p>One of the easiest ways of getting started with LaTeX (generally) is to pick one of the examples / templates on <a href="http://overleaf.com">overleaf.com</a> and play with it.</p>
+
+<p>For using R and LaTeX, you can use the minimal examples on <a href="http://yihui.name/knitr/demo/minimal/">yihui.name/knitr</a> to get started.</p>
+
+<p>See the <a href="http://en.wikibooks.org/wiki/LaTeX">LaTeX wikibook</a> for lots of info about LaTeX.</p>
+
+</body>
+
+</html>

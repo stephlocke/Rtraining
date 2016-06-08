@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>R</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>Please note these instructions were tested on a Windows 8.1 clean VM from Azure on 20/07/2015 - updates to r, rstudio, packages, or the training package could cause drift between what works and what doesn&#39;t and you&#39;ll have to wing it. If you do have to wing it, let me know and I&#39;ll update my instructions!</p>
+
+<h2>R</h2>
+
+<ul>
+<li>Download latest base R exe file from <a href="http://cran.rstudio.com/">cran.rstudio.com</a></li>
+<li>Also download Rtools latest exe </li>
+<li>Install R then Rtools - if 64bit, install both 32 and 64 as it saves you hassle with other drivers</li>
+</ul>
+
+<h2>Rstudio</h2>
+
+<ul>
+<li>Go to <a href="http://www.rstudio.com/products/rstudio/download/">rstudio.com</a></li>
+<li>Select correct install file for your PC, and install</li>
+</ul>
+
+<h2>Git</h2>
+
+<ul>
+<li>Download latest git version from <a href="https://msysgit.github.io/">msysgit.github.io</a></li>
+<li>Install</li>
+</ul>
+
+<h2>Configuration</h2>
+
+<ul>
+<li>Open Rstudio</li>
+<li>Go to Tools &gt; Global Options and set Rstudio to point at the location of your git.exe file
+<img src="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/rstudio-gitfolder.png" alt="Git exe location"/></li>
+<li>Restart Rstudio
+
+<ul>
+<li>If you don&#39;t automatically get the Git pane (top RHS) then Create a New Project and tick the source control checkbox</li>
+</ul></li>
+<li>Open up command-prompt (or use the Git pane and select Shell in the extra options)
+
+<ul>
+<li>Run <code>git config --global user.name=&quot;Your name&quot;</code></li>
+<li>Run <code>git config --global user.email=&quot;email@addre.ss&quot;</code></li>
+</ul></li>
+<li>Go to the Packages area (bottom RHS) and select Install. Install devtools and installr
+
+<ul>
+<li>This can take a while due to dependencies</li>
+<li>If you encounter any packages that could not download or install you won&#39;t be able to install Rtraining successfully, but typically re-performing ths install will pick up any packages a second time around</li>
+</ul></li>
+</ul>
+
+<h2>Rtraining</h2>
+
+<ul>
+<li>Install Rtraining
+
+<ul>
+<li>This can take a while due to dependencies, as I want you to have the most commonly used packages
+<code>r
+# Case-sensitive!
+devtools::install_github(&quot;stephlocke/Rtraining&quot;)
+</code></li>
+</ul></li>
+<li>Get the project from source control by going to New Project in Rstudio, selecting from version control, and pasting in the URL <code>https://github.com/stephlocke/Rtraining.git</code></li>
+</ul>
+
+</body>
+
+</html>

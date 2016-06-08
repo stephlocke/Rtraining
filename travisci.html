@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Account setup</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>With <a href="http://r-pkgs.had.co.nz/">excellent guidance</a> and <a href="http://cran.r-project.org/web/packages/devtools/">tooling</a> on making R packages, it&#39;s becoming really easy to make a package to hold your R functionality. This has a host of benefits, not least source control (via GitHub) and unit testing (via the <a href="http://cran.r-project.org/web/packages/testthat/"><code>testthat</code></a> package). Once you have a package and unit tests, a great way of making sure that as you change things you don&#39;t break them is to perform <a href="http://www.thoughtworks.com/continuous-integration">Continuous integration</a>.</p>
+
+<p>What this means is that <strong>every</strong> time you make a change, your package is built and thoroughly checked for any issues. If issues are found the &ldquo;build&#39;s broke&rdquo; and you have to fix it ASAP.</p>
+
+<p>The easiest, cheapest, and fastest way of setting up continuous integration for R stuff is to use <a href="https://travis-ci.com/">Travis-CI</a>, which is free if you use <a href="http://github.com">GitHub</a> as a remote server for your code.
+<em>NB - it doesn&#39;t have to be your only remote server</em></p>
+
+<h2>Account setup</h2>
+
+<p>The first thing that needs doing is setting up your accounts and turning on CI for your repositories. The website is pretty good so I won&#39;t go into a lot of detail, but the process is:</p>
+
+<ol>
+<li>sign up for a Travis-CI account</li>
+<li>link it to your GitHub account</li>
+<li>say which repositories you want to do CI on</li>
+<li>add config to your repositories</li>
+</ol>
+
+<p>Additionally, whilst we&#39;re doing this we should be awesome and set up test coverage checks as well. The process is really similar, but for <a href="https://coveralls.io/">coveralls.io</a> and we only need the one set of config details in our package.</p>
+
+<h2>The config file</h2>
+
+<p>Then you add a really simple file into the root of your project called <code>.travis.yml</code>. </p>
+
+<p>This should contain, at minimum, the following:</p>
+
+<pre><code>language: r
+sudo: required
+
+r_github_packages:
+ - jimhester/covr
+
+after_success:
+  - Rscript -e &#39;library(covr);coveralls()&#39;
+</code></pre>
+
+<p><em>NB - be careful with the indentation, YAML is very sensitive!</em></p>
+
+<p>This is the latest set of values that work as it takes into account the recent support for R, the ability to reference github packages, and also Travis&#39; move towards docker containers which don&#39;t accept sudo commands.</p>
+
+<p>Once you&#39;ve flipped the switch on Travis and Coveralls, every push to GitHub will trigger Travis. Travis will basically build a server with all the requirements needed to run R and build R packages. It&#39;ll then install all your package&#39;s dependencies, check the package for minimum quality standards and also run your testthat tests. Once this is done the final bit tests your code coverage and passes the results to Coverall.</p>
+
+<h2>Badge of honour</h2>
+
+<p>Great, so you&#39;ve checked the sites and it&#39;s working but you should show the world it&#39;s working! You can get some some snippets of code from each of the sites that you can paste into your README file. These stay up to date with the latest results so that you (and everyone else) can see the status of your package.</p>
+
+</body>
+
+</html>

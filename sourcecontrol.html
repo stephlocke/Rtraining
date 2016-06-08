@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Fundamentals</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p><img src="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/versioncontrolallthings.jpg" alt="version control all the things"/></p>
+
+<blockquote>
+<p>SOURCE CONTROL IS FOR ALL THE THINGS</p>
+</blockquote>
+
+<h2>Fundamentals</h2>
+
+<p>Source control is important because it provides:</p>
+
+<ul>
+<li>a backup system for your code</li>
+<li>a means of tracking <em>why</em> you made changes</li>
+<li>a way of sharing code</li>
+<li>a system for multiple people to work safely</li>
+<li>another potential way to deploy code manually</li>
+<li>options for automated testing and deployment</li>
+<li>audit trails</li>
+</ul>
+
+<p>There are two types of source control systems:</p>
+
+<ul>
+<li>centralised</li>
+<li>distributed</li>
+</ul>
+
+<p>Centralised means that there is a single storage location and to work on a file it must be exclusively checked out. Distributed systems involve taking copies of the code base, making changes, and pushing these back to primary storage location.</p>
+
+<p>Both have their own disadvantages but since with distributed source control you never get the situation where someone&#39;s left a file checked out as they go on holiday and no-one else can use it, I&#39;m a big fan of distributed source control systems.</p>
+
+<h2>Git</h2>
+
+<p>Git is a distributed source control system. </p>
+
+<p>It integrates neatly into Rstudio, making it easy to source control your analysis.</p>
+
+<h3>The git conceptual model (<a href="https://twitter.com/cthydng/status/575483540202106880">\@cthydng</a>)</h3>
+
+<p><img src="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/gitmodel.jpg" alt="git model"/></p>
+
+<h3>Git glossary</h3>
+
+<ul>
+<li>Repository: Your project and it&#39;s history</li>
+<li>Remote: The (TFS/GitHub/VSO etc) server</li>
+<li>Clone:Take a linked copy of a repository</li>
+<li>Fork: Take an unlinked copy of a repository</li>
+<li>Pull: Update your copy of a repository</li>
+<li>Add: Include a file in a change</li>
+<li>Commit: Make the latest state of all the added files the new default state</li>
+<li>Push: Update the central copy of the repository with your commits</li>
+</ul>
+
+<p>There are more terms. For a friendly glossary see <a href="https://help.github.com/articles/github-glossary/">Github&#39;s git glossary</a>, and for an extensive, technical glossary see the official <a href="https://www.kernel.org/pub/software/scm/git/docs/gitglossary.html">Git glossary</a></p>
+
+<h2>git2r</h2>
+
+<p>The package <code>git2r</code> supports a source control workflow directly within R. This means you can continue to use Rstudio for even complex git tasks. And of course there&#39;s always the shell option in Rstudio.</p>
+
+<p>For a handy Git cheatsheet, check out this <a href="https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf">GitHub one</a>.</p>
+
+<p>The <a href="https://github.com/ropensci/git2r">git2r documentation</a> is pretty good. It&#39;s easier though to use once you&#39;ve been utilising the Rstudio GUI for a bit, and dabbling with the command line.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Requirements</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h2>Requirements</h2>
+
+<ul>
+<li>necessary package: data.table (&gt;=v1.9.5)</li>
+<li>suggested package: optiRum</li>
+</ul>
+
+<h2>SQL</h2>
+
+<h3>data.table is &ldquo;SQL-like&rdquo;</h3>
+
+<pre><code>DT[i, j, by]
+DT[WHERE | JOIN | ORDER, SELECT | UPDATE, GROUP]
+</code></pre>
+
+<h3>data.table behaves like a database</h3>
+
+<p>A data.table acts like an in-memory RDBMS:</p>
+
+<ul>
+<li>The result of a query is a table</li>
+<li>Can set clustered primary keys over single or multiple columns</li>
+<li>Can set non-clustered secondary keys over single or multiple columns</li>
+<li>Can perform a wide range of relational algebra</li>
+<li>Can do CRUD operations</li>
+<li>Think in columns / sets not rows!</li>
+</ul>
+
+<h3>data.table differences to SQL Server</h3>
+
+<p>There are some differences that need to be mentioned:</p>
+
+<ul>
+<li>A primary key can have repeat values</li>
+<li>No constrained foreign keys</li>
+<li>Joins are done by <em>position in key</em> so tblA with key A, and tblB with key C,A would join on tblA[A] and tblB[C]</li>
+<li>It&#39;s inherently dynamic so vectors of column names etc. can be provided to it</li>
+<li>DELETE doesn&#39;t exist explicitly</li>
+<li>It&#39;s case-sensitive</li>
+</ul>
+
+<h2>data.table cookbook</h2>
+
+<h3>Single table basics</h3>
+
+<table><thead>
+<tr>
+<th>Task</th>
+<th>Generic syntax</th>
+<th>Example(s)*</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CREATE</td>
+<td>data.table(&hellip;) setDT()</td>
+<td><code>data.table(a=1:3 , b=LETTERS[1:3])</code> <code>data.table(iris)</code></td>
+</tr>
+<tr>
+<td>PRIMARY KEY</td>
+<td>data.table(&hellip;,key) setkey()</td>
+<td><code>data.table(a=1:3 , b=LETTERS[1:3], key=&quot;b&quot;)</code> <code>setkey(data.table(iris),Species)</code></td>
+</tr>
+<tr>
+<td>SELECT basic</td>
+<td>DT[ , .( cols )]</td>
+<td><code>irisDT[ , .(Species, Sepal.Length)]</code></td>
+</tr>
+<tr>
+<td>SELECT alias</td>
+<td>DT[ , .( a=col )]</td>
+<td><code>irisDT[ , .(Species, Length=Sepal.Length)]</code></td>
+</tr>
+<tr>
+<td>SELECT COUNT</td>
+<td>DT[ , .N]</td>
+<td><code>irisDT[ ,.N]</code></td>
+</tr>
+<tr>
+<td>SELECT COUNT DISTINCT</td>
+<td>DT[ , uniqueN(cols)]</td>
+<td><code>irisDT[ ,uniqueN(.SD)]</code></td>
+</tr>
+<tr>
+<td>SELECT aggregation</td>
+<td>DT[ , .( sum(col) , .N )]</td>
+<td><code>irisDT[ , .(Count=.N, Length=mean(Sepal.Length))]</code></td>
+</tr>
+<tr>
+<td>WHERE exact on primary key</td>
+<td>DT[value] DT[value, ]</td>
+<td><code>irisDT[&quot;setosa&quot;]</code> <code>irisDT[&quot;setosa&quot;, .(Count=.N)]</code></td>
+</tr>
+<tr>
+<td>WHERE</td>
+<td>DT[condition] DT[condition, j, by]</td>
+<td><code>irisDT[Species==&quot;setosa&quot;]</code> <code>irisDT[Species==&quot;setosa&quot;, .(Count=.N)]</code></td>
+</tr>
+<tr>
+<td>WHERE BETWEEN</td>
+<td>DT[between(col, min, max)] DT[ col %between% c(min,max) ]</td>
+<td><code>irisDT[between(Sepal.Length, 1, 5)]</code> <code>irisDT[Sepal.Length %between% c(1,5)]</code></td>
+</tr>
+<tr>
+<td>WHERE LIKE</td>
+<td>DT[like(col,pattern)] DT[ col %like% pattern ]</td>
+<td><code>irisDT[like(Species,&quot;set&quot;)]</code> <code>irisDT[Species %like% &quot;set&quot;]</code></td>
+</tr>
+<tr>
+<td>ORDER asc.</td>
+<td>DT[order(cols)] DT[order(cols), j, by]</td>
+<td><code>irisDT[order(Species)]</code></td>
+</tr>
+<tr>
+<td>ORDER desc.</td>
+<td>DT[order(-cols)] DT[order(-cols), j, by]</td>
+<td><code>irisDT[order(-Species)]</code></td>
+</tr>
+<tr>
+<td>ORDER multiple</td>
+<td>DT[order(cols)] DT[order(cols), j, by]</td>
+<td><code>irisDT[order(-Species, Petal.Width)]</code></td>
+</tr>
+<tr>
+<td>GROUP BY single</td>
+<td>DT[i, j, by]</td>
+<td><code>irisDT[ ,.N, by=Species]</code></td>
+</tr>
+<tr>
+<td>GROUP BY multiple</td>
+<td>DT[i, j, by]</td>
+<td><code>irisDT[ ,.N, by=.(Species,Width=Petal.Width)]</code></td>
+</tr>
+<tr>
+<td>TOP</td>
+<td>head(DT, n)</td>
+<td><code>head(irisDT)</code></td>
+</tr>
+<tr>
+<td>HAVING</td>
+<td>DT[i, j, by][condition]</td>
+<td><code>irisDT[ , .(Count=.N), by=Species][Count&gt;25]</code></td>
+</tr>
+<tr>
+<td>Sub-queries</td>
+<td>DT[&hellip;][&hellip;][&hellip;]</td>
+<td><code>irisDT[ , .(Sepal.Length=mean(Sepal.Length)), by=Species][Sepal.Length&gt;6, .(Species)]</code></td>
+</tr>
+</tbody></table>
+
+<p>* Uses <code>irisDT &lt;- data.table(iris)</code></p>
+
+<h3>CRUD</h3>
+
+<table><thead>
+<tr>
+<th>Task</th>
+<th>Generic syntax</th>
+<th>Example(s)*</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>INSERT</td>
+<td>DT &lt;- rbindlist(DT, newDT)</td>
+<td><code>irisDT&lt;-rbindlist( irisDT, irisDT[1] )</code></td>
+</tr>
+<tr>
+<td>READ aka SELECT (see above)</td>
+<td>DT[ , .( cols )]</td>
+<td><code>irisDT[ , .(Species, Sepal.Length)]</code></td>
+</tr>
+<tr>
+<td>UPDATE / ADD column</td>
+<td>DT[ , a := b ]</td>
+<td><code>irisDT[ , Sepal.Area := Sepal.Width * Sepal.Length]</code></td>
+</tr>
+<tr>
+<td>UPDATE / ADD multiple columns</td>
+<td>DT[ , :=(a = b, c = d) ]</td>
+<td><code>irisDT[ , `:=`(CreatedDate = Sys.Date(), User = &quot;Steph&quot;)]</code></td>
+</tr>
+<tr>
+<td>UPDATE / ADD multiple columns by reference</td>
+<td>DT[ , (newcols):=vals ]</td>
+<td><code>irisDT[ , c(&quot;a&quot;,&quot;b&quot;):=.(1,2)]</code></td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>DT &lt;- DT[!condition]</td>
+<td><code>irisDT &lt;- irisDT[!(Species==&quot;setosa&quot; &amp; Petal.Length&gt;=1.5)]</code></td>
+</tr>
+<tr>
+<td>DROP table</td>
+<td>DT &lt;- NULL</td>
+<td><code>irisDT&lt;-NULL</code></td>
+</tr>
+<tr>
+<td>DROP column</td>
+<td>DT[,col:=NULL]</td>
+<td><code>iristDT[,Species:=NULL]</code></td>
+</tr>
+</tbody></table>
+
+<p>* Uses <code>irisDT &lt;- data.table(iris)</code></p>
+
+<h3>Metadata</h3>
+
+<table><thead>
+<tr>
+<th>Task</th>
+<th>Generic syntax</th>
+<th>Example(s)*</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Structure</td>
+<td>str(DT)</td>
+<td><code>str(irisDT)</code></td>
+</tr>
+<tr>
+<td>Column Names</td>
+<td>colnames(DT)</td>
+<td><code>colnames(irisDT)</code></td>
+</tr>
+<tr>
+<td>Summary stats</td>
+<td>summary(DT)</td>
+<td><code>summary(irisDT)</code></td>
+</tr>
+<tr>
+<td>Retrieve primary key info</td>
+<td>key(DT)</td>
+<td><code>key(irisDT)</code></td>
+</tr>
+<tr>
+<td>List all data.tables</td>
+<td>tables()</td>
+<td><code>tables()</code></td>
+</tr>
+</tbody></table>
+
+<p>* Uses <code>irisDT &lt;- data.table(iris)</code></p>
+
+<h3>Relationships</h3>
+
+<table><thead>
+<tr>
+<th>Task</th>
+<th>Generic syntax</th>
+<th>Example(s)*</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>INNER JOIN</td>
+<td>Y[X, nomatch=0]</td>
+<td><code>lookupDT[irisDT,nomatch=0]</code></td>
+</tr>
+<tr>
+<td>LEFT JOIN</td>
+<td>Y[X]</td>
+<td><code>lookupDT[irisDT]</code></td>
+</tr>
+<tr>
+<td>FULL JOIN</td>
+<td>merge(X, Y, all=TRUE)</td>
+<td><code>merge(irisDT, lookupDT, all=TRUE)</code></td>
+</tr>
+<tr>
+<td>CROSS JOIN</td>
+<td>optiRum::CJ.dt(X,Y)</td>
+<td><code>CJ.dt(irisDT, lookupDT)</code></td>
+</tr>
+<tr>
+<td>UNION ALL</td>
+<td>rbindlist( list(X,Y), fill=TRUE )</td>
+<td><code>rbindlist( list(irisDT, lookupDT), fill=TRUE )</code></td>
+</tr>
+<tr>
+<td>UNION</td>
+<td>unique( rbindlist( list(X,Y), fill=TRUE ) )</td>
+<td><code>unique( rbindlist( list(irisDT, lookupDT), fill=TRUE ) )</code></td>
+</tr>
+<tr>
+<td>JOIN and AGGREGATE</td>
+<td>Y[X, cols, by]</td>
+<td><code>lookupDT[irisDT,.(count=.N),by=Band]</code></td>
+</tr>
+</tbody></table>
+
+<p>* Uses:</p>
+
+<pre><code>irisDT   &lt;- data.table(iris, key=&quot;Species&quot;)
+lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;, &quot;virginica&quot;, &quot;Blah&quot;), Band=c(&quot;A&quot;, &quot;B&quot;, &quot;A&quot;), key=&quot;Species&quot;)
+</code></pre>
+
+<h3>Intermediate tasks</h3>
+
+<table><thead>
+<tr>
+<th>Task</th>
+<th>Generic syntax</th>
+<th>Example(s)*</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SELECT dynamically</td>
+<td>DT[ , colnames , with=FALSE] , DT[ , .SD , .SDcols=colnames</td>
+<td><code>cols&lt;-colnames(irisDT); irisDT[ , cols, with=FALSE]</code> <code>cols&lt;-colnames(irisDT); irisDT[ , .SD, .SDcols=colnames]</code></td>
+</tr>
+<tr>
+<td>GROUP BY dynamically</td>
+<td>DT[ , &hellip;, by=colnames]</td>
+<td><code>irisDT[,.N,by=c(&quot;Species&quot;)]</code></td>
+</tr>
+<tr>
+<td>GROUP BY, ORDER BY group</td>
+<td>DT[ , &hellip; , keyby]</td>
+<td><code>irisDT[,.N,keyby=Species]</code></td>
+</tr>
+<tr>
+<td>UPDATE / ADD column of summary stat</td>
+<td>DT[ , a := b ]</td>
+<td><code>irisDT[ , All.SL.Mean:=mean(Sepal.Length)]</code></td>
+</tr>
+<tr>
+<td>UPDATE / ADD column by group</td>
+<td>DT[ , a := b, by]</td>
+<td><code>irisDT[ , Species.SL.Mean:=mean(Sepal.Length), by=Species]</code></td>
+</tr>
+<tr>
+<td>TOP by group</td>
+<td>DT[ , head(.SD), by]</td>
+<td><code>irisDT[ , head(.SD,2) , by=Species]</code></td>
+</tr>
+<tr>
+<td>Largest record</td>
+<td>DT[ which.max(col) ]</td>
+<td><code>irisDT[ which.max(Sepal.Length) ]</code></td>
+</tr>
+<tr>
+<td>Largest record by group</td>
+<td>DT[ , .SD[ which.max(col) ], by]</td>
+<td><code>irisDT[ , .SD[ which.max(Sepal.Length) ], by=Species]</code></td>
+</tr>
+<tr>
+<td>Cumulative total</td>
+<td>DT[ , cumsum(col) ]</td>
+<td><code>irisDT[ , cumsum(Sepal.Width)]</code></td>
+</tr>
+<tr>
+<td>NEGATIVE SELECT</td>
+<td>DT[ , .SD, .SDcols=-&ldquo;colname&rdquo;]</td>
+<td><code>irisDT[ , .SD, .SDcols=-&quot;Species&quot;]</code></td>
+</tr>
+<tr>
+<td>RANK</td>
+<td>DT[ , frank(col) ]</td>
+<td><code>irisDT[ , frank(Sepal.Length,ties.method=&quot;first&quot;)]</code></td>
+</tr>
+<tr>
+<td>AGGREGATE multiple columns</td>
+<td>DT[ , lapply(.SD, sum)]</td>
+<td><code>irisDT[ , lapply(.SD,sum), .SDcols=-&quot;Species&quot;]</code></td>
+</tr>
+<tr>
+<td>AGGREGATE multiple columns by group</td>
+<td>DT[ , lapply(.SD, sum), by]</td>
+<td><code>irisDT[ , lapply(.SD,sum), by=Species]</code></td>
+</tr>
+<tr>
+<td>COUNT DISTINCT multiple columns by group</td>
+<td>DT[ , lapply(.SD, uniqueN), by]</td>
+<td><code>irisDT[ , lapply(.SD,uniqueN), by=Species]</code></td>
+</tr>
+<tr>
+<td>COUNT NULL multiple columns by group</td>
+<td>DT[ , lapply(.SD, function(x) sum(is.na(x))), by]</td>
+<td><code>irisDT[ , lapply(.SD,function(x) sum(is.na(x))), by=Species]</code></td>
+</tr>
+<tr>
+<td>PIVOT data - to single value column</td>
+<td>melt(DT,&hellip;)</td>
+<td><code>melt(irisDT)</code></td>
+</tr>
+<tr>
+<td>PIVOT data -  to aggregate</td>
+<td>dcast(DT, a~b, function)</td>
+<td><code>dcast(melt(irisDT), Species ~ variable, sum)</code></td>
+</tr>
+<tr>
+<td>Convert a large data.frame or list</td>
+<td>setDT()</td>
+<td><code>iris&lt;-iris; setDT(iris)</code></td>
+</tr>
+<tr>
+<td>ROW_NUMBER</td>
+<td>DT[ , .I]</td>
+<td><code>irisDT[ , .I]</code></td>
+</tr>
+<tr>
+<td>GROUP number</td>
+<td>DT[, .GRP ,by]</td>
+<td><code>irisDT[ , .GRP, by=Species]</code></td>
+</tr>
+</tbody></table>
+
+<p>* Uses <code>irisDT &lt;- data.table(iris)</code></p>
+
+<h3>Advanced tasks</h3>
+
+<table><thead>
+<tr>
+<th>Task</th>
+<th>Generic syntax</th>
+<th>Example(s)*</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GROUP BY each new incidence of group</td>
+<td>DT[ , cols , by=(col, rleid(col))]</td>
+<td><code>irisDT[order(Sepal.Length), .N, by=.(Species, rleid(Species))]</code></td>
+</tr>
+<tr>
+<td>Calculate using (previous/next) N row</td>
+<td>DT[ ,  shift( cols, n)]</td>
+<td><code>irisDT[ , prev.Sepal.Length:=shift(Sepal.Length), by=Species ]</code></td>
+</tr>
+<tr>
+<td>ORDER underlying table</td>
+<td>setorder()</td>
+<td><code>setorder(irisDT,Species)</code></td>
+</tr>
+<tr>
+<td>JOIN &amp; GROUP by keys</td>
+<td>X[Y, .N, by=.EACHI]</td>
+<td><code>irisDT[lookupDT, .N, by=.EACHI]</code></td>
+</tr>
+<tr>
+<td>TRANSPOSE data.table</td>
+<td>transpose(DT)</td>
+<td><code>transpose(irisDT)</code></td>
+</tr>
+<tr>
+<td>Split string to columns</td>
+<td>DT[, tstrsplit(charCol, pattern) ]</td>
+<td><code>irisDT[ , tstrsplit(as.character(Species),&quot;e&quot;)]</code></td>
+</tr>
+</tbody></table>
+
+<p>* Uses:</p>
+
+<pre><code>irisDT   &lt;- data.table(iris, key=&quot;Species&quot;)
+lookupDT &lt;- data.table(Species=c(&quot;setosa&quot;, &quot;virginica&quot;, &quot;Blah&quot;), Band=c(&quot;A&quot;, &quot;B&quot;, &quot;A&quot;), key=&quot;Species&quot;)
+</code></pre>
+
+<h2>More resources</h2>
+
+<ul>
+<li><a href="https://github.com/Rdatatable/data.table/wiki/Getting-started">data.table wiki</a></li>
+</ul>
+
+</body>
+
+</html>

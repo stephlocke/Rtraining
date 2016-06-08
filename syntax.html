@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Basic operators</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h2>Basic operators</h2>
+
+<table><thead>
+<tr>
+<th>Action</th>
+<th>Operator</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Subtract</td>
+<td>-</td>
+<td><code>5 - 4</code> = 1</td>
+</tr>
+<tr>
+<td>Add</td>
+<td>+</td>
+<td><code>5 + 4</code> = 9</td>
+</tr>
+<tr>
+<td>Multiply</td>
+<td>*</td>
+<td><code>5 * 4</code> = 20</td>
+</tr>
+<tr>
+<td>Divide</td>
+<td>/</td>
+<td><code>5 / 4</code> = 1.25</td>
+</tr>
+<tr>
+<td>Raise to the power</td>
+<td>^</td>
+<td><code>5 ^ 4</code> = 625</td>
+</tr>
+<tr>
+<td>Modulus</td>
+<td>%%</td>
+<td><code>10 %% 4</code> = 2</td>
+</tr>
+<tr>
+<td>Absolute remainder</td>
+<td>%/%</td>
+<td><code>9 %/% 4</code> = 2</td>
+</tr>
+<tr>
+<td>Basic sequence</td>
+<td>:</td>
+<td><code>sum(1:3)</code> = 6</td>
+</tr>
+</tbody></table>
+
+<h2>Comparison operators</h2>
+
+<table><thead>
+<tr>
+<th>Action</th>
+<th>Operator</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Less than</td>
+<td>&lt;</td>
+<td><code>5 &lt; 5</code> = FALSE</td>
+</tr>
+<tr>
+<td>Less than or equal to</td>
+<td>&lt;=</td>
+<td><code>5 &lt;= 5</code> = TRUE</td>
+</tr>
+<tr>
+<td>Greater than</td>
+<td>&gt;</td>
+<td><code>5 &gt; 5</code> = FALSE</td>
+</tr>
+<tr>
+<td>Greater than or equal to</td>
+<td>&gt;=</td>
+<td><code>5 &gt;= 5</code> = TRUE</td>
+</tr>
+<tr>
+<td>Exactly equal</td>
+<td>==</td>
+<td><code>(0.5 - 0.3) == (0.3 - 0.1)</code> is FALSE, 2 == 2 is TRUE</td>
+</tr>
+<tr>
+<td>Not equal</td>
+<td>!=</td>
+<td><code>(0.5 - 0.3) != (0.3 - 0.1)</code> is TRUE, 2 != 2 is FALSE</td>
+</tr>
+<tr>
+<td>Equal</td>
+<td>all.equal()</td>
+<td><code>all.equal(0.5 - 0.3,0.3 - 0.1)</code> is TRUE</td>
+</tr>
+</tbody></table>
+
+<h2>States</h2>
+
+<table><thead>
+<tr>
+<th>States</th>
+<th>Representation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>True</td>
+<td><code>TRUE</code> <code>1</code></td>
+</tr>
+<tr>
+<td>False</td>
+<td><code>FALSE</code> <code>0</code></td>
+</tr>
+<tr>
+<td>Empty</td>
+<td><code>NULL</code></td>
+</tr>
+<tr>
+<td>Unknown</td>
+<td><code>NA</code></td>
+</tr>
+<tr>
+<td>Not a number e.g. <code>0/0</code></td>
+<td><code>NaN</code></td>
+</tr>
+<tr>
+<td>Infinite e.g. <code>1/0</code></td>
+<td><code>Inf</code></td>
+</tr>
+</tbody></table>
+
+<h2>Logical operators</h2>
+
+<table><thead>
+<tr>
+<th>Action</th>
+<th>Operator</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Not</td>
+<td>!</td>
+<td><code>!TRUE</code> is FALSE</td>
+</tr>
+<tr>
+<td>And</td>
+<td>&amp;</td>
+<td><code>TRUE &amp; FALSE</code> is FALSE, <code>c(TRUE,TRUE) &amp; c(FALSE,TRUE)</code> is FALSE, TRUE</td>
+</tr>
+<tr>
+<td>Or</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Xor</td>
+<td>xor()</td>
+<td><code>xor(TRUE,FALSE)</code> is TRUE</td>
+</tr>
+<tr>
+<td>Bitwise And</td>
+<td>&amp;&amp;</td>
+<td><code>c(TRUE,TRUE) &amp;&amp; c(FALSE,TRUE)</code> is FALSE</td>
+</tr>
+<tr>
+<td>Bitwise Or</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>In</td>
+<td>%in%</td>
+<td><code>&quot;Red&quot; %in% c(&quot;Blue&quot;,&quot;Red&quot;)</code> is TRUE</td>
+</tr>
+<tr>
+<td>Not in</td>
+<td>!( x %in% y) or Hmisc::%nin%</td>
+<td><code>&quot;Red&quot; %nin% c(&quot;Blue&quot;,&quot;Red&quot;)</code> = FALSE</td>
+</tr>
+</tbody></table>
+
+<h2>Control constructs</h2>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Implementation</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>If</td>
+<td>if(condition) {dosomething}</td>
+<td><code>if(TRUE) { 2 }</code> is 2</td>
+</tr>
+<tr>
+<td>If else</td>
+<td>if(condition) {do something} else {do something different} or ifelse(condition, do something, do something else)</td>
+<td><code>if(FALSE) { 2 } else { 3 }</code> is 3 <code>ifelse(FALSE, 2, 3)</code> is 3</td>
+</tr>
+<tr>
+<td>For loop</td>
+<td>for(i in seq) {dosomething} or foreach::foreach(i=1:3) %do% {something}</td>
+<td><code>foreach(i=1:3) %do%  {TRUE}</code> is TRUE, TRUE, TRUE</td>
+</tr>
+<tr>
+<td>While loop</td>
+<td>while(condition) {do something }</td>
+<td><code>a&lt;-0 ; while(a&lt;3){a&lt;-a+1} ; a</code> is 3</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>switch(value, &hellip;)</td>
+<td><code>switch(2, &quot;a&quot;, &quot;b&quot;)</code> is b</td>
+</tr>
+<tr>
+<td>Case</td>
+<td>memisc::cases(&hellip;)</td>
+<td><code>cases(&quot;pi&lt;3&quot;=pi&lt;3, &quot;pi=3&quot;=pi==3,&quot;pi&gt;3&quot;=pi&gt;3)</code> is pi&gt;3</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>NB: If you find yourself using a loop, there&#39;s probably a better, faster solution</p>
+</blockquote>
+
+<h2>Assignment operators</h2>
+
+<table><thead>
+<tr>
+<th>Action</th>
+<th>Operator</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Create / update a variable</td>
+<td>&lt;-</td>
+<td><code>a &lt;- 10</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>NB: There are others you could use, but this is the best practice</p>
+</blockquote>
+
+<h2>Accessors</h2>
+
+<table><thead>
+<tr>
+<th>Action</th>
+<th>Operator</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Use public function from package</td>
+<td>::</td>
+<td><code>memisc::cases()</code></td>
+</tr>
+<tr>
+<td>Use private function from package</td>
+<td>:::</td>
+<td><code>optiRum:::pounds_format()</code></td>
+</tr>
+<tr>
+<td>Get a component e.g a data.frame column</td>
+<td>$</td>
+<td><code>iris$Sepal.Length</code></td>
+</tr>
+<tr>
+<td>Extract a property from a class</td>
+<td><code>@</code></td>
+<td><em>Won&#39;t be used in this course</em></td>
+</tr>
+<tr>
+<td>Refer to positions in a data.frame or vector</td>
+<td>[ ]</td>
+<td><code>iris[5:10,1]</code></td>
+</tr>
+<tr>
+<td>Refer to item in a list</td>
+<td>[[ ]]</td>
+<td><code>list(iris=iris,mtcars=mtcars)[[&quot;iris&quot;]]</code></td>
+</tr>
+</tbody></table>
+
+<h2>Meta-operators</h2>
+
+<table><thead>
+<tr>
+<th>Action</th>
+<th>Operator</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Comment</td>
+<td>#</td>
+<td><code># This is my comment</code></td>
+</tr>
+<tr>
+<td>Help</td>
+<td>?</td>
+<td><code>?data.table</code></td>
+</tr>
+<tr>
+<td>Identifier</td>
+<td></td>
+<td><code>irisDT[ , `:=`(CreatedDate = Sys.Date())]</code></td>
+</tr>
+</tbody></table>
+
+</body>
+
+</html>
