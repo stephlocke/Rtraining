@@ -4,9 +4,7 @@ author: "Steph Locke"
 date: "`r Sys.Date()`"
 output: 
   html_document: 
-    number_sections: no
-    theme: readable
-    toc: no
+    theme: spacelab
 ---
 
 Here are the areas of Rtraining that you can peruse
@@ -31,6 +29,10 @@ fileTbl(gsub("inst/","",slidedecks),"Presentations")
 
 ```{r, echo=FALSE, warning=FALSE}
 fileTbl(gsub("inst/","",shinydecks),"Shiny presentations (not interactive)")
+```
+
+```{r, echo=FALSE, warning=FALSE}
+fileTbl(gsub("inst/","",workshops),"Workshops",yml=FALSE)
 ```
 
 ```{r, echo=FALSE, warning=FALSE}
