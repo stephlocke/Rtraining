@@ -51,6 +51,7 @@ library(lubridate)
 logs[,time:=dmy_hms(time)]
 logs[,`:=`(hour=hour(time), wday=wday(time)
            ,morning=am(time))]
+logs[ , weekend:= wday %in% c(1,7)]
 ```
 
 
@@ -80,6 +81,7 @@ ip_tbl<-if(example) fread(iptblloc)
 
 # Join IP results to log data
 logs<-logs[ip_tbl, on=c(ip="query")]
+head(logs)
 ```
 
 # URL handling
@@ -99,6 +101,7 @@ logs<-logs[!issues, ]
 ```{r}
 library(urltools)
 logs[,c("path","params"):=.(path(url),parameters(url))]
+
 ```
 
 # Event steps
@@ -125,6 +128,17 @@ knitr::kable(logs[,.SD[which.max(order)],visit][
   order==1,.N,path][order(-N)[1:10],])
 ```
 
+## Most common error pages
+```{r}
+logs[status>=500, .N, .(path,status)][order(-N)[1:pmin(10, .N)]]
+```
+
+## Time since last request
+```{r}
+logs[order(order), timesinceprevrequest:= time - shift(time) , visit]
+logs[visit==1, .(order, time, timesinceprevrequest )]
+```
+
 # Visualising
 ## Mapping
 ```{r}
@@ -132,7 +146,7 @@ library(ggmap)
 ggplot(map_data('world')) +
   geom_polygon(aes(x = long, y = lat, group = group), fill = 'grey90', colour = 'white') + 
 geom_point(aes(x = lon, y = lat, size = N), color = '#2165B6',
-           data = logs[, .N, by = .(lon, lat)]) +
+           data = logs[, .N, .(lon, lat)]) +
   xlab('') + ylab('') + 
   theme_minimal() + theme('legend.position' = 'top')
 ```
@@ -150,7 +164,7 @@ heatmap<-function(ggplot,size=20){
 }
 
 ip_activity<-logs[,.N,.(country,hour)]
-ga<-ggplot(ip_activity, aes(x=hour, y=country, fill=N))
+ga<-ggplot(ip_activity[country %like% "^A"], aes(x=hour, y=country, fill=N))
 heatmap(ga)
 
 ```
