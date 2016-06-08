@@ -6,12 +6,11 @@ output:
 
 # People {data-background="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/crowds.jpg"}
 
-## BI Analysts
+## Who can help? 
+- BI Analysts
+- Data Scientists
 
-## Data Scientists
-
-## Security analysts
-
-## SysAdmins
-
-## You?
+## Who to help?
+- InfoSec team
+- SysAdmins
+- CXOs
