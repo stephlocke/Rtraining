@@ -32,7 +32,8 @@ Depends:
     lubridate,
     stringi,
     ggmap,
-    xts
+    xts,
+    urltools
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
