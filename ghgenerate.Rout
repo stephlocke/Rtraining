@@ -195,9 +195,16 @@ The following object is masked from ‘package:data.table’:
 +   "inst/slidedecks/shiny",
 +   pattern = "*.Rmd",recursive = TRUE,full.names = TRUE
 + )
+> 
+> workshops<-list.files(
++   "inst/workshops",
++   pattern = "*.Rmd",recursive = TRUE,full.names = TRUE
++ )
 >   
 > slidedecks<-slidedecks[-grep("subDocs|demo",slidedecks)]
+> workshops<-workshops[-grep("subDocs|demo",workshops)]
 > slidedecks<-setdiff(slidedecks,shinydecks)
+> 
 > for (f in slidedecks) render(f,output_dir = "out",output_format = Rtraining::stephRevealSlideStyle())
 
 
@@ -1527,7 +1534,7 @@ label: unnamed-chunk-21
 
 output file: stats101.knit.md
 
-/usr/bin/pandoc +RTS -K512m -RTS stats101.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/stats101.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=simple --variable transition=default --variable backgroundTransition=default --variable width=1200 --variable height=800 --variable previewLinks=true --css /home/travis/R/Library/Rtraining/style/Reveal.css --include-in-header /tmp/Rtmp9OxH4F/rmarkdown-str10e1234b0bb8d.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.2.0 --highlight-style pygments 
+/usr/bin/pandoc +RTS -K512m -RTS stats101.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/stats101.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=simple --variable transition=default --variable backgroundTransition=default --variable width=1200 --variable height=800 --variable previewLinks=true --css /home/travis/R/Library/Rtraining/style/Reveal.css --include-in-header /tmp/Rtmp6rS4gs/rmarkdown-strff8663d112b.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.2.0 --highlight-style pygments 
 
 Output created: out/stats101.html
 Warning messages:
@@ -1661,8 +1668,8 @@ processing file: ./../../generics/AboutMe.Rmd
 
 output file: Dashboards.knit.md
 
-/usr/bin/pandoc +RTS -K512m -RTS Dashboards.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/travis/build/stephlocke/Rtraining/out/Dashboards.html --smart --email-obfuscation none --self-contained --variable transition=0.4 --css /home/travis/R/Library/Rtraining/style/Look.css --template /home/travis/R/Library/rmarkdown/rmd/ioslides/default.html --include-in-header /tmp/Rtmp9OxH4F/rmarkdown-str10e1215f88254.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --variable ioslides-url=/home/travis/R/Library/rmarkdown/rmd/ioslides/ioslides-13.5.1 
-/usr/bin/pandoc +RTS -K512m -RTS Dashboards.utf8.md --to ioslides_presentation.lua --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/Rtmp9OxH4F/ioslides-output10e12298e27d2.html 
+/usr/bin/pandoc +RTS -K512m -RTS Dashboards.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/travis/build/stephlocke/Rtraining/out/Dashboards.html --smart --email-obfuscation none --self-contained --variable transition=0.4 --css /home/travis/R/Library/Rtraining/style/Look.css --template /home/travis/R/Library/rmarkdown/rmd/ioslides/default.html --include-in-header /tmp/Rtmp6rS4gs/rmarkdown-strff8623fcf3a8.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --variable ioslides-url=/home/travis/R/Library/rmarkdown/rmd/ioslides/ioslides-13.5.1 
+/usr/bin/pandoc +RTS -K512m -RTS Dashboards.utf8.md --to ioslides_presentation.lua --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/Rtmp6rS4gs/ioslides-outputff862750f3e0.html 
 
 Output created: out/Dashboards.html
 
@@ -1704,7 +1711,7 @@ processing file: ./../../generics/AboutMe.Rmd
 output file: repoRting.knit.md
 
 /usr/bin/pandoc +RTS -K512m -RTS repoRting.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/travis/build/stephlocke/Rtraining/out/repoRting.html --smart --email-obfuscation none --self-contained --variable transition=0.4 --css /home/travis/R/Library/Rtraining/style/Look.css --template /home/travis/R/Library/rmarkdown/rmd/ioslides/default.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --variable ioslides-url=/home/travis/R/Library/rmarkdown/rmd/ioslides/ioslides-13.5.1 
-/usr/bin/pandoc +RTS -K512m -RTS repoRting.utf8.md --to ioslides_presentation.lua --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/Rtmp9OxH4F/ioslides-output10e12730bdc4.html 
+/usr/bin/pandoc +RTS -K512m -RTS repoRting.utf8.md --to ioslides_presentation.lua --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/Rtmp6rS4gs/ioslides-outputff862e35902d.html 
 
 Output created: out/repoRting.html
 
@@ -1860,10 +1867,11 @@ processing file: ./../../generics/AboutMe.Rmd
 
 output file: shinyDashboards.knit.md
 
-/usr/bin/pandoc +RTS -K512m -RTS shinyDashboards.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/travis/build/stephlocke/Rtraining/out/shinyDashboards.html --smart --email-obfuscation none --self-contained --variable transition=0.4 --css /home/travis/R/Library/Rtraining/style/Look.css --template /home/travis/R/Library/rmarkdown/rmd/ioslides/default.html --include-in-header /tmp/Rtmp9OxH4F/rmarkdown-str10e1276d72fa3.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --variable ioslides-url=/home/travis/R/Library/rmarkdown/rmd/ioslides/ioslides-13.5.1 
-/usr/bin/pandoc +RTS -K512m -RTS shinyDashboards.utf8.md --to ioslides_presentation.lua --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/Rtmp9OxH4F/ioslides-output10e125e2882f1.html 
+/usr/bin/pandoc +RTS -K512m -RTS shinyDashboards.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/travis/build/stephlocke/Rtraining/out/shinyDashboards.html --smart --email-obfuscation none --self-contained --variable transition=0.4 --css /home/travis/R/Library/Rtraining/style/Look.css --template /home/travis/R/Library/rmarkdown/rmd/ioslides/default.html --include-in-header /tmp/Rtmp6rS4gs/rmarkdown-strff86665d7263.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --variable ioslides-url=/home/travis/R/Library/rmarkdown/rmd/ioslides/ioslides-13.5.1 
+/usr/bin/pandoc +RTS -K512m -RTS shinyDashboards.utf8.md --to ioslides_presentation.lua --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/Rtmp6rS4gs/ioslides-outputff8688dc3e8.html 
 
 Output created: out/shinyDashboards.html
+> for (f in workshops) render(f, output_dir = "out")
 > 
 > handouts <- list.files(
 +   "inst/handouts/",
@@ -1882,8 +1890,8 @@ processing file: /home/travis/build/stephlocke/Rtraining/inst/handouts/dataviz/c
 processing file: /home/travis/build/stephlocke/Rtraining/inst/handouts/documents/writingdocuments.Rmd
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  2496  100  2496    0     0  18004      0 --:--:-- --:--:-- --:--:-- 18218
-processing file: /tmp/Rtmp9OxH4F/file10e1273eceedRmd
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  2496  100  2496    0     0  18081      0 --:--:-- --:--:-- --:--:-- 18909
+processing file: /tmp/Rtmp6rS4gs/fileff86411533f7Rmd
 processing file: /home/travis/build/stephlocke/Rtraining/inst/handouts/documents/DashboardsHandout.Rmd
 processing file: /home/travis/build/stephlocke/Rtraining/inst/handouts/documents/latex.Rmd
 processing file: /home/travis/build/stephlocke/Rtraining/inst/handouts/development/sourcecontrol.Rmd
@@ -1904,8 +1912,8 @@ ezknit output in
 /home/travis/build/stephlocke/Rtraining/out
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  3910  100  3910    0     0  28996      0 --:--:-- --:--:-- --:--:-- 29398
-processing file: /tmp/Rtmp9OxH4F/file10e121f0868a2Rmd
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  3910  100  3910    0     0  31304      0 --:--:-- --:--:-- --:--:-- 31788
+processing file: /tmp/Rtmp6rS4gs/fileff8634b99cdfRmd
 ezknit output in
 /home/travis/build/stephlocke/Rtraining/out
 ezknit output in
@@ -1918,8 +1926,8 @@ ezknit output in
 /home/travis/build/stephlocke/Rtraining/out
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  2496  100  2496    0     0  25984      0 --:--:-- --:--:-- --:--:-- 26553
-processing file: /tmp/Rtmp9OxH4F/file10e12777f2f00Rmd
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  2496  100  2496    0     0  27678      0 --:--:-- --:--:-- --:--:-- 28044
+processing file: /tmp/Rtmp6rS4gs/fileff862ceec332Rmd
 ezknit output in
 /home/travis/build/stephlocke/Rtraining/out
 ezknit output in
@@ -1951,29 +1959,38 @@ Warning messages:
 
 
 processing file: index.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |...........                                                      |  17%
+  |                                                                         |                                                                 |   0%  |                                                                         |........                                                         |  12%
    inline R code fragments
 
-  |                                                                         |......................                                           |  33%
+  |                                                                         |................                                                 |  25%
 label: unnamed-chunk-1 (with options) 
 List of 2
  $ echo   : logi FALSE
  $ warning: logi FALSE
 
-  |                                                                         |................................                                 |  50%
+  |                                                                         |........................                                         |  38%
   ordinary text without R code
 
-  |                                                                         |...........................................                      |  67%
+  |                                                                         |................................                                 |  50%
 label: unnamed-chunk-2 (with options) 
 List of 2
  $ echo   : logi FALSE
  $ warning: logi FALSE
 
-  |                                                                         |......................................................           |  83%
+  |                                                                         |.........................................                        |  62%
+  ordinary text without R code
+
+  |                                                                         |.................................................                |  75%
+label: unnamed-chunk-3 (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ warning: logi FALSE
+
+  |                                                                         |.........................................................        |  88%
   ordinary text without R code
 
   |                                                                         |.................................................................| 100%
-label: unnamed-chunk-3 (with options) 
+label: unnamed-chunk-4 (with options) 
 List of 2
  $ echo   : logi FALSE
  $ warning: logi FALSE
@@ -1981,11 +1998,11 @@ List of 2
 
 output file: index.knit.md
 
-/usr/bin/pandoc +RTS -K512m -RTS index.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/travis/build/stephlocke/Rtraining/out/index.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /home/travis/R/Library/rmarkdown/rmd/h/default.html --variable 'theme:readable' --include-in-header /tmp/Rtmp9OxH4F/rmarkdown-str10e1230f240d2.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --highlight-style tango --variable navigationjs=/home/travis/R/Library/rmarkdown/rmd/h/navigation-1.0 
+/usr/bin/pandoc +RTS -K512m -RTS index.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/travis/build/stephlocke/Rtraining/out/index.html --smart --email-obfuscation none --self-contained --standalone --section-divs --table-of-contents --toc-depth 2 --template /home/travis/R/Library/rmarkdown/rmd/h/default.html --number-sections --variable 'theme:spacelab' --include-in-header /tmp/Rtmp6rS4gs/rmarkdown-strff8677a30e29.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --highlight-style tango --variable navigationjs=/home/travis/R/Library/rmarkdown/rmd/h/navigation-1.0 
 
 Output created: out/index.html
 There were 19 warnings (use warnings() to see them)
 > 
 > proc.time()
    user  system elapsed 
- 27.447   1.468  37.965 
+ 31.637   1.667  39.959 
