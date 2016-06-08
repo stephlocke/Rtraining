@@ -17,11 +17,12 @@ workshops<-list.files(
 )
   
 slidedecks<-slidedecks[-grep("subDocs|demo",slidedecks)]
-workshops<-workshops[-grep("subDocs|demo",workshops)]
+#workshops<-workshops[-grep("subDocs|demo",workshops)]
 slidedecks<-setdiff(slidedecks,shinydecks)
 
 for (f in slidedecks) render(f,output_dir = "out",output_format = Rtraining::stephRevealSlideStyle())
 for (f in shinydecks) render(f,output_dir = "out",output_format = Rtraining::stephSlideStyle())
+
 for (f in workshops) render(f, output_dir = "out")
 
 handouts <- list.files(
