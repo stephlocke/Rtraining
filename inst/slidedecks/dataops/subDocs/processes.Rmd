@@ -1,0 +1,7 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+# Processes {data-background="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/coffeeprocess.jpg"}

@@ -1,0 +1,46 @@
+---
+title: 'Getting better with data'
+author: "Steph Locke (@SteffLocke)"
+date: '`r Sys.Date()`'
+output:
+  Rtraining::stephRevealSlideStyle
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
+```
+
+# Agenda
+## Agenda
+- Data deluge
+- People
+- Processes
+- Tools
+- Wrap up
+
+```{r autodoc, child='subDocs/datadeluge.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/people.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/processes.Rmd', eval=TRUE}
+```
+
+```{r autodoc, child='subDocs/sectools.Rmd', eval=TRUE}
+```
+
+# Conclusion
+## Covered
+- Data deluge
+- People
+- Processes
+- Tools
+
+## Where to go from here?
+>- Get this online & use the various links
+>- Get started!
+>- Keep in touch: @SteffLocke
