@@ -8,6 +8,10 @@ output:
 
 ## Database
 
+## Better dashboarding
+- e.g. PowerBI
+- make your own e.g. shiny
+
 ## ELK {data-background-iframe="https://www.elastic.co/products"}
 
 ## Splunk {data-background-iframe="https://www.splunk.com"}

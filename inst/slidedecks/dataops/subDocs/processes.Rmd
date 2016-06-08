@@ -6,9 +6,14 @@ output:
 
 # Processes {data-background="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/coffeeprocess.jpg"}
 
-## Prototype
+## Wider view  {data-background="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/worlds.jpg"}
+- Supplement
+- Compensate
+- Inform
 
-## Consolidate
-### ETL
-### Security
-### Keeping time
+## Wider view  
+- ETL
+- Security
+- Keeping time
+
+## Acquisition / prototyping
