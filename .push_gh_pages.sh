@@ -7,13 +7,17 @@ GH_REPO="@github.com/stephlocke/Rtraining.git"
 
 FULL_REPO="https://$GH_TOKEN$GH_REPO"
 
+git clone https://github.com/stephlocke/RTraining.git out --branch gh-pages
+cd out
+git config user.name "stephs-travis"
+git config user.email "travis"
+
+cd ..
 R CMD BATCH '../Rtraining/ghgenerate.R'
 
 cp ghgenerate.Rout out
 cd out
-git init
-git config user.name "stephs-travis"
-git config user.email "travis"
+
 git add .
-git commit -m "deployed to github pages"
-git push --force --quiet $FULL_REPO master:gh-pages
+git commit -m "$TRAVIS_COMMIT"
+git push --quiet $FULL_REPO
