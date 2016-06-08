@@ -5,3 +5,10 @@ output:
 ---
 
 # Processes {data-background="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/coffeeprocess.jpg"}
+
+## Prototype
+
+## Consolidate
+### ETL
+### Security
+### Keeping time

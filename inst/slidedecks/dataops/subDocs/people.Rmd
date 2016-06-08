@@ -5,3 +5,13 @@ output:
 ---
 
 # People {data-background="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/crowds.jpg"}
+
+## BI Analysts
+
+## Data Scientists
+
+## Security analysts
+
+## SysAdmins
+
+## You?

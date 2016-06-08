@@ -5,3 +5,13 @@ output:
 ---
 
 # Tools {data-background="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/tools.jpg"}
+
+## Database
+
+## ELK {data-background-iframe="https://www.elastic.co/products"}
+
+## Splunk {data-background-iframe="https://www.splunk.com"}
+
+## Azure Log Analytics {data-background-iframe="https://www.microsoft.com/en/server-cloud/solutions/log-analytics.aspx"}
+
+## ...
