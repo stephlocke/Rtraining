@@ -1,39 +1,12 @@
 Package: Rtraining
 Title: Training Materials on R
-Version: 1.1.22
+Version: 1.1.23
 Authors@R: person("Steph", "Locke",   email="stephanie.g.locke@gmail.com", role = c("aut", "cre"))
 Description: From presentations to hands-on learning materials, this package
     contains stuff Steph thinks you should know about!
 Depends:
-    R (>= 3.1.2),
-    devtools,
-    data.table,
-    dplyr,
-    DiagrammeR,
-    shiny,
-    Hmisc,
-    foreach,
-    memisc,
-    optiRum,
-    readxl,
-    readr,
-    RODBC,
-    testthat,
-    ezknitr,
-    rmarkdown,
-    knitr,
-    leaflet,
-    dygraphs,
-    plotly,
-    DT,
-    revealjs,
-    vegalite,
-    testthat,
-    lubridate,
-    stringi,
-    ggmap,
-    xts,
-    urltools
+    R (>= 3.1.2)
+Remotes: stephlocke/pkgRecommendations
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
