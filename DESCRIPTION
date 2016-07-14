@@ -7,6 +7,7 @@ Description: From presentations to hands-on learning materials, this package
 Depends:
     R (>= 3.1.2)
 Remotes: stephlocke/pkgRecommendations
+Imports: pkgRecommendations
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
