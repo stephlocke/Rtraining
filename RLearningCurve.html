@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Steph Locke (@SteffLocke)" />
-  <meta name="dcterms.date" content="2016-06-08" />
+  <meta name="dcterms.date" content="2016-07-15" />
   <title>Cut the R Learning Curve</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -118,7 +118,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section>
     <h1 class="title">Cut the R Learning Curve</h1>
     <h2 class="author">Steph Locke (<span class="citation" data-cites="SteffLocke">@SteffLocke</span>)</h2>
-    <h3 class="date">2016-06-08</h3>
+    <h3 class="date">2016-07-15</h3>
 </section>
 
 <section id="steph-locke" class="slide level2" data-background="https://github.com/stephlocke/lazyCDN/raw/master/StephLocke.jpg">
@@ -532,8 +532,16 @@ d&lt;-<span class="kw">ifelse</span>(a&lt;<span class="dv">0</span>,a*b,a/b)
 e&lt;-<span class="kw">paste0</span>(c,d)
 <span class="kw">return</span>(e)
 }
-<span class="kw">library</span>(testthat)
-<span class="co"># Add a high-level name for group of tests, typically the function name</span>
+<span class="kw">library</span>(testthat)</code></pre></div>
+<pre><code>## 
+## Attaching package: 'testthat'</code></pre>
+<pre><code>## The following object is masked from 'package:dplyr':
+## 
+##     matches</code></pre>
+<pre><code>## The following objects are masked from 'package:magrittr':
+## 
+##     equals, is_less_than, not</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Add a high-level name for group of tests, typically the function name</span>
 <span class="kw">context</span>(<span class="st">&quot;myfunc&quot;</span>)
 
 <span class="co"># Simplest test</span>
