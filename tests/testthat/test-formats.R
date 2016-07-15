@@ -1,4 +1,5 @@
 context("Formats")
+library(rmarkdown)
 
 
 test_that("formats successfully produce a document", {
