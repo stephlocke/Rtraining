@@ -1,9 +1,5 @@
 
-[![Project Status: Active ? The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![Build Status](https://travis-ci.org/stephlocke/Rtraining.svg?branch=master)](https://travis-ci.org/stephlocke/Rtraining)
-
-------------------------------------------------------------------------
-
-[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.1.2-6666ff.svg)](https://cran.r-project.org/) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/Rtraining)](https://cran.r-project.org/package=Rtraining) [![packageversion](https://img.shields.io/badge/Package%20version-1.1.23-orange.svg?style=flat-square)](commits/master)
+[![Project Status: Active ? The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![Build Status](https://travis-ci.org/stephlocke/Rtraining.svg?branch=master)](https://travis-ci.org/stephlocke/Rtraining) [![packageversion](https://img.shields.io/badge/Package%20version-1.3.23-orange.svg?style=flat-square)](commits/master) [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.1.2-6666ff.svg)](https://cran.r-project.org/) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/Rtraining)](https://cran.r-project.org/package=Rtraining)
 
 ------------------------------------------------------------------------
 
