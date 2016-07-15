@@ -1,16 +1,19 @@
 Package: Rtraining
 Title: Training Materials on R
-Version: 1.1.23
+Version: 1.2.23
 Authors@R: person("Steph", "Locke",   email="stephanie.g.locke@gmail.com", role = c("aut", "cre"))
 Description: From presentations to hands-on learning materials, this package
     contains stuff Steph thinks you should know about!
 Depends:
     R (>= 3.1.2)
 Imports: 
-    pkgRecommendations
+    pkgRecommendations,
+    stephStyle
 Suggests:
     knitr
-Remotes: stephlocke/pkgRecommendations
+Remotes: 
+    stephlocke/pkgRecommendations,
+    stephlocke/stephStyle
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
