@@ -6,10 +6,11 @@ Description: From presentations to hands-on learning materials, this package
     contains stuff Steph thinks you should know about!
 Depends:
     R (>= 3.1.2)
+Imports: 
+    pkgRecommendations
 Suggests:
     knitr
 Remotes: stephlocke/pkgRecommendations
-Imports: pkgRecommendations
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
