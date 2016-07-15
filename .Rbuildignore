@@ -7,3 +7,5 @@
 ^.*\.sqlite$
 inst/slidedecks/shiny/rs-connect/
 out
+^README\.Rmd$
+^README-.*\.png$
