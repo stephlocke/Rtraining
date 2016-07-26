@@ -33,4 +33,4 @@ handouts<-handouts
 for (f in handouts) ezknit(f,out_dir = "out",keep_md = FALSE)
 
 # index
-render("inst/index.Rmd",output_dir = "out")
+render("inst/index.Rmd",output_dir = "out",intermediates_dir = "out")

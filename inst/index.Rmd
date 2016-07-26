@@ -4,7 +4,7 @@ author: "Steph Locke"
 date: "`r Sys.Date()`"
 output: 
   html_document: 
-    number_sections: no
+    keep_md: yes
     theme: spacelab
     toc: yes
     toc_depth: 1
