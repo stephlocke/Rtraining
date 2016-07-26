@@ -19,7 +19,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 > SOURCE CONTROL IS FOR ALL THE THINGS
 
-## Why source control
+<!--
+# Why source control
 
 >- backup your code
 >- know *why* you made changes
@@ -29,7 +30,73 @@ knitr::opts_chunk$set(echo = TRUE)
 >- automated testing and deployment
 >- audit trails
 
-## Where to go from here?
->- Get this online & use the various links
->- Get started!
->- Keep in touch: @SteffLocke
+-->
+
+## Who's a git?
+Not who (well OK, it is named after Linus Torvald) but what...
+
+Git is source control that is
+
+- open source
+- distributed
+- command line based (GUIs implemented)
+- safe
+- not source safe!
+
+<!--
+# The horror of central source control{data-background="http://ericsink.com/scm/1774_image009.jpg"}
+-->
+
+# Git workflow
+## Clone a copy of the code {data-background="http://img.lum.dolimg.com/v1/images/clone-trooper-armor_607fbd6a.jpeg"}
+Take a copy of the code for you to work on without preventing anyone else from doing the same, and most definiitely not damaging the remote copy
+
+```
+git clone https://github.com/stephlocke/Rtraining.git
+```
+
+## Branch the code {data-background="http://www.alternet.org/files/story_images/hunter-s.-thompson-fear-and-loathing1.jpg"}
+Branches are different containers of code - they don't impact each other. This means that you can make them for features, for trying something out, for releases etc 
+
+```
+git branch breakallthethings
+git checkout breakallthethings
+```
+
+## Make your changes  {data-background="http://www.caribflame.com/wp-content/uploads/2016/03/obama-change-1.jpg"}
+
+## State your business {data-background="http://crooksandliars.com/files/primary_image/14/12/respectcartman.jpg"}
+Tell git which bits of code you're happy\* with. 
+
+```
+git add iLoveCursors.sql
+```
+
+\* For various definitions of happy
+
+## Commit your code  {data-background="http://lovelace-media.imgix.net/uploads/299/94220ab0-fcee-0132-451e-0a2ca390b447.jpg?"}
+Confirm your changes and tell your local git that you're happy with them
+
+```
+git commit -m "I loves me some cursors"
+```
+
+## Merge your code to master {data-background="http://www.jmaddington.com/assets/components/phpthumbof/cache/mergesign.a999413a0556cd491189a5a3edd1cd31.jpg"}
+
+Super happy with your? Publish it to the master branch
+
+``` 
+git checkout master
+git merge breakallthethings -m "I didn't break all the things"
+```
+
+## Push your code  {data-background="http://i.perezhilton.com/wp-content/uploads/2014/11/salt-n-pepa-push-it-commercial.gif"}
+Put new code on the remote location
+```
+git push
+```
+
+# Git moah things
+## Git resources
+## Git clients
+## Follow up with me
