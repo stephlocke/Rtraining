@@ -1,0 +1,35 @@
+---
+title: 'Git in 5'
+author: "Steph Locke (@SteffLocke)"
+date: '`r Sys.Date()`'
+output:
+  stephStyle::stephRevealSlideStyle
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
+```
+
+----
+
+![version control all the things](`r imgURL("versioncontrolallthings.jpg")`)
+
+> SOURCE CONTROL IS FOR ALL THE THINGS
+
+## Why source control
+
+>- backup your code
+>- know *why* you made changes
+>- share code
+>- work in a team
+>- deployment source / destination
+>- automated testing and deployment
+>- audit trails
+
+## Where to go from here?
+>- Get this online & use the various links
+>- Get started!
+>- Keep in touch: @SteffLocke
