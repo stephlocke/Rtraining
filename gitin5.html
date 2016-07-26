@@ -101,27 +101,71 @@
 <blockquote>
 <p>SOURCE CONTROL IS FOR ALL THE THINGS</p>
 </blockquote>
+<!--
+# Why source control
+
+>- backup your code
+>- know *why* you made changes
+>- share code
+>- work in a team
+>- deployment source / destination
+>- automated testing and deployment
+>- audit trails
+
+-->
 </section>
-<section id="why-source-control" class="slide level2">
-<h1>Why source control</h1>
+<section id="whos-a-git" class="slide level2">
+<h1>Who’s a git?</h1>
+<p>Not who (well OK, it is named after Linus Torvald) but what…</p>
+<p>Git is source control that is</p>
 <ul>
-<li class="fragment">backup your code</li>
-<li class="fragment">know <em>why</em> you made changes</li>
-<li class="fragment">share code</li>
-<li class="fragment">work in a team</li>
-<li class="fragment">deployment source / destination</li>
-<li class="fragment">automated testing and deployment</li>
-<li class="fragment">audit trails</li>
+<li>open source</li>
+<li>distributed</li>
+<li>command line based (GUIs implemented)</li>
+<li>safe</li>
+<li>not source safe!</li>
 </ul>
+<!--
+# The horror of central source control{data-background="http://ericsink.com/scm/1774_image009.jpg"}
+-->
 </section>
-<section id="where-to-go-from-here" class="slide level2">
-<h1>Where to go from here?</h1>
-<ul>
-<li class="fragment">Get this online &amp; use the various links</li>
-<li class="fragment">Get started!</li>
-<li class="fragment">Keep in touch: <span class="citation" data-cites="SteffLocke">@SteffLocke</span></li>
-</ul>
-</section>
+<section><section id="git-workflow" class="titleslide slide level1"><h1>Git workflow</h1></section><section id="clone-a-copy-of-the-code" class="slide level2" data-background="http://img.lum.dolimg.com/v1/images/clone-trooper-armor_607fbd6a.jpeg">
+<h1>Clone a copy of the code</h1>
+<p>Take a copy of the code for you to work on without preventing anyone else from doing the same, and most definiitely not damaging the remote copy</p>
+<pre><code>git clone https://github.com/stephlocke/Rtraining.git</code></pre>
+</section><section id="branch-the-code" class="slide level2" data-background="http://www.alternet.org/files/story_images/hunter-s.-thompson-fear-and-loathing1.jpg">
+<h1>Branch the code</h1>
+<p>Branches are different containers of code - they don’t impact each other. This means that you can make them for features, for trying something out, for releases etc</p>
+<pre><code>git branch breakallthethings
+git checkout breakallthethings</code></pre>
+</section><section id="make-your-changes" class="slide level2" data-background="http://www.caribflame.com/wp-content/uploads/2016/03/obama-change-1.jpg">
+<h1>Make your changes</h1>
+</section><section id="state-your-business" class="slide level2" data-background="http://crooksandliars.com/files/primary_image/14/12/respectcartman.jpg">
+<h1>State your business</h1>
+<p>Tell git which bits of code you’re happy* with.</p>
+<pre><code>git add iLoveCursors.sql</code></pre>
+<p>* For various definitions of happy</p>
+</section><section id="commit-your-code" class="slide level2" data-background="http://lovelace-media.imgix.net/uploads/299/94220ab0-fcee-0132-451e-0a2ca390b447.jpg?">
+<h1>Commit your code</h1>
+<p>Confirm your changes and tell your local git that you’re happy with them</p>
+<pre><code>git commit -m &quot;I loves me some cursors&quot;</code></pre>
+</section><section id="merge-your-code-to-master" class="slide level2" data-background="http://www.jmaddington.com/assets/components/phpthumbof/cache/mergesign.a999413a0556cd491189a5a3edd1cd31.jpg">
+<h1>Merge your code to master</h1>
+<p>Super happy with your? Publish it to the master branch</p>
+<pre><code>git checkout master
+git merge breakallthethings -m &quot;I didn't break all the things&quot;</code></pre>
+</section><section id="push-your-code" class="slide level2" data-background="http://i.perezhilton.com/wp-content/uploads/2014/11/salt-n-pepa-push-it-commercial.gif">
+<h1>Push your code</h1>
+<p>Put new code on the remote location</p>
+<pre><code>git push</code></pre>
+</section></section>
+<section><section id="git-moah-things" class="titleslide slide level1"><h1>Git moah things</h1></section><section id="git-resources" class="slide level2">
+<h1>Git resources</h1>
+</section><section id="git-clients" class="slide level2">
+<h1>Git clients</h1>
+</section><section id="follow-up-with-me" class="slide level2">
+<h1>Follow up with me</h1>
+</section></section>
     </div>
   </div>
 
