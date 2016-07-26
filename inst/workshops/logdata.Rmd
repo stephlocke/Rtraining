@@ -17,7 +17,7 @@ output:
 
 ```{r}
 library(readr)
-rawlogs<-read_log("https://raw.githubusercontent.com/elastic/examples/master/ELK_apache/apache_logs")
+rawlogs<-read_log("https://raw.githubusercontent.com/elastic/examples/master/ElasticStack_apache/apache_logs")
 
 library(data.table)
 logs<-data.table(rawlogs)
