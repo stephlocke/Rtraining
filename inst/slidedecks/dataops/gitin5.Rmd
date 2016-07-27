@@ -33,7 +33,7 @@ knitr::opts_chunk$set(echo = TRUE)
 -->
 
 ## Who's a git?
-Not who (well OK, it is named after Linus Torvald) but what...
+Not who\* but what...
 
 Git is source control that is
 
@@ -43,11 +43,14 @@ Git is source control that is
 - safe
 - not source safe!
 
+
+\* Well OK, Linus Torvald did name it after himself
+
 <!--
 # The horror of central source control{data-background="http://ericsink.com/scm/1774_image009.jpg"}
 -->
 
-# Git workflow
+# A (simple) Git workflow
 ## Clone a copy of the code {data-background="http://img.lum.dolimg.com/v1/images/clone-trooper-armor_607fbd6a.jpeg"}
 Take a copy of the code for you to work on without preventing anyone else from doing the same, and most definiitely not damaging the remote copy
 
@@ -81,7 +84,7 @@ Confirm your changes and tell your local git that you're happy with them
 git commit -m "I loves me some cursors"
 ```
 
-## Merge your code to master {data-background="http://www.jmaddington.com/assets/components/phpthumbof/cache/mergesign.a999413a0556cd491189a5a3edd1cd31.jpg"}
+## Merge your code {data-background="http://www.jmaddington.com/assets/components/phpthumbof/cache/mergesign.a999413a0556cd491189a5a3edd1cd31.jpg"}
 
 Super happy with your? Publish it to the master branch
 
@@ -97,6 +100,31 @@ git push
 ```
 
 # Git moah things
+## Git model 
+![git model](`r imgURL("gitmodel.jpg")`)
+via [\@cthydng](https://twitter.com/cthydng/status/575483540202106880)
+
 ## Git resources
+- [Git homepage](https://git-scm.com/)
+- [Git cheatsheet](https://services.github.com/kit/downloads/github-git-cheat-sheet.pdf)
+- [Git book](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+- [Github's git glossary](https://help.github.com/articles/github-glossary/)
+- [Official git glossary](https://www.kernel.org/pub/software/scm/git/docs/gitglossary.html)
+- [Try Git](https://try.github.io/levels/1/challenges/1)
+
+## Git remotes
+- [GitHub](https://github.com/)
+- [GitLab](https://about.gitlab.com/)
+- [Visual Studio Online (& TFS)](https://www.visualstudio.com/en-us/products/what-is-visual-studio-online-vs.aspx)
+- [BitBucket](https://bitbucket.org/)
+
 ## Git clients
+- [Git GUI](https://git-for-windows.github.io/)
+- Integration in Visual Studio
+- [GitKraken](https://www.gitkraken.com/)
+- [GitHub Desktop](https://desktop.github.com/)
+
 ## Follow up with me
+- [bit.ly/gitin5min](http://bit.ly/gitin5min)
+- [stephlocke.github.io/Rtraining](http://stephlocke.github.io/Rtraining/)
+- [\@SteffLocke](https://twitter.com/stefflocke)
