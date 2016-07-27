@@ -75,6 +75,9 @@ Tell git which bits of code you're happy\* with.
 git add iLoveCursors.sql
 ```
 
+
+
+
 \* For various definitions of happy
 
 ## Commit your code  {data-background="http://lovelace-media.imgix.net/uploads/299/94220ab0-fcee-0132-451e-0a2ca390b447.jpg?"}
@@ -84,7 +87,7 @@ Confirm your changes and tell your local git that you're happy with them
 git commit -m "I loves me some cursors"
 ```
 
-## Merge your code {data-background="http://www.jmaddington.com/assets/components/phpthumbof/cache/mergesign.a999413a0556cd491189a5a3edd1cd31.jpg"}
+## Merge your code {data-background="http://aksports.com/wp-content/uploads/2014/09/merge-sign.jpg"}
 
 Super happy with your? Publish it to the master branch
 
@@ -123,6 +126,14 @@ via [\@cthydng](https://twitter.com/cthydng/status/575483540202106880)
 - Integration in Visual Studio
 - [GitKraken](https://www.gitkraken.com/)
 - [GitHub Desktop](https://desktop.github.com/)
+
+## Git advice
+- [Alex Yates's piece on release branches](http://workingwithdevs.com/two-different-types-of-release-branch/)
+- [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/)
+- [Git tips](https://github.com/git-tips/tips)
+- [Git from an R perspective](http://r-pkgs.had.co.nz/git.html)
+- [SQL Community slack: git-help](https://sqlps.io/slack/)
+
 
 ## Follow up with me
 - [bit.ly/gitin5min](http://bit.ly/gitin5min)
