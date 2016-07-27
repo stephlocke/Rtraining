@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 output: 
   html_document: 
     keep_md: yes
+    number_sections: no
     theme: spacelab
     toc: yes
     toc_depth: 1
