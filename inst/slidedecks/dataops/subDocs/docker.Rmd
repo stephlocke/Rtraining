@@ -29,6 +29,6 @@ output:
 - Make sure to bin old images or instances
 - Big shift in thinking
 
------
+## Follow on
 - [Why script infrastructure?](http://www.cio.com/article/3017722/infrastructure/what-is-infrastructure-as-code-and-why-should-you-embrace-it.html)
 - [Get started with docker](https://docs.docker.com/windows/)

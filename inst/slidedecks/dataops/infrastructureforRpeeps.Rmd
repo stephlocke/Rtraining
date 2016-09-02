@@ -1,0 +1,119 @@
+---
+title: 'Infrastructure for R peeps'
+author: "Steph Locke (@SteffLocke)"
+date: '`r Sys.Date()`'
+output:
+  Rtraining::stephRevealSlideStyle
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Poll
+[http://dpll.co/17175e5](http://dpll.co/17175e5)
+
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
+```
+
+# Agenda
+## Agenda
+- Fundamentals
+- Windows
+- Linux
+- Mac OS
+- Containers
+
+
+# Fundamentals
+
+## Hard-won lessons
+- Do work today so tomorrow's work is new and interesting
+- You're only as good as your last restore
+- Use the VMs & the cloud
+- Never use sa
+
+## Networks
+- Access
+    + Names
+    + IPs
+    + Device addresses
+- Restricting access
+    + Firewalls
+- Safety
+    + Ports
+    + Whitelisting
+
+## Storage
+- Access
+    + Persistence
+    + Users
+    + Metadata
+- Restricting access
+    + Permissions
+- Safety
+    + Role Based Access
+
+## OS
+- Access
+    + Authentication systems
+- Restricting access
+    + Permissions
+- Safety
+    + User hygeine
+
+# Windows specifics
+
+## PowerShell
+The language for working with all things Microsoft these days.
+
+>- Also works on Linux
+
+```powershell
+Get-ChildItem | 
+  Where Name -notlike "*.tar.gz" |
+    Export-Csv "filelist.csv"
+
+Import-Csv "filelist.csv"
+```
+
+## Networks
+[Howtogeek.com](http://www.howtogeek.com/school/windows-network-sharing/)
+
+## Storage
+- Case insensitive
+- Permissions inherit from parent object by default
+
+
+## OS Variants
+- Windows 10 - not a server
+- Windows server YYYY - GUI
+- Windows Nano - Headless
+
+## Follow on
+- [TechNet library](https://technet.microsoft.com/en-us/library/bb625087.aspx)
+- [Microsoft Virtual Academy](https://mva.microsoft.com/product-training/windows-server#!jobf=IT%20Professional&lang=1033)
+
+
+# Linux
+
+## Bash
+## Networks
+## Storage
+## Software
+## Follow on
+
+
+# Mac OS
+
+## Mac OS
+Tough! I don't know anything about this!
+
+```{r autodoc, child='subDocs/Docker.Rmd', eval=TRUE}
+```
+
+# Wrap up
+## Wrap up
+- More questions during the break
+- Get the slides: [bit.ly/infRastructure](http://bit.ly/infRastructure)
+- Keep in touch: @SteffLocke
