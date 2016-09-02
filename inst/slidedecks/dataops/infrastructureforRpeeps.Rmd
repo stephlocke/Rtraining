@@ -19,30 +19,24 @@ knitr::opts_chunk$set(echo = TRUE)
 # Agenda
 ## Agenda
 - Fundamentals
-- Windows
-- Linux
-- Mac OS
+- Details
 - Containers
 
 
 # Fundamentals
 
-## Hard-won lessons
-- Do work today so tomorrow's work is new and interesting
-- You're only as good as your last restore
-- Use the VMs & the cloud
-- Never use `sa`
-- Virus scanning + database files never mixes well
+
 
 ## Networks
 - Access
     + Names
     + IPs
     + Device addresses
+    + Ports
 - Restricting access
     + Firewalls
 - Safety
-    + Ports
+    + Encryption
     + Whitelisting
 
 ## Storage
@@ -63,14 +57,13 @@ knitr::opts_chunk$set(echo = TRUE)
 - Restricting access
     + Permissions
 - Safety
-    + User hygeine
+    + User hygiene
 
-# Windows specifics
 
 ## PowerShell
 The language for working with all things Microsoft these days.
 
->- Also works on Linux
+>- Also [works on Linux](http://www.howtogeek.com/267858/how-to-install-microsoft-powershell-on-linux-or-os-x/)
 
 ```powershell
 Get-ChildItem | 
@@ -80,52 +73,65 @@ Get-ChildItem |
 Import-Csv "filelist.csv"
 ```
 
+## Bash
+The continued language of Linux
+
+>- Also [works on Windows (10)](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/)
+
+```bash
+find . -maxdepth 1 ! -name '*.tar.gz' | 
+  sed 's/[ \t]/,/g' > filelist.csv
+
+cat filelist.csv
+```
+
+# Details
 ## Networks
 - I've always found this quite hard
+- Ipv6 is especially hard, but valuable
 
 
-## Storage
-- Case insensitive
-- Permissions inherit from parent object by default
+## Windows vs Linux Storage
 
+- Windows
+   - Case insensitive
+   - Permissions inherit from parent object by default
+- Linux
+   - Case sensitive
+   - Permisions inherit from user or one of other many overriding ways
 
-## OS Variants
+## Windows OS Variants
 - Windows 10 - not a server
 - Windows server YYYY - GUI
 - Windows Nano - Headless
 
-## Follow on
-- [TechNet library](https://technet.microsoft.com/en-us/library/bb625087.aspx)
-- [Microsoft Virtual Academy](https://mva.microsoft.com/product-training/windows-server#!jobf=IT%20Professional&lang=1033)
-- [Windows networking lessons](http://www.howtogeek.com/school/windows-network-sharing/)]
-
-
-# Linux
-```bash
-```
-
-## Bash
-## Networks
-- [Linux Network Admin Guide](http://www.tldp.org/LDP/nag2/nag2.pdf)
-## Storage
-## Software
-## Follow on
-- [Linux Survival](http://linuxsurvival.com/)
-- [Linux Foundation free training materials](https://training.linuxfoundation.org/free-linux-training)
-
-# Mac OS
-
-## Mac OS
-Tough! I don't know anything about this!
 
 ```{r autodoc, child='subDocs/docker.Rmd', eval=TRUE}
 ```
 
 # Wrap up
+## Hard-won lessons
+- Do work today so tomorrow's work is new and interesting
+- You're only as good as your last restore
+- Use the VMs & the cloud
+- Never use `sa`
+- Virus scanning + database files never mixes well
+
 ## Wrap up
 - More questions during the break
 - Get the slides: [bit.ly/infRastructure](http://bit.ly/infRastructure)
 - Keep in touch: @SteffLocke
+
+# Follow on
+## Windows
+- [TechNet library](https://technet.microsoft.com/en-us/library/bb625087.aspx)
+- [Microsoft Virtual Academy](https://mva.microsoft.com/product-training/windows-server#!jobf=IT%20Professional&lang=1033)
+- [Windows networking lessons](http://www.howtogeek.com/school/windows-network-sharing/)]
+
+## Linux
+- [Linux Network Admin Guide](http://www.tldp.org/LDP/nag2/nag2.pdf)
+- [Linux Survival](http://linuxsurvival.com/)
+- [Linux Foundation free training materials](https://training.linuxfoundation.org/free-linux-training)
 
 ## Misc resources
 - [12 factor app](https://12factor.net/)
