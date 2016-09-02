@@ -31,7 +31,8 @@ knitr::opts_chunk$set(echo = TRUE)
 - Do work today so tomorrow's work is new and interesting
 - You're only as good as your last restore
 - Use the VMs & the cloud
-- Never use sa
+- Never use `sa`
+- Virus scanning + database files never mixes well
 
 ## Networks
 - Access
@@ -53,6 +54,8 @@ knitr::opts_chunk$set(echo = TRUE)
     + Permissions
 - Safety
     + Role Based Access
+    + Redundancy
+    + Backups
 
 ## OS
 - Access
@@ -78,7 +81,8 @@ Import-Csv "filelist.csv"
 ```
 
 ## Networks
-[Howtogeek.com](http://www.howtogeek.com/school/windows-network-sharing/)
+- I've always found this quite hard
+
 
 ## Storage
 - Case insensitive
@@ -93,23 +97,28 @@ Import-Csv "filelist.csv"
 ## Follow on
 - [TechNet library](https://technet.microsoft.com/en-us/library/bb625087.aspx)
 - [Microsoft Virtual Academy](https://mva.microsoft.com/product-training/windows-server#!jobf=IT%20Professional&lang=1033)
+- [Windows networking lessons](http://www.howtogeek.com/school/windows-network-sharing/)]
 
 
 # Linux
+```bash
+```
 
 ## Bash
 ## Networks
+- [Linux Network Admin Guide](http://www.tldp.org/LDP/nag2/nag2.pdf)
 ## Storage
 ## Software
 ## Follow on
-
+- [Linux Survival](http://linuxsurvival.com/)
+- [Linux Foundation free training materials](https://training.linuxfoundation.org/free-linux-training)
 
 # Mac OS
 
 ## Mac OS
 Tough! I don't know anything about this!
 
-```{r autodoc, child='subDocs/Docker.Rmd', eval=TRUE}
+```{r autodoc, child='subDocs/docker.Rmd', eval=TRUE}
 ```
 
 # Wrap up
@@ -117,3 +126,6 @@ Tough! I don't know anything about this!
 - More questions during the break
 - Get the slides: [bit.ly/infRastructure](http://bit.ly/infRastructure)
 - Keep in touch: @SteffLocke
+
+## Misc resources
+- [12 factor app](https://12factor.net/)
