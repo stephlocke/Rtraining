@@ -140,8 +140,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1>Agenda</h1>
 <ul>
 <li>Fundamentals</li>
-<li>Details</li>
 <li>[Bonus] Containers</li>
+<li>Next Steps</li>
 </ul>
 </section></section>
 <section><section id="fundamentals" class="titleslide slide level1"><h1>Fundamentals</h1></section><section id="fundamentals-1" class="slide level2">
@@ -225,15 +225,14 @@ Import-Csv &quot;filelist.csv&quot;</code></pre>
   <span class="kw">sed</span> <span class="st">'s/[ \t]/,/g'</span> <span class="kw">&gt;</span> filelist.csv
 
 <span class="kw">cat</span> filelist.csv</code></pre></div>
-</section></section>
-<section><section id="details" class="titleslide slide level1"><h1>Details</h1></section><section id="networks-1" class="slide level2">
-<h1>Networks</h1>
-<ul>
-<li>I’ve always found this quite hard</li>
-<li>Ipv6 is especially hard, but valuable</li>
-</ul>
-</section><section id="windows-vs-linux-storage" class="slide level2">
-<h1>Windows vs Linux Storage</h1>
+</section><section id="call-command-line-from-r" class="slide level2">
+<h1>Call command line from R</h1>
+<p>Interactions are available from <code>base</code> package</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?system  <span class="co"># not recommended</span>
+?system2 <span class="co"># works better with Windows too</span>
+?shell   <span class="co"># the lower level call</span></code></pre></div>
+</section><section id="windows-linux-file-differences" class="slide level2">
+<h1>Windows / Linux file differences</h1>
 <ul>
 <li>Windows</li>
 <li>Case insensitive</li>
@@ -286,7 +285,7 @@ Import-Csv &quot;filelist.csv&quot;</code></pre>
 <li><a href="https://docs.docker.com/windows/">Get started with docker</a></li>
 </ul>
 </section></section>
-<section><section id="wrap-up" class="titleslide slide level1"><h1>Wrap up</h1></section><section id="hard-won-lessons" class="slide level2">
+<section><section id="next-steps" class="titleslide slide level1"><h1>Next steps</h1></section><section id="hard-won-lessons" class="slide level2">
 <h1>Hard-won lessons</h1>
 <ul>
 <li>Do work today so tomorrow’s work is new and interesting</li>
@@ -295,36 +294,32 @@ Import-Csv &quot;filelist.csv&quot;</code></pre>
 <li>Never use <code>sa</code></li>
 <li>Virus scanning + database files never mixes well</li>
 </ul>
-</section><section id="wrap-up-1" class="slide level2">
+</section><section id="wrap-up" class="slide level2">
 <h1>Wrap up</h1>
 <ul>
 <li>Questions during the break</li>
 <li>Get the slides: <a href="http://bit.ly/infRastructure">bit.ly/infRastructure</a></li>
 <li>Keep in touch: <span class="citation" data-cites="SteffLocke">@SteffLocke</span></li>
 </ul>
-</section></section>
-<section><section id="where-to-go-from-here" class="titleslide slide level1"><h1>Where to go from here</h1></section><section id="windows" class="slide level2">
-<h1>Windows</h1>
+</section><section id="windows-links" class="slide level2">
+<h1>Windows links</h1>
 <ul>
 <li><a href="https://technet.microsoft.com/en-us/library/bb625087.aspx">TechNet library</a></li>
 <li><a href="https://mva.microsoft.com/product-training/windows-server#!jobf=IT%20Professional&amp;lang=1033">Microsoft Virtual Academy</a></li>
 <li><a href="http://www.howtogeek.com/school/windows-network-sharing/">Windows networking lessons</a></li>
 </ul>
-</section><section id="linux" class="slide level2">
-<h1>Linux</h1>
+</section><section id="linux-links" class="slide level2">
+<h1>Linux links</h1>
 <ul>
 <li><a href="http://www.tldp.org/LDP/nag2/nag2.pdf">Linux Network Admin Guide</a></li>
 <li><a href="http://linuxsurvival.com/">Linux Survival</a></li>
 <li><a href="https://training.linuxfoundation.org/free-linux-training">Linux Foundation free training materials</a></li>
 </ul>
-</section><section id="misc-resources" class="slide level2">
-<h1>Misc resources</h1>
+</section><section id="misc.-links" class="slide level2">
+<h1>Misc. links</h1>
 <ul>
 <li><a href="https://12factor.net/">12 factor app</a></li>
-</ul>
-</section><section id="r-packages" class="slide level2">
-<h1>R packages</h1>
-<ul>
+<li><a href="http://www.bash.academy/">bash.academy</a></li>
 <li><a href="http://cran.r-project.org/package=iptools">iptools</a></li>
 </ul>
 </section></section>
