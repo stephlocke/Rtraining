@@ -19,8 +19,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # Agenda
 ## Agenda
 - Fundamentals
-- Details
 - [Bonus] Containers
+- Next Steps
 
 
 # Fundamentals
@@ -87,13 +87,18 @@ find . -maxdepth 1 ! -name '*.tar.gz' |
 cat filelist.csv
 ```
 
-# Details
-## Networks
-- I've always found this quite hard
-- Ipv6 is especially hard, but valuable
+## Call command line from R
+
+Interactions are available from `base` package
+
+```r
+?system  # not recommended
+?system2 # works better with Windows too
+?shell   # the lower level call
+```
 
 
-## Windows vs Linux Storage
+## Windows / Linux file differences
 
 - Windows
    + Case insensitive
@@ -111,7 +116,7 @@ cat filelist.csv
 ```{r autodoc, child='subDocs/docker.Rmd', eval=TRUE}
 ```
 
-# Wrap up
+# Next steps
 ## Hard-won lessons
 - Do work today so tomorrow's work is new and interesting
 - You're only as good as your last restore
@@ -124,19 +129,17 @@ cat filelist.csv
 - Get the slides: [bit.ly/infRastructure](http://bit.ly/infRastructure)
 - Keep in touch: @SteffLocke
 
-# Where to go from here
-## Windows
+## Windows links
 - [TechNet library](https://technet.microsoft.com/en-us/library/bb625087.aspx)
 - [Microsoft Virtual Academy](https://mva.microsoft.com/product-training/windows-server#!jobf=IT%20Professional&lang=1033)
 - [Windows networking lessons](http://www.howtogeek.com/school/windows-network-sharing/)
 
-## Linux
+## Linux links
 - [Linux Network Admin Guide](http://www.tldp.org/LDP/nag2/nag2.pdf)
 - [Linux Survival](http://linuxsurvival.com/)
 - [Linux Foundation free training materials](https://training.linuxfoundation.org/free-linux-training)
 
-## Misc resources
+## Misc. links
 - [12 factor app](https://12factor.net/)
-
-## R packages
+- [bash.academy](http://www.bash.academy/)
 - [iptools](http://cran.r-project.org/package=iptools)
