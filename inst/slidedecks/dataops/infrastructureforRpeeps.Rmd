@@ -20,12 +20,13 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Agenda
 - Fundamentals
 - Details
-- Containers
+- [Bonus] Containers
 
 
 # Fundamentals
 
-
+## Fundamentals
+![](https://github.com/stephlocke/lazyCDN/raw/master/network.PNG)
 
 ## Networks
 - Access
@@ -58,6 +59,7 @@ knitr::opts_chunk$set(echo = TRUE)
     + Permissions
 - Safety
     + User hygiene
+    + Patching
 
 
 ## PowerShell
@@ -94,11 +96,11 @@ cat filelist.csv
 ## Windows vs Linux Storage
 
 - Windows
-   - Case insensitive
-   - Permissions inherit from parent object by default
+   + Case insensitive
+   + Permissions inherit from parent object by default
 - Linux
-   - Case sensitive
-   - Permisions inherit from user or one of other many overriding ways
+   + Case sensitive
+   + Permisions inherit from user or one of other many overriding ways
 
 ## Windows OS Variants
 - Windows 10 - not a server
@@ -118,15 +120,15 @@ cat filelist.csv
 - Virus scanning + database files never mixes well
 
 ## Wrap up
-- More questions during the break
+- Questions during the break
 - Get the slides: [bit.ly/infRastructure](http://bit.ly/infRastructure)
 - Keep in touch: @SteffLocke
 
-# Follow on
+# Where to go from here
 ## Windows
 - [TechNet library](https://technet.microsoft.com/en-us/library/bb625087.aspx)
 - [Microsoft Virtual Academy](https://mva.microsoft.com/product-training/windows-server#!jobf=IT%20Professional&lang=1033)
-- [Windows networking lessons](http://www.howtogeek.com/school/windows-network-sharing/)]
+- [Windows networking lessons](http://www.howtogeek.com/school/windows-network-sharing/)
 
 ## Linux
 - [Linux Network Admin Guide](http://www.tldp.org/LDP/nag2/nag2.pdf)
@@ -135,3 +137,6 @@ cat filelist.csv
 
 ## Misc resources
 - [12 factor app](https://12factor.net/)
+
+## R packages
+- [iptools](http://cran.r-project.org/package=iptools)
