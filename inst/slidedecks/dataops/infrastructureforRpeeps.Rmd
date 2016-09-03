@@ -16,11 +16,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
 ```
 
-# Agenda
-## Agenda
-- Fundamentals
-- [Bonus] Containers
-- Next Steps
 
 
 # Fundamentals
@@ -143,3 +138,4 @@ Interactions are available from `base` package
 - [12 factor app](https://12factor.net/)
 - [bash.academy](http://www.bash.academy/)
 - [iptools](http://cran.r-project.org/package=iptools)
+- [IT abbreviations](https://en.wikipedia.org/wiki/List_of_computing_and_IT_abbreviations)
