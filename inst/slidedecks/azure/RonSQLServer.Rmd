@@ -1,0 +1,139 @@
+---
+title: 'Microsoft SQL Server and R Services'
+author: "Steph Locke (@SteffLocke)"
+date: '`r Sys.Date()`'
+output:
+  stephStyle::stephRevealSlideStyle
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
+```
+
+# SQL Server
+
+## Overview
+- RDBMS
+- Use on physical or virtual machines
+
+## Key things to manage
+- Data
+- Code
+- Permissions
+- Licences
+
+## Next steps
+- [Books Online](https://msdn.microsoft.com/en-us/library/ms130214.aspx)
+- [SQL Server Central](http://www.sqlservercentral.com/)
+
+
+# R
+
+## Overview
+> R is an integrated suite of software facilities for data manipulation, calculation and graphical display
+
+- Open source
+- In-memory & single-core (by default)
+- Multi-platform
+- Extensible environment
+- Delivered by the [R Foundation](https://www.r-project.org/foundation/), supported by the [R Consortium](https://www.r-consortium.org/), grown by R developers 
+- [r-project.org](http://www.r-project.org/)
+
+## What's it looks like?
+```{r}
+ggplot2::qplot(mpg, wt, data = mtcars, colour = cyl)
+```
+
+## Versions
+- ["Standard" R](https://r-project.org)
+- [Microsoft R Open](https://mran.revolutionanalytics.com/download/)
+- [Microsoft R Server](https://msdn.microsoft.com/en-us/library/mt674876.aspx)
+- [TERR](https://docs.tibco.com/products/tibco-enterprise-runtime-for-r)
+- [Oracle R](http://www.oracle.com/technetwork/database/database-technologies/r/r-distribution/overview/index.html)
+
+## Key things to manage
+- Packages
+- RAM
+- Code
+
+## Next steps
+- [Learn R](https://datacamp.com)
+- [Check out some of my other intros to R](http://stephlocke.info/Rtraining)
+
+# SQL Server + R Services
+
+## Overview
+- Call R through SQL Server
+
+## What's it looks like?
+```
+EXECUTE   sp_execute_external_script
+                @language = N'R'
+              , @script = N'OutputDataSet <- df<-as.data.frame(installed.packages()[,1])'
+              , @input_data_1 = N'SELECT 1 as Col'
+ WITH RESULT SETS ((col varchar(50) not null))        
+```
+
+## 2016 Editions
+- Express - R Open or base R
+- Standard - R Open or base R
+- Enterprise - R Server
+
+[SQL Server feature comparison](https://www.microsoft.com/en-ie/sql-server/sql-server-editions)
+
+
+## Key things to manage
+- RAM & CPU
+- Licenses vs Server resources
+- Permissions
+- Code
+
+## Next steps
+- [Tomaz Kastrun blog](https://tomaztsql.wordpress.com/)
+- [BOL](https://msdn.microsoft.com/en-us/library/mt604845.aspx)
+
+# Deploying SQL Server & R Services
+
+## Azure is your friend
+- Automatable
+- Disposable
+- Scalable
+
+## ARM templates
+- JSON specification of resources
+- Paramaterised for reuse
+- Downloadable
+- Deploy in many different languages
+
+## PowerShell
+- Azure modules
+- Use ARM templates
+- Used in Azure Automation
+
+## Next steps
+- [Authoring ARM templates](https://azure.microsoft.com/en-gb/documentation/articles/resource-group-authoring-templates/)
+- [PowerShell basics](https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/fundamental/windows-powershell-basics)
+- [Azure overview](https://azure.microsoft.com/en-gb/overview/what-is-azure/)
+
+# Other Microsoft & R things
+
+## Azure ML
+- GUI data science
+- R & Python
+- Notebooks
+- Code deployment potential
+- Easy webservices
+
+## R in PowerBI
+- Interactive reports
+- R data source
+- R graphics
+
+# Wrapup
+## Wrapup
+- Thank you
+- Check out the Next Steps
+- Get in touch! [T: SteffLocke](https://twitter.com/stefflocke)
