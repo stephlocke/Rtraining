@@ -7,6 +7,8 @@ addons:
     - unixodbc-dev
     - libcurl4-openssl-dev
     - texlive-full
+r_github_packages:
+  - cran/survival
 after_success:
   - R CMD build .
   - Rscript -e 'devtools::install(pkg = ".")'
