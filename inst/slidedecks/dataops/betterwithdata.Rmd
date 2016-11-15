@@ -3,7 +3,7 @@ title: 'Getting better with data'
 author: "Steph Locke (@SteffLocke)"
 date: '`r Sys.Date()`'
 output:
-  Rtraining::stephRevealSlideStyle
+  stephStyle::stephRevealSlideStyle
 ---
 
 ```{r setup, include=FALSE}

@@ -3,7 +3,7 @@ title: "Cut the R Learning Curve"
 author: "Steph Locke (@SteffLocke)"
 date:  "`r Sys.Date()`"
 output:
-  Rtraining::stephRevealSlideStyle
+  stephStyle::stephRevealSlideStyle
 ---
 
 ```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
