@@ -16,16 +16,16 @@ output:
 - Saved from "Next, Next, Next"
 - Insanely disposable
 
-## How to use it
+## How to use it (locally)
 - Install it
 - Run the Docker Quickstart Terminal
 
 ```
-> docker run -it ubuntu /bin/bash
+docker run -it ubuntu /bin/bash
 ```
 
 ## Considerations
-- *Currently* uses a VM that requires memory allocation (default = 2 Gb)
+- *[Changing]* Uses a VM that requires memory allocation (default = 2 Gb) in Windows
 - Make sure to bin old images or instances
 - Big shift in thinking
 

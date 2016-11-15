@@ -1,0 +1,140 @@
+---
+title: 'Data + Docker = Disconbobulating?'
+author: "Steph Locke (@SteffLocke)"
+date: '`r Sys.Date()`'
+output:
+  stephStyle::stephRevealSlideStyle
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
+```
+
+# Agenda
+## Agenda
+- Data
+- Docker
+- Data + Docker
+- Demo setup
+- Basic demo
+- A database
+- Solving database challenges
+
+# Data
+## Data
+Data is a business' life blood. For some companies, it's their entire value proposition. The generation, access, and retention of data is paramount. This yields a few rules of thumb:
+
+- Never delete, never surrender 
+- Change with due consideration
+- Keep data safe
+
+> Oh, and apps need config too! That's a type of data
+
+```{r autodoc, child='./subDocs/Docker.Rmd', eval=TRUE}
+```
+
+# Data + Docker
+## Data + Docker
+Whenever you kill a container, you lose it's contents so data can't be stored in a container. So what's the point?
+
+## External volumes
+Docker containers can access a file share external to them.
+
+This is a great way to persist data, especially if you use an external facility like Azure File Storage or Amazon S3 so they handle all infrastrastructure stuff.
+
+## Creating external volumes
+
+```
+# Create azure volumes
+docker volume create \
+       --name logs \
+       -d azurefile \
+       -o share=logs
+```
+
+## Using external volumes
+```
+docker run \
+    -v logs:/logs \
+    stephlocke/ddd-simplewrites
+```
+
+## A contrasting opinion
+Read the [Joyent piece on persisting data](https://www.joyent.com/blog/persistent-storage-patterns)
+
+# Basic Demo
+## Write to a file system
+## Multiple containers writing to same file
+>- Why is the way bad?
+
+## Reading data
+
+# Databases
+## Starting a database
+Get a docker container up and running. This will initialise database files in the directory.
+
+```
+docker run \
+   -d -v dbs:/var/lib/mysql \
+   -p 6603:3306 \
+   --env="MYSQL_ROOT_PASSWORD=mypassword" \
+   --name mydb \
+   mysql
+```
+
+## Attach to existing database
+```
+docker run \
+   -d -v dbs:/var/lib/mysql \
+   -p 6603:3306 \
+   --env="MYSQL_ROOT_PASSWORD=mypassword" \
+   --name mydb \
+   mysql
+```
+
+>- Can we do this multiple times with mysql?
+>- What's the problem, even if we could?
+
+# Solving database challenges
+
+## Per instance databases
+- Pro: Scale resources per customer
+- Pro: Put other aspects per customer and control roll-out
+- Pro/Con: Can't access all the customer's data at once
+- Con: More migration operations
+
+## DBaaS
+- Pro: Someone else worries about infrastructure
+- Pro: Can put into practice different architectures to suit
+- Pro/Con: The data is on someone else's machine
+- Con: Unless containers hosted near the SaaS data store, latency
+
+## Self-healing Docker clusters
+- Pro: All Docker solution
+- Pro: Keeps control in the hands of the dev
+- Pro/con: The data is on your machines
+- Con: Quite a complex solution with a low number of OoB solutions
+
+## Schema changes
+1. Use something like Flyway and migrate schema on new container creation
+2. Use something schemaless
+3. Use DBaaS and apply in one location, using feature flags etc for rollout
+
+## Further reading
+- [Elastic database](https://azure.microsoft.com/en-gb/documentation/articles/sql-database-elastic-pool/)
+- [AWS RDS](https://aws.amazon.com/rds/)
+- [Couchbase on Docker](http://blog.couchbase.com/2016/july/docker-services-stack-distributed-application-bundle)
+- [Flyway](http://zoltanaltfatter.com/2016/03/14/database-migration-with-flyway/)
+- [DocumentDB](https://azure.microsoft.com/en-us/services/documentdb/)
+- [Database projects CI/CD](https://blogs.msdn.microsoft.com/ssdt/2016/04/06/sqldb-cicd-intro/)
+- [Feature flags](https://launchdarkly.com/featureflags.html)
+
+# Wrapup
+## Wrapup
+- Thank you!
+- Questions?
+- Get the stuff [GH:stephlocke/datadockerdisconbobulating](https://github.com/stephlocke/datadockerdisconbobulating)
+- Follow up [T: SteffLocke](https://twitter.com/stefflocke)
