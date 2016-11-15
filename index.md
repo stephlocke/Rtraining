@@ -9,6 +9,7 @@ Presentations
 -------------------------------------------------------------------
 [Getting better with data](betterwithdata.html)                    
 [Board Packs](boardpack.html)                                      
+[Data  Docker  Disconbobulating](datadockerdisconbobulating.html)  
 [Git in 5](gitin5.html)                                            
 [Infrastructure for R peeps](infrastructureforRpeeps.html)         
 [Knowing your Rs from your elbow](KnowingYourRsFromYourElbow.html) 
@@ -16,6 +17,7 @@ Presentations
 [R for developers](r101.html)                                      
 [Intro to R](Rintro.html)                                          
 [Cut the R Learning Curve](RLearningCurve.html)                    
+[Microsoft SQL Server and R Services](RonSQLServer.html)           
 [Skilling up to code with data](skillinguptocodewithdata.html)     
 [Stats 101](stats101.html)                                         
 [Analytical web services](webservices.html)                        
