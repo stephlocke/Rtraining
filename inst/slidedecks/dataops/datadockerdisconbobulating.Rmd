@@ -33,7 +33,7 @@ Data is a business' life blood. For some companies, it's their entire value prop
 
 > Oh, and apps need config too! That's a type of data
 
-```{r autodoc, child='./subDocs/Docker.Rmd', eval=TRUE}
+```{r autodoc, child='./subDocs/docker.Rmd', eval=TRUE}
 ```
 
 # Data + Docker
