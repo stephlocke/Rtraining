@@ -9,7 +9,7 @@ output:
 ## Devices {data-background="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/devices.jpg"}
 
 ## Software 
-![](http://www.alixpartners.com/en/Portals/alix/IC%20Copy%20&%20Images/Aero/2013%20AD%20Cybersecurity/Cyber_Security_Slide1.png)
+<!--![](http://www.alixpartners.com/en/Portals/alix/IC%20Copy%20&%20Images/Aero/2013%20AD%20Cybersecurity/Cyber_Security_Slide1.png)-->
 
 ## Crime 
 ![](https://raw.githubusercontent.com/stephlocke/lazyCDN/master/wefglobalrisks.png)
