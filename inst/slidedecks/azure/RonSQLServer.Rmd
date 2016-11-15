@@ -42,7 +42,7 @@ knitr::opts_chunk$set(echo = TRUE)
 - Delivered by the [R Foundation](https://www.r-project.org/foundation/), supported by the [R Consortium](https://www.r-consortium.org/), grown by R developers 
 - [r-project.org](http://www.r-project.org/)
 
-## What's it looks like?
+## What's it look like?
 ```{r}
 ggplot2::qplot(mpg, wt, data = mtcars, colour = cyl)
 ```
@@ -68,7 +68,7 @@ ggplot2::qplot(mpg, wt, data = mtcars, colour = cyl)
 ## Overview
 - Call R through SQL Server
 
-## What's it looks like?
+## What's it look like?
 ```
 EXECUTE   sp_execute_external_script
                 @language = N'R'
@@ -112,6 +112,9 @@ EXECUTE   sp_execute_external_script
 - Azure modules
 - Use ARM templates
 - Used in Azure Automation
+
+## Demo
+[Github](https://github.com/stephlocke/SQLServerVM-tidyverse)
 
 ## Next steps
 - [Authoring ARM templates](https://azure.microsoft.com/en-gb/documentation/articles/resource-group-authoring-templates/)
