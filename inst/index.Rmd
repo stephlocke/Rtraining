@@ -24,7 +24,7 @@ fileTbl<-function(f,name, yml=TRUE){
   ymls<-lapply(f,gettitle)
   if(yml) titles<-ymls
   if(!yml) titles<-names
-  df<-data.frame(paste0(" [",titles,"](",names,".html)"))
+  df<-data.frame(paste0(" [",titles,"](",names,".html)  "))
   names(df)<-name
 knitr::kable(df)
 }
