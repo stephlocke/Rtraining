@@ -10,6 +10,7 @@ Presentations
 [Getting better with data](betterwithdata.html)                    
 [Board Packs](boardpack.html)                                      
 [Data  Docker  Disconbobulating](datadockerdisconbobulating.html)  
+[datatable in 5 minutes](datatablein5.html)                        
 [Git in 5](gitin5.html)                                            
 [Infrastructure for R peeps](infrastructureforRpeeps.html)         
 [Knowing your Rs from your elbow](KnowingYourRsFromYourElbow.html) 
