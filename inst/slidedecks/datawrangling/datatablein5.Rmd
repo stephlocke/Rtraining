@@ -1,0 +1,53 @@
+---
+title: "data.table in 5 minutes"
+author: "Steph Locke"
+date:  "`r Sys.Date()`"
+output:
+  stephStyle::stephRevealSlideStyle
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, dev="svg",
+     out.height = "500px",  strip.white=TRUE
+     ,collapse = TRUE, dev.args = list(bg="transparent")
+)
+library(data.table)
+```
+
+## data.table 
+![](https://github.com/stephlocke/lazyCDN/raw/master/datatable.png)
+
+## data.table basics
+Task | How 
+------------- | ------------- 
+Read CSV | `irisDT <- fread("iris.csv")`
+Return everything | `irisDT       irisDT[  ]`
+Select columns | `irisDT[  ,  .(Sepal.Length, Sepal.Width) ]`
+Update column | `irisDT[,Sepal.Area:=Sepal.Length*Sepal.Width]`
+Restrict rows | `irisDT[ Sepal.Length >=5 , ]`
+Aggregate | `irisDT[ , mean(Sepal.Length)]`
+Aggregate by group | `irisDT[ , mean(Sepal.Length) , Species ]`
+Count | `irisDT[ , .N ]`
+
+## data.table awesomeness - IO
+```{r echo=FALSE, warning=FALSE,results='hide'}
+colnames<-paste0("reallyLongColumnNamesSuuuuuck",1:13000)
+rows<-13000
+sampledt<-data.table(a=1:rows)
+sampledt[,c(colnames):=1]
+fwrite(sampledt,"sample.csv")
+```
+
+```{r}
+qRead<-fread("sample.csv")
+system.time(
+fwrite(qRead,"sample.csv"))
+```
+
+## data.table awesomeness - groups
+```{r}
+irisDT<-data.table(iris)
+knitr::kable(
+  irisDT[, .SD[which.min(Petal.Length)]
+       , Species])
+```
