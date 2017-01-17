@@ -1,8 +1,8 @@
 ## Steph Locke {data-background="https://github.com/stephlocke/lazyCDN/raw/master/StephLocke.jpg"}
-- Lead Data Scientist @ CensorNet
-- Presenter on BI, DataOps, and Data Science
+- Locke Data
+- Presenter on Data Science, BI, and DataOps
 - Microsoft Data Platform MVP
-- User group leader: [SQL Cardiff](http://www.meetup.com/Cardiff-SQL-Server-User-Group), [CaRdiff](http://www.meetup.com/Cardiff-R-User-Group/), & [diff.Net](http://www.meetup.com/diff-NET/)
-- Conference organiser: [satRdays](http://planning.satrdays.org) & [SQL Relay](http://sqlrelay.co.uk)
+- User group leader: [MSFT Stack](http://www.meetup.com/MSFT Stack) & [CaRdiff](http://www.meetup.com/Cardiff-R-User-Group/)
+- Conference organiser: [satRdays](http://planning.satrdays.org) & [Battle of the Beards](http://battleofthebeards.info)
 
 [github.com/StephLocke](https://github.com/StephLocke) | [itsalocke.com](http://itsalocke.com) | [T: SteffLocke](https://twitter.com/stefflocke)
