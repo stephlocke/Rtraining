@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Steph Locke (@SteffLocke)" />
-  <meta name="dcterms.date" content="2016-12-07" />
+  <meta name="dcterms.date" content="2017-01-17" />
   <title>Data + Docker = Disconbobulating?</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -81,17 +81,17 @@
 <section>
     <h1 class="title">Data + Docker = Disconbobulating?</h1>
     <h2 class="author">Steph Locke (<span class="citation" data-cites="SteffLocke">@SteffLocke</span>)</h2>
-    <h3 class="date">2016-12-07</h3>
+    <h3 class="date">2017-01-17</h3>
 </section>
 
 <section id="steph-locke" class="slide level2" data-background="https://github.com/stephlocke/lazyCDN/raw/master/StephLocke.jpg">
 <h1>Steph Locke</h1>
 <ul>
-<li>Lead Data Scientist @ CensorNet</li>
-<li>Presenter on BI, DataOps, and Data Science</li>
+<li>Locke Data</li>
+<li>Presenter on Data Science, BI, and DataOps</li>
 <li>Microsoft Data Platform MVP</li>
-<li>User group leader: <a href="http://www.meetup.com/Cardiff-SQL-Server-User-Group">SQL Cardiff</a>, <a href="http://www.meetup.com/Cardiff-R-User-Group/">CaRdiff</a>, &amp; <a href="http://www.meetup.com/diff-NET/">diff.Net</a></li>
-<li>Conference organiser: <a href="http://planning.satrdays.org">satRdays</a> &amp; <a href="http://sqlrelay.co.uk">SQL Relay</a></li>
+<li>User group leader: <a href="http://www.meetup.com/MSFT%20Stack">MSFT Stack</a> &amp; <a href="http://www.meetup.com/Cardiff-R-User-Group/">CaRdiff</a></li>
+<li>Conference organiser: <a href="http://planning.satrdays.org">satRdays</a> &amp; <a href="http://battleofthebeards.info">Battle of the Beards</a></li>
 </ul>
 <p><a href="https://github.com/StephLocke">github.com/StephLocke</a> | <a href="http://itsalocke.com">itsalocke.com</a> | <a href="https://twitter.com/stefflocke">T: SteffLocke</a></p>
 </section>
@@ -115,9 +115,22 @@
 <li>Change with due consideration</li>
 <li>Keep data safe</li>
 </ul>
-<blockquote>
-<p>Oh, and apps need config too! That’s a type of data</p>
-</blockquote>
+</section><section id="types-of-data" class="slide level2">
+<h1>Types of data</h1>
+<ul>
+<li>Config</li>
+<li>Reference data</li>
+<li>Telemetry</li>
+<li>Transactional data</li>
+</ul>
+</section><section id="challenges" class="slide level2">
+<h1>Challenges</h1>
+<ul>
+<li>Refreshing data</li>
+<li>Scaling access</li>
+<li>Being safe against disaster</li>
+<li>Security</li>
+</ul>
 </section></section>
 <section><section id="docker" class="titleslide slide level1" data-background-iframe="https://www.docker.com/"><h1>Docker</h1></section><section id="docker-1" class="slide level2">
 <h1>Docker</h1>
@@ -133,7 +146,18 @@
 <li>Scripted installs</li>
 <li>Saved from “Next, Next, Next”</li>
 <li>Insanely disposable</li>
+<li>Control your ops</li>
+<li>Rapidly developing</li>
 </ul>
+</section><section id="why-not-use-it" class="slide level2">
+<h1>Why not use it?</h1>
+<ul>
+<li>Insanely disposable</li>
+<li>Control your ops</li>
+<li>Rapidly developing</li>
+</ul>
+</section><section id="why-not-use-it-versions" class="slide level2" data-background="http://i.giphy.com/1SMYk3HBzaK3e.gif">
+<h1>Why not use it? Versions</h1>
 </section><section id="how-to-use-it-locally" class="slide level2">
 <h1>How to use it (locally)</h1>
 <ul>
@@ -141,13 +165,16 @@
 <li>Run the Docker Quickstart Terminal</li>
 </ul>
 <pre><code>docker run -it ubuntu /bin/bash</code></pre>
-</section><section id="considerations" class="slide level2">
-<h1>Considerations</h1>
-<ul>
-<li><em>[Changing]</em> Uses a VM that requires memory allocation (default = 2 Gb) in Windows</li>
-<li>Make sure to bin old images or instances</li>
-<li>Big shift in thinking</li>
-</ul>
+</section><section id="how-to-use-it---demo" class="slide level2">
+<h1>How to use it - demo</h1>
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/IK0JXZ_0dIs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+</iframe>
+</section><section id="docker-machine" class="slide level2">
+<h1>Docker-Machine</h1>
+<p><a href="https://docs.docker.com/machine/overview/">docker-machine</a> is needed to run containers, work on remote machines hosting docker containers, and to work with swarm clusters</p>
+</section><section id="docker-plugins" class="slide level2">
+<h1>Docker plugins</h1>
+<p><a href="https://docs.docker.com/engine/extend/legacy_plugins/">Plugins</a> allow you to extend docker capabilities. Most plugins are network and file system related.</p>
 </section><section id="follow-on" class="slide level2">
 <h1>Follow on</h1>
 <ul>
@@ -174,19 +201,38 @@ docker volume create \
 <pre><code>docker run \
     -v logs:/logs \
     stephlocke/ddd-simplewrites</code></pre>
-</section><section id="a-contrasting-opinion" class="slide level2">
-<h1>A contrasting opinion</h1>
-<p>Read the <a href="https://www.joyent.com/blog/persistent-storage-patterns">Joyent piece on persisting data</a></p>
+</section></section>
+<section><section id="demo-setup" class="titleslide slide level1"><h1>Demo Setup</h1></section><section id="process" class="slide level2">
+<h1>Process</h1>
+<ol type="1">
+<li>Create a docker-machine on Azure</li>
+<li>Configure docker-machine to use external file system plugin</li>
+<li>Create mapped volumes</li>
+</ol>
+</section><section id="core-script" class="slide level2" data-background-iframe="https://github.com/stephlocke/datadockerdisconbobulating/blob/master/setup/azure-docker-machine.sh">
+<h1>Core script</h1>
+<p><a href="https://github.com/stephlocke/datadockerdisconbobulating/blob/master/setup/azure-docker-machine.sh">azure-docker-machine.sh</a></p>
+</section><section id="plugin-script" class="slide level2" data-background-iframe="https://github.com/stephlocke/datadockerdisconbobulating/blob/master/setup/azure-file-plugin.sh">
+<h1>Plugin script</h1>
+<p><a href="https://github.com/stephlocke/datadockerdisconbobulating/blob/master/setup/azure-file-plugin.sh">azure-file-plugin.sh</a></p>
+</section><section id="all-together" class="slide level2">
+<h1>All together</h1>
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/FvmoST0kHDw?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+</iframe>
 </section></section>
 <section><section id="basic-demo" class="titleslide slide level1"><h1>Basic Demo</h1></section><section id="write-to-a-file-system" class="slide level2">
 <h1>Write to a file system</h1>
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/_lfPRaObCtU?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+</iframe>
 </section><section id="multiple-containers-writing-to-same-file" class="slide level2">
 <h1>Multiple containers writing to same file</h1>
-<ul>
-<li class="fragment">Why is the way bad?</li>
-</ul>
+<blockquote>
+<p>Why is this way bad?</p>
+</blockquote>
 </section><section id="reading-data" class="slide level2">
 <h1>Reading data</h1>
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/v6TjHI_HRF4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+</iframe>
 </section></section>
 <section><section id="databases" class="titleslide slide level1"><h1>Databases</h1></section><section id="starting-a-database" class="slide level2">
 <h1>Starting a database</h1>
@@ -197,6 +243,10 @@ docker volume create \
    --env=&quot;MYSQL_ROOT_PASSWORD=mypassword&quot; \
    --name mydb \
    mysql</code></pre>
+</section><section id="make-a-database" class="slide level2">
+<h1>Make a database</h1>
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/LEnl89NjrhE?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+</iframe>
 </section><section id="attach-to-existing-database" class="slide level2">
 <h1>Attach to existing database</h1>
 <pre><code>docker run \
@@ -205,10 +255,20 @@ docker volume create \
    --env=&quot;MYSQL_ROOT_PASSWORD=mypassword&quot; \
    --name mydb \
    mysql</code></pre>
+</section><section id="attach-to-existing" class="slide level2">
+<h1>Attach to existing</h1>
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/Cb1DKLfULJ0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+</iframe>
+</section><section id="multiple-databases-running-off-same-files" class="slide level2">
+<h1>Multiple databases running off same files</h1>
 <ul>
 <li class="fragment">Can we do this multiple times with mysql?</li>
 <li class="fragment">What’s the problem, even if we could?</li>
 </ul>
+</section><section id="multiple-databases-same-files" class="slide level2">
+<h1>Multiple databases, same files</h1>
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/hFZ75w5-JLs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+</iframe>
 </section></section>
 <section><section id="solving-database-challenges" class="titleslide slide level1"><h1>Solving database challenges</h1></section><section id="per-instance-databases" class="slide level2">
 <h1>Per instance databases</h1>
@@ -253,7 +313,13 @@ docker volume create \
 <li><a href="https://launchdarkly.com/featureflags.html">Feature flags</a></li>
 </ul>
 </section></section>
-<section><section id="wrapup" class="titleslide slide level1"><h1>Wrapup</h1></section><section id="wrapup-1" class="slide level2">
+<section><section id="wrapup" class="titleslide slide level1"><h1>Wrapup</h1></section><section id="maybe-docker-will-solve-some-challenges-for-us" class="slide level2">
+<h1>Maybe Docker will solve some challenges for us?</h1>
+<p><a href="https://blog.docker.com/2016/12/docker-acquires-infinit/">Docker acquires Infinit</a>, who’ve been building a distributed file system which Docker could utilise. Watch that space!</p>
+</section><section id="a-contrasting-opinion" class="slide level2">
+<h1>A contrasting opinion</h1>
+<p>Read the <a href="https://www.joyent.com/blog/persistent-storage-patterns">Joyent piece on persisting data</a></p>
+</section><section id="wrapup-1" class="slide level2">
 <h1>Wrapup</h1>
 <ul>
 <li>Thank you!</li>
@@ -288,6 +354,7 @@ docker volume create \
         // specified using percentage units.
         width: 1200,
         height: 800,
+
 
         // Optional reveal.js plugins
         dependencies: [

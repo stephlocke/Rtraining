@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Steph Locke (@SteffLocke)" />
-  <meta name="dcterms.date" content="2016-12-07" />
+  <meta name="dcterms.date" content="2017-01-17" />
   <title>Being lazy with infrastructure</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -81,17 +81,17 @@
 <section>
     <h1 class="title">Being lazy with infrastructure</h1>
     <h2 class="author">Steph Locke (<span class="citation" data-cites="SteffLocke">@SteffLocke</span>)</h2>
-    <h3 class="date">2016-12-07</h3>
+    <h3 class="date">2017-01-17</h3>
 </section>
 
 <section id="steph-locke" class="slide level2" data-background="https://github.com/stephlocke/lazyCDN/raw/master/StephLocke.jpg">
 <h1>Steph Locke</h1>
 <ul>
-<li>Lead Data Scientist @ CensorNet</li>
-<li>Presenter on BI, DataOps, and Data Science</li>
+<li>Locke Data</li>
+<li>Presenter on Data Science, BI, and DataOps</li>
 <li>Microsoft Data Platform MVP</li>
-<li>User group leader: <a href="http://www.meetup.com/Cardiff-SQL-Server-User-Group">SQL Cardiff</a>, <a href="http://www.meetup.com/Cardiff-R-User-Group/">CaRdiff</a>, &amp; <a href="http://www.meetup.com/diff-NET/">diff.Net</a></li>
-<li>Conference organiser: <a href="http://planning.satrdays.org">satRdays</a> &amp; <a href="http://sqlrelay.co.uk">SQL Relay</a></li>
+<li>User group leader: <a href="http://www.meetup.com/MSFT%20Stack">MSFT Stack</a> &amp; <a href="http://www.meetup.com/Cardiff-R-User-Group/">CaRdiff</a></li>
+<li>Conference organiser: <a href="http://planning.satrdays.org">satRdays</a> &amp; <a href="http://battleofthebeards.info">Battle of the Beards</a></li>
 </ul>
 <p><a href="https://github.com/StephLocke">github.com/StephLocke</a> | <a href="http://itsalocke.com">itsalocke.com</a> | <a href="https://twitter.com/stefflocke">T: SteffLocke</a></p>
 </section>
@@ -177,7 +177,18 @@
 <li>Scripted installs</li>
 <li>Saved from “Next, Next, Next”</li>
 <li>Insanely disposable</li>
+<li>Control your ops</li>
+<li>Rapidly developing</li>
 </ul>
+</section><section id="why-not-use-it" class="slide level2">
+<h1>Why not use it?</h1>
+<ul>
+<li>Insanely disposable</li>
+<li>Control your ops</li>
+<li>Rapidly developing</li>
+</ul>
+</section><section id="why-not-use-it-versions" class="slide level2" data-background="http://i.giphy.com/1SMYk3HBzaK3e.gif">
+<h1>Why not use it? Versions</h1>
 </section><section id="how-to-use-it-locally" class="slide level2">
 <h1>How to use it (locally)</h1>
 <ul>
@@ -185,13 +196,16 @@
 <li>Run the Docker Quickstart Terminal</li>
 </ul>
 <pre><code>docker run -it ubuntu /bin/bash</code></pre>
-</section><section id="considerations-1" class="slide level2">
-<h1>Considerations</h1>
-<ul>
-<li><em>[Changing]</em> Uses a VM that requires memory allocation (default = 2 Gb) in Windows</li>
-<li>Make sure to bin old images or instances</li>
-<li>Big shift in thinking</li>
-</ul>
+</section><section id="how-to-use-it---demo" class="slide level2">
+<h1>How to use it - demo</h1>
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/IK0JXZ_0dIs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+</iframe>
+</section><section id="docker-machine" class="slide level2">
+<h1>Docker-Machine</h1>
+<p><a href="https://docs.docker.com/machine/overview/">docker-machine</a> is needed to run containers, work on remote machines hosting docker containers, and to work with swarm clusters</p>
+</section><section id="docker-plugins" class="slide level2">
+<h1>Docker plugins</h1>
+<p><a href="https://docs.docker.com/engine/extend/legacy_plugins/">Plugins</a> allow you to extend docker capabilities. Most plugins are network and file system related.</p>
 </section><section id="follow-on" class="slide level2">
 <h1>Follow on</h1>
 <ul>
@@ -277,6 +291,7 @@
         // specified using percentage units.
         width: 1200,
         height: 800,
+
 
         // Optional reveal.js plugins
         dependencies: [
