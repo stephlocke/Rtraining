@@ -31,7 +31,17 @@ Data is a business' life blood. For some companies, it's their entire value prop
 - Change with due consideration
 - Keep data safe
 
-> Oh, and apps need config too! That's a type of data
+## Types of data
+- Config
+- Reference data
+- Telemetry
+- Transactional data
+
+## Challenges
+- Refreshing data
+- Scaling access
+- Being safe against disaster
+- Security
 
 ```{r autodoc, child='./subDocs/docker.Rmd', eval=TRUE}
 ```
@@ -44,6 +54,7 @@ Whenever you kill a container, you lose it's contents so data can't be stored in
 Docker containers can access a file share external to them.
 
 This is a great way to persist data, especially if you use an external facility like Azure File Storage or Amazon S3 so they handle all infrastrastructure stuff.
+
 
 ## Creating external volumes
 
@@ -62,15 +73,32 @@ docker run \
     stephlocke/ddd-simplewrites
 ```
 
-## A contrasting opinion
-Read the [Joyent piece on persisting data](https://www.joyent.com/blog/persistent-storage-patterns)
+
+
+# Demo Setup
+## Process
+1. Create a docker-machine on Azure
+2. Configure docker-machine to use external file system plugin
+3. Create mapped volumes
+
+## Core script {data-background-iframe="https://github.com/stephlocke/datadockerdisconbobulating/blob/master/setup/azure-docker-machine.sh"}
+[azure-docker-machine.sh](https://github.com/stephlocke/datadockerdisconbobulating/blob/master/setup/azure-docker-machine.sh)
+
+## Plugin script {data-background-iframe="https://github.com/stephlocke/datadockerdisconbobulating/blob/master/setup/azure-file-plugin.sh"}
+[azure-file-plugin.sh](https://github.com/stephlocke/datadockerdisconbobulating/blob/master/setup/azure-file-plugin.sh)
+
+## All together
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/FvmoST0kHDw?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
 # Basic Demo
 ## Write to a file system
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/_lfPRaObCtU?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
 ## Multiple containers writing to same file
->- Why is the way bad?
+> Why is this way bad?
 
 ## Reading data
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/v6TjHI_HRF4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
 # Databases
 ## Starting a database
@@ -85,6 +113,9 @@ docker run \
    mysql
 ```
 
+## Make a database
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/LEnl89NjrhE?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
 ## Attach to existing database
 ```
 docker run \
@@ -95,8 +126,15 @@ docker run \
    mysql
 ```
 
+## Attach to existing
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/Cb1DKLfULJ0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+## Multiple databases running off same files
 >- Can we do this multiple times with mysql?
 >- What's the problem, even if we could?
+
+## Multiple databases, same files
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/hFZ75w5-JLs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
 # Solving database challenges
 
@@ -133,6 +171,12 @@ docker run \
 - [Feature flags](https://launchdarkly.com/featureflags.html)
 
 # Wrapup
+## Maybe Docker will solve some challenges for us?
+[Docker acquires Infinit](https://blog.docker.com/2016/12/docker-acquires-infinit/), who've been building a distributed file system which Docker could utilise. Watch that space!
+
+## A contrasting opinion
+Read the [Joyent piece on persisting data](https://www.joyent.com/blog/persistent-storage-patterns)
+
 ## Wrapup
 - Thank you!
 - Questions?

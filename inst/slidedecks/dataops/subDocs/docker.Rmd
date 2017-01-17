@@ -15,6 +15,15 @@ output:
 - Scripted installs
 - Saved from "Next, Next, Next"
 - Insanely disposable
+- Control your ops
+- Rapidly developing
+
+## Why not use it?
+- Insanely disposable
+- Control your ops
+- Rapidly developing
+
+## Why not use it? Versions {data-background="http://i.giphy.com/1SMYk3HBzaK3e.gif"}
 
 ## How to use it (locally)
 - Install it
@@ -24,10 +33,14 @@ output:
 docker run -it ubuntu /bin/bash
 ```
 
-## Considerations
-- *[Changing]* Uses a VM that requires memory allocation (default = 2 Gb) in Windows
-- Make sure to bin old images or instances
-- Big shift in thinking
+## How to use it - demo 
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/IK0JXZ_0dIs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+## Docker-Machine
+[docker-machine](https://docs.docker.com/machine/overview/) is needed to run containers, work on remote machines hosting docker containers, and to work with swarm clusters
+
+## Docker plugins
+[Plugins](https://docs.docker.com/engine/extend/legacy_plugins/) allow you to extend docker capabilities. Most plugins are network and file system related.
 
 ## Follow on
 - [Why script infrastructure?](http://www.cio.com/article/3017722/infrastructure/what-is-infrastructure-as-code-and-why-should-you-embrace-it.html)
