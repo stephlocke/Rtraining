@@ -136,24 +136,66 @@ docker run \
 ## Multiple databases, same files
 <iframe width="1280" height="720" src="https://www.youtube.com/embed/hFZ75w5-JLs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-# Solving database challenges
+# Database challenges
 
+## Primary challenges
+- Refreshing data
+- Scaling access
+- Being safe against disaster
+- Security
+
+## Refreshable data
+Reference data can be stored in a number of ways:
+
+1. A core DB that gets replicated into local db
+2. A core DB and cross DB queries
+3. Take this data out of the DB and into caches
+
+## Scaling access
+To scale access, you need to avoid locks:
+
+1. Performance tuning goes a long way
+2. Distributed databases
+3. Sharding
+
+## Disaster-safe
+Keeping your data up and available:
+
+1. Self healing DB clusters
+1. Backups and restore
+2. Let someone else take care of it
+
+## Security
+Data needs to be secure, especially in a multi-tenant model:
+
+1. ACLs and row-level security
+2. Physically seperated databases
+
+# Translating challenges to technical solutions
 ## Per instance databases
 - Pro: Scale resources per customer
 - Pro: Put other aspects per customer and control roll-out
 - Pro/Con: Can't access all the customer's data at once
 - Con: More migration operations
 
+## File / NoSQL dbs
+- Pro: Single db
+- Pro: Could do without schema migration efforts
+- Pro / Con: Unlikely to get ACID
+- Con: ACLs
+
 ## DBaaS
 - Pro: Someone else worries about infrastructure
-- Pro: Can put into practice different architectures to suit
-- Pro/Con: The data is on someone else's machine
-- Con: Unless containers hosted near the SaaS data store, latency
+- Pro: Can put into practice different single db / sharded db to suit
+- Pro: Scale resources per customer
+- Pro/Con: You don't manage the infrastructure
+- Con: Unless containers hosted near the SaaS data store, potential latency
+
 
 ## Self-healing Docker clusters
 - Pro: All Docker solution
 - Pro: Keeps control in the hands of the dev
-- Pro/con: The data is on your machines
+- Pro/con: The data is probably on infrastructure you manage
 - Con: Quite a complex solution with a low number of OoB solutions
 
 ## Schema changes
