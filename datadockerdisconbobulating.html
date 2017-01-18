@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Steph Locke (@SteffLocke)" />
-  <meta name="dcterms.date" content="2017-01-17" />
+  <meta name="dcterms.date" content="2017-01-18" />
   <title>Data + Docker = Disconbobulating?</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -81,7 +81,7 @@
 <section>
     <h1 class="title">Data + Docker = Disconbobulating?</h1>
     <h2 class="author">Steph Locke (<span class="citation" data-cites="SteffLocke">@SteffLocke</span>)</h2>
-    <h3 class="date">2017-01-17</h3>
+    <h3 class="date">2017-01-18</h3>
 </section>
 
 <section id="steph-locke" class="slide level2" data-background="https://github.com/stephlocke/lazyCDN/raw/master/StephLocke.jpg">
@@ -270,7 +270,47 @@ docker volume create \
 <iframe width="1280" height="720" src="https://www.youtube.com/embed/hFZ75w5-JLs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen>
 </iframe>
 </section></section>
-<section><section id="solving-database-challenges" class="titleslide slide level1"><h1>Solving database challenges</h1></section><section id="per-instance-databases" class="slide level2">
+<section><section id="database-challenges" class="titleslide slide level1"><h1>Database challenges</h1></section><section id="primary-challenges" class="slide level2">
+<h1>Primary challenges</h1>
+<ul>
+<li>Refreshing data</li>
+<li>Scaling access</li>
+<li>Being safe against disaster</li>
+<li>Security</li>
+</ul>
+</section><section id="refreshable-data" class="slide level2">
+<h1>Refreshable data</h1>
+<p>Reference data can be stored in a number of ways:</p>
+<ol type="1">
+<li>A core DB that gets replicated into local db</li>
+<li>A core DB and cross DB queries</li>
+<li>Take this data out of the DB and into caches</li>
+</ol>
+</section><section id="scaling-access" class="slide level2">
+<h1>Scaling access</h1>
+<p>To scale access, you need to avoid locks:</p>
+<ol type="1">
+<li>Performance tuning goes a long way</li>
+<li>Distributed databases</li>
+<li>Sharding</li>
+</ol>
+</section><section id="disaster-safe" class="slide level2">
+<h1>Disaster-safe</h1>
+<p>Keeping your data up and available:</p>
+<ol type="1">
+<li>Self healing DB clusters</li>
+<li>Backups and restore</li>
+<li>Let someone else take care of it</li>
+</ol>
+</section><section id="security" class="slide level2">
+<h1>Security</h1>
+<p>Data needs to be secure, especially in a multi-tenant model:</p>
+<ol type="1">
+<li>ACLs and row-level security</li>
+<li>Physically seperated databases</li>
+</ol>
+</section></section>
+<section><section id="translating-challenges-to-technical-solutions" class="titleslide slide level1"><h1>Translating challenges to technical solutions</h1></section><section id="per-instance-databases" class="slide level2">
 <h1>Per instance databases</h1>
 <ul>
 <li>Pro: Scale resources per customer</li>
@@ -278,20 +318,29 @@ docker volume create \
 <li>Pro/Con: Can’t access all the customer’s data at once</li>
 <li>Con: More migration operations</li>
 </ul>
+</section><section id="file-nosql-dbs" class="slide level2">
+<h1>File / NoSQL dbs</h1>
+<ul>
+<li>Pro: Single db</li>
+<li>Pro: Could do without schema migration efforts</li>
+<li>Pro / Con: Unlikely to get ACID</li>
+<li>Con: ACLs</li>
+</ul>
 </section><section id="dbaas" class="slide level2">
 <h1>DBaaS</h1>
 <ul>
 <li>Pro: Someone else worries about infrastructure</li>
-<li>Pro: Can put into practice different architectures to suit</li>
-<li>Pro/Con: The data is on someone else’s machine</li>
-<li>Con: Unless containers hosted near the SaaS data store, latency</li>
+<li>Pro: Can put into practice different single db / sharded db to suit</li>
+<li>Pro: Scale resources per customer</li>
+<li>Pro/Con: You don’t manage the infrastructure</li>
+<li>Con: Unless containers hosted near the SaaS data store, potential latency</li>
 </ul>
 </section><section id="self-healing-docker-clusters" class="slide level2">
 <h1>Self-healing Docker clusters</h1>
 <ul>
 <li>Pro: All Docker solution</li>
 <li>Pro: Keeps control in the hands of the dev</li>
-<li>Pro/con: The data is on your machines</li>
+<li>Pro/con: The data is probably on infrastructure you manage</li>
 <li>Con: Quite a complex solution with a low number of OoB solutions</li>
 </ul>
 </section><section id="schema-changes" class="slide level2">
