@@ -15,6 +15,7 @@ Presentations
 [Infrastructure for R peeps](infrastructureforRpeeps.html)         
 [Knowing your Rs from your elbow](KnowingYourRsFromYourElbow.html) 
 [Being lazy with infrastructure](lazyinfrastructure.html)          
+[Personal branding](personalbranding.html)                         
 [R for developers](r101.html)                                      
 [Intro to R](Rintro.html)                                          
 [Cut the R Learning Curve](RLearningCurve.html)                    
