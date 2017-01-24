@@ -1,0 +1,45 @@
+---
+title: 'Personal branding'
+author: "Steph Locke (@SteffLocke)"
+date: '`r Sys.Date()`'
+output:
+  stephStyle::stephRevealSlideStyle
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
+```
+
+# My Co-stars  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-costar.jpg"}
+
+# What's motivating you?  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-sleep.jpg"}
+
+# This isn't "being evil"  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-darkside.jpg"}
+
+# What are your priorities? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-grassisgreener.jpg"}
+
+# What do you have passion for? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-provocative.jpg"}
+
+# What are your goals? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-looktothefuture.jpg"}
+
+# Own yourself {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-whatyoutalkingabout.jpg"}
+
+# Boxes {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-box.jpg"}
+
+# Work hard {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-working.jpg"}
+
+# Work hard some more! {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-working.jpg"}
+
+# Look the part {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-lookthepart.jpg"}
+
+# Respect other people {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-respectspace.jpg"}
+
+#Wrapup
+## Wrapup
+- Thank you!
+- Questions?
+- Get the slides from [stephlocke.info/Rtraining](http://stephlocke.info/Rtraining)
+- Follow up [T: SteffLocke](https://twitter.com/stefflocke)
