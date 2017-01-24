@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Work hard {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-working.jpg"}
 
-# Work hard some more! {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-working.jpg"}
+# Work some more! {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-working.jpg"}
 
 # Look the part {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-lookthepart.jpg"}
 
