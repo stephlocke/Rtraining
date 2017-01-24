@@ -15,29 +15,28 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # My Co-stars  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-costar.jpg"}
 
-# What's motivating you?  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-sleep.jpg"}
+# This isn't "the dark side"  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-darkside.jpg"}
 
-# This isn't "being evil"  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-darkside.jpg"}
+# What's motivating you?  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-sleep.jpg"}
 
 # What are your priorities? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-grassisgreener.jpg"}
 
-# What do you have passion for? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-provocative.jpg"}
-
-# What are your goals? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-looktothefuture.jpg"}
-
 # Own yourself {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-whatyoutalkingabout.jpg"}
+
+# Have patience {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-payattention.jpg"}
 
 # Boxes {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-box.jpg"}
 
 # Work hard {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-working.jpg"}
 
-# Work some more! {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-working.jpg"}
+# Have fun {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-working.jpg"}
 
-# Look the part {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-lookthepart.jpg"}
+# Look the part {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-angel.jpg"}
 
-# Respect other people {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-respectspace.jpg"}
+# Consider others {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-team.jpg"}
 
 #Wrapup
+## Goodbye {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-sleep2.jpg"}
 ## Wrapup
 - Thank you!
 - Questions?
