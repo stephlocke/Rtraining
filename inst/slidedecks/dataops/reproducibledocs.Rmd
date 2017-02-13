@@ -1,0 +1,264 @@
+---
+title: 'Reproducible R docs in GitHub'
+author: "Steph Locke (@SteffLocke)"
+date: '`r Sys.Date()`'
+output:
+  stephStyle::stephRevealSlideStyle
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
+```
+
+# Agenda
+## Agenda
+- R Docs
+- Github pages
+- Travis-CI
+- Package docs
+- Studies
+- Presentations
+- Books
+- Blogs
+
+# R Docs
+## What
+- Anything that you can generate with R!
+
+## Why
+- Version control
+- Hosting
+- Validation
+- Automation
+
+## How
+- Use processes to build docs and deploy them somewhere
+- Travis-CI is a handy way to deploy to github
+
+## When
+- Ideally every commit!
+
+## Where
+- Github is free hosting
+- Can also work elsewhere
+
+## Examples
+- Vignettes: [tfsR](http://stephlocke.info/tfsR/)
+- Package docs: [sparklyr](http://spark.rstudio.com/)
+- Documents: [ISC Conference Management proposal](https://hturner.github.io/conf-management-proposal/conference-management-proposal.html)
+- Presentations: [Rtraining/reproducibledocs](http://stephlocke.info/Rtraining/reproducibledocs.html)
+- Books: [R for data science](http://r4ds.had.co.nz/)
+- Blogs: [Kevin Wong's blog](http://kevinfw.com/)
+
+# Github Pages
+## Deployment locations
+- **master**: The primary branch
+- **gh-pages**: A dedicated branch of the project
+- **/docs**: A directory in your master branch
+
+## DNS
+- **A Records** Associate a whole domain with location
+- **CNAME** Associate a subdomain with location
+- Directory structure - anything "below" a domain / subdomain
+
+> satrdays.org = Domain
+>
+> captetown.satrdays.org = Subdomain
+>
+> satrdays.org/satRdays-devsite = Directory
+
+## X.github.io
+A project with your username that serves as the entrypoint to all your github hosted stuff
+
+- This top-level site's files must be in master branch
+- Associate a domain to this to yield a directory structure
+
+# Travis-CI
+## Travis-CI 
+- **Continuous Integration** Testing in a clean environment
+- **Build artifacts** Items produced by the CI build process
+
+There are other alternative CI systems, esp. if you need to work with private repos
+
+## R language
+Your `.travis.yml`
+
+```
+language: r
+```
+
+- Travis CI [R docs](https://docs.travis-ci.com/user/languages/r/)
+
+## Custom actions
+There are triggers which allow you perform actions at different points in the process. Can run any bash command here, including calling R!
+
+```yaml
+after_success:
+  - R CMD build .
+  - chmod 755 .push_gh_pages.sh
+  - ./.push_gh_pages.sh
+```
+# Package Docs
+## Vignettes
+- Vignettes get produced in the build process for your package
+- Extract them for the build directory and deploy them somewhere
+
+## ./.push_gh_pages.sh
+```bash
+#!/bin/bash
+GH_REPO="@github.com/$TRAVIS_REPO_SLUG.git"
+FULL_REPO="https://$GH_TOKEN$GH_REPO"
+
+git config --global user.name "stephs-travis"
+git config --global user.email "steph@travis.ci"
+
+for files in '*.tar.gz'; do
+        tar xfz $files
+done
+
+git clone $FULL_REPO out --branch gh-pages
+
+for files in 'inst/doc/*.html'; do
+        cp $files out
+done
+
+cd out
+git add .
+git commit -m "$TRAVIS_COMMIT"
+git push --quiet $FULL_REPO
+```
+
+## pkgdown
+A package to generate package websites!
+
+ - Can produce files locally
+ - Can run process in Travis
+
+[pkgdown](http://hadley.github.io/pkgdown)
+
+# Studies
+## R markdown
+- Make any R markdown project into a package by simply having a DESCRIPTION file
+- Have R scripts that knit your reports
+
+## ghgenerate.r
+```r
+library(rmarkdown)
+reports <- list.files(
+  "inst/reports", pattern = "*.Rmd"
+  , recursive = TRUE ,full.names = TRUE
+``)
+for (f in reports) render(f,output_dir = "out"
+          ,output_format = html_document())
+render("inst/index.Rmd", output_dir = "out"
+      ,intermediates_dir = "out")
+```
+
+## ./.push_gh_pages.sh
+```bash
+#!/bin/bash
+FULL_REPO="https://$GH_TOKEN$@github.com/$TRAVIS_REPO_SLUG.git"
+
+git clone $FULL_REPO out --branch gh-pages
+cd out
+git config user.name "stephs-travis"
+git config user.email "steph@travis.ci"
+
+cd ..
+R CMD BATCH '../Rtraining/ghgenerate.R'
+
+cp ghgenerate.Rout out
+cd out
+
+git add .
+git commit -m "$TRAVIS_COMMIT"
+git push --quiet $FULL_REPO
+```
+
+# Presentations
+## reveal.js
+Using [revealjs](cran.r-project.org/package=revealjs), produce HTML sliides like these!
+
+There are others coming along like [xaringan](https://cran.r-project.org/package=xaringan
+) too
+
+## ghgenerate.r
+```r
+library(rmarkdown)
+reports <- list.files(
+  "inst/slidedecks", pattern = "*.Rmd"
+  , recursive = TRUE ,full.names = TRUE
+``)
+for (f in slidedecks) render(f,output_dir = "out"
+          ,output_format = stephStyle::stephRevealSlideStyle())
+render("inst/index.Rmd", output_dir = "out"
+      ,intermediates_dir = "out")
+```
+
+# Books
+## bookdown
+[MeetingsR](https://github.com/jumpingrivers/meetingsR) is a neat example of a project using [bookdown](https://cran.r-project.org/package=bookdown).
+
+Get in-depth with Yi Hui's book [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)
+
+## .travis.yml
+```yaml
+language: r
+cache: packages
+
+script:
+  - make html
+
+after_success:
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash deploy.sh
+```
+
+## Makefile
+```yaml
+html:
+	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook", clean = FALSE)'
+	cp -fvr css/style.css _book/
+	cp -fvr _main.utf8.md _book/main.md
+
+build:
+	make html
+	Rscript -e 'browseURL("_book/index.html")'
+```
+## deploy.sh
+```bash
+#!/bin/bash
+FULL_REPO="https://$GH_TOKEN$@github.com/$TRAVIS_REPO_SLUG.git"
+
+git clone $FULL_REPO book-output
+cd book-output
+git config user.name "stephs-travis"
+git config user.email "steph@travis.ci"
+
+cp -fvr ../_book/* docs/
+cd docs
+git add libs/; git add css/
+git add *.json; git add *.html; git add main.md; git add style.css
+cd ..
+git commit -am "Travis: updating website (${TRAVIS_BUILD_NUMBER})"
+git push origin master 2>err.txt
+```
+
+# Blogs
+## blogdown
+Uses Hugo (which I love) to build a static blog site with Rmarkdown posts
+
+[blogdown](https://github.com/rstudio/blogdown)
+
+## Deployment
+- Local build & commit
+- CI: Still TBD
+
+# Wrapup
+## Wrapup
+- Thank you!
+- Questions?
+- Get the deck [stephlocke.info/Rtraining](http://stephlocke.info/Rtraining)
+- Follow up [T: SteffLocke](https://twitter.com/stefflocke)
