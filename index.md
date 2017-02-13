@@ -17,6 +17,7 @@ Presentations
 [Being lazy with infrastructure](lazyinfrastructure.html)          
 [Personal branding](personalbranding.html)                         
 [R for developers](r101.html)                                      
+[Reproducible R docs in GitHub](reproducibledocs.html)             
 [Intro to R](Rintro.html)                                          
 [Cut the R Learning Curve](RLearningCurve.html)                    
 [Microsoft SQL Server and R Services](RonSQLServer.html)           
