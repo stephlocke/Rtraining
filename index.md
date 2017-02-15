@@ -33,9 +33,10 @@ Shiny presentations (not interactive)
 [Shiny dashboards in R](shinyDashboards.html) 
 
 
-Workshops               
-------------------------
-[logdata](logdata.html) 
+Workshops                       
+--------------------------------
+[glmworkshop](glmworkshop.html) 
+[logdata](logdata.html)         
 
 
 Handouts                                                              
