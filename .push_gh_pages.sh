@@ -1,5 +1,5 @@
 #!/bin/bash
-FULL_REPO="https://$GH_TOKEN$@github.com/$TRAVIS_REPO_SLUG.git"
+FULL_REPO="https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG.git"
 
 git clone $FULL_REPO out --branch gh-pages
 cd out
