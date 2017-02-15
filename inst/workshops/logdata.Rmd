@@ -184,7 +184,7 @@ moves<-activity[activity, on=c("visit"), allow.cartesian=TRUE][
     # Get nodes and position
     ,.(tooltip=.N),.(from=nodes,to=i.nodes)][,penwidth:=10*tooltip/max(tooltip)]
 
-gr<-create_graph(setDF(URLids), setDF(moves))
+gr<-create_graph(URLids, moves)
 
 render_graph(gr)
 ```
