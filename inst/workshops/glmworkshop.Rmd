@@ -19,7 +19,7 @@ output:
 - Accounting for change
 - GLM step-by-step - Project setup
 
-# Logistic regression
+# Logistic regression {.tabset}
 We uses a logistic regression to be able to use our simple linear regression methods against categorical data.
 
 ## Linear Regression
@@ -88,7 +88,7 @@ knitr::kable(data.frame(logits,odds,probs,pred_class))
 - In-depth evaluation of selected model
 - Productionising
 
-# Sources of change in analysis
+# Sources of change in analysis {.tabset}
 
 ## Exercise
 What sort of things can alter the results of a piece of analysis?
@@ -99,7 +99,7 @@ What sort of things can alter the results of a piece of analysis?
 - Changes in behaviours in dependencies
 - Randomness
 
-# Accounting for change
+# Accounting for change {.tabset}
 
 ## Exercise
 What sort of things can we do to prevent changes creeping into our analysis that stop it from being "deterministic"?
@@ -112,7 +112,7 @@ What sort of things can we do to prevent changes creeping into our analysis that
 - Unit testing and validating code
 - `set.seed`
 
-# GLM step-by-step -- Project setup
+# GLM step-by-step -- Project setup {.tabset}
 
 ## Project checklist
 - Git
@@ -138,7 +138,7 @@ What sort of things can we do to prevent changes creeping into our analysis that
 ## Travis setup 
 ## Github setup
 
-# GLM step-by-step -- Data 
+# GLM step-by-step -- Data {.tabset}
 - Source
 - Verification steps
 - Multiple outputs?
@@ -146,29 +146,29 @@ What sort of things can we do to prevent changes creeping into our analysis that
   + Supplementary data quality report
   + Shiny?
 
-# GLM step-by-step -- Data processing
+# GLM step-by-step -- Data processing{.tabset}
 - Cleaning steps
 - Sampling
 - Feature scaling
 - Univariate analysis
 - Bivariate analysis
 
-# GLM step-by-step -- Candidate models
+# GLM step-by-step -- Candidate models{.tabset}
 - Feature selection
 - Various glm* models
 
-# GLM step-by-step -- Evaluation
+# GLM step-by-step -- Evaluation{.tabset}
 - Scaling sample
 - Single model evaluation techniques
 - Comparing multiple models
 - Cross-validation
 
-# GLM step-by-step -- Model selection
+# GLM step-by-step -- Model selection{.tabset}
 - Using evaluation metrics to select best model
 - Presenting model
 - In-depth evaluation of best model
 
-# GLM step-by-step -- Supplementary materials
+# GLM step-by-step -- Supplementary materials{.tabset}
 - Data lineage 
 - Data quality
 - Feature analysis in-depth
