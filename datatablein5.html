@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Steph Locke" />
-  <meta name="dcterms.date" content="2017-02-13" />
+  <meta name="dcterms.date" content="2017-02-15" />
   <title>data.table in 5 minutes</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -118,7 +118,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section>
     <h1 class="title">data.table in 5 minutes</h1>
     <h2 class="author">Steph Locke</h2>
-    <h3 class="date">2017-02-13</h3>
+    <h3 class="date">2017-02-15</h3>
 </section>
 
 <section id="data.table" class="slide level2">
@@ -179,10 +179,10 @@ Read <span class="dv">13000</span> rows and <span class="dv">13001</span> (of <s
 <span class="kw">system.time</span>(
 <span class="kw">fwrite</span>(qRead,<span class="st">&quot;sample.csv&quot;</span>))
 ## 
-Written <span class="fl">24.8</span>% of 13000 rows in 2 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=49%. Finished in <span class="dv">6</span> secs.      
+Written <span class="fl">45.8</span>% of 13000 rows in 2 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=49%. Finished in <span class="dv">2</span> secs.      
                                                                                                                                      
 ##    user  system elapsed 
-##  12.300   0.836   1.896</code></pre></div>
+##  11.840   0.720   2.545</code></pre></div>
 </section>
 <section id="data.table-awesomeness---groups" class="slide level2">
 <h1>data.table awesomeness - groups</h1>
