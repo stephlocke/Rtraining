@@ -43,9 +43,9 @@ Trying to plot a standard regression would result in lots of error, instead we n
 We can use odds, the probability of something happening versus it not happening to create a dispersed value that we can calculate.
 
 ```{r odds}
-prob<-seq(0,1, by=.001)
-odds_y<- y/(1-y)
-qplot(prob,odds_y)
+prob_y<-seq(0,1, by=.001)
+odds_y<- prob_y/(1-prob_y)
+qplot(prob_y,odds_y)
 ```
 But this isn't something a linear regression can easily handle either, afterall:
 - we should never have a negative odds value
@@ -54,7 +54,7 @@ But this isn't something a linear regression can easily handle either, afterall:
 ## Logit
 We can transform these odds into something that can be negative. We can use the log of the odds
 ```{r logodds}
-qplot(prob, log(odds_y))
+qplot(prob_y, log(odds_y))
 ```
 This disperses the points to a function that we model with a reasonable assumption of linearity. It then gives us a way of getting to a probability of the observation being one thing or the other (or other classes if doing multi-class logistic regression). 
 
