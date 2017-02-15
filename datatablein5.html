@@ -175,15 +175,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">qRead&lt;-<span class="kw">fread</span>(<span class="st">&quot;sample.csv&quot;</span>)
 ## 
 Read <span class="fl">76.9</span>% of <span class="dv">13000</span> rows
-Read <span class="dv">13000</span> rows and <span class="dv">13001</span> (of <span class="dv">13001</span>) columns from <span class="fl">0.315</span> GB file in <span class="dv">00</span>:<span class="dv">00</span>:<span class="dv">08</span>
+Read <span class="dv">13000</span> rows and <span class="dv">13001</span> (of <span class="dv">13001</span>) columns from <span class="fl">0.315</span> GB file in <span class="dv">00</span>:<span class="dv">00</span>:<span class="dv">09</span>
 <span class="kw">system.time</span>(
 <span class="kw">fwrite</span>(qRead,<span class="st">&quot;sample.csv&quot;</span>))
-## 
-Written <span class="fl">39.6</span>% of 13000 rows in 2 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=49%. Finished in <span class="dv">3</span> secs.      
-Written <span class="fl">79.3</span>% of 13000 rows in 3 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=49%. Finished in <span class="dv">0</span> secs.      
-                                                                                                                                     
 ##    user  system elapsed 
-##  12.948   1.760   3.407</code></pre></div>
+##  12.876   1.528   2.164</code></pre></div>
 </section>
 <section id="data.table-awesomeness---groups" class="slide level2">
 <h1>data.table awesomeness - groups</h1>
