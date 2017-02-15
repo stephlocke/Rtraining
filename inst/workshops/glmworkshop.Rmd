@@ -1,0 +1,177 @@
+---
+title: "Reproducible logistic regression models"
+author: "Steph Locke (@SteffLocke)"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_document: 
+    code_folding: show
+    number_sections: yes
+    toc: yes
+    toc_float: true
+    toc_depth: 2
+---
+
+
+# Agenda
+- Logistic Regression
+- Analysis workflow
+- Sources of change
+- Accounting for change
+- GLM step-by-step - Project setup
+
+# Logistic regression
+We uses a logistic regression to be able to use our simple linear regression methods against categorical data.
+
+## Linear Regression
+In a linear regression, the data we are trying to predict might look like:
+```{r rnorm, echo=FALSE}
+library(ggplot2)
+y_n<-rnorm(1000,100,25)
+qplot(y_n, binwidth=5)
+```
+
+## Binomial class
+In a logistic regression, the data looks like:
+```{r rbinom, echo=FALSE}
+y_b<-rbinom(1000,size = 1, prob = .89)
+qplot(y_b, binwidth=.1)
+```
+
+## Odds
+Trying to plot a standard regression would result in lots of error, instead we need to do something to make the results of a linear regression to put values closer to the two binomial outcomes.
+
+We can use odds, the probability of something happening versus it not happening to create a dispersed value that we can calculate.
+
+```{r odds}
+prob<-seq(0,1, by=.001)
+odds_y<- y/(1-y)
+qplot(prob,odds_y)
+```
+But this isn't something a linear regression can easily handle either, afterall:
+- we should never have a negative odds value
+- odds aren't linear
+
+## Logit
+We can transform these odds into something that can be negative. We can use the log of the odds
+```{r logodds}
+qplot(prob, log(odds_y))
+```
+This disperses the points to a function that we model with a reasonable assumption of linearity. It then gives us a way of getting to a probability of the observation being one thing or the other (or other classes if doing multi-class logistic regression). 
+
+We can use the probabilities themselves or say if the probability is less than 50% it is one outcome and the other outcome if the probability is greater than 50%.
+
+## Transforming logits
+
+```{r logittransform}
+library(optiRum)
+
+logits     <- -4:4
+odds       <- logit.odd(logits)
+probs      <- odd.prob(odds)
+pred_class <- probs>=.5
+
+knitr::kable(data.frame(logits,odds,probs,pred_class))
+```
+
+
+# Analysis workflow
+- Understand the problem
+- Gather some data
+- Clean the data
+- Clean the data some more
+- Exploration and visualisation
+- Feature Reduction
+- Feature Engineering
+- (Depending on models) Feature Selection
+- Candidate models builds
+- Evaluate models
+- In-depth evaluation of selected model
+- Productionising
+
+# Sources of change in analysis
+
+## Exercise
+What sort of things can alter the results of a piece of analysis?
+
+## Answers
+- Changes in data
+- Changes in code behaviours
+- Changes in behaviours in dependencies
+- Randomness
+
+# Accounting for change
+
+## Exercise
+What sort of things can we do to prevent changes creeping into our analysis that stop it from being "deterministic"?
+
+## Answers
+- Checksums to flag if anything has changed
+- Keeping a seperate copy of data
+- Keeping dependencies the same over time
+- Source control
+- Unit testing and validating code
+- `set.seed`
+
+# GLM step-by-step -- Project setup
+
+## Project checklist
+- Git
+- Project options
+  + No Rdata or history!
+  + Insert spaces for tabs
+- Packrat
+  +`packrat::init()`
+- Folder structure
+  - data
+  - processeddata
+  - analysis
+  - outputs
+  - docs
+- DESCRIPTION
+- LICENSE
+- .Rbuildignore
+- README.Rmd
+- Makefile
+  + [Karl Broman on Makefiles](http://kbroman.org/minimal_make/)
+- .travis.yml
+
+## Travis setup 
+## Github setup
+
+# GLM step-by-step -- Data 
+- Source
+- Verification steps
+- Multiple outputs?
+  + Main report
+  + Supplementary data quality report
+  + Shiny?
+
+# GLM step-by-step -- Data processing
+- Cleaning steps
+- Sampling
+- Feature scaling
+- Univariate analysis
+- Bivariate analysis
+
+# GLM step-by-step -- Candidate models
+- Feature selection
+- Various glm* models
+
+# GLM step-by-step -- Evaluation
+- Scaling sample
+- Single model evaluation techniques
+- Comparing multiple models
+- Cross-validation
+
+# GLM step-by-step -- Model selection
+- Using evaluation metrics to select best model
+- Presenting model
+- In-depth evaluation of best model
+
+# GLM step-by-step -- Supplementary materials
+- Data lineage 
+- Data quality
+- Feature analysis in-depth
+- Candidate model evaluations
+- Code
+- Reproducibility info

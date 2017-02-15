@@ -1,0 +1,20 @@
+---
+title: 'Reproducible GLM \n Base Doc'
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Accounting for randomness
+set.seed(777)
+
+# Cache by default?
+knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(cache.path = "glmanalysiscache")
+
+# Figure directory to facilitate versioning of figures
+knitr::opts_chunk$set(fig.path = "glmanalysisfigs")
+```
