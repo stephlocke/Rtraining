@@ -12,12 +12,6 @@ output:
 ---
 
 
-# Agenda
-- Logistic Regression
-- Analysis workflow
-- Sources of change
-- Accounting for change
-- GLM step-by-step - Project setup
 
 # Logistic regression {.tabset}
 We uses a logistic regression to be able to use our simple linear regression methods against categorical data.
