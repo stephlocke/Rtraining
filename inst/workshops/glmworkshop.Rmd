@@ -37,30 +37,44 @@ y_b<-rbinom(1000,size = 1, prob = .89)
 qplot(y_b, binwidth=.1)
 ```
 
-## Odds
+## Probability
 Trying to plot a standard regression would result in lots of error, instead we need to do something to make the results of a linear regression to put values closer to the two binomial outcomes.
 
-We can use odds, the probability of something happening versus it not happening to create a dispersed value that we can calculate.
+We could use the probability of a given outcome as this gives us a range of values.
+
+```{r probs}
+prob_y<-seq(0,1, by=.001)
+qplot(prob_y,prob_y)
+```
+
+
+The trouble with probabilities is they must be within 0 and 1 to make any sense and it would be tough to bind a linear regression to this range.
+
+
+## Odds
+To bust out of this range, we could use odds, the probability of something happening versus it not happening to create a more dispersed value.
 
 ```{r odds}
-prob_y<-seq(0,1, by=.001)
 odds_y<- prob_y/(1-prob_y)
 qplot(prob_y,odds_y)
 ```
-But this isn't something a linear regression can easily handle either, afterall:
-- we should never have a negative odds value
-- odds aren't linear
+
+
+Using odds allows us to exceed 1, but there's still no negative values allowed. Additionally, the relationship is distribution of values is difficult to model linearly.
 
 ## Logit
-We can transform these odds into something that can be negative. We can use the log of the odds
+To be able to get both a positive and a negative range of values allowed, we can take the log of the odds.
+
 ```{r logodds}
 qplot(prob_y, log(odds_y))
 ```
-This disperses the points to a function that we model with a reasonable assumption of linearity. It then gives us a way of getting to a probability of the observation being one thing or the other (or other classes if doing multi-class logistic regression). 
 
-We can use the probabilities themselves or say if the probability is less than 50% it is one outcome and the other outcome if the probability is greater than 50%.
+This now gives us a strong dispersal of values into positive and negative ranges, with a distribution much more suited to a linear regression model.
+
+We can take a nuanced probabilistic approach to values, or simply say if the logit is positive, we predict the outcome 1, if not the outcome 0.
 
 ## Transforming logits
+To get back to a probability from a logit (or vice versa) is pretty simple but I wrote some helper functions in the package optiRum to facilitate this.
 
 ```{r logittransform}
 library(optiRum)
@@ -68,11 +82,17 @@ library(optiRum)
 logits     <- -4:4
 odds       <- logit.odd(logits)
 probs      <- odd.prob(odds)
-pred_class <- probs>=.5
+pred_class <- logits>=0
 
 knitr::kable(data.frame(logits,odds,probs,pred_class))
 ```
 
+```{r transformcode}
+prob.odd
+odd.logit
+logit.odd
+odd.prob
+```
 
 # Analysis workflow
 - Understand the problem
