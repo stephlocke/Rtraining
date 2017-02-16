@@ -156,6 +156,9 @@ What sort of things can we do to prevent changes creeping into our analysis that
 - .travis.yml
 
 ## Travis setup 
+- [Travis CI](https://travis-ci.org)
+- [Travis ref](https://docs.travis-ci.com/user/languages/r/)
+
 ## Github setup
 
 # GLM step-by-step -- Data {.tabset}
