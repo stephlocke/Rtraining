@@ -137,22 +137,22 @@ What sort of things can we do to prevent changes creeping into our analysis that
 ## Project checklist
 - Git
 - Project options
-  + No Rdata or history!
-  + Insert spaces for tabs
+    + No Rdata or history!
+    + Insert spaces for tabs
 - Packrat
-  +`packrat::init()`
+    +`packrat::init()`
 - Folder structure
-  - data
-  - processeddata
-  - analysis
-  - outputs
-  - docs
+    + data
+    + processeddata
+    + analysis
+    + outputs
+    + docs
 - DESCRIPTION
 - LICENSE
 - .Rbuildignore
 - README.Rmd
 - Makefile
-  + [Karl Broman on Makefiles](http://kbroman.org/minimal_make/)
+    + [Karl Broman on Makefiles](http://kbroman.org/minimal_make/)
 - .travis.yml
 
 ## Travis setup 
