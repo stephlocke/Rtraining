@@ -30,6 +30,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # ... and rest {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-sleep2.jpg"}
 ## Communities and opportunities
 - [Local R community](https://jumpingrivers.github.io/meetingsR/r-user-groups.html#south-africa)
+- National R community - next year's SA satRday?
 - Global [R] community
 - Organisation
 - Friends & family
