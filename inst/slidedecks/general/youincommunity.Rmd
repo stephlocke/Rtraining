@@ -1,0 +1,40 @@
+---
+title: 'The You in Community'
+author: "Steph Locke (@SteffLocke)"
+date: '`r Sys.Date()`'
+output:
+  stephStyle::stephRevealSlideStyle
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
+```
+
+# My Co-stars  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-costar.jpg"}
+
+# What's this fluffy stuff? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-whatyoutalkingabout.jpg"}
+
+## What motivates you?  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-payattention.jpg"}
+
+> [bit.ly/youcommunity](http://bit.ly/youcommunity)
+
+# Who is your community? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-team.jpg"}
+
+# Where do you fit? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-box.jpg"}
+
+# What's your idea of fun? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-angel.jpg"}
+
+# ... and rest {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-sleep2.jpg"}
+## Communities and opportunities
+- [Local R community](https://jumpingrivers.github.io/meetingsR/r-user-groups.html#south-africa)
+- Global [R] community
+- Organisation
+- Friends & family
+
+## Goodbye
+- Thank you!
+- Get the slides from [stephlocke.info/Rtraining](http://stephlocke.info/Rtraining)
+- Follow up [T: SteffLocke](https://twitter.com/stefflocke)
