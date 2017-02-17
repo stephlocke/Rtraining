@@ -24,6 +24,7 @@ Presentations
 [Skilling up to code with data](skillinguptocodewithdata.html)     
 [Stats 101](stats101.html)                                         
 [Analytical web services](webservices.html)                        
+[The You in Community](youincommunity.html)                        
 
 
 Shiny presentations (not interactive)         

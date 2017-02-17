@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Steph Locke" />
-  <meta name="dcterms.date" content="2017-02-16" />
+  <meta name="dcterms.date" content="2017-02-17" />
   <title>R for developers</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -118,7 +118,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section>
     <h1 class="title">R for developers</h1>
     <h2 class="author">Steph Locke</h2>
-    <h3 class="date">2017-02-16</h3>
+    <h3 class="date">2017-02-17</h3>
 </section>
 
 <section id="steph-locke-who-i-am" class="slide level2">
@@ -229,11 +229,11 @@ a&lt;-<span class="kw">c</span>(<span class="dv">25</span>, <span class="dv">30<
 <h1>Subsetting | Vectors</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>) <span class="co"># setup</span>
 a <span class="co"># visual check</span></code></pre></div>
-<pre><code>## [1] 16  1  5 16  1</code></pre>
+<pre><code>## [1] 15 12  1  9  4</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="dv">1</span>:<span class="dv">2</span>] <span class="co"># row numbers</span></code></pre></div>
-<pre><code>## [1] 16  1</code></pre>
+<pre><code>## [1] 15 12</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[a&lt;=<span class="dv">10</span>] <span class="co"># value filters</span></code></pre></div>
-<pre><code>## [1] 1 5 1</code></pre>
+<pre><code>## [1] 1 9 4</code></pre>
 </section><section id="subsetting-data.frames-p1" class="slide level2">
 <h1>Subsetting | Data.frames p1</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a=</span><span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">b =</span> LETTERS[<span class="dv">1</span>:<span class="dv">5</span>]) <span class="co"># setup</span>
