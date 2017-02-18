@@ -15,28 +15,27 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Live insight
 
-> [bit.ly/youcommunity](http://bit.ly/youcommunity)
+> [bit.ly/youcommunity](https://bit.ly/youcommunity)
 
 
 # What's this fluffy stuff? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-whatyoutalkingabout.jpg"}
 
-## What motivates you?  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-payattention.jpg"}
+# What motivates you?  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-payattention.jpg"}
 
 # Who is your community? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-team.jpg"}
 
 # Where do you fit? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-box.jpg"}
 
-# What's do you enjoy? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-angel.jpg"}
+# What are your other hobbies? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-angel.jpg"}
 
 # ... {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-sleep2.jpg"}
 ## Communities and opportunities
+- Friends & family
+- Your organisation
 - [Local R community](https://jumpingrivers.github.io/meetingsR/r-user-groups.html#south-africa)
 - National R community - next year's SA satRday?
-- Global [R] community
-- Organisation
-- Friends & family
+- Global R community
 
 ## Goodbye
 - Thank you!
-- Get the slides from [stephlocke.info/Rtraining](http://stephlocke.info/Rtraining)
 - Follow up [T: SteffLocke](https://twitter.com/stefflocke)
