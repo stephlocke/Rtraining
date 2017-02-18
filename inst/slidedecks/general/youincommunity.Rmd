@@ -13,21 +13,22 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r autodoc, child='../../generics/AboutMe.Rmd', eval=TRUE}
 ```
 
-# My Co-stars  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-costar.jpg"}
+## Live insight
+
+> [bit.ly/youcommunity](http://bit.ly/youcommunity)
+
 
 # What's this fluffy stuff? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-whatyoutalkingabout.jpg"}
 
 ## What motivates you?  {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-payattention.jpg"}
 
-> [bit.ly/youcommunity](http://bit.ly/youcommunity)
-
 # Who is your community? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-team.jpg"}
 
 # Where do you fit? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obi-box.jpg"}
 
-# What's your idea of fun? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-angel.jpg"}
+# What's do you enjoy? {data-background="https://github.com/stephlocke/lazyCDN/raw/master/leia-angel.jpg"}
 
-# ... and rest {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-sleep2.jpg"}
+# ... {data-background="https://github.com/stephlocke/lazyCDN/raw/master/obileia-sleep2.jpg"}
 ## Communities and opportunities
 - [Local R community](https://jumpingrivers.github.io/meetingsR/r-user-groups.html#south-africa)
 - National R community - next year's SA satRday?
