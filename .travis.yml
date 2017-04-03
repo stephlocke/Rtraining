@@ -8,6 +8,7 @@ addons:
     - libcurl4-openssl-dev
     - texlive-full
 r_github_packages:
+  - cran/survival
   - lockedata/revealjs
   - stephlocke/stephStyle
 after_success:
