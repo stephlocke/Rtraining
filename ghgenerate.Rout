@@ -838,28 +838,29 @@ Output created: out/datatablein5.html
 
 
 processing file: datatablepowerhour.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.                                                                |   2%
+  |                                                                         |                                                                 |   0%  |                                                                         |.                                                                |   1%
    inline R code fragments
 
-  |                                                                         |..                                                               |   4%
+  |                                                                         |..                                                               |   3%
 label: setup (with options) 
 List of 1
  $ include: logi FALSE
 
-  |                                                                         |...                                                              |   5%
+  |                                                                         |...                                                              |   4%
   ordinary text without R code
 
-  |                                                                         |.....                                                            |   7%
-label: unnamed-chunk-1 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
+  |                                                                         |...                                                              |   5%
+label: unnamed-chunk-1
+  |                                                                         |....                                                             |   6%
+  ordinary text without R code
 
+  |                                                                         |.....                                                            |   8%
+label: unnamed-chunk-2
   |                                                                         |......                                                           |   9%
   ordinary text without R code
 
-  |                                                                         |.......                                                          |  11%
-label: unnamed-chunk-2 (with options) 
+  |                                                                         |.......                                                          |  10%
+label: unnamed-chunk-3 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
@@ -867,17 +868,26 @@ List of 2
   |                                                                         |........                                                         |  12%
   ordinary text without R code
 
-  |                                                                         |.........                                                        |  14%
-label: unnamed-chunk-3 (with options) 
+  |                                                                         |........                                                         |  13%
+label: unnamed-chunk-4 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
 
-  |                                                                         |..........                                                       |  16%
+  |                                                                         |.........                                                        |  14%
   ordinary text without R code
 
-  |                                                                         |...........                                                      |  18%
-label: unnamed-chunk-4 (with options) 
+  |                                                                         |..........                                                       |  16%
+label: unnamed-chunk-5 (with options) 
+List of 2
+ $ eval   : logi TRUE
+ $ results: chr "hide"
+
+  |                                                                         |...........                                                      |  17%
+  ordinary text without R code
+
+  |                                                                         |............                                                     |  18%
+label: unnamed-chunk-6 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
@@ -886,25 +896,34 @@ List of 2
   ordinary text without R code
 
   |                                                                         |..............                                                   |  21%
-label: unnamed-chunk-5 (with options) 
+label: unnamed-chunk-7 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
+
+  |                                                                         |..............                                                   |  22%
+  ordinary text without R code
 
   |                                                                         |...............                                                  |  23%
-  ordinary text without R code
-
-  |                                                                         |................                                                 |  25%
-label: unnamed-chunk-6 (with options) 
+label: unnamed-chunk-8 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
 
-  |                                                                         |.................                                                |  26%
+  |                                                                         |................                                                 |  25%
   ordinary text without R code
 
-  |                                                                         |..................                                               |  28%
-label: unnamed-chunk-7 (with options) 
+  |                                                                         |.................                                                |  26%
+label: unnamed-chunk-9 (with options) 
+List of 2
+ $ eval   : logi TRUE
+ $ results: chr "hide"
+
+  |                                                                         |..................                                               |  27%
+  ordinary text without R code
+
+  |                                                                         |...................                                              |  29%
+label: unnamed-chunk-10 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
@@ -912,26 +931,35 @@ List of 2
   |                                                                         |...................                                              |  30%
   ordinary text without R code
 
-  |                                                                         |.....................                                            |  32%
-label: unnamed-chunk-8 (with options) 
+  |                                                                         |....................                                             |  31%
+label: unnamed-chunk-11 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
 
-  |                                                                         |......................                                           |  33%
+  |                                                                         |.....................                                            |  32%
   ordinary text without R code
 
-  |                                                                         |.......................                                          |  35%
-label: unnamed-chunk-9 (with options) 
+  |                                                                         |......................                                           |  34%
+label: unnamed-chunk-12 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
 
-  |                                                                         |........................                                         |  37%
+  |                                                                         |.......................                                          |  35%
+  ordinary text without R code
+
+  |                                                                         |........................                                         |  36%
+label: unnamed-chunk-13 (with options) 
+List of 2
+ $ eval   : logi TRUE
+ $ results: chr "hide"
+
+  |                                                                         |........................                                         |  38%
   ordinary text without R code
 
   |                                                                         |.........................                                        |  39%
-label: unnamed-chunk-10 (with options) 
+label: unnamed-chunk-14 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
@@ -940,25 +968,34 @@ List of 2
   ordinary text without R code
 
   |                                                                         |...........................                                      |  42%
-label: unnamed-chunk-11 (with options) 
+label: unnamed-chunk-15 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
 
-  |                                                                         |.............................                                    |  44%
+  |                                                                         |............................                                     |  43%
   ordinary text without R code
 
-  |                                                                         |..............................                                   |  46%
-label: unnamed-chunk-12 (with options) 
+  |                                                                         |.............................                                    |  44%
+label: unnamed-chunk-16 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
 
-  |                                                                         |...............................                                  |  47%
+  |                                                                         |..............................                                   |  45%
+  ordinary text without R code
+
+  |                                                                         |..............................                                   |  47%
+label: unnamed-chunk-17 (with options) 
+List of 2
+ $ eval   : logi TRUE
+ $ results: chr "hide"
+
+  |                                                                         |...............................                                  |  48%
   ordinary text without R code
 
   |                                                                         |................................                                 |  49%
-label: unnamed-chunk-13 (with options) 
+label: unnamed-chunk-18 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
@@ -966,101 +1003,74 @@ List of 2
   |                                                                         |.................................                                |  51%
   ordinary text without R code
 
-  |                                                                         |..................................                               |  53%
-label: unnamed-chunk-14 (with options) 
+  |                                                                         |..................................                               |  52%
+label: unnamed-chunk-19 (with options) 
 List of 2
  $ eval   : logi TRUE
  $ results: chr "hide"
 
-  |                                                                         |...................................                              |  54%
+  |                                                                         |...................................                              |  53%
   ordinary text without R code
 
-  |                                                                         |....................................                             |  56%
-label: unnamed-chunk-15 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
-  |                                                                         |......................................                           |  58%
-  ordinary text without R code
-
-  |                                                                         |.......................................                          |  60%
-label: unnamed-chunk-16 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
-  |                                                                         |........................................                         |  61%
-  ordinary text without R code
-
-  |                                                                         |.........................................                        |  63%
-label: unnamed-chunk-17 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
-  |                                                                         |..........................................                       |  65%
-  ordinary text without R code
-
-  |                                                                         |...........................................                      |  67%
-label: unnamed-chunk-18 (with options) 
+  |                                                                         |...................................                              |  55%
+label: unnamed-chunk-20 (with options) 
 List of 3
  $ results: chr "hide"
  $ warning: logi FALSE
  $ message: logi FALSE
 
-  |                                                                         |............................................                     |  68%
+  |                                                                         |....................................                             |  56%
   ordinary text without R code
 
-  |                                                                         |..............................................                   |  70%
-label: unnamed-chunk-19
-  |                                                                         |...............................................                  |  72%
+  |                                                                         |.....................................                            |  57%
+label: unnamed-chunk-21
+  |                                                                         |......................................                           |  58%
   ordinary text without R code
 
-  |                                                                         |................................................                 |  74%
-label: unnamed-chunk-20 (with options) 
+  |                                                                         |.......................................                          |  60%
+label: unnamed-chunk-22 (with options) 
 List of 1
  $ echo: logi FALSE
 
-  |                                                                         |.................................................                |  75%
+  |                                                                         |........................................                         |  61%
   ordinary text without R code
 
-  |                                                                         |..................................................               |  77%
-label: unnamed-chunk-21
-  |                                                                         |...................................................              |  79%
-  ordinary text without R code
-
-  |                                                                         |....................................................             |  81%
-label: unnamed-chunk-22
-  |                                                                         |......................................................           |  82%
-  ordinary text without R code
-
-  |                                                                         |.......................................................          |  84%
+  |                                                                         |.........................................                        |  62%
 label: unnamed-chunk-23
-  |                                                                         |........................................................         |  86%
+  |                                                                         |.........................................                        |  64%
   ordinary text without R code
 
-  |                                                                         |.........................................................        |  88%
+  |                                                                         |..........................................                       |  65%
 label: unnamed-chunk-24
-  |                                                                         |..........................................................       |  89%
+  |                                                                         |...........................................                      |  66%
   ordinary text without R code
 
-  |                                                                         |...........................................................      |  91%
+  |                                                                         |............................................                     |  68%
 label: unnamed-chunk-25
-  |                                                                         |............................................................     |  93%
+  |                                                                         |.............................................                    |  69%
   ordinary text without R code
 
-  |                                                                         |..............................................................   |  95%
+  |                                                                         |..............................................                   |  70%
 label: unnamed-chunk-26
-  |                                                                         |...............................................................  |  96%
+  |                                                                         |..............................................                   |  71%
   ordinary text without R code
 
-  |                                                                         |................................................................ |  98%
-label: unnamed-chunk-27 (with options) 
+  |                                                                         |...............................................                  |  73%
+label: unnamed-chunk-27
+  |                                                                         |................................................                 |  74%
+  ordinary text without R code
+
+  |                                                                         |.................................................                |  75%
+label: unnamed-chunk-28
+  |                                                                         |..................................................               |  77%
+  ordinary text without R code
+
+  |                                                                         |...................................................              |  78%
+label: unnamed-chunk-29 (with options) 
 List of 1
  $ results: chr "hide"
 
-Quitting from lines 309-317 (datatablepowerhour.Rmd) 
+Quitting from lines 336-344 (datatablepowerhour.Rmd) 
 Error in merge.data.table(irisDT, irisLK, all = TRUE) : 
   A non-empty vector of column names for `by` is required.
 Calls: render ... withVisible -> eval -> eval -> merge -> merge.data.table
