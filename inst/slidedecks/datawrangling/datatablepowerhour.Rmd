@@ -233,7 +233,7 @@ library(data.table)
 colnames<-paste0("reallyLongColumnNamesSuuuuuck",1:13000)
 rows<-13000
 sampledt<-data.table(a=1:rows)
-sampledt[,c(colnames):=1/pi]
+sampledt[,c(colnames):=1]
 ```
 
 ## File
@@ -258,6 +258,33 @@ getSize(sampledf)
 ```
 
 # Joins
+
+## Keys
+We can do a "primary key" in data.table - this allows us to faster indexing but doesn't have a uniqueness constraint and a .
+
+To set the key explicitly:
+
+```{r}
+setkey(irisDT, Species)
+setindex(irisDT, Species)
+```
+
+Howerver, we don't often need to do this these days!
+
+## Implicit joins
+```{r}
+irisDT[]
+```
+## Explicit joins
+## Compound keys
+## Derivations
+
+
+## INNER JOIN
+## LEFT JOIN
+## FULL OUTER JOIN
+
+
 
 # Grouping
 
