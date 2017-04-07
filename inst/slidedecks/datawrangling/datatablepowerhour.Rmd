@@ -4,7 +4,7 @@ author: "Steph Locke"
 date: "`r Sys.Date()`"
 output:
   revealjs::revealjs_presentation:
-  theme: lockedata
+    theme: lockedata
 ---
 
 ```{r setup, include=FALSE}
@@ -102,9 +102,9 @@ irisDT[ , .SDcols=-Species]
 ## Aliasing
 ```{r eval=TRUE, results='hide'}
 # Base R
-iris_tmp <- iris[,c("Species","Sepal.Width")]
-names(iris_tmp) <- c("Species","SepalW")
-iris_tmp
+irisTMP <- iris[,c("Species","Sepal.Width")]
+names(irisTMP) <- c("Species","SepalW")
+irisTMP
 
 # data.table R
 irisDT[, .(Species, SepalW = Sepal.Width)]
@@ -197,16 +197,35 @@ irisDT[, .N, Species]
 data.frame(table(iris$Species,iris$Sepal.Length>5))
 
 # data.table R
-irisDT[, .N, .(Species, Gt5=iris$Sepal.Length>5)]
+irisDT[, .N, .(Species, Gt5=Sepal.Length>5)]
 ```
 
-# data.table putting it together
+# Combining commands
+
+## Exercise
+For flowers with sepals wider than 1, group by species and if their sepals are less than or greater than 5,  return the average sepal width and count in each group.
+
+## base R
+```{r eval=TRUE, results='hide'}
+irisTMP<-iris[iris$Sepal.Width>1,]
+irisTMP$gt5<-irisTMP$Sepal.Length>5
+irisCount<-data.frame(table(irisTMP$Species,irisTMP$gt5>5))
+names(irisCount) <- c("Species", "gt5", "Freq")
+irisMean<-aggregate(Petal.Length~+Species+gt5, data=irisTMP,FUN=mean)
+merge(irisCount,irisMean)
+```
+
+## data.table R
+```{r eval=TRUE, results='hide'}
+irisDT[  Sepal.Width > 1
+       , .(Count= .N, meanPetal=mean(Petal.Length))
+       , .(Species, Gt5=Sepal.Length>5)]
+```
 
 # IO
 
 ## Problem
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Yikes! Survey file with 13,000 columns with titles so long that R cuts out and binary readers can&#39;t get to the end of the line... Madness!</p>&mdash; Simon Whiteley (@MrSiWhiteley) <a href="https://twitter.com/MrSiWhiteley/status/803744069344075776">November 29, 2016</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Setup
 ```{r results='hide', warning=FALSE, message=FALSE}
