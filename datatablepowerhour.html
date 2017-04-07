@@ -255,29 +255,73 @@ Yikes! Survey file with 13,000 columns with titles so long that R cuts out and b
 colnames&lt;-<span class="kw">paste0</span>(<span class="st">&quot;reallyLongColumnNamesSuuuuuck&quot;</span>,<span class="dv">1</span>:<span class="dv">13000</span>)
 rows&lt;-<span class="dv">13000</span>
 sampledt&lt;-<span class="kw">data.table</span>(<span class="dt">a=</span><span class="dv">1</span>:rows)
-sampledt[,<span class="kw">c</span>(colnames):<span class="er">=</span><span class="dv">1</span>/pi]</code></pre></div>
-</section><section id="setup-1" class="slide level2">
-<h1>Setup</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fwrite</span>(sampledt,<span class="st">&quot;sample.csv&quot;</span>)
+sampledt[,<span class="kw">c</span>(colnames):<span class="er">=</span><span class="dv">1</span>]</code></pre></div>
+</section><section id="file" class="slide level2">
+<h1>File</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(
+<span class="kw">fwrite</span>(sampledt,<span class="st">&quot;sample.csv&quot;</span>,<span class="dt">verbose =</span> <span class="ot">FALSE</span>)
+)
 ## 
-Written <span class="fl">1.0</span>% of 13000 rows in 6 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">567</span> secs.      
-Written <span class="fl">5.2</span>% of 13000 rows in 7 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">126</span> secs.      
-Written <span class="fl">13.6</span>% of 13000 rows in 8 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">50</span> secs.      
-Written <span class="fl">17.8</span>% of 13000 rows in 9 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">41</span> secs.      
-Written <span class="fl">26.2</span>% of 13000 rows in 10 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">28</span> secs.      
-Written <span class="fl">30.3</span>% of 13000 rows in 11 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">25</span> secs.      
-Written <span class="fl">34.5</span>% of 13000 rows in 12 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">22</span> secs.      
-Written <span class="fl">38.7</span>% of 13000 rows in 13 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">20</span> secs.      
-Written <span class="fl">47.1</span>% of 13000 rows in 14 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">15</span> secs.      
-Written <span class="fl">55.4</span>% of 13000 rows in 15 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">12</span> secs.      
-Written <span class="fl">59.6</span>% of 13000 rows in 16 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">10</span> secs.      
-Written <span class="fl">68.0</span>% of 13000 rows in 17 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">8</span> secs.      
-Written <span class="fl">76.4</span>% of 13000 rows in 18 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">5</span> secs.      
-Written <span class="fl">84.7</span>% of 13000 rows in 19 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">3</span> secs.      
-Written <span class="fl">93.1</span>% of 13000 rows in 20 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=47%. Finished in <span class="dv">1</span> secs.      
-                                                                                                                                     </code></pre></div>
+Written <span class="fl">6.2</span>% of 13000 rows in 2 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=49%. Finished in <span class="dv">30</span> secs.      
+Written <span class="fl">45.8</span>% of 13000 rows in 3 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=49%. Finished in <span class="dv">3</span> secs.      
+Written <span class="fl">85.5</span>% of 13000 rows in 4 secs using 32 threads. anyBufferGrown=no; maxBuffUsed=49%. Finished in <span class="dv">0</span> secs.      
+                                                                                                                                     
+##    user  system elapsed 
+##  25.480   1.232   4.199
+
+<span class="kw">paste0</span>(<span class="kw">floor</span>(<span class="kw">file.size</span>(<span class="st">&quot;sample.csv&quot;</span>)/<span class="dv">1024</span>^<span class="dv">2</span>),<span class="st">&quot;Mb&quot;</span>)
+## [1] &quot;322Mb&quot;</code></pre></div>
+</section><section id="read" class="slide level2">
+<h1>Read</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(sampledt&lt;-<span class="kw">fread</span>(<span class="st">&quot;sample.csv&quot;</span>,<span class="dt">verbose =</span> <span class="ot">FALSE</span>))
+## 
+Read <span class="fl">76.9</span>% of <span class="dv">13000</span> rows
+Read <span class="dv">13000</span> rows and <span class="dv">13001</span> (of <span class="dv">13001</span>) columns from <span class="fl">0.315</span> GB file in <span class="dv">00</span>:<span class="dv">00</span>:<span class="dv">08</span>
+##    user  system elapsed 
+##   7.264   0.576   7.845
+<span class="kw">system.time</span>(sampledf&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;sample.csv&quot;</span>))
+##    user  system elapsed 
+##  73.000   3.392  77.129
+<span class="kw">getSize</span>(sampledt)
+## [1] &quot;647 Mb&quot;
+<span class="kw">getSize</span>(sampledf)
+## [1] &quot;646 Mb&quot;</code></pre></div>
 </section></section>
-<section><section id="joins" class="titleslide slide level1"><h1>Joins</h1></section></section>
+<section><section id="joins" class="titleslide slide level1"><h1>Joins</h1></section><section id="keys" class="slide level2">
+<h1>Keys</h1>
+<p>We can do a “primary key” in data.table - this allows us to faster indexing but doesn’t have a uniqueness constraint and a .</p>
+<p>To set the key explicitly:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setkey</span>(irisDT, Species)
+<span class="kw">setindex</span>(irisDT, Species)</code></pre></div>
+<p>Howerver, we don’t often need to do this these days!</p>
+</section><section id="implicit-joins" class="slide level2">
+<h1>Implicit joins</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">irisDT[]
+##      Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+##   1:          5.1         3.5          1.4         0.2    setosa
+##   2:          4.9         3.0          1.4         0.2    setosa
+##   3:          4.7         3.2          1.3         0.2    setosa
+##   4:          4.6         3.1          1.5         0.2    setosa
+##   5:          5.0         3.6          1.4         0.2    setosa
+##  ---                                                            
+## 146:          6.7         3.0          5.2         2.3 virginica
+## 147:          6.3         2.5          5.0         1.9 virginica
+## 148:          6.5         3.0          5.2         2.0 virginica
+## 149:          6.2         3.4          5.4         2.3 virginica
+## 150:          5.9         3.0          5.1         1.8 virginica</code></pre></div>
+</section><section id="explicit-joins" class="slide level2">
+<h1>Explicit joins</h1>
+</section><section id="compound-keys" class="slide level2">
+<h1>Compound keys</h1>
+</section><section id="derivations" class="slide level2">
+<h1>Derivations</h1>
+</section><section id="inner-join" class="slide level2">
+<h1>INNER JOIN</h1>
+</section><section id="left-join" class="slide level2">
+<h1>LEFT JOIN</h1>
+</section><section id="full-outer-join" class="slide level2">
+<h1>FULL OUTER JOIN</h1>
+</section></section>
 <section><section id="grouping" class="titleslide slide level1"><h1>Grouping</h1></section></section>
 <section><section id="pivoting" class="titleslide slide level1"><h1>Pivoting</h1></section></section>
 <section><section id="hacks" class="titleslide slide level1"><h1>Hacks</h1></section></section>
