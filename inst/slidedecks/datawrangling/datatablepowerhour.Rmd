@@ -90,6 +90,15 @@ iris[ ,c("Species","Sepal.Width")]
 irisDT[ , .(Species, Sepal.Width)]
 ```
 
+## SELECT
+```{r eval=TRUE, results='hide'}
+# Base R
+iris[ ,setdiff(colnames(iris),c("Species"))]
+
+# data.table R
+irisDT[ , .SDcols=-Species]
+```
+
 ## Aliasing
 ```{r eval=TRUE, results='hide'}
 # Base R
@@ -173,12 +182,27 @@ data.frame(Count=nrow(iris), SumSepal= sum(iris$Sepal.Width))
 irisDT[, .(Count=.N, SumSepal=sum(Sepal.Width))]
 ```
 
+## GROUP BY
+```{r eval=TRUE, results='hide'}
+# Base R
+data.frame(table(iris$Species))
 
+# data.table R
+irisDT[, .N, Species]
+```
 
+## GROUP BY
+```{r eval=TRUE, results='hide'}
+# Base R
+data.frame(table(iris$Species,iris$Sepal.Length>5))
 
+# data.table R
+irisDT[, .N, .(Species, Gt5=iris$Sepal.Length>5)]
+```
 
+# data.table putting it together
 
-# I/O
+# IO
 
 ## Problem
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Yikes! Survey file with 13,000 columns with titles so long that R cuts out and binary readers can&#39;t get to the end of the line... Madness!</p>&mdash; Simon Whiteley (@MrSiWhiteley) <a href="https://twitter.com/MrSiWhiteley/status/803744069344075776">November 29, 2016</a></blockquote>
