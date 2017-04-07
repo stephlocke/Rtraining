@@ -8,7 +8,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, dev="svg",
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, results='hide', dev="svg",
      out.height = "500px",  strip.white=TRUE
      ,collapse = TRUE, dev.args = list(bg="transparent")
 )
@@ -26,15 +26,16 @@ Hands up if you ...
 >- know the difference between a `table` and a `data.frame` in R
 >- use `dplyr`
 >- have heard of `data.table`
+>- use `data.table`
 
 ## Agenda
+- Ways data.table has been awesome
 - Basic syntax
 - Data I/O
 - Joins
 - Within group activities
+- Updates & adding columns
 - Pivoting data
-- Cool hacks
-
 
 # About Me
 
@@ -60,6 +61,27 @@ Having worked in a variety of industries -- including finance, utilities, insura
 However, I'm probably best known for my community activities; including presenting, training, blogging and speaking on panels and webinars. 
 
 If you have any questions about today's session, community activity, or data science in general, please get in touch via Locke Data, or my Twitter, [\@SteffLocke](https://twitter.com/stefflocke)
+
+# Ways data.table has been awesome
+
+## Variable content CSVs/tables
+```{r}
+myList<-list( p1=iris[1:50, -1 ], 
+              p2=iris[51:100,-2]  ,
+              p3=iris[101:150,-3] ) 
+dt<-rbindlist(myList
+ , use.names=TRUE, fill=TRUE, idcol="myList")
+```
+
+## Splitting out fields
+```{r}
+myTbl<-data.table(a="a,b,c")
+myTbl[,(LETTERS[1:3]):=tstrsplit(a, split=",")]
+```
+
+## My "big data" modelling story
+- 250k rows
+- 500 models to evaluate
 
 # data.table basics
 
@@ -257,6 +279,11 @@ getSize(sampledt)
 getSize(sampledf)
 ```
 
+## Results
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/SteffLocke">@SteffLocke</a> Ok... ooook. I&#39;ll admit it, fixing the R script was waaay quicker than writing C# (both dev &amp; running!). Thanks for the steer :) <a href="https://t.co/clPKNhdxbO">pic.twitter.com/clPKNhdxbO</a></p>&mdash; Simon Whiteley (@MrSiWhiteley) <a href="https://twitter.com/MrSiWhiteley/status/805100563394424832">December 3, 2016</a></blockquote>
+
+![](https://t.co/clPKNhdxbO)
+
 # Joins
 
 ## Indexes
@@ -304,7 +331,7 @@ We can add range-based joins too
 irisLK[irisDT, on=.(a=Species,b>=Sepal.Length)]
 ```
 
-## Joins
+## Join types
 ```{r results='hide'}
 # Left join by default!
 irisLK[irisDT,]
@@ -316,9 +343,74 @@ irisLK[irisDT, nomatch=0]
 merge(irisDT, irisLK, all=TRUE)
 ```
 
+## Union
+UNION ALL multiple tables at once with `rbindlist`. 
+ - Can do UNION by wrapping the `rbindlist` in a `unique`
+```{r}
+rbindlist(list(irisDT, irisDT[1:50]))
+unique(rbindlist(list(irisDT, irisDT[1:50])))
+```
 
 # Grouping
+## .SD
+data.table has a concept of a subset of a data.table
+
+- a table is a subset of itself
+- when you group, each group is a subset
+- each subset is a data.table
+
+## Within group
+```{r}
+irisDT[
+  , .SD[which.min(Sepal.Width), ]
+  , Species]
+```
+
+## By column
+```{r}
+irisDT[ 
+  , lapply(.SD, mean)
+  , Species]
+```
+
+# UPDATEs/INSERTs
+
+## Basic update
+The `:=` operator is used to update or insert.
+```{r}
+irisDT[, Sepal.Area:= Sepal.Width*Sepal.Length]
+```
+
+## Update multiple columns
+Use the `:=` as a function!
+
+```{r}
+irisDT[, `:=`(Sepal.Area= Sepal.Width*Sepal.Length,
+              Petal.Area= Petal.Width*Petal.Length)]
+```
+
+## Dynamic names
+Put a vector on the LHS of names
+
+```{r}
+irisDT[ ,c("Mean","Median"):=.(mean(Sepal.Width),median(Sepal.Width))
+        , Species]
+```
 
 # Pivoting
 
-# Hacks
+## Unpivot
+Unpivot with the `melt` command
+
+```{r}
+irisM<-melt(irisDT,id.vars = "Species")
+```
+
+## Pivot
+Use `dcast` to pivot data
+
+```{r}
+dcast(irisM, Species ~ variable, mean)
+```
+
+
