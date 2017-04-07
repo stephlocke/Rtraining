@@ -413,4 +413,19 @@ Use `dcast` to pivot data
 dcast(irisM, Species ~ variable, mean)
 ```
 
+# Conclusion
 
+## data.table
+- Fast
+- Concise
+- Tackles interesting data manipulation challenges easily
+- I haven't covered even close to everything!
+
+## Followup
+- Get the slides: stephlocke.info/Rtraining/datatablepowerhour.html
+- @SteffLocke & @LockeData
+- itsalocke.com
+- I'm here all week!
+
+## Thank you!
+Thank you to the sponsors, organisers, helpers, and you peeps in the audience!
