@@ -259,31 +259,62 @@ getSize(sampledf)
 
 # Joins
 
-## Keys
-We can do a "primary key" in data.table - this allows us to faster indexing but doesn't have a uniqueness constraint and a .
+## Indexes
+We can "index" columns for performance of queries. You can set multiple indexes.
 
-To set the key explicitly:
+```{r}
+setindex(irisDT, Species, Sepal.Width)
+setindex(irisDT, Sepal.Length)
+indices(irisDT)
+```
+
+## Keys
+We can do a "primary key" in data.table - unlike a typical PK it doesn't have a uniqueness constraint and allows missings. It performs a sort, when it sets a key.
 
 ```{r}
 setkey(irisDT, Species)
-setindex(irisDT, Species)
+key(irisDT)
 ```
 
-Howerver, we don't often need to do this these days!
+However, we don't often need to do this these days!
 
 ## Implicit joins
+If there are keys set on two tables then we can do an implicit join.
+
+- Can join on multiple columns 
+- Works on position
+- Will join on columns to the shortest key length
+
 ```{r}
-irisDT[]
+irisLK<-data.table(a="setosa",b=12, key = "a")
+irisLK[irisDT,][1:5,]
 ```
+
 ## Explicit joins
-## Compound keys
-## Derivations
+data.table also has an `ON` command to enable us to specificy join criteria at join time.
+
+```{r}
+irisLK[irisDT, on=.(a=Species)]
+```
 
 
-## INNER JOIN
-## LEFT JOIN
-## FULL OUTER JOIN
+## Comparison joins
+We can add range-based joins too
+```{r}
+irisLK[irisDT, on=.(a=Species,b>=Sepal.Length)]
+```
 
+## Joins
+```{r results='hide'}
+# Left join by default!
+irisLK[irisDT,]
+
+# Inner join
+irisLK[irisDT, nomatch=0]
+
+# Full outer
+merge(irisDT, irisLK, all=TRUE)
+```
 
 
 # Grouping
