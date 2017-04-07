@@ -1070,14 +1070,51 @@ label: unnamed-chunk-29 (with options)
 List of 1
  $ results: chr "hide"
 
-Quitting from lines 336-344 (datatablepowerhour.Rmd) 
-Error in merge.data.table(irisDT, irisLK, all = TRUE) : 
-  A non-empty vector of column names for `by` is required.
-Calls: render ... withVisible -> eval -> eval -> merge -> merge.data.table
-In addition: Warning messages:
-1: In `[.data.table`(sampledt, , `:=`(c(colnames), 1)) :
-  truelength (14025) is greater than 10,000 items over-allocated (length = 1). See ?truelength. If you didn't set the datatable.alloccol option very large, please report this to datatable-help including the result of sessionInfo().
-2: In `[.data.table`(sampledt, , `:=`(c(colnames), 1)) :
-  truelength (14025) is greater than 10,000 items over-allocated (length = 1). See ?truelength. If you didn't set the datatable.alloccol option very large, please report this to datatable-help including the result of sessionInfo().
+  |                                                                         |...................................................              |  79%
+  ordinary text without R code
 
-Execution halted
+  |                                                                         |....................................................             |  81%
+label: unnamed-chunk-30
+  |                                                                         |.....................................................            |  82%
+  ordinary text without R code
+
+  |                                                                         |......................................................           |  83%
+label: unnamed-chunk-31
+  |                                                                         |.......................................................          |  84%
+  ordinary text without R code
+
+  |                                                                         |........................................................         |  86%
+label: unnamed-chunk-32
+  |                                                                         |.........................................................        |  87%
+  ordinary text without R code
+
+  |                                                                         |.........................................................        |  88%
+label: unnamed-chunk-33
+  |                                                                         |..........................................................       |  90%
+  ordinary text without R code
+
+  |                                                                         |...........................................................      |  91%
+label: unnamed-chunk-34
+  |                                                                         |............................................................     |  92%
+  ordinary text without R code
+
+  |                                                                         |.............................................................    |  94%
+label: unnamed-chunk-35
+  |                                                                         |..............................................................   |  95%
+  ordinary text without R code
+
+  |                                                                         |..............................................................   |  96%
+label: unnamed-chunk-36
+  |                                                                         |...............................................................  |  97%
+  ordinary text without R code
+
+  |                                                                         |................................................................ |  99%
+label: unnamed-chunk-37
+  |                                                                         |.................................................................| 100%
+  ordinary text without R code
+
+
+output file: datatablepowerhour.knit.md
+
+/usr/bin/pandoc +RTS -K512m -RTS datatablepowerhour.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/datatablepowerhour.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
+Killed
