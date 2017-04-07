@@ -236,9 +236,25 @@ sampledt<-data.table(a=1:rows)
 sampledt[,c(colnames):=1/pi]
 ```
 
-## Setup
+## File
 ```{r}
-fwrite(sampledt,"sample.csv")
+system.time(
+fwrite(sampledt,"sample.csv",verbose = FALSE)
+)
+
+paste0(floor(file.size("sample.csv")/1024^2),"Mb")
+```
+
+## Read
+```{r echo=FALSE}
+getSize<-function(x){paste(floor(object.size(x)/1024^2),"Mb")}
+```
+
+```{r}
+system.time(sampledt<-fread("sample.csv",verbose = FALSE))
+system.time(sampledf<-read.csv("sample.csv"))
+getSize(sampledt)
+getSize(sampledf)
 ```
 
 # Joins
