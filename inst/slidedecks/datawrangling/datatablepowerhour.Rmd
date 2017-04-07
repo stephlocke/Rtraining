@@ -1,0 +1,207 @@
+---
+title: "data.table power hour"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  revealjs::revealjs_presentation:
+  theme: lockedata
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, dev="svg",
+     out.height = "500px",  strip.white=TRUE
+     ,collapse = TRUE, dev.args = list(bg="transparent")
+)
+library(data.table)
+irisDT<-setDT(copy(iris))
+```
+
+# Welcome!
+## Today's aim
+Learn about using data.table in R to process bigger data sets in R and save yourself tons of typing!
+
+## Polls
+Hands up if you ...
+
+>- know the difference between a `table` and a `data.frame` in R
+>- use `dplyr`
+>- have heard of `data.table`
+
+## Agenda
+- Basic syntax
+- Data I/O
+- Joins
+- Within group activities
+- Pivoting data
+- Cool hacks
+
+
+# About Me
+
+## Locke Data
+
+Founded by Steph Locke (that's me!), Locke Data is a data science consultancy focused on helping organisations get the most out of their data science resources. While we're happy to do data science projects for you, we'd really like to set you up to do them yourself!
+
+Locke Data offers a broad range of services including:
+
+- Data Science Readiness Reviews
+- Training and mentoring programmes
+- Independent audits and ethics reviews
+- Recruitment assistance
+
+If you'd like more information about our services please get in touch via our website, [itsalocke.com](https://itsalocke.com).
+
+## Steph Locke
+
+I am a Microsoft Data Platform MVP with a decade of business intelligence and data science experience.
+
+Having worked in a variety of industries -- including finance, utilities, insurance, and cyber-security -- I've tackled a wide range of business challenges with data.
+
+However, I'm probably best known for my community activities; including presenting, training, blogging and speaking on panels and webinars. 
+
+If you have any questions about today's session, community activity, or data science in general, please get in touch via Locke Data, or my Twitter, [\@SteffLocke](https://twitter.com/stefflocke)
+
+# data.table basics
+
+## SELECT
+```{r eval=TRUE, results='hide'}
+# Base R
+iris[1,"Species"]
+
+# data.table R
+irisDT[1, Species]
+```
+
+## SELECT
+```{r eval=TRUE, results='hide'}
+# Base R
+iris[iris$Sepal.Length>5,"Species"]
+
+# data.table R
+irisDT[Sepal.Length>5, Species]
+```
+
+## SELECT
+```{r eval=TRUE, results='hide'}
+# Base R
+iris[ ,c("Species","Sepal.Width")]
+
+# data.table R
+irisDT[ , .(Species, Sepal.Width)]
+```
+
+## Aliasing
+```{r eval=TRUE, results='hide'}
+# Base R
+iris_tmp <- iris[,c("Species","Sepal.Width")]
+names(iris_tmp) <- c("Species","SepalW")
+iris_tmp
+
+# data.table R
+irisDT[, .(Species, SepalW = Sepal.Width)]
+```
+
+## WHERE
+```{r eval=TRUE, results='hide'}
+# Base R
+iris[iris$Sepal.Length > 5, ]
+
+# data.table R
+irisDT[Sepal.Length > 5, ]
+```
+
+## WHERE BETWEEN
+```{r eval=TRUE, results='hide'}
+# Base R
+iris[iris$Sepal.Length >= 5 & iris$Sepal.Length <= 6, ]
+
+# data.table R
+irisDT[between(Sepal.Length, 5, 6), ]
+```
+
+## WHERE LIKE
+```{r eval=TRUE, results='hide'}
+# Base R
+iris[grep("set",iris$Species), ]
+
+# data.table R
+irisDT[like(Species,"set") ]
+```
+
+## ORDER BY
+```{r eval=TRUE, results='hide'}
+# Base R
+iris[order(iris$Sepal.Length),]
+
+# data.table R
+irisDT[order(Sepal.Length),]
+```
+
+## ORDER BY
+```{r eval=TRUE, results='hide'}
+# Base R
+iris[order(iris$Species, -iris$Sepal.Length),]
+
+# data.table R
+irisDT[order(Species, -Sepal.Length),]
+```
+
+## COUNT
+```{r eval=TRUE, results='hide'}
+# Base R
+sum(iris$Sepal.Width > 5)
+
+# data.table R
+irisDT[Sepal.Width > 5, .N]
+```
+
+## COUNT DISTINCT
+```{r eval=TRUE, results='hide'}
+# Base R
+length(unique(iris$Sepal.Width))
+
+# data.table R
+irisDT[, uniqueN(Sepal.Width)]
+```
+
+## Aggregate
+```{r eval=TRUE, results='hide'}
+# Base R
+data.frame(Count=nrow(iris), SumSepal= sum(iris$Sepal.Width))
+
+# data.table R
+irisDT[, .(Count=.N, SumSepal=sum(Sepal.Width))]
+```
+
+
+
+
+
+
+# I/O
+
+## Problem
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Yikes! Survey file with 13,000 columns with titles so long that R cuts out and binary readers can&#39;t get to the end of the line... Madness!</p>&mdash; Simon Whiteley (@MrSiWhiteley) <a href="https://twitter.com/MrSiWhiteley/status/803744069344075776">November 29, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## Setup
+```{r results='hide', warning=FALSE, message=FALSE}
+library(data.table)
+colnames<-paste0("reallyLongColumnNamesSuuuuuck",1:13000)
+rows<-13000
+sampledt<-data.table(a=1:rows)
+sampledt[,c(colnames):=1/pi]
+```
+
+## Setup
+```{r}
+fwrite(sampledt,"sample.csv")
+```
+
+# Joins
+
+# Grouping
+
+# Pivoting
+
+# Hacks
