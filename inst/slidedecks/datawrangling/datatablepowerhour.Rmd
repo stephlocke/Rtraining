@@ -340,7 +340,7 @@ irisLK[irisDT,]
 irisLK[irisDT, nomatch=0]
 
 # Full outer
-merge(irisDT, irisLK, all=TRUE)
+merge(irisDT, irisLK, by.x="Species", by.y="a", all=TRUE)
 ```
 
 ## Union
