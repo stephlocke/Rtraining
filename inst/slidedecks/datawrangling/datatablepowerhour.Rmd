@@ -233,7 +233,7 @@ irisTMP<-iris[iris$Sepal.Width>1,]
 irisTMP$gt5<-irisTMP$Sepal.Length>5
 irisCount<-data.frame(table(irisTMP$Species,irisTMP$gt5>5))
 names(irisCount) <- c("Species", "gt5", "Freq")
-irisMean<-aggregate(Petal.Length~+Species+gt5, data=irisTMP,FUN=mean)
+irisMean<-aggregate(Petal.Length~Species+gt5, data=irisTMP,FUN=mean)
 merge(irisCount,irisMean)
 ```
 
@@ -314,14 +314,14 @@ If there are keys set on two tables then we can do an implicit join.
 
 ```{r}
 irisLK<-data.table(a="setosa",b=12, key = "a")
-irisLK[irisDT,][1:5,]
+irisDT[irisLK,][1:5,]
 ```
 
 ## Explicit joins
 data.table also has an `ON` command to enable us to specificy join criteria at join time.
 
 ```{r}
-irisLK[irisDT, on=.(a=Species)]
+irisDT[irisLK, on=.(Species=a)]
 ```
 
 
