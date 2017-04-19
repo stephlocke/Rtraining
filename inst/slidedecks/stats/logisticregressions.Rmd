@@ -1,0 +1,314 @@
+---
+title: "Logistic Regressions"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output:
+  revealjs::revealjs_presentation:
+    theme: lockedata
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( message = FALSE, results='hide', dev="svg",
+     out.height = "500px",  strip.white=TRUE
+     ,collapse = TRUE, dev.args = list(bg="transparent")
+)
+
+knitr::opts_chunk$set(tidy = TRUE, echo=FALSE)
+library(dplyr)
+library(ggplot2)
+library(broom)
+library(forcats)
+library(caret)
+```
+
+# Welcome!
+## Today's aim
+Understand what a logistic regression is, how to prepare data for a logistic regression, and how to evaluate a model.
+
+# About Me
+
+## Locke Data
+
+Founded by Steph Locke (that's me!), Locke Data is a data science consultancy focused on helping organisations get the most out of their data science resources. While we're happy to do data science projects for you, we'd really like to set you up to do them yourself!
+
+Locke Data offers a broad range of services including:
+
+- Data Science Readiness Reviews
+- Training and mentoring programmes
+- Independent audits and ethics reviews
+- Recruitment assistance
+
+If you'd like more information about our services please get in touch via our website, [itsalocke.com](https://itsalocke.com).
+
+## Steph Locke
+
+I am a Microsoft Data Platform MVP with a decade of business intelligence and data science experience.
+
+Having worked in a variety of industries -- including finance, utilities, insurance, and cyber-security -- I've tackled a wide range of business challenges with data.
+
+However, I'm probably best known for my community activities; including presenting, training, blogging and speaking on panels and webinars. 
+
+If you have any questions about today's session, community activity, or data science in general, please get in touch via Locke Data, or my Twitter, [\@SteffLocke](https://twitter.com/stefflocke)
+
+# Logistic regression theory
+## What is a logistic regression?
+A logistic regression is a linear regression, applied to categorical outcomes by using a transformation function.
+
+## A linear regression
+A linear regression uses a *line of best fit* (the old $y = mx + c$) over multiple variables to predict a continuous variable.
+
+```{r xyc, fig.cap="Simple line of best fit"}
+set.seed(777)
+y_n<-rnorm(1000,100,25)
+x_n<-y_n+rnorm(1000,30,20)
+qplot(x_n,y_n) + geom_smooth(method = "lm", se = FALSE)+theme_minimal()
+```
+
+## Why do we need a transformation function?
+If you're trying to predict whether someone survives (1) or dies (0), does it make sense to say they're -0.2 alive, 0.5 alive, or 1.1 alive? 
+
+```{r rbinom, fig.cap="Binomial outcome variable"}
+y_b<-rbinom(1000,size = 1, prob = .89)
+qplot(y_b, binwidth=.5)
+x_b<-y_b+rnorm(1000)
+qplot(x_b,y_b) + geom_smooth(method = "lm", se = FALSE)+theme_minimal()
+```
+
+## What can we measure that is a continuous variable?
+We can measure the *probability* of someone surviving. This gives us data in the range $[ 0 , 1 ]$ which is better, but still not our ideal of $[-\infty,+\infty]$.
+
+```{r probs, fig.cap="Probability range, where dashed line indicates 50% probability cutoff"}
+prob_y<-seq(0,1, by=.001)[-1]
+qplot(y_b,prob_y)+theme_minimal()+geom_hline(aes(yintercept=.5), linetype="dashed", colour="red")
+```
+
+## How can we transform it to be in the range we want?
+The *odds* of something happening are the probability of it happening versus the probability of it not happening can help us.
+\begin{equation}
+\frac{p}{1-p}
+\end{equation}
+
+As probability can never be less than 0 or greater than 1, we get a range between $[0,+\infty]$. 
+
+```{r oddsdist, fig.cap="Odds distribution"}
+odds_y<- prob_y/(1-prob_y)
+qplot(prob_y, odds_y)+theme_minimal()
+```
+
+## How can allow negative values?
+The final step in this transformation is to take the log of the odds, which is commonly called the *logit*. This gets us to $[-\infty,+\infty]$.
+
+```{r logitdist, fig.cap="Logit distribution"}
+logit<-log(odds_y)
+qplot(prob_y, logit)+theme_minimal()
+```
+
+## Interpreting the results
+```{r logittransform}
+library(optiRum)
+
+logits     <- -4:4
+odds       <- logit.odd(logits)
+probs      <- odd.prob(odds)
+pred_class <- logits>=0
+
+knitr::kable(data.frame(logits,odds,probs,pred_class))
+```
+
+# Logistic regressions in R
+## `glm()`
+The glm function is used for performing logistic regressions. It can be used for other linear models too.
+
+```{r glm, echo=TRUE}
+glm(vs~ mpg , data=mtcars, family = binomial(link="logit"))
+```
+## Formula
+R uses a formula system for specifying a model.
+
+- You put the outcome variable on the left
+- A tilde (`~`) is used for saying "predicted by"
+- Exclude an intercept term by adding `-1` to your formula
+- You can use a `.` to predict by all other variables e.g. `y ~ .`
+- Use a `+` to provide multiple independent variables e.g. `y ~ a + b`
+- You can use a `:` to use the interaction of two variables e.g. `y ~ a:b`
+- You can use a `*` to use two variables and their interaction e.g. `y ~ a*b`^[equivalent to `y ~ a + b + a:b`]
+- You can construct features on the fly e.g. `y ~ log(x)` or use `I()` when adding values e.g. `y ~ I(a+b)`
+
+For more info, check out `?formula`
+
+## Useful parameters
+- `na.action` can be set to amend the handling of missings in the data
+- `model`,`x`,`y` controls whether you get extra info about the model and data back. Setting these to `FALSE` saves space
+
+## Functions working with `glm`
+
+```{r echo=FALSE}
+df<-data.frame(Function=c("coefficients","summary","fitted", "predict",  "plot", "residuals" ),
+               Purpose=c("Extract coefficients", "Output a basic summary", "Return the predicted values for the training data", "Predict some values for new data","Produce some basic diagnostic plots", "Return the errors on predicted values for the training data"))
+knitr::kable(df)
+```
+
+## Inputs
+You can provide a glm with continuous and categorical variables.
+
+>- Categorical variables get transformed into dummy variables
+>- Continuous variables should ideally be scaled
+
+# Preparing data
+
+## Exploration
+Many ways to explore your data for outliers, patterns, issues etc.
+
+```{r}
+mtcarsVars<-mtcars[,colnames(mtcars)[colnames(mtcars)!="vs"]]
+mtcarsOut<-mtcars[,"vs"]
+```
+
+```{r echo=TRUE}
+library(caret)
+featurePlot(mtcarsVars, mtcarsOut)
+```
+
+## Sampling
+Commonly, we will take a training sample and a testing sample.
+```{r echo=TRUE}
+set.seed(77887)
+trainRows<-createDataPartition(mtcarsOut, p=.7 , list=FALSE)
+
+training_x<-mtcarsVars[trainRows,]
+training_y<-mtcarsOut[trainRows]
+
+testing_x<-mtcarsVars[-trainRows,]
+testing_y<-mtcarsOut[-trainRows]
+```
+
+## Why sample *before* processing?
+Sampling before scaling etc prevents information about the test data leaking into our model. By preventing such leaks we get a truer view of how well our model generalises later.
+
+## Scaling variables
+- **minmax** Express numbers as a percentage of the maximum after subtracting the minimum. This results in range $[0,1]$ for training data but can result in a different range in test data and, therefore, production!
+\begin{equation}
+\frac{x - min(x)}{max(x) - min(x)}
+\end{equation}
+- **z-score** Express numbers as the distance from the mean in standard deviations. This results in a range that's notionally $[-\infty,+\infty]$ and results will be in the same range in test data.
+\begin{equation}
+\frac{x - mean(x)}{sd(x)}
+
+Perform z-score scaling in R with the `scale` function:
+```{r echo=TRUE}
+x<-rnorm(50, mean = 50, sd = 10)
+x_s<-scale(x, center = TRUE, scale = TRUE)
+summary(x_s)
+```
+
+## Scaling variables
+Use `caret` to scale multiple variables simultaneously and get a reusable scaling model for applying to test data, and eventually production data.
+
+```{r}
+transformations<-preProcess(training_x)
+scaledVars<-predict(transformations,training_x)
+knitr::kable(t(summary(scaledVars)))
+```
+
+## Things to check for
+- Correlated variables 
+- Low variance columns
+
+`caret` is very useful for these
+
+## Handling missings
+Common methods for coping with missing data:
+
+- Removing rows with missings
+    - Con: reduces sample size
+    - Pro: use only complete data
+- [Continuous variables only] Putting in a default value like mean
+    - Con: tends to flatten model coefficient for variable
+    - Pro: simple to do
+- Putting in a predicted value
+    - Con: requires another set of data
+    - Pro: realistic values
+- [Continuous variables only] Making variable a categorical with an explicit missing category
+    - Con: information loss on continuous variables
+    - Pro: explicit modelling of missings
+    
+# Building models
+## Initial models
+I try to build some candidate models:
+
+- All variables
+- A few strongest variables
+
+## Stepwise selection
+
+```{r}
+fullmodel<-glm(training_y~ ., data=training_x, family = binomial(link="logit"))
+steppedmodel<-step(fullmodel, direction="both",trace = FALSE)
+summary(steppedmodel)
+```
+
+## Other model types
+- Different logistic regression variants like glmnet, gbm
+- Different models like classification trees
+
+## Others
+- You can also try with different loss or error functions
+- You should try "common sense" models
+
+# Evaluating glms
+## `broom`
+Use `broom` to make tidy versions of model outputs.
+
+```{r}
+library(broom)
+
+# Coefficients
+knitr::kable(tidy(steppedmodel))
+
+# Fitted data
+knitr::kable(head(augment(steppedmodel)))
+
+# Key statistics
+knitr::kable(glance(steppedmodel))
+```
+
+## Coefficients
+- Are the coefficient signs in the right directions?
+- How significant are they?
+- How important are they? 
+
+## Key metrics
+
+- *Residual deviance* is a measure of how much error is in the model, after considering all the variables in the model. The smaller the residual deviance, the better.
+
+```{r echo=TRUE}
+deviance(fullmodel)
+```
+
+- *Akaike’s information criterion (AIC)* is a measure of information captured by a model and penalises more variables over fewer variables. The smaller the AIC, the better.
+
+```{r echo=TRUE}
+AIC(fullmodel)
+```
+
+## Classification rates
+
+```{r echo=TRUE}
+training_pred<-ifelse(predict(steppedmodel,training_x)>0, "1","0")
+confusionMatrix(training_pred,training_y)
+```
+
+## Classification rates
+```{r echo=TRUE}
+testing_pred<-ifelse(predict(fullmodel,testing_x)>0, "1","0")
+confusionMatrix(testing_pred,testing_y)
+```
+
+# Conclusion
+
+## Followup
+- Get the slides: stephlocke.info/Rtraining/logisticregressions.html
+- @SteffLocke & @LockeData
+- itsalocke.com
+
+## Thank you!
