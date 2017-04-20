@@ -5,6 +5,10 @@ date: "`r Sys.Date()`"
 output:
   revealjs::revealjs_presentation:
     theme: lockedata
+    reveal_options:
+      height: 1080
+      width: 1920
+      margin: 0.05
 ---
 
 ```{r setup, include=FALSE}
@@ -13,7 +17,7 @@ knitr::opts_chunk$set( message = FALSE, results='hide', dev="svg",
      ,collapse = TRUE, dev.args = list(bg="transparent")
 )
 
-knitr::opts_chunk$set(tidy = TRUE, echo=FALSE)
+knitr::opts_chunk$set(tidy = TRUE, echo=TRUE)
 library(dplyr)
 library(ggplot2)
 library(broom)
@@ -57,7 +61,7 @@ A logistic regression is a linear regression, applied to categorical outcomes by
 ## A linear regression
 A linear regression uses a *line of best fit* (the old $y = mx + c$) over multiple variables to predict a continuous variable.
 
-```{r xyc, fig.cap="Simple line of best fit"}
+```{r xyc, echo=FALSE}
 set.seed(777)
 y_n<-rnorm(1000,100,25)
 x_n<-y_n+rnorm(1000,30,20)
@@ -67,7 +71,7 @@ qplot(x_n,y_n) + geom_smooth(method = "lm", se = FALSE)+theme_minimal()
 ## Why do we need a transformation function?
 If you're trying to predict whether someone survives (1) or dies (0), does it make sense to say they're -0.2 alive, 0.5 alive, or 1.1 alive? 
 
-```{r rbinom, fig.cap="Binomial outcome variable"}
+```{r rbinom, echo=FALSE}
 y_b<-rbinom(1000,size = 1, prob = .89)
 qplot(y_b, binwidth=.5)
 x_b<-y_b+rnorm(1000)
@@ -77,7 +81,7 @@ qplot(x_b,y_b) + geom_smooth(method = "lm", se = FALSE)+theme_minimal()
 ## What can we measure that is a continuous variable?
 We can measure the *probability* of someone surviving. This gives us data in the range $[ 0 , 1 ]$ which is better, but still not our ideal of $[-\infty,+\infty]$.
 
-```{r probs, fig.cap="Probability range, where dashed line indicates 50% probability cutoff"}
+```{r probs, echo=FALSE}
 prob_y<-seq(0,1, by=.001)[-1]
 qplot(y_b,prob_y)+theme_minimal()+geom_hline(aes(yintercept=.5), linetype="dashed", colour="red")
 ```
@@ -90,7 +94,7 @@ The *odds* of something happening are the probability of it happening versus the
 
 As probability can never be less than 0 or greater than 1, we get a range between $[0,+\infty]$. 
 
-```{r oddsdist, fig.cap="Odds distribution"}
+```{r oddsdist, echo=FALSE}
 odds_y<- prob_y/(1-prob_y)
 qplot(prob_y, odds_y)+theme_minimal()
 ```
@@ -98,13 +102,13 @@ qplot(prob_y, odds_y)+theme_minimal()
 ## How can allow negative values?
 The final step in this transformation is to take the log of the odds, which is commonly called the *logit*. This gets us to $[-\infty,+\infty]$.
 
-```{r logitdist, fig.cap="Logit distribution"}
+```{r logitdist, echo=FALSE}
 logit<-log(odds_y)
 qplot(prob_y, logit)+theme_minimal()
 ```
 
 ## Interpreting the results
-```{r logittransform}
+```{r logittransform, echo=FALSE}
 library(optiRum)
 
 logits     <- -4:4
@@ -119,7 +123,7 @@ knitr::kable(data.frame(logits,odds,probs,pred_class))
 ## `glm()`
 The glm function is used for performing logistic regressions. It can be used for other linear models too.
 
-```{r glm, echo=TRUE}
+```{r glm}
 glm(vs~ mpg , data=mtcars, family = binomial(link="logit"))
 ```
 ## Formula
@@ -159,7 +163,7 @@ You can provide a glm with continuous and categorical variables.
 ## Exploration
 Many ways to explore your data for outliers, patterns, issues etc.
 
-```{r}
+```{r echo=FALSE}
 mtcarsVars<-mtcars[,colnames(mtcars)[colnames(mtcars)!="vs"]]
 mtcarsOut<-mtcars[,"vs"]
 ```
@@ -204,7 +208,7 @@ summary(x_s)
 ## Scaling variables
 Use `caret` to scale multiple variables simultaneously and get a reusable scaling model for applying to test data, and eventually production data.
 
-```{r}
+```{r, echo=FALSE}
 transformations<-preProcess(training_x)
 scaledVars<-predict(transformations,training_x)
 knitr::kable(t(summary(scaledVars)))
@@ -241,9 +245,12 @@ I try to build some candidate models:
 
 ## Stepwise selection
 
-```{r}
+```{r results="hide"}
 fullmodel<-glm(training_y~ ., data=training_x, family = binomial(link="logit"))
 steppedmodel<-step(fullmodel, direction="both",trace = FALSE)
+```
+
+```{r}
 summary(steppedmodel)
 ```
 
