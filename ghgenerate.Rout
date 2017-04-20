@@ -490,15 +490,15 @@ Output created: out/lazyinfrastructure.html
 
 
 processing file: logisticregressions.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |..                                                               |   2%
+  |                                                                         |                                                                 |   0%  |                                                                         |.                                                                |   2%
    inline R code fragments
 
-  |                                                                         |...                                                              |   5%
+  |                                                                         |...                                                              |   4%
 label: setup (with options) 
 List of 1
  $ include: logi FALSE
 
-  |                                                                         |.....                                                            |   7%
+  |                                                                         |....                                                             |   6%
   ordinary text without R code
 
   |                                                                         |......                                                           |   9%
@@ -506,146 +506,160 @@ label: xyc (with options)
 List of 1
  $ echo: logi FALSE
 
-  |                                                                         |........                                                         |  12%
+  |                                                                         |.......                                                          |  11%
   ordinary text without R code
 
-  |                                                                         |.........                                                        |  14%
+  |                                                                         |........                                                         |  13%
 label: rbinom (with options) 
 List of 1
  $ echo: logi FALSE
 
-  |                                                                         |...........                                                      |  16%
+  |                                                                         |..........                                                       |  15%
   ordinary text without R code
 
-  |                                                                         |............                                                     |  19%
+  |                                                                         |...........                                                      |  17%
 label: probs (with options) 
 List of 1
  $ echo: logi FALSE
 
-  |                                                                         |..............                                                   |  21%
+  |                                                                         |............                                                     |  19%
   ordinary text without R code
 
-  |                                                                         |...............                                                  |  23%
+  |                                                                         |..............                                                   |  21%
 label: oddsdist (with options) 
 List of 1
  $ echo: logi FALSE
 
-  |                                                                         |.................                                                |  26%
+  |                                                                         |...............                                                  |  23%
   ordinary text without R code
 
-  |                                                                         |..................                                               |  28%
+  |                                                                         |.................                                                |  26%
 label: logitdist (with options) 
 List of 1
  $ echo: logi FALSE
 
-  |                                                                         |....................                                             |  30%
+  |                                                                         |..................                                               |  28%
   ordinary text without R code
 
-  |                                                                         |.....................                                            |  33%
+  |                                                                         |...................                                              |  30%
 label: logittransform (with options) 
 List of 1
  $ echo: logi FALSE
 
-  |                                                                         |.......................                                          |  35%
+  |                                                                         |.....................                                            |  32%
   ordinary text without R code
 
-  |                                                                         |........................                                         |  37%
+  |                                                                         |......................                                           |  34%
 label: glm
-  |                                                                         |..........................                                       |  40%
+  |                                                                         |........................                                         |  36%
   ordinary text without R code
 
-  |                                                                         |...........................                                      |  42%
+  |                                                                         |.........................                                        |  38%
 label: unnamed-chunk-1 (with options) 
 List of 1
  $ echo: logi FALSE
 
-  |                                                                         |.............................                                    |  44%
+  |                                                                         |..........................                                       |  40%
   ordinary text without R code
 
-  |                                                                         |..............................                                   |  47%
+  |                                                                         |............................                                     |  43%
 label: unnamed-chunk-2 (with options) 
 List of 1
  $ echo: logi FALSE
+
+  |                                                                         |.............................                                    |  45%
+  ordinary text without R code
+
+  |                                                                         |..............................                                   |  47%
+label: unnamed-chunk-3 (with options) 
+List of 1
+ $ echo: logi TRUE
 
   |                                                                         |................................                                 |  49%
   ordinary text without R code
 
   |                                                                         |.................................                                |  51%
-label: unnamed-chunk-3 (with options) 
+label: unnamed-chunk-4 (with options) 
 List of 1
  $ echo: logi TRUE
 
   |                                                                         |...................................                              |  53%
   ordinary text without R code
 
-  |                                                                         |....................................                             |  56%
-label: unnamed-chunk-4 (with options) 
-List of 1
- $ echo: logi TRUE
-
-  |                                                                         |......................................                           |  58%
-  ordinary text without R code
-
-  |                                                                         |.......................................                          |  60%
+  |                                                                         |....................................                             |  55%
 label: unnamed-chunk-5 (with options) 
 List of 1
  $ echo: logi TRUE
 
-  |                                                                         |.........................................                        |  63%
+  |                                                                         |.....................................                            |  57%
   ordinary text without R code
 
-  |                                                                         |..........................................                       |  65%
+  |                                                                         |.......................................                          |  60%
 label: unnamed-chunk-6 (with options) 
-List of 1
- $ echo: logi FALSE
-
-  |                                                                         |............................................                     |  67%
-  ordinary text without R code
-
-  |                                                                         |.............................................                    |  70%
-label: unnamed-chunk-7 (with options) 
-List of 1
- $ results: chr "hide"
-
-  |                                                                         |...............................................                  |  72%
-  ordinary text without R code
-
-  |                                                                         |................................................                 |  74%
-label: unnamed-chunk-8
-  |                                                                         |..................................................               |  77%
-  ordinary text without R code
-
-  |                                                                         |...................................................              |  79%
-label: unnamed-chunk-9
-  |                                                                         |.....................................................            |  81%
-  ordinary text without R code
-
-  |                                                                         |......................................................           |  84%
-label: unnamed-chunk-10 (with options) 
 List of 1
  $ echo: logi TRUE
 
-  |                                                                         |........................................................         |  86%
+  |                                                                         |........................................                         |  62%
   ordinary text without R code
 
-  |                                                                         |.........................................................        |  88%
-label: unnamed-chunk-11 (with options) 
+  |                                                                         |.........................................                        |  64%
+label: unnamed-chunk-7 (with options) 
+List of 2
+ $ results: chr "hide"
+ $ warning: logi FALSE
+
+  |                                                                         |...........................................                      |  66%
+  ordinary text without R code
+
+  |                                                                         |............................................                     |  68%
+label: unnamed-chunk-8 (with options) 
+List of 1
+ $ results: chr "show"
+
+  |                                                                         |..............................................                   |  70%
+  ordinary text without R code
+
+  |                                                                         |...............................................                  |  72%
+label: unnamed-chunk-9
+  |                                                                         |................................................                 |  74%
+  ordinary text without R code
+
+  |                                                                         |..................................................               |  77%
+label: unnamed-chunk-10
+  |                                                                         |...................................................              |  79%
+  ordinary text without R code
+
+  |                                                                         |.....................................................            |  81%
+label: unnamed-chunk-11
+  |                                                                         |......................................................           |  83%
+  ordinary text without R code
+
+  |                                                                         |.......................................................          |  85%
+label: unnamed-chunk-12 (with options) 
+List of 1
+ $ echo: logi TRUE
+
+  |                                                                         |.........................................................        |  87%
+  ordinary text without R code
+
+  |                                                                         |..........................................................       |  89%
+label: unnamed-chunk-13 (with options) 
 List of 1
  $ echo: logi TRUE
 
   |                                                                         |...........................................................      |  91%
   ordinary text without R code
 
-  |                                                                         |............................................................     |  93%
-label: unnamed-chunk-12 (with options) 
+  |                                                                         |.............................................................    |  94%
+label: unnamed-chunk-14 (with options) 
 List of 1
  $ echo: logi TRUE
 
-  |                                                                         |..............................................................   |  95%
+  |                                                                         |..............................................................   |  96%
   ordinary text without R code
 
-  |                                                                         |...............................................................  |  98%
-label: unnamed-chunk-13 (with options) 
+  |                                                                         |................................................................ |  98%
+label: unnamed-chunk-15 (with options) 
 List of 1
  $ echo: logi TRUE
 
@@ -1728,7 +1742,7 @@ label: unnamed-chunk-21
 
 output file: stats101.knit.md
 
-/usr/bin/pandoc +RTS -K512m -RTS stats101.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/stats101.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --include-in-header /tmp/RtmpUGZetM/rmarkdown-str101703edd0544.html --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
+/usr/bin/pandoc +RTS -K512m -RTS stats101.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/stats101.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --include-in-header /tmp/RtmpJFHWUC/rmarkdown-str1017e42386387.html --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
 
 Output created: out/stats101.html
 
