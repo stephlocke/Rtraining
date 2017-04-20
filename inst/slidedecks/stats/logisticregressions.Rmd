@@ -12,7 +12,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set( message = FALSE, results='hide', dev="svg",
+knitr::opts_chunk$set( message = FALSE, results='show', dev="svg",
      out.height = "500px",  strip.white=TRUE
      ,collapse = TRUE, dev.args = list(bg="transparent")
 )
@@ -135,7 +135,7 @@ R uses a formula system for specifying a model.
 - You can use a `.` to predict by all other variables e.g. `y ~ .`
 - Use a `+` to provide multiple independent variables e.g. `y ~ a + b`
 - You can use a `:` to use the interaction of two variables e.g. `y ~ a:b`
-- You can use a `*` to use two variables and their interaction e.g. `y ~ a*b`^[equivalent to `y ~ a + b + a:b`]
+- You can use a `*` to use two variables and their interaction e.g. `y ~ a*b` (equivalent to `y ~ a + b + a:b`)
 - You can construct features on the fly e.g. `y ~ log(x)` or use `I()` when adding values e.g. `y ~ I(a+b)`
 
 For more info, check out `?formula`
@@ -208,7 +208,7 @@ summary(x_s)
 ## Scaling variables
 Use `caret` to scale multiple variables simultaneously and get a reusable scaling model for applying to test data, and eventually production data.
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 transformations<-preProcess(training_x)
 scaledVars<-predict(transformations,training_x)
 knitr::kable(t(summary(scaledVars)))
@@ -245,12 +245,12 @@ I try to build some candidate models:
 
 ## Stepwise selection
 
-```{r results="hide"}
+```{r results="hide", warning = FALSE}
 fullmodel<-glm(training_y~ ., data=training_x, family = binomial(link="logit"))
 steppedmodel<-step(fullmodel, direction="both",trace = FALSE)
 ```
 
-```{r}
+```{r results="show"}
 summary(steppedmodel)
 ```
 
@@ -271,10 +271,20 @@ library(broom)
 
 # Coefficients
 knitr::kable(tidy(steppedmodel))
+```
 
+## `broom`
+Use `broom` to make tidy versions of model outputs.
+
+```{r}
 # Fitted data
 knitr::kable(head(augment(steppedmodel)))
+```
 
+## `broom`
+Use `broom` to make tidy versions of model outputs.
+
+```{r}
 # Key statistics
 knitr::kable(glance(steppedmodel))
 ```
