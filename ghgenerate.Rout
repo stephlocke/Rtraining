@@ -837,7 +837,7 @@ output file: datatablein5.knit.md
 Output created: out/datatablein5.html
 
 
-processing file: datatablepowerhour.Rmd
+processing file: zz_datatablepowerhour.Rmd
   |                                                                         |                                                                 |   0%  |                                                                         |.                                                                |   1%
    inline R code fragments
 
@@ -1037,84 +1037,4 @@ List of 1
 
   |                                                                         |.........................................                        |  62%
 label: unnamed-chunk-23
-  |                                                                         |.........................................                        |  64%
-  ordinary text without R code
-
-  |                                                                         |..........................................                       |  65%
-label: unnamed-chunk-24
-  |                                                                         |...........................................                      |  66%
-  ordinary text without R code
-
-  |                                                                         |............................................                     |  68%
-label: unnamed-chunk-25
-  |                                                                         |.............................................                    |  69%
-  ordinary text without R code
-
-  |                                                                         |..............................................                   |  70%
-label: unnamed-chunk-26
-  |                                                                         |..............................................                   |  71%
-  ordinary text without R code
-
-  |                                                                         |...............................................                  |  73%
-label: unnamed-chunk-27
-  |                                                                         |................................................                 |  74%
-  ordinary text without R code
-
-  |                                                                         |.................................................                |  75%
-label: unnamed-chunk-28
-  |                                                                         |..................................................               |  77%
-  ordinary text without R code
-
-  |                                                                         |...................................................              |  78%
-label: unnamed-chunk-29 (with options) 
-List of 1
- $ results: chr "hide"
-
-  |                                                                         |...................................................              |  79%
-  ordinary text without R code
-
-  |                                                                         |....................................................             |  81%
-label: unnamed-chunk-30
-  |                                                                         |.....................................................            |  82%
-  ordinary text without R code
-
-  |                                                                         |......................................................           |  83%
-label: unnamed-chunk-31
-  |                                                                         |.......................................................          |  84%
-  ordinary text without R code
-
-  |                                                                         |........................................................         |  86%
-label: unnamed-chunk-32
-  |                                                                         |.........................................................        |  87%
-  ordinary text without R code
-
-  |                                                                         |.........................................................        |  88%
-label: unnamed-chunk-33
-  |                                                                         |..........................................................       |  90%
-  ordinary text without R code
-
-  |                                                                         |...........................................................      |  91%
-label: unnamed-chunk-34
-  |                                                                         |............................................................     |  92%
-  ordinary text without R code
-
-  |                                                                         |.............................................................    |  94%
-label: unnamed-chunk-35
-  |                                                                         |..............................................................   |  95%
-  ordinary text without R code
-
-  |                                                                         |..............................................................   |  96%
-label: unnamed-chunk-36
-  |                                                                         |...............................................................  |  97%
-  ordinary text without R code
-
-  |                                                                         |................................................................ |  99%
-label: unnamed-chunk-37
-  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-output file: datatablepowerhour.knit.md
-
-/usr/bin/pandoc +RTS -K512m -RTS datatablepowerhour.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/datatablepowerhour.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
 Killed
