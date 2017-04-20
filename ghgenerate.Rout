@@ -38,274 +38,13 @@ Type 'q()' to quit R.
 > slidedecks<-slidedecks[-grep("subDocs|demo",slidedecks)]
 > workshops<-workshops[-grep("subDocs|demo",workshops)]
 > slidedecks<-setdiff(slidedecks,shinydecks)
+> slidedecks<-slidedecks[order(basename(slidedecks))]
 > 
 > for (f in slidedecks) render(f,output_dir = "out",
 +                              output_format = revealjs::revealjs_presentation(
 +                                theme = "lockedata", reveal_options = list(height="1080",
 +                                                                           width="1920",
 +                                                                           margin="0.05")))
-
-
-processing file: webservices.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |....                                                             |   6%
-   inline R code fragments
-
-  |                                                                         |.......                                                          |  11%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/Objective.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/Objective.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |...........                                                      |  17%
-  ordinary text without R code
-
-  |                                                                         |..............                                                   |  22%
-label: autodoc (with options) 
-List of 2
- $ child: chr "../../generics/AboutMe.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./../../generics/AboutMe.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |..................                                               |  28%
-  ordinary text without R code
-
-  |                                                                         |......................                                           |  33%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/What.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/What.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |.........................                                        |  39%
-  ordinary text without R code
-
-  |                                                                         |.............................                                    |  44%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/Why.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/Why.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |................................                                 |  50%
-  ordinary text without R code
-
-  |                                                                         |....................................                             |  56%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/Who.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/Who.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |........................................                         |  61%
-  ordinary text without R code
-
-  |                                                                         |...........................................                      |  67%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/When.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/When.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |...............................................                  |  72%
-  ordinary text without R code
-
-  |                                                                         |...................................................              |  78%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/Where.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/Where.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |......................................................           |  83%
-  ordinary text without R code
-
-  |                                                                         |..........................................................       |  89%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/How.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/How.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |......                                                           |  10%
-  ordinary text without R code
-
-  |                                                                         |.............                                                    |  20%
-label: unnamed-chunk-1 (with options) 
-List of 2
- $ echo: logi TRUE
- $ eval: logi FALSE
-
-  |                                                                         |....................                                             |  30%
-  ordinary text without R code
-
-  |                                                                         |..........................                                       |  40%
-label: unnamed-chunk-2 (with options) 
-List of 2
- $ echo: logi TRUE
- $ eval: logi FALSE
-
-  |                                                                         |................................                                 |  50%
-  ordinary text without R code
-
-  |                                                                         |.......................................                          |  60%
-label: unnamed-chunk-3 (with options) 
-List of 2
- $ echo: logi TRUE
- $ eval: logi FALSE
-
-  |                                                                         |..............................................                   |  70%
-  ordinary text without R code
-
-  |                                                                         |....................................................             |  80%
-label: unnamed-chunk-4 (with options) 
-List of 2
- $ echo: logi TRUE
- $ eval: logi FALSE
-
-  |                                                                         |..........................................................       |  90%
-  ordinary text without R code
-
-  |                                                                         |.................................................................| 100%
-label: unnamed-chunk-5 (with options) 
-List of 2
- $ echo: logi TRUE
- $ eval: logi FALSE
-
-
-  |                                                                         |.............................................................    |  94%
-  ordinary text without R code
-
-  |                                                                         |.................................................................| 100%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/Conclusion.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/Conclusion.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-
-output file: webservices.knit.md
-
-/usr/bin/pandoc +RTS -K512m -RTS webservices.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/webservices.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
-
-Output created: out/webservices.html
-
-
-processing file: RonSQLServer.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.........                                                        |  14%
-   inline R code fragments
-
-  |                                                                         |...................                                              |  29%
-label: setup (with options) 
-List of 1
- $ include: logi FALSE
-
-  |                                                                         |............................                                     |  43%
-  ordinary text without R code
-
-  |                                                                         |.....................................                            |  57%
-label: autodoc (with options) 
-List of 2
- $ child: chr "../../generics/AboutMe.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./../../generics/AboutMe.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |..............................................                   |  71%
-  ordinary text without R code
-
-  |                                                                         |........................................................         |  86%
-label: unnamed-chunk-1
-  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-output file: RonSQLServer.knit.md
-
-/usr/bin/pandoc +RTS -K512m -RTS RonSQLServer.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/RonSQLServer.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
-
-Output created: out/RonSQLServer.html
-
-
-processing file: boardpack.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |................                                                 |  25%
-   inline R code fragments
-
-  |                                                                         |................................                                 |  50%
-label: unnamed-chunk-1 (with options) 
-List of 2
- $ echo: logi FALSE
- $ eval: logi FALSE
-
-  |                                                                         |.................................................                |  75%
-  ordinary text without R code
-
-  |                                                                         |.................................................................| 100%
-label: unnamed-chunk-2 (with options) 
-List of 1
- $ eval: logi FALSE
-
-
-output file: boardpack.knit.md
-
-/usr/bin/pandoc +RTS -K512m -RTS boardpack.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/boardpack.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
-
-Output created: out/boardpack.html
 
 
 processing file: betterwithdata.Rmd
@@ -408,6 +147,32 @@ output file: betterwithdata.knit.md
 Output created: out/betterwithdata.html
 
 
+processing file: boardpack.Rmd
+  |                                                                         |                                                                 |   0%  |                                                                         |................                                                 |  25%
+   inline R code fragments
+
+  |                                                                         |................................                                 |  50%
+label: unnamed-chunk-1 (with options) 
+List of 2
+ $ echo: logi FALSE
+ $ eval: logi FALSE
+
+  |                                                                         |.................................................                |  75%
+  ordinary text without R code
+
+  |                                                                         |.................................................................| 100%
+label: unnamed-chunk-2 (with options) 
+List of 1
+ $ eval: logi FALSE
+
+
+output file: boardpack.knit.md
+
+/usr/bin/pandoc +RTS -K512m -RTS boardpack.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/boardpack.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
+
+Output created: out/boardpack.html
+
+
 processing file: datadockerdisconbobulating.Rmd
   |                                                                         |                                                                 |   0%  |                                                                         |.........                                                        |  14%
    inline R code fragments
@@ -458,6 +223,43 @@ output file: datadockerdisconbobulating.knit.md
 /usr/bin/pandoc +RTS -K512m -RTS datadockerdisconbobulating.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/datadockerdisconbobulating.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
 
 Output created: out/datadockerdisconbobulating.html
+
+
+processing file: datatablein5.Rmd
+  |                                                                         |                                                                 |   0%  |                                                                         |........                                                         |  12%
+   inline R code fragments
+
+  |                                                                         |................                                                 |  25%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                         |........................                                         |  38%
+  ordinary text without R code
+
+  |                                                                         |................................                                 |  50%
+label: unnamed-chunk-1 (with options) 
+List of 3
+ $ echo   : logi FALSE
+ $ warning: logi FALSE
+ $ results: chr "hide"
+
+  |                                                                         |.........................................                        |  62%
+  ordinary text without R code
+
+  |                                                                         |.................................................                |  75%
+label: unnamed-chunk-2
+  |                                                                         |.........................................................        |  88%
+  ordinary text without R code
+
+  |                                                                         |.................................................................| 100%
+label: unnamed-chunk-3
+
+output file: datatablein5.knit.md
+
+/usr/bin/pandoc +RTS -K512m -RTS datatablein5.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/datatablein5.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
+
+Output created: out/datatablein5.html
 
 
 processing file: gitin5.Rmd
@@ -548,6 +350,77 @@ output file: infrastructureforRpeeps.knit.md
 Output created: out/infrastructureforRpeeps.html
 
 
+processing file: KnowingYourRsFromYourElbow.Rmd
+  |                                                                         |                                                                 |   0%  |                                                                         |....                                                             |   6%
+   inline R code fragments
+
+  |                                                                         |........                                                         |  12%
+label: unnamed-chunk-1
+  |                                                                         |...........                                                      |  18%
+  ordinary text without R code
+
+  |                                                                         |...............                                                  |  24%
+label: unnamed-chunk-2
+  |                                                                         |...................                                              |  29%
+  ordinary text without R code
+
+  |                                                                         |.......................                                          |  35%
+label: unnamed-chunk-3 (with options) 
+List of 1
+ $ eval: logi FALSE
+
+  |                                                                         |...........................                                      |  41%
+  ordinary text without R code
+
+  |                                                                         |...............................                                  |  47%
+label: unnamed-chunk-4 (with options) 
+List of 4
+ $ results: chr "hide"
+ $ echo   : logi FALSE
+ $ warning: logi FALSE
+ $ message: logi FALSE
+
+  |                                                                         |..................................                               |  53%
+  ordinary text without R code
+
+  |                                                                         |......................................                           |  59%
+label: unnamed-chunk-5
+  |                                                                         |..........................................                       |  65%
+  ordinary text without R code
+
+  |                                                                         |..............................................                   |  71%
+label: unnamed-chunk-6
+  |                                                                         |..................................................               |  76%
+  ordinary text without R code
+
+  |                                                                         |......................................................           |  82%
+label: unnamed-chunk-7 (with options) 
+List of 4
+ $ results: chr "hide"
+ $ echo   : logi FALSE
+ $ warning: logi FALSE
+ $ message: logi FALSE
+
+  |                                                                         |.........................................................        |  88%
+  ordinary text without R code
+
+  |                                                                         |.............................................................    |  94%
+label: unnamed-chunk-8 (with options) 
+List of 2
+ $ results: chr "hide"
+ $ eval   : logi FALSE
+
+  |                                                                         |.................................................................| 100%
+  ordinary text without R code
+
+
+output file: KnowingYourRsFromYourElbow.knit.md
+
+/usr/bin/pandoc +RTS -K512m -RTS KnowingYourRsFromYourElbow.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/KnowingYourRsFromYourElbow.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
+
+Output created: out/KnowingYourRsFromYourElbow.html
+
+
 processing file: lazyinfrastructure.Rmd
   |                                                                         |                                                                 |   0%  |                                                                         |.......                                                          |  11%
    inline R code fragments
@@ -616,425 +489,176 @@ output file: lazyinfrastructure.knit.md
 Output created: out/lazyinfrastructure.html
 
 
-processing file: reproducibledocs.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.............                                                    |  20%
+processing file: logisticregressions.Rmd
+  |                                                                         |                                                                 |   0%  |                                                                         |..                                                               |   2%
    inline R code fragments
-
-  |                                                                         |..........................                                       |  40%
-label: setup (with options) 
-List of 1
- $ include: logi FALSE
-
-  |                                                                         |.......................................                          |  60%
-  ordinary text without R code
-
-  |                                                                         |....................................................             |  80%
-label: autodoc (with options) 
-List of 2
- $ child: chr "../../generics/AboutMe.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./../../generics/AboutMe.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-output file: reproducibledocs.knit.md
-
-/usr/bin/pandoc +RTS -K512m -RTS reproducibledocs.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/reproducibledocs.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
-
-Output created: out/reproducibledocs.html
-
-
-processing file: skillinguptocodewithdata.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |...                                                              |   5%
-   inline R code fragments
-
-  |                                                                         |.......                                                          |  11%
-label: setup (with options) 
-List of 1
- $ include: logi FALSE
-
-  |                                                                         |..........                                                       |  16%
-  ordinary text without R code
-
-  |                                                                         |..............                                                   |  21%
-label: autodoc (with options) 
-List of 2
- $ child: chr "../../generics/AboutMe.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./../../generics/AboutMe.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |.................                                                |  26%
-  ordinary text without R code
-
-  |                                                                         |.....................                                            |  32%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/whycodewithdata.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/whycodewithdata.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |........................                                         |  37%
-  ordinary text without R code
-
-  |                                                                         |...........................                                      |  42%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/whatcodinglanguages.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/whatcodinglanguages.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |...............................                                  |  47%
-  ordinary text without R code
-
-  |                                                                         |..................................                               |  53%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/codingbestpractices.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/codingbestpractices.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |......................................                           |  58%
-  ordinary text without R code
-
-  |                                                                         |.........................................                        |  63%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/sourcecontrol.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/sourcecontrol.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-   inline R code fragments
-
-
-  |                                                                         |............................................                     |  68%
-  ordinary text without R code
-
-  |                                                                         |................................................                 |  74%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/testing.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/testing.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |...................................................              |  79%
-  ordinary text without R code
-
-  |                                                                         |.......................................................          |  84%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/ci.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/ci.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |..........................................................       |  89%
-  ordinary text without R code
-
-  |                                                                         |..............................................................   |  95%
-label: autodoc (with options) 
-List of 2
- $ child: chr "subDocs/codedinfrastructure.Rmd"
- $ eval : logi TRUE
-
-
-
-processing file: ./subDocs/codedinfrastructure.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-output file: skillinguptocodewithdata.knit.md
-
-/usr/bin/pandoc +RTS -K512m -RTS skillinguptocodewithdata.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/skillinguptocodewithdata.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
-
-Output created: out/skillinguptocodewithdata.html
-
-
-processing file: datatablein5.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |........                                                         |  12%
-   inline R code fragments
-
-  |                                                                         |................                                                 |  25%
-label: setup (with options) 
-List of 1
- $ include: logi FALSE
-
-  |                                                                         |........................                                         |  38%
-  ordinary text without R code
-
-  |                                                                         |................................                                 |  50%
-label: unnamed-chunk-1 (with options) 
-List of 3
- $ echo   : logi FALSE
- $ warning: logi FALSE
- $ results: chr "hide"
-
-  |                                                                         |.........................................                        |  62%
-  ordinary text without R code
-
-  |                                                                         |.................................................                |  75%
-label: unnamed-chunk-2
-  |                                                                         |.........................................................        |  88%
-  ordinary text without R code
-
-  |                                                                         |.................................................................| 100%
-label: unnamed-chunk-3
-
-output file: datatablein5.knit.md
-
-/usr/bin/pandoc +RTS -K512m -RTS datatablein5.utf8.md --to revealjs --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /home/travis/build/stephlocke/Rtraining/out/datatablein5.html --smart --email-obfuscation none --self-contained --template /home/travis/R/Library/revealjs/rmarkdown/templates/revealjs_presentation/resources/default.html --variable center=false --slide-level 2 --variable theme=lockedata --variable transition=default --variable backgroundTransition=default --variable history=true --variable "height='1080'" --variable "width='1920'" --variable "margin='0.05'" --mathjax --variable "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --variable revealjs-url=/home/travis/R/Library/revealjs/reveal.js-3.3.0.1 --highlight-style pygments 
-
-Output created: out/datatablein5.html
-
-
-processing file: zz_datatablepowerhour.Rmd
-  |                                                                         |                                                                 |   0%  |                                                                         |.                                                                |   1%
-   inline R code fragments
-
-  |                                                                         |..                                                               |   3%
-label: setup (with options) 
-List of 1
- $ include: logi FALSE
-
-  |                                                                         |...                                                              |   4%
-  ordinary text without R code
 
   |                                                                         |...                                                              |   5%
-label: unnamed-chunk-1
-  |                                                                         |....                                                             |   6%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                         |.....                                                            |   7%
   ordinary text without R code
 
-  |                                                                         |.....                                                            |   8%
-label: unnamed-chunk-2
-  |                                                                         |......                                                           |   9%
-  ordinary text without R code
-
-  |                                                                         |.......                                                          |  10%
-label: unnamed-chunk-3 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
+  |                                                                         |......                                                           |  10%
+label: xyc (with options) 
+List of 1
+ $ fig.cap: chr "Simple line of best fit"
 
   |                                                                         |........                                                         |  12%
   ordinary text without R code
 
-  |                                                                         |........                                                         |  13%
-label: unnamed-chunk-4 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
-  |                                                                         |.........                                                        |  14%
-  ordinary text without R code
-
-  |                                                                         |..........                                                       |  16%
-label: unnamed-chunk-5 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
+  |                                                                         |..........                                                       |  15%
+label: rbinom (with options) 
+List of 1
+ $ fig.cap: chr "Binomial outcome variable"
 
   |                                                                         |...........                                                      |  17%
   ordinary text without R code
 
-  |                                                                         |............                                                     |  18%
-label: unnamed-chunk-6 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
-  |                                                                         |.............                                                    |  19%
-  ordinary text without R code
-
-  |                                                                         |..............                                                   |  21%
-label: unnamed-chunk-7 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
+  |                                                                         |.............                                                    |  20%
+label: probs (with options) 
+List of 1
+ $ fig.cap: chr "Probability range, where dashed line indicates 50% probability cutoff"
 
   |                                                                         |..............                                                   |  22%
   ordinary text without R code
 
-  |                                                                         |...............                                                  |  23%
-label: unnamed-chunk-8 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
+  |                                                                         |................                                                 |  24%
+label: oddsdist (with options) 
+List of 1
+ $ fig.cap: chr "Odds distribution"
 
-  |                                                                         |................                                                 |  25%
-  ordinary text without R code
-
-  |                                                                         |.................                                                |  26%
-label: unnamed-chunk-9 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
-  |                                                                         |..................                                               |  27%
+  |                                                                         |.................                                                |  27%
   ordinary text without R code
 
   |                                                                         |...................                                              |  29%
-label: unnamed-chunk-10 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
-  |                                                                         |...................                                              |  30%
-  ordinary text without R code
-
-  |                                                                         |....................                                             |  31%
-label: unnamed-chunk-11 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
+label: logitdist (with options) 
+List of 1
+ $ fig.cap: chr "Logit distribution"
 
   |                                                                         |.....................                                            |  32%
   ordinary text without R code
 
   |                                                                         |......................                                           |  34%
-label: unnamed-chunk-12 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
-  |                                                                         |.......................                                          |  35%
-  ordinary text without R code
-
-  |                                                                         |........................                                         |  36%
-label: unnamed-chunk-13 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
-  |                                                                         |........................                                         |  38%
+label: logittransform
+  |                                                                         |........................                                         |  37%
   ordinary text without R code
 
   |                                                                         |.........................                                        |  39%
-label: unnamed-chunk-14 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
+label: glm (with options) 
+List of 1
+ $ echo: logi TRUE
 
-  |                                                                         |..........................                                       |  40%
-  ordinary text without R code
-
-  |                                                                         |...........................                                      |  42%
-label: unnamed-chunk-15 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
-  |                                                                         |............................                                     |  43%
+  |                                                                         |...........................                                      |  41%
   ordinary text without R code
 
   |                                                                         |.............................                                    |  44%
-label: unnamed-chunk-16 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
+label: unnamed-chunk-1 (with options) 
+List of 1
+ $ echo: logi FALSE
 
-  |                                                                         |..............................                                   |  45%
-  ordinary text without R code
-
-  |                                                                         |..............................                                   |  47%
-label: unnamed-chunk-17 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
-  |                                                                         |...............................                                  |  48%
+  |                                                                         |..............................                                   |  46%
   ordinary text without R code
 
   |                                                                         |................................                                 |  49%
-label: unnamed-chunk-18 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
+label: unnamed-chunk-2
   |                                                                         |.................................                                |  51%
   ordinary text without R code
 
-  |                                                                         |..................................                               |  52%
-label: unnamed-chunk-19 (with options) 
-List of 2
- $ eval   : logi TRUE
- $ results: chr "hide"
-
-  |                                                                         |...................................                              |  53%
-  ordinary text without R code
-
-  |                                                                         |...................................                              |  55%
-label: unnamed-chunk-20 (with options) 
-List of 3
- $ results: chr "hide"
- $ warning: logi FALSE
- $ message: logi FALSE
+  |                                                                         |...................................                              |  54%
+label: unnamed-chunk-3 (with options) 
+List of 1
+ $ echo: logi TRUE
 
   |                                                                         |....................................                             |  56%
   ordinary text without R code
 
-  |                                                                         |.....................................                            |  57%
-label: unnamed-chunk-21
-  |                                                                         |......................................                           |  58%
-  ordinary text without R code
-
-  |                                                                         |.......................................                          |  60%
-label: unnamed-chunk-22 (with options) 
+  |                                                                         |......................................                           |  59%
+label: unnamed-chunk-4 (with options) 
 List of 1
- $ echo: logi FALSE
+ $ echo: logi TRUE
 
   |                                                                         |........................................                         |  61%
   ordinary text without R code
 
-  |                                                                         |.........................................                        |  62%
-label: unnamed-chunk-23
-Killed
+  |                                                                         |.........................................                        |  63%
+label: unnamed-chunk-5 (with options) 
+List of 1
+ $ echo: logi TRUE
+
+  |                                                                         |...........................................                      |  66%
+  ordinary text without R code
+
+  |                                                                         |............................................                     |  68%
+label: unnamed-chunk-6
+  |                                                                         |..............................................                   |  71%
+  ordinary text without R code
+
+  |                                                                         |................................................                 |  73%
+label: unnamed-chunk-7
+  |                                                                         |.................................................                |  76%
+  ordinary text without R code
+
+  |                                                                         |...................................................              |  78%
+label: unnamed-chunk-8
+  |                                                                         |....................................................             |  80%
+  ordinary text without R code
+
+  |                                                                         |......................................................           |  83%
+label: unnamed-chunk-9 (with options) 
+List of 1
+ $ echo: logi TRUE
+
+  |                                                                         |.......................................................          |  85%
+  ordinary text without R code
+
+  |                                                                         |.........................................................        |  88%
+label: unnamed-chunk-10 (with options) 
+List of 1
+ $ echo: logi TRUE
+
+  |                                                                         |...........................................................      |  90%
+  ordinary text without R code
+
+  |                                                                         |............................................................     |  93%
+label: unnamed-chunk-11 (with options) 
+List of 1
+ $ echo: logi TRUE
+
+Quitting from lines 297-299 (logisticregressions.Rmd) 
+Error in requireNamespaceQuietStop("e1071") : package e1071 is required
+Calls: render ... confusionMatrix.default -> <Anonymous> -> requireNamespaceQuietStop
+In addition: Warning messages:
+1: In `[.data.table`(sampledt, , `:=`(c(colnames), 1)) :
+  truelength (14025) is greater than 10,000 items over-allocated (length = 1). See ?truelength. If you didn't set the datatable.alloccol option very large, please report this to datatable-help including the result of sessionInfo().
+2: In block_exec(params) : failed to tidy R code in chunk <glm>
+reason: Error in loadNamespace(name) : there is no package called 'formatR'
+
+3: In block_exec(params) :
+  failed to tidy R code in chunk <unnamed-chunk-3>
+reason: Error in loadNamespace(name) : there is no package called 'formatR'
+
+4: In block_exec(params) :
+  failed to tidy R code in chunk <unnamed-chunk-4>
+reason: Error in loadNamespace(name) : there is no package called 'formatR'
+
+5: In block_exec(params) :
+  failed to tidy R code in chunk <unnamed-chunk-5>
+reason: Error in loadNamespace(name) : there is no package called 'formatR'
+
+6: In block_exec(params) :
+  failed to tidy R code in chunk <unnamed-chunk-9>
+reason: Error in loadNamespace(name) : there is no package called 'formatR'
+
+7: In block_exec(params) :
+  failed to tidy R code in chunk <unnamed-chunk-10>
+reason: Error in loadNamespace(name) : there is no package called 'formatR'
+
+8: In block_exec(params) :
+  failed to tidy R code in chunk <unnamed-chunk-11>
+reason: Error in loadNamespace(name) : there is no package called 'formatR'
+
+
+Execution halted
