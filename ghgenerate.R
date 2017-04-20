@@ -19,6 +19,7 @@ workshops<-list.files(
 slidedecks<-slidedecks[-grep("subDocs|demo",slidedecks)]
 workshops<-workshops[-grep("subDocs|demo",workshops)]
 slidedecks<-setdiff(slidedecks,shinydecks)
+slidedecks<-slidedecks[order(basename(slidedecks))]
 
 for (f in slidedecks) render(f,output_dir = "out",
                              output_format = revealjs::revealjs_presentation(
